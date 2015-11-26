@@ -1,0 +1,111 @@
+/* 
+ GridNavigator 
+ */
+
+@import "mvariables.less";
+
+.mGridNavigator {
+}
+
+.mGridNavigatorText {
+    vertical-align: top;
+}
+
+.mGridNavigatorRange {
+	width:auto;
+	padding: 3px;
+}
+
+.mGridNavigatorImages .mGridNavigatorRange {
+    float: left;
+}
+
+.mGridNavigatorSelected {
+    color:           @gridnavigator-selected-color;
+    font-weight:     @gridnavigator-selected-font-weight;
+    text-decoration: @gridnavigator-selected-text-decoration;
+    margin-left: 5px;
+    vertical-align: top;
+}
+
+.mGridNavigatorLink {
+    vertical-align:   middle;
+    margin-left: 5px;
+    vertical-align: top;
+    color:           @gridnavigator-link-color;
+    text-decoration: @gridnavigator-link-text-decoration;
+}
+
+.mGridNavigatorLink:link, 
+.mGridNavigatorLink:visited {
+    color:           @gridnavigator-visited-color;
+    text-decoration: @gridnavigator-visited-text-decoration;
+}
+
+.mGridNavigatorLink:active,
+.mGridNavigatorLink:hover {
+    color:           @gridnavigator-hovered-color;
+    text-decoration: @gridnavigator-hovered-text-decoration;
+}
+
+.mGridNavigatorLinks {
+}
+
+.mGridNavigatorImages {
+}
+
+.mGridNavigatorImage {
+    vertical-align: middle;
+    width: 17px;
+    text-decoration: none;
+}
+
+.mGridNavigatorImages .mGridNavigatorImage {
+    float: left;
+    background: url(@image-gridnavigator-sprite) no-repeat top left;
+}
+
+.mGridNavigatorImages .mGridNavigatorImageFirstOn {
+	cursor: pointer;
+	margin: 2px 2px 0 9px;
+	background-position: -337px 3px;
+}
+
+.mGridNavigatorImages .mGridNavigatorImageFirstOff {
+	margin: 2px 2px 0 9px;
+	background-position: -337px -17px;
+}
+
+.mGridNavigatorImages .mGridNavigatorImagePrevOn {
+	cursor: pointer;
+	margin: 2px 2px 0 9px;
+	background-position: -297px 3px;
+}
+
+.mGridNavigatorImages .mGridNavigatorImagePrevOff {
+	margin: 2px 2px 0 9px;
+	background-position: -297px -17px;
+}
+
+.mGridNavigatorImages .mGridNavigatorImageNextOn {
+	cursor: pointer;
+	margin: 2px 2px 0 9px;
+	background-position: -317px 3px;
+}
+
+.mGridNavigatorImages .mGridNavigatorImageNextOff {
+	margin: 2px 2px 0 9px;
+	background-position: -317px -17px;
+}
+
+.mGridNavigatorImages .mGridNavigatorImageLastOn {
+	cursor: pointer;
+	margin: 2px 9px 0 9px;
+	background-position: -357px 3px;
+}
+
+.mGridNavigatorImages .mGridNavigatorImageLastOff {
+	margin: 2px 9px 0 9px;
+	background-position: -357px -17px;
+}
+

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formExemplo" title="Exemplos" close=">exemplos/main" width="400px">
+        <fields>
+            <mlabel text="Formulário vazio, usado nos exemplos"/>
+            <mlabel text="{{Manager::getSysTime()}}"/>
+        </fields>
+    </mform>
+</view>

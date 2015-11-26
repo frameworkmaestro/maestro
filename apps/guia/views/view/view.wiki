@@ -1,0 +1,48 @@
+<text xml:space="preserve">
+= O que é uma View? =
+De forma simplificada, uma ''View'' representa o código responsável pela entrada e saída de dados da aplicação. Pode ser um formulário, uma grid, um relatório, dados em texto puro, dados no formato JSON ou códigos Javascript. Os dados exibidos em formulário são fornecidos pelo [[>controller/controller|Controller]] que renderizou o formulário. Os dados de entrada do usuário são enviados para uma ação (''action'') de um Controller, através do [[>fundamentos/dto|objeto data]].
+Uma ''View'' pode ser um [[>view/controles|Controle]] (codificado em uma classe PHP), um arquivo XML (XML View) ou um template HTML.
+
+Exemplo de uma View codificada em PHP:</br>
+<pre lang="php">
+<?php
+
+class formScrollGrid extends MForm {
+
+    function __construct() {
+        parent::__construct('ScrollGrid', "examples/controls/main");
+    }
+
+    function createFields() {
+        $this->data->textoAtivo = array('0' => 'Não', '1' => 'Sim');
+        $this->setFieldsFromXML('formScrollGrid.xml');
+    }
+}
+?>
+</pre>
+
+Exemplo de uma View em XML:
+
+<pre lang="xml">
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formSelection" title="Selection Fields" close=">exemples/controls/main">
+        <fields>
+            <mselection id="selection" label="selection" options="$this->data->options" hint="hintSelection"/>
+            <mselection id="simpleselection" label="Simple Array" options="$this->data->simple" value="C"  readonly="true" />
+            <mtext id="simpleoption" text="" visible="{{ Manager::getPage()->isPostback() }}"/>
+            <mselection id="groupselection" label="Group Array" options="$this->data->group"/>
+            <mselection id="multipleselection" label="Multiple Selection" options="$this->data->simple" type="multiple"/>
+            <mselection id="inputselection" label="Input Selection" options="$this->data->simple" type="input" hint="input diferente da lista"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+        <validators>
+            <mrequiredvalidator field="selection" message="Selecione um."/>
+        </validators>
+    </mform>
+</view>
+</pre>
+</text>

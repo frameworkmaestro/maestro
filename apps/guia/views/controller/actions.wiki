@@ -1,0 +1,30 @@
+<text xml:space="preserve">
+= Actions =
+'''Actions''' indicam o código que será efetivamente executado em uma requisição feita via browser.
+A ação é indicada na [[>controller/urlformat|URL]]. O código referente à ação é encapsulado dentro de uma classe [[>controller/controller|Controller]].
+Geralmente as ações trabalham sobre o [[>fundamentos/dto|objeto data]] e terminam através da chamada a um método da camada ''View''. Os principais métodos usados para passar o controle para a camada ''View'' são:
+{|
+!Método!!Descrição
+|-
+|render($viewName = '', $parameters = array())||Renderiza a [[>view/view|View]] indicada. Caso o nome da ''view'' não seja informado, procura uma ''view'' com o mesmo nome da ''action''
+|-
+|renderPrompt($prompt)||Renderiza um prompt com uma mensagem para o usuário
+|-
+|renderJSON()|| Retorna o [[>fundamentos/dto|objeto data]] em formato JSON para o cliente
+|-
+|redirect($url)|| Redireciona para outra URL
+|- 
+|renderBinary($stream, $fileName = '')||Retorna um stream binário para o cliente
+|-
+|renderDownload($file, $fileName = '')||Retorna um prompt para o cliente que permite salvar o arquivo localmente
+|-
+|renderTemplate($templateName, $parameters = array())||Renderiza um código HTML com base em um template
+|-
+|renderFile(MFile $file)||Retorna um prompt para o cliente que permite salvar o arquivo localmente
+|-
+|renderWindow($viewName = '', $parameters = array())||Renderiza a ''view'' em uma nova janela do browser
+|-
+|notfound($msg) || Renderiza uma mensagem de NotFound para o cliente
+|}
+
+</text>

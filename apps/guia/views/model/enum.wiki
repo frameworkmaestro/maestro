@@ -1,0 +1,50 @@
+<text xml:space="preserve">
+= Enumerações =
+No Maestro é possível criar uma '''enumeração''' de dados para que possamos usar sempre '''constantes definidas''' ao invés de números.
+Por exemplo, suponha o ''status'' de um contrato: 
+<pre lang="php">
+0: Solicitado
+1: Aguardando Assinatura,
+2: Aguardando Publicacao
+3: Publicado
+4: Cancelado
+</pre>Para representar os valores destes ''status'', pode-se criar a classe <code>SituacaoContrato</code> com o seguinte código:
+<pre lang="php">
+<?php
+namespace adm\models;
+
+class SituacaoContrato extends \MEnumBase {
+    const SOLICITADO = 0;
+    const AGUARDANDO_ASSINATURA = 1;
+    const AGUARDANDO_PUBLICACAO = 2;
+    const PUBLICADO = 3;
+    const CANCELADO = 4;
+
+    public function getDefault() {
+        return self::SOLICITADO;
+    }
+}
+?></pre>
+A classe <code>SituacaoContrato</code> herda de <code>MEnumBase</code> (que é classe base no Maestro para todas as enumerações). Com isso, ao invés de escrever o código assim:
+<pre lang="php">
+if ($this->contrato->status == 2) {
+ ...
+}
+</pre>
+O código pode ser escrito de forma mais legível assim:
+<pre lang="php">
+if ($this->contrato->status == SituacaoContrato::AGUARDANDO_PUBLICACAO) {
+ ...
+}
+</pre>
+
+A classe <code>MEnumBase</code> fornece os seguintes métodos para tratar as enumerações:
+<pre lang="php">listAll()</pre>Retorna todas as constantes criadas; útil para preencher os dados de um controle <code>MSelection</code>.
+<br/>
+<pre lang="php">listByValues($arrayValues)</pre>Retorna uma lista das enumerações cujos valores numéricos estão listados em $arrayValues.
+<br/>
+<pre lang="php">getById($id)</pre>Retorna (como string) a enumeração cujo valor é indicado por $id.
+<br/>
+<pre lang="php">getConstById($id)</pre>Retorna o valor numérico da enumeração passada como string no parâmetro $id.
+<br/>
+</text>

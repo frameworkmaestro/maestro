@@ -1,0 +1,43 @@
+[globals]
+database = "library"
+app = "library"
+module = ""
+
+[Owner]
+table = "Owner"
+attributes['idOwner'] = "idOwner,integer,not null,primary,identity,"
+attributes['name'] = "name,string,not null,,"
+associations['medias'] = "library\models\media,oneToOne,idOwner:idOwner"
+
+[Media]
+table = "Media"
+attributes['idMedia'] = "idMedia,integer,not null,primary,identity,"
+attributes['name'] = "name,string,not null,,"
+attributes['URL'] = "URL,string,,,"
+attributes['path'] = "path,string,,,"
+attributes['dateCreated'] = "dateCreated,date,,,"
+attributes['idOwner'] = "idOwner,integer,not null,,foreign"
+associations['owner'] = "library\models\owner,oneToMany,idOwner:idOwner"
+associations['songs'] = "library\models\song,oneToOne,idMedia:idMedia"
+associations['videos'] = "library\models\video,oneToOne,idMedia:idMedia"
+associations['tags'] = "library\models\tag,manyToMany,Media_Tag"
+
+[Tag]
+table = "Tag"
+attributes['idTag'] = "idTag,integer,not null,primary,identity,"
+attributes['name'] = "name,string,not null,,"
+associations['medias'] = "library\models\media,manyToMany,Media_Tag"
+
+[Song]
+table = "Song"
+attributes['idSong'] = "idSong,integer,not null,primary,identity,"
+attributes['artist'] = "artist,string,not null,,"
+attributes['idMedia'] = "idMedia,integer,not null,,foreign"
+associations['media'] = "library\models\media,oneToMany,idMedia:idMedia"
+
+[Video]
+table = "Video"
+attributes['idVideo'] = "idVideo,integer,not null,primary,identity,"
+attributes['idMedia'] = "idMedia,integer,not null,,foreign"
+associations['media'] = "library\models\media,oneToMany,idMedia:idMedia"
+

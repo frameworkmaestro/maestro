@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formNew" title="Inserir Novo" close=">exemplos/crud/pessoa">
+        <include file="fields.xml" />
+    </mform>
+</view>

@@ -1,0 +1,58 @@
+<text xml:space="preserve">
+= Convenções e Padrões =
+
+No desenvolvimento de aplicações de grande escala, principalmente quando estão envolvidos diversos desenvolvedores, é fundamental que sejam adotadas alguma convenções, tanto em termos de codificação, quanto de nomenclatura. 
+As convenções a seguir são sugestões para aplicações desenvolvidas no framework Maestro.
+
+=Classes Model=
+
+==Tipos de atributos==
+ 
+* integer
+* string
+* boolean
+* date
+* timestamp
+* blob
+* currency
+* text
+
+==Nome dos atributos==
+
+Padrão ''camelCase'', com inicial minúscula.
+
+identificador (chave primária): id&#60nome_classe&#62
+* ex: idPessoa, idUsuario
+
+datas: data&#60especificacao&#62
+*ex: dataInicio, dataFim, dataPagamento
+Obs: Não é permitido que o nome do atributo seja "data", uma vez que este nome é usado internamente no framework.
+
+==Nome de classes==
+
+Padrão ''camelCase'', com inicial maiúscula, no singular. No caso de siglas, usar todas maiúsculas.
+Ex: Pessoa, Usuario, PessoaDocumento, INSS.
+
+==Nome de associações==
+
+Padrão ''camelCase'', com inicial minúscula.
+
+* associações oneToOne no singular
+* associações oneToMany ou manyToMany no plural
+
+==Nome de métodos==
+
+Padrão ''camelCase'', com inicial minúscula.
+
+métodos que obtêm um objeto: get&#60nome_classe&#62<br>
+*ex: getPessoa()
+
+métodos que obtêm um objeto a partir do valor de um atributo: getBy&#60nome_atributo&#62
+*ex: getByNome()
+
+métodos que retornam um [[>model/criterias|criteria]]: list&#60nome&#62
+*ex: listPessoas()
+
+métodos que retornam um [[>model/criterias|criteria]] a partir do valor de um ou mais atributos: listBy&#60nome_atributo&#62
+*ex: listByNome(), listByFilter($filter)
+</text>

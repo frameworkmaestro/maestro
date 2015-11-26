@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formSelection" title="Selection Fields" close=">controls/input">
+        <fields>
+            <mselection id="selection" label="Selection" options="$this->data->options" hint="hintSelection"/>            
+            <mselection id="simpleselection" label="Simple Array ReadOnly" options="$this->data->simple" value="C" readonly="true"/>
+            <mselection id="selectOnly" label="Select only" options="$this->data->options" type="selectOnly" width="200px" />
+            <mtext id="simpleoption" text="" visible="{{ Manager::getPage()->isPostback() }}"/>
+            <mselection id="groupselection" label="Group Array" options="$this->data->group"/>
+            <mselection id="multipleselection" label="Multiple Selection" options="$this->data->simple" type="multiple"/>
+            <mselection id="inputselection" label="Input Selection" options="$this->data->simple" type="input" hint="aceita um input diferente da lista"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>

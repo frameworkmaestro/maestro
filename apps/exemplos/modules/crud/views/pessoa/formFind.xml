@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formFind" title="Pesquisar" close=">exemplos/crud/pessoa"  width="100%">
+        <fields>
+            <mdatagrid id="gridFind" query="$this->data->query" pageLength="15">
+                <mtoolbar>
+                    <mtextfield id="filter::nome" label="Nome" size="15" value="$this->data->nome" placeholder="Nome" />
+                    <mlinkbutton id="lbSearch" action="!$('#gridFind').mgrid('filter', event)" iconCls="icon-search" title="Pesquisar" plain="true"/>
+                </mtoolbar>
+                <mdatagridcolumn field="idPessoa" visible="false"/>
+                <mdatagridcolumn type="link" field="nome" action=":exemplos/crud/pessoa/formObject/#idPessoa#|formFind|formAreaBase" title="Nome" width="50%"/>
+                <mdatagridcolumn field="dataNascimento" title="Data Nascimento" width="50%"/>
+            </mdatagrid>
+        </fields>
+    </mform>
+</view>

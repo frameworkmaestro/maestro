@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<view>
+    <mform>
+        <property title="Form Tools - Toolbuttons" close=">exemplos/controles/actions"/>
+        <tool title="Ajuda" action="help:formHelp" icon="icon-help" />
+        <fields>
+            <mlabel text="Exemplo do uso de 'tools' na barra de título do panel e icones disponíveis no tema"/>
+            <mhcontainer>
+                <mvcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-blank" action="post" tittle="Blank"/>
+                        <mlabel text="Blank"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-add" action="post" tittle="Add"/>
+                        <mlabel text="Add"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-edit" title="Edit" action="post" />
+                        <mlabel text="Edit"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-clear" action="post" title="Clear" />
+                        <mlabel text="Clear"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-remove" action="post" title="Remove"/>
+                        <mlabel text="Remove"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-save" action="post" title="Save"/>
+                        <mlabel text="Save"/>
+                    </mhcontainer>
+                </mvcontainer>
+                <mvcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-cut" action="post" title="Cut"/>
+                        <mlabel text="Cut"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-ok" action="post" title="Ok"/>
+                        <mlabel text="Ok"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-no" action="post" title="No"/>
+                        <mlabel text="No"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-cancel" action="post" title="Cancel"/>
+                        <mlabel text="Cancel"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-reload" action="post" title="Reload"/>
+                        <mlabel text="Reload"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-search" action="post" title="Search"/>
+                        <mlabel text="Search"/>
+                    </mhcontainer>
+                </mvcontainer>
+                <mvcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-print" action="post" title="Print"/>
+                        <mlabel text="Print"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-help" action="post" title="Help"/>
+                        <mlabel text="Help"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-undo" action="post" title="Undo"/>
+                        <mlabel text="Undo"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-redo" action="post" title="Redo"/>
+                        <mlabel text="Redo"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-back" action="post" title="Back"/>
+                        <mlabel text="Back"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-sum" action="post" title="Sum"/>
+                        <mlabel text="Sum"/>
+                    </mhcontainer>
+                </mvcontainer>
+                <mvcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-tip" action="post" title="Tip"/>
+                        <mlabel text="Tip"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-filter" action="post" title="Filter"/>
+                        <mlabel text="Filter"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-man" action="post" title="Man"/>
+                        <mlabel text="Man"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-lock" action="post" title="Lock"/>
+                        <mlabel text="Lock"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-find" action="post" title="Find"/>
+                        <mlabel text="Find"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-pdf" action="post" title="PDF" />
+                        <mlabel text="PDF"/>
+                    </mhcontainer>
+                </mvcontainer>
+                <mvcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-csv" action="post" title="CSV"/>
+                        <mlabel text="CSV"/>
+                    </mhcontainer>
+                    <mhcontainer>
+                        <mtoolbutton icon="icon-excel" action="post" title="Excel"/>
+                        <mlabel text="Excel"/>
+                    </mhcontainer>
+                </mvcontainer>
+            </mhcontainer>
+            <mlabel text="Usando glyphs"/>
+            <mtoolbutton glyph="signal" action="post" title="Signal"/>
+            <mlabel text="Usando font Awesome"/>
+            <mtoolbutton icon="fa fa-download" action="post" title="Download"/>
+        </fields>    
+        <help>
+            <mhelp id="formHelp" title="Exemplo de Help do Formulário" width="50%" height="50%">
+<![CDATA[
+<h1>Form XML</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a nisl quis felis interdum fringilla.
+Etiam non nunc libero. Vivamus pulvinar massa fermentum nulla pellentesque eget venenatis nisi porta. Integer justo quam,
+aliquet et iaculis sed, tempus eu dui. In eu ante vestibulum diam ultrices eleifend. Suspendisse suscipit magna ut ligula.
+</p>
+]]>
+            </mhelp>
+        </help>
+    </mform>
+</view>
+
+
+
+
+
+

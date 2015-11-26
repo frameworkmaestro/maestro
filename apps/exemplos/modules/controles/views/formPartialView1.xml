@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mtextfield id="nome" label="Nome label bem grande ..sssss" value="$this->data->nome" size="35" hint="em partialview1.xml" />
+    </fields>
+</view>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formEmail" title="Envio de emails" >
+        <fields>
+            <mtextfield id="remetente" size="30" label="Remetente" hint="{{'Caso não seja informado o remetente será usado o configurado em mailer.smtpFrom ' . $this->data->desricaoConfFrom}}"/>
+            <mtextfield id="destinatario" size="45" label="Destinatários" help="Separar por vírgula" hint="{{'Caso não esteja no servidor de produção os destinatários serão sobrescritos no arquivo de configuração em mailer.smtpTo ' . $this->data->desricaoConfTo}}"/>
+            <mtextfield id="cc" size="45" label="CC" help="Separar por vírgula" hint="{{'Caso não esteja no servidor de produção os destinatários serão sobrescritos no arquivo de configuração em mailer.smtpTo ' . $this->data->desricaoConfTo}}"/>
+            <mtextfield id="bcc" size="45" label="BCC" help="Separar por vírgula" hint="{{'Caso não esteja no servidor de produção os destinatários serão sobrescritos no arquivo de configuração em mailer.smtpTo ' . $this->data->desricaoConfTo}}"/>
+            <mtextfield id="assunto" size="30" label="Assunto" />
+            <mmultilinefield id="corpo" label="Mensagem" rows="5" cols="50" hint="Permitido o uso de HTML"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Executar" action="@diversos/formEmailEnviar"/>
+        </buttons>
+    </mform>
+</view>

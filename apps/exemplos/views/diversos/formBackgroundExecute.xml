@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formBackgroundExecute" title="Execução Background - Executando" >
+        <fields>
+            <miframe id="paneBackground" width="99%" source="$this->data->background"/>
+        </fields>
+    </mform>
+</view>

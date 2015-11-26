@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+        <mdatagrid id="gridUsuario" query="$this->data->query" pageLength="0" hasForm="true" width="99%">
+            <mdatagridcolumn field="idUsuario" title="ID"/>
+            <mdatagridcolumn field="login" title="Login" width="80%"/>
+            <mdatagridcontrol field="nick" title="Nick" >
+                <mtextfield id="colNick[$id]" size="10"  value ="%login%" height="15px"/>
+            </mdatagridcontrol>
+        </mdatagrid>
+</view>

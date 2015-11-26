@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view>
+    <mactionpanel id="panelMenus" title="Menus" close=">main/controls" actions="exemplos.controles.menus"  width="100%"/>
+</view>

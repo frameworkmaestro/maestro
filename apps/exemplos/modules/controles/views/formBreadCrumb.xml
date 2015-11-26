@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formBreadCrumb" title="BreadCrumbs" close=">exemplos/main/controls/bars">
+        <fields>
+            <mlabel text="Este form também mostra como usar estilos próprios da aplicação - definidos em apps/exemplos/public/css/style.css"/>
+            <mbreadcrumb id="bc1" home=">exemplos/main/controls/bars" class="breadcrumbExemplo1">
+                <mlink id="bc1a" text="Hardware" action="@controls/formBreadCrumb"/>
+                <mlink id="bc1b" text="Processadores" action="@controls/formBreadCrumb"/>
+                <mlink id="bc1c" text="ModeloXYZ" action="@controls/formBreadCrumb"/>
+            </mbreadcrumb>
+            <mseparator/>
+            <mbreadcrumb id="bc2" separator="/" class="breadcrumbExemplo2">
+                <mlink id="bc2a" text="Hardware" action="@controls/formBreadCrumb"/>
+                <mlink id="bc2b" text="Processadores" action="@controls/formBreadCrumb"/>
+                <mlink id="bc2c" text="ModeloXYZ" action="@controls/formBreadCrumb"/>
+            </mbreadcrumb>
+        </fields>
+    </mform>
+</view>

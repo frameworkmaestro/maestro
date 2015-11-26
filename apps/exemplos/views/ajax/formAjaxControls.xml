@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formAjaxControls" title="Ajax Controls" >
+        <fields>
+            <mhcontainer>
+                <mtextfield id="textField" label="MTextField">
+                    <ajax type="text" event="onBlur" url="ajax/ajaxTextField" load="contentTextField" />
+                </mtextfield>
+                <mcontentpane id="contentTextField"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mselection id="selectionField" label="MSelection" options="$this->data->pessoas">
+                    <ajax type="text" event="onChange" url="ajax/ajaxSelection" load="contentSelection" />
+                </mselection>
+                <mcontentpane id="contentSelection"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mtoolbutton id="tbPin" icon="pin">
+                    <ajax type="text" event="click" url="ajax/ajaxToolButton" load="contentToolButton" />
+                </mtoolbutton>
+                <mcontentpane id="contentToolButton"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mradiobuttongroup id="rdgroup1" disposition="{{ MContainer::DISPOSITION_HORIZONTAL }}" caption="Radio Group one">
+                    <ajax type="text" event="onChange" url="ajax/ajaxRadioButton" load="contentRadioButton" />
+                    <mradiobutton id="rdgrp1" text="Opção 1" value="1"/>
+                    <mradiobutton id="rdgrp2" text="Opção 2" value="2"/>
+                    <mradiobutton id="rdgrp3" text="Opção 3" value="3"/>
+                    <mradiobutton id="rdgrp4" text="Opção 4" value="4"/>
+                </mradiobuttongroup>
+                <mcontentpane id="contentRadioButton"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mcheckboxgroup id="chkgroup1" disposition="{{ MContainer::DISPOSITION_VERTICAL }}" caption="Chk Group One">
+                     <ajax type="text" event="onChange" url="ajax/ajaxCheckBox" load="contentCheckBox" />
+                    <mcheckbox id="chkgrp1" text="Opção 1" value="1"/>
+                    <mcheckbox id="chkgrp2" text="Opção 2" value="2"/>
+                    <mcheckbox id="chkgrp3" text="Opção 3" value="3"/>
+                    <mcheckbox id="chkgrp4" text="Opção 4" value="4"/>
+                </mcheckboxgroup>
+                <mcontentpane id="contentCheckBox"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mdiv id="div" height="20px" width="20px" backgroundColor="blue" label="Div">
+                    <ajax type="text" event="click" url="ajax/ajaxDiv" load="contentDiv" />
+                </mdiv>
+            <mcontentpane id="contentDiv"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mbutton id="btnAjax" text="Ajax">
+                    <ajax type="text" event="onClick" url="ajax/ajaxButton" load="contentAjaxButton" preventDefault="true"/>
+                </mbutton>
+                <mcontentpane id="contentAjaxButton"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mlink id="MLink" text="MLink">
+                    <ajax type="text" event="click" url="ajax/ajaxLink" load="contentAjaxMlink" preventDefault="true"/>
+                </mlink>
+                <mcontentpane id="contentAjaxMlink"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mimage id="MImage" text="MImage" source="$this->data->location">
+                    <ajax type="text" event="click" url="ajax/ajaxImage" load="contentAjaxMImage" preventDefault="true"/>
+                </mimage>
+                <mcontentpane id="contentAjaxMImage"/>
+            </mhcontainer>
+        </fields>
+    </mform>
+</view>

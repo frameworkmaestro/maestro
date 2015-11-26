@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mformbase id="formBase" title="Aluno" actions="exemplos.crud.aluno" close="exemplos/main" />
+</view>

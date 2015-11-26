@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mhiddenfield id="idPessoa" />
+        <mtextfield id="nome" label="Nome" />
+        <mtextfield id="cpf" label="CPF"  access="ADMIN:A_EXECUTE"/>
+        <mtextfield id="dataNascimento" label="DataNascimento" />
+        <mtextfield id="email" label="Email" />
+        <mselection id="selection" label="selection" options="$this->data->options" hint="hintSelection" optional="false"/>
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

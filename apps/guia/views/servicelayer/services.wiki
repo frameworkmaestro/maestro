@@ -1,0 +1,110 @@
+<text xml:space="preserve">
+= O que é um Service? =
+Uma ''Camada de Serviços'' define a fronteira de uma aplicação. AEla apresenta o conjunto de operações disponíveis a partir da perspectiva dos clientes da aplicação.
+Esta camada encapsula a lógica de negócio da aplicação, controlando as transações e coordenando as respostas a serem enviadas aos clientes.
+Desta forma, um '''Service''' (ou Serviço) é uma operação única (do ponto de vista do cliente) mas que pode envolver um conjunto de operações (do ponto de vista da aplicação).
+No Maestro os serviços podem ser agrupados em classes. As classes de serviço são localizadas na pasta '''apps/aplicação/services'''.
+
+Exemplo de implementação da lógica da aplicação via serviços:
+
+a. Serviço <code>createAluno()</code>
+* Este serviço coloca o banco em estado de transação, cria uma Pessoa, cria um Aluno referente a esta Pessoa e envia um email notificando a criação do registro. 
+* Os dados de entrada chegam via <code>$this->data</code>
+* Os dados de saída são enviados via um objeto JSON
+b. Serviço <code>novoAluno()</code>
+
+* Este serviço coloca o banco em estado de transação, cria uma Pessoa, cria um Aluno referente a esta Pessoa e envia um email notificando a criação do registro. 
+* Os dados de entrada chegam via <code>$this->data</code>
+* Uma mensagem é retornada para o Controller que chamou o serviço
+
+<pre lang="php">
+<?php
+Manager::import("exemplos\models\*");
+
+class DataService extends MService {
+
+    public function createAluno() {
+        $db = $this->getDatabase('exemplos');
+        try {
+            $transaction = $db->beginTransaction();
+            $pessoa = new Pessoa();
+            $pessoa->setData($this->data);
+            $pessoa->save();
+            $this->data->idPessoa = $pessoa->getId();
+            $aluno = new Aluno();
+            $aluno->setData($this->data);
+            $aluno->save();
+            $mail = $this->getMail();
+            $mail->Subject = 'Novo registro de aluno  - ' . $aluno->getMatricula();
+            $mail->Body = 'Criado novo registro de aluno  - ' . $aluno->getMatricula() . ' em ' . Manager::getSysTime();
+            $mail->addAddress($this->data->email);
+            $ok = $mail->send();
+            $this->data->result = 'Aluno criado com sucesso.';
+            $transaction->commit();
+        } catch (\Exception $e) {
+            // rollback da transação em caso de algum erro
+            $transaction->rollback();
+            $this->data->error = true;
+            $this->data->result = $e->getMessage();
+        }
+        $this->renderJSON();
+    }
+
+    public function novoAluno() {
+        $db = $this->getDatabase('exemplos');
+        try {
+            $transaction = $db->beginTransaction();
+            $pessoa = new Pessoa();
+            $pessoa->setData($this->data);
+            $pessoa->save();
+            $this->data->idPessoa = $pessoa->getId();
+            $aluno = new Aluno();
+            $aluno->setData($this->data);
+            $aluno->save();
+            $mail = $this->getMail();
+            $mail->Subject = 'Novo registro de aluno  - ' . $aluno->getMatricula();
+            $mail->Body = 'Criado novo registro de aluno  - ' . $aluno->getMatricula() . ' em ' . Manager::getSysTime();
+            $mail->addAddress($this->data->email);
+            $ok = $mail->send();
+            $mensagem = 'Aluno criado com sucesso.';
+            $transaction->commit();
+        } catch (\Exception $e) {
+            // rollback da transação em caso de algum erro
+            $transaction->rollback();
+            $this->data->error = true;
+            $mensagem = $e->getMessage();
+        }
+        return $mensagem;
+    }
+}
+?>
+</pre>
+Evocação do serviço via URL:
+<pre>http://host/index.php/exemplos/servicos/createAluno</pre>
+Exemplo de evocação do serviço via Controller:
+- Formulário <code>formNovoAluno</code> com dois botões: um aponta para a URL '''exemplos/services/createAluno''' e outra para a ''action'' '''exemplos/servicos/novoAluno'''.
+- Quando esta ''action'' é executada, o serviço <code>DataService</code> é instanciado e o método <code>novoAluno()</code> é executado.
+<pre lang="php">
+<?php
+use exemplos\models as models;
+
+class ServicosController extends MController {
+
+    public function formNovoAluno() {
+        $this->data->actionURL = "@exemplos/services/data/createAluno";
+        $this->data->actionController = "@exemplos/servicos/novoAluno";
+        $this->render();
+    }
+
+    public function novoAluno() {
+        $service = $this->getService('data');
+        $mensagem = $service->novoAluno();
+        $this->renderPrompt('information', $mensagem);
+    }
+}
+?>
+
+
+</pre>
+
+</text>

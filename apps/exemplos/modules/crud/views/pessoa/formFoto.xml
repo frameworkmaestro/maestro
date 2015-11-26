@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formFoto">
+        <fields>
+            <mhiddenfield id="idPessoa"/>
+            <mimage id="imgFoto" label="Foto Atual" source="$this->data->url"/>
+            <mfilefield id="novaFoto" label="Nova Foto" width="300px" multiple="false" text="Selecionar Arquivo"/>            
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Salvar" action="@exemplos/crud/pessoa/saveFoto/{{$this->data->object->id}}"/>
+        </buttons>
+        <data load="$this->data->object" />        
+    </mform>
+    
+</view>

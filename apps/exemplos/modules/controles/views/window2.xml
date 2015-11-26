@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formWindow2" title="Window 2" close="close">
+        <fields>
+            <mlabel text="Conteúdo da Window2"/>
+        </fields>
+    </mform>
+</view>

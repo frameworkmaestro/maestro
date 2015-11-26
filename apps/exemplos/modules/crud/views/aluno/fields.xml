@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<view>
+    <property labelClass="col-md-4" width="450px" border="false"/>
+    <fields>
+        <mhiddenfield id="aluno_idAluno"/>        
+        <mtextfield id="aluno_matricula" label="Matrícula" />  
+        <mtextfield id="aluno_nome" label="Nome" />
+        <mcpffield id="aluno_cpf" label="CPF"/>
+        <mcalendarfield id="aluno_dataNascimento" label="DataNascimento" />
+        <memailfield id="aluno_email" label="Email" width="250px"/>
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+</view>

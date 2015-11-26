@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formStack" title="Form Stack" close=">exemples/main/controls">
+        <fields>
+            <mselection id="tipo" label="Tipo" options="{{ array('bg1' => 'Opção 1', 'bg2' => 'Opção 2', 'bg3' => 'Opção 3') }}"
+        hint="mude a opção para alterar o basegroup exibido abaixo"/>
+            <mstackcontainer id="stack" subscribe="tipoChangeValue">
+                <mbasegroup id="bg1" caption="Opção 1" width="550px">
+                    <mhcontainer>
+                        <mtextfield id="t1" label="T1"/>
+                    </mhcontainer>
+                    <mtextfield id="t11" label="T11"/>
+                    <mcalendarfield id="c1" label="Data 1"/>
+                </mbasegroup>
+                <mbasegroup id="bg2" caption="Opção 2"  width="550px" >
+                    <mhcontainer>
+                        <mtextfield id="t2" label="T2"/>
+                    </mhcontainer>
+                    <mtextfield id="t22" label="T22"/>
+                    <mcalendarfield id="c2" label="Data 2"/>
+                </mbasegroup>
+                <mbasegroup id="bg3" caption="Opção 3"  width="550px">
+                    <mhcontainer>
+                        <mtextfield id="t3" label="T3"/>
+                    </mhcontainer>
+                    <mtextfield id="t33" label="T33"/>
+                    <mcalendarfield id="c3" label="Data 3"/>
+                </mbasegroup>
+            </mstackcontainer>
+            <mspacer height="15px"/>
+            <mradiobuttongroup id="perfil" width="550px">
+                <mradiobutton id="perfilEstudante" text="Estudante" value="bg4"/>
+                <mradiobutton id="perfilFuncionario" text="Funcionário" value="bg5"/>
+            </mradiobuttongroup>
+            <mstackcontainer id="perfilStack" subscribe="perfilChangeValue">
+                <mbasegroup id="bg4" caption="Estudante" width="550px">
+                    <mhcontainer>
+                        <mtextfield id="t4" label="T4"/>
+                    </mhcontainer>
+                    <mtextfield id="t41" label="T41"/>
+                    <mcalendarfield id="c4" label="Data 4"/>
+                </mbasegroup>
+                <mbasegroup id="bg5" caption="Funcionário"  width="550px" >
+                    <mhcontainer>
+                        <mtextfield id="t5" label="T5"/>
+                    </mhcontainer>
+                    <mtextfield id="t52" label="T52"/>
+                    <mcalendarfield id="c5" label="Data 5"/>
+                </mbasegroup>
+            </mstackcontainer>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>

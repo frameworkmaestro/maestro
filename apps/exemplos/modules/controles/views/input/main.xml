@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view>
+    <mactionpanel id="input" title="Controles.Input" close=">exemplos/controles/input" actions="exemplos.controles.input" />
+</view>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formCurrency" title="Currency" close=">exemplos/types/main">
+        <fields>
+            <mbasegroup id="bg1" caption="Usando MCurrency" width="550px">
+                <mvcontainer>
+                    <mlabel text="$this->data->value"/>    
+                    <mlabel text="$this->data->currency"/>    
+                    <mlabel text="$this->data->formated"/>    
+                    <mlabel text="$this->data->getValue"/>    
+                    <mlabel text="$this->data->setValue"/>    
+                    <mlabel text="$this->data->setValueNeg"/>    
+                    <mlabel text="$this->data->valueNeg"/>    
+                </mvcontainer>
+            </mbasegroup>    
+        </fields>    
+    </mform>
+</view>

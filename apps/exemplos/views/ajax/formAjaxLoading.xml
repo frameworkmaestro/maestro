@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formAjaxLoading" title="Form Ajax" close="controls/ajax">
+        <fields>
+            <mtextfield id="retornoAjax1" label="Retorno Ajax 1" />
+            <mtextfield id="retornoAjax2" label="Retorno Ajax 2" />
+            <mtextfield id="retornoAjax3" label="Retorno Ajax 3" />
+            <mwindow id="windowProcessing" url="ajax/windowProcessing"/>
+            <mbutton id="btnWin" text="Processar" action="open:windowProcessing"/>
+        </fields>
+    </mform>
+</view>

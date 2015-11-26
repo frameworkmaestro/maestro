@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formGrid" title="Exemplo de Form com DataGrid" close=">exemplos/controles/main">
+        <fields>
+            <!-- mdatagrid -->
+            <!-- . quando a propriedade 'query' é definida com um objeto MQuery, não há paginação, ex: query="$this->data->query" height="350px" -->
+            <!-- . para haver paginação, os dados devem ser obtidos via json, através da URL indicada no atributo 'url' ou no atributo 'query' -->
+            <mdatagrid id="gridFind"  title="Datagrid" idField="idPessoa" singleSelect="true" checkbox="true" width="100%"
+                        query="$this->data->query" pageLength="10">
+                <mtoolbar>
+                    <mtextfield id="filter::nome" label="Nome" size="15" placeholder="Nome" />
+                    <mlinkbutton id="lbSearch" action="!$('#gridFind').mgrid('filter', event)" iconCls="icon-search" title="Pesquisar" plain="true"/>
+                </mtoolbar>
+                <tool title="Salvar" action="@exemplos/controles/grids/gridSave" icon="icon-save" />
+                <tool title="Excluir" action="@exemplos/controles/grids/gridDelete" icon="icon-remove" />
+                <tool title="Exportar para Excel" action="+exemplos/controles/grids/exportExcel" icon="icon-excel" />
+                <tool title="Exportar para CSV" action="+exemplos/controles/grids/exportCSV" icon="icon-csv" />
+                <tool title="Exportar para PDF" action="+exemplos/controles/grids/exportPDF" icon="icon-pdf" />
+                <mdatagridcolumn field="idPessoa" visible="true" title="id" width="5%"/>
+                <mdatagridcolumn type="link" field="nome" action="^exemplos/controles/window1/#idPessoa#" title="Nome" width="35%"/>
+                <mdatagridcolumn field="cpf" title="CPF" width="10%" halign="center" align="right"/>
+                <mdatagridcolumn field="dataNascimento" title="Data Nascimento" width="10%"/>
+            <!-- mdatagridcontrol: -->
+            <!-- . o atributo id é indexado; o indice é o valor do idField em cada linha de dados -->
+            <!-- . por default, o valor do control é o valor do field correspondente -->
+            <!-- . para usar outro valor, usar o modificador #field# -->
+                <mdatagridcolumn type="control" field="opcional" title="Opcional">
+                    <mtextfield id="colOpcional" width="200px"  value ="#email#"/>
+                </mdatagridcolumn>
+            </mdatagrid>
+            <mhcontainer>
+                <mlabel text="ids selecionados:"/>
+                <mlabel text="$this->data->selecionados"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mlabel text="Total:"/>
+                <mtextfield id="total" size="10"  value ="0"/>
+            </mhcontainer>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" action="@exemplos/controles/grids/formQueryGrid" />
+        </buttons>
+    </mform>
+</view>

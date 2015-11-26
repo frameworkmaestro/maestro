@@ -1,0 +1,4 @@
+<text xml:space="preserve">
+= Classe MType =
+A classe '''MType''' é a classe base para tipos complexos.
+</text>

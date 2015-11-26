@@ -1,0 +1,24 @@
+<text xml:space="preserve">
+= Segurança =
+
+O framework maestro possui uma camada de segurança destinada a restringir usuários de acordo com o seu respectivo grupo e transação. 
+
+== Como restringir o acesso no menu actions.php ==
+
+O menu actions.php define o menu superior que irá aparecer para o usuário, no qual pode-se adicionar a transação que o usuário deverá pertencer para que aquele item de menu seja visível
+
+<code lang="php">
+'patrimonio' => array('LABEL', 'aaction', 'icone', 'NOME_TRANCACAO', A_ACCESS)
+</code>
+
+== Como restringir o acesso em um controller ==
+
+No controller pode-se restringir o acesso a usuários através do método checkAccess da classe manager, conforme o código a seguir:
+
+<code lang="php">
+ \Manager::checkAccess('NOME_TRANCASAO', A_EXECUTE, true);
+ </code>
+
+O último parâmetro "true" define que, se o usuário não pertencer a transação fornecida, sera disparada uma exceção que irá refletir na interface do usuário. Este parâmetro é facultativo e caso não seja fornecido, o método checkAccess irá retornar o valor booleano true ou false. 
+
+</text>

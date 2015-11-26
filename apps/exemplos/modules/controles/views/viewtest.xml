@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formContentPane" caption="ContentPane">
+        <fields>
+            <mlabel text="O controle MContentPane é um container de uso geral. Quando preenchido dinamicamente, pode executar scripts Javascript."/>
+            <mcontentpane id="cp1">
+                <mlabel text="Um MContentPane é renderizado como um div"/>
+            </mcontentpane>
+            <mcontentpane id="cp2" border="1px solid black">
+                <mlabel text="aceitando parâmetros CSS"/>
+            </mcontentpane>
+        </fields>
+    </mform>
+</view>

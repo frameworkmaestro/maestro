@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formPrompt" title="Form Prompt" close="main/controls">
+        <fields>
+            <mtextfield id="nome" label="Nome" size="25"/>
+            <mprompt id="myPrompt" type="confirmation" message="Mensagem de informação" yes="post" no=""/>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" action="prompt:myPrompt" />
+        </buttons>
+    </mform>
+</view>

@@ -1,0 +1,9 @@
+<text xml:space="preserve">
+= Doctrine Framework =
+
+O Doctrine é um framework objeto relacional, onde as tabelas do sistema são manipuladas como classes, incluindo conceitos comuns na orientação a objetos, como herança e acoplamento. 
+o Maestro também possui uma camada objeto relacional que utiliza algumas funcionalidades internas do DocTrine. Isso significa que não é necessario conhecimento no framework Doctrine para manipular dados através do framework Maestro.
+
+Site: [http://www.doctrine-project.org/ http://www.doctrine-project.org/]
+
+</text>

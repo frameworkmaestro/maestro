@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mlabel text="Passo Final" />
+        <mtextlabel id="t1" label="Campo0" text="$this->data->campo0" />
+        <mtextlabel id="t2" label="Campo1" text="$this->data->campo1" />
+        <mtextlabel id="t3" label="Campo2" text="$this->data->campo2" />
+        <mtextlabel id="t4" label="Campo3" text="$this->data->campo3" />
+    </fields>
+    <buttons>
+        <mbutton id="btnBack" text="Anterior" action="@flow/passo3" />
+    </buttons>
+</view>

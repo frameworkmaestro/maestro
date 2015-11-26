@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formSOAPClient" title="Zend SOAP Client" >
+        <fields>
+            <mlabel text="$this->data->response1" />
+            <mlabel text="$this->data->response2" />
+            <mlabel text="Web Service: http://www.webservicex.net/country.asmx:" color="blue"/>
+            <mlabel text="$this->data->country->name" />
+            <mlabel text="$this->data->country->code" />
+            <mlabel text="$this->data->country->country" />
+        </fields>
+    </mform>
+</view>

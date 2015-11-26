@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formORM" title="Wizard ORM" close=">wizard/main">
+        <fields>
+            <mvcontainer>
+                <mtextfield id="xmi" label="XMI File" value=""/>
+                <mtextfield id="module" label="Module" value=""/>
+                <mtextfield id="database" label="Database" value="" />
+                <mtextfield id="package" label="Package" value=""/>
+            </mvcontainer>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Generate Class/Map Files" action="@wizard/main/createORM"/>
+        </buttons>
+    </mform>
+</view>

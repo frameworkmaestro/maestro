@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formCaptcha" title="Zend Image Captcha" >
+        <fields>
+            <mhiddenfield id="captchaId" value="$this->data->captchaId"/>
+            <mimage source="$this->data->captcha" />
+            <mtextfield id="mycaptcha" value="" />
+        </fields>
+        <buttons>
+            <mbutton id="bntPost" text="Enviar" action="@exemplos/zend/captcha"/>
+        </buttons>
+    </mform>
+</view>

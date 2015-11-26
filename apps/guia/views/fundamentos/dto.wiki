@@ -1,0 +1,15 @@
+<text xml:space="preserve">
+= O Objeto $data =
+
+Como uma aplicação Maestro está dividida em camadas, é muito importante entender como é feita a comunicação entre essas camadas. 
+A figura a seguir mostra um esquema desta comunicação:
+[[Image:objeto_data.png"]]
+
+# A partir de um formulário apresentado no browser, o usuário faz a submissão dos dados. A [[>controller/urlformat|URL]] usada na submissão indica a ''controller/action'' que deverá ser executada.
+# O Maestro agrupa estes dados em um objeto PHP ''plano'' (sem métodos), que é repassado ao ''Controller''. Este objeto é chamado genericamente de '''objeto data''' (ou [http://en.wikipedia.org/wiki/Data_transfer_object|DTO - Data Transfer Object|_Blank]).
+# O ''Controller'' acessa o '''objeto data''' através do atributo <code>$this->data</code>; assim, cada ''action'' tem acesso aos dados que foram submetidos via browser (as demais camadas podem acessar o '''objeto data''' a qualquer momento, através do método <code>Manager::getData()</code>.
+# O ''Controller'' pode repassar estes dados para um ''Model'' através do método <code>$model->setData($this->data)</code>. O método <code>setData</code> faz as necessárias conversões de atributos planos em [[>model/tipos|tipos complexos]] (data, timestamp, currency, etc.)
+# O ''Controller'' pode obter os dados de um ''Model'' através do método <code>$model->getData()</code>. O método <code>getData</code> faz as necessárias conversões de tipos complexos em atributos planos.
+# Os dados que o ''Controller'' necessita passar para a ''View'' são armazenados também no '''objeto data'''.
+# Quando a ''View'' é executada, ela acessa os dados provenientes do ''Controller'' através do atributo <code>$this->data</code>. Em geral, os valores dos atributos do '''objeto data''' são atribuidos aos campos que serão exibidos via HTML no browser.
+</text>

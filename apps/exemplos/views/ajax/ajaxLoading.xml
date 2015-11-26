@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <javascript helper="{{ MUI::set('retornoAjax1','value',$this->data->randomNumber1); }}"/>
+    <javascript helper="{{ MUI::set('retornoAjax2','value',$this->data->randomNumber2); }}"/>
+    <javascript helper="{{ MUI::set('retornoAjax3','value',$this->data->randomNumber3); }}"/>        
+    <mvcontainer>
+        <mlabel text="Dados processados e carregados na tela principal."/>
+        <mbutton id="btnLoading" text="OK" action="close"/>
+    </mvcontainer>
+</view>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="renderPartialView1" title="Exemplo de RenderPartial - Parte 1">
+        <fields>
+            <mtextfield id="nome" label="Nome label bem grande ..sssss" value="$this->data->nome" size="35" hint="hint" />
+            <mselection id="sel" label="Lista" options="$this->data->options" hint="choose one" />
+            <mtextfield id="nome2" label="Nome label bem grande ..sssss" value="$this->data->nome" size="35" hint="hint" />
+        </fields>
+    </mform>
+</view>

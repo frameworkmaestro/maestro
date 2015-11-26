@@ -1,0 +1,168 @@
+<text xml:space="preserve">
+= Estrutura =
+
+A estrutura de diretórios do framework pode ser vista em três níveis:
+
+# Estrutura do framework
+# Estrutura de uma aplicação
+# Estrutura de um módulo
+
+== Estrutura do framework ==
+<pre>
+{| cellspacing=5
+| + maestro
+|-
+|   + apps 
+|Aplicações instaladas
+|-
+|   + core 
+|Framework propriamente dito
+|-
+|      + apps 
+|Aplicações internas ao Framework
+|-
+|      + classes 
+|Classes internas do framework
+|-
+|      + conf 
+|Arquivos de configuração - globais
+|-
+|         + conf.php 
+|[[introducao/configuracao|Arquivo de configuração]]
+|-
+|      + support 
+|Programas auxiliares
+|-
+|      + var 
+|Dados variáveis
+|-
+|         + db 
+|Bancos de dados temporários
+|-
+|         + files 
+|Arquivos PDF e CSV gerados pela execuçao de [[reports_introducao|relatórios]]
+|-
+|         + log 
+|Arquivos de log gerados pelas aplicações
+|-
+|         + templates
+|Arquivos gerados pelo sistema de templates e mantidos em cache
+|-
+|   + public 
+|Diretório visível na web, que contém informaçao pública, como páginas html, javascript, css, etc
+|-
+|     + docs 
+|Documentos relativos ao framework
+|-
+|     + fonts 
+|Fontes disponíveis para todas as aplicações
+|-
+|     + images 
+|Imagens disponíveis para todas as aplicações
+|-
+|     + scripts 
+|Código Javascript usado pelo framework
+|-
+|     + templates 
+|Templates HTML e textos usados pelo framework
+|-
+|     + themes 
+|[[ui_tema|Temas]] para construção da interface com o usuário
+|-
+|          +default 
+|Tema básico, distribuído junto com o framework
+|-
+|  index.php 
+|[[fundamentos_script|Script]] de entrada das aplicações
+|}
+</pre>
+
+
+== Estrutura de uma aplicação ==
+
+O diretório '''apps''' contém as aplicações executadas sob o framework. As aplicações são independentes entre si. Suponha a aplicação "exemplos"; a estrutura de diretórios da aplicação é a seguinte:
+
+<pre>
+{| cellspacing=5
+|-
+|+maestro\apps\exemplos
+|
+|-
+|   + components
+| Contém [[componentes_introducao|componentes]] personalizados, usados na aplicação (por exemplo, controles de lookups e selections)
+|-
+|   + conf
+|Arquivos de configuração da aplicação
+|-
+|   + controllers
+|Contém os controllers da aplicação (ver [[controller/main|Controller]])
+|-
+|   + models
+|Contém os models da aplicação (ver [[model/main|Model]])
+|-
+|   + public
+|que contém informaçao pública, como páginas html, javascript, css, etc
+|-
+|       + css
+|Arquivos CSS específicos da aplicação
+|-
+|       + images
+|Imagens usadas na aplicação
+|-
+|       + files
+|Arquivos da aplicação (por exemplo, uploads e downloads)
+|-
+|       + themes
+|Temas específicos da aplicação
+|-
+|   + views
+|Contém as views da aplicação (ver [[mvc_view|View]])
+|}
+</pre>
+
+== Estrutura de um módulo ==
+
+Um aplicação complexa pode ser subdividida em [[fundamentos_modulos|módulos]], que tratem de aspectos específicos da aplicação. Os módulos são armazenados dentro do diretório '''modules'''. Suponha a aplicação "exemplos", subdividida nos módulos "administracao" e "publico"; a estrutura de diretórios da aplicação é a seguinte: 
+
+<pre>
+{| cellspacing=5
+|-
+|+maestro\apps\exemplos
+|
+|-
+|   + modules
+|
+|-
+|       + administracao
+|
+|-
+|           + conf 
+|Arquivos de configuração do módulo
+|-
+|           + controllers
+|Contém os controllers do módulo (ver [[mvc_controller|Controller]])
+|-
+|           + models
+|Contém os models do módulo (ver [[mvc_model|Model]])
+|-
+|           + views
+|Contém as views do módulo (ver [[mvc_view|View]])
+|-
+|       + publico
+|
+|-
+|           + conf
+|
+|-
+|           + controllers
+|
+|-
+|           + models
+|
+|-
+|           + views
+|
+|}
+</pre>
+[[maestro|Home]]
+</text>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formGridInput" title="Grid Input" close=">exemplos/main/controls">
+        <fields>            
+            <mgridinput id="gridInputExemplo1" caption="GridInput - Exemplo 1" value="" actionGrid="exemplos/gridInputExemplo/grid1">
+                <mhiddenfield id="idPessoa" />
+                <mtextfield id="codigoExemplo1" label="Código" size="5"/>
+                <mlookuptextfield id="nomeExemplo1" label="Nome" width="200px" action="pessoa/lookup" related="gridInputExemplo1::idPessoa:idPessoa,gridInputExemplo1::nome:nome"/>
+                <mtextfield id="descricaoExemplo1" label="Descrição" size="25"/>
+                <mselection id="opcaoExemplo1" label="Opção" options="$this->data->opcoes"/>
+                <mbutton id="gridInputExemplo1::btnAdd" text="Inserir" action="!gridInputExemplo1.add();"/>
+                <mbutton id="gridInputExemplo1::btnRemove" text="Remover" action="!gridInputExemplo1.remove();"/>
+            </mgridinput>
+            <mgridinput id="gridInputExemplo2" caption="GridInput - Exemplo2" value="" actionGrid="exemplos/gridInputExemplo/grid2">
+                <mtextfield id="codigoExemplo2" label="Código" size="5"/>
+                <mtextfield id="descricaoExemplo2" label="Descrição" size="25"/>
+                <mbutton id="gridInputExemplo2::btnAdd" text="Inserir" action="!gridInputExemplo2.add();"/>
+                <mbutton id="gridInputExemplo2::btnAction" text="Ação Ajax" action=":exemplos/gridInputExemplo/acao2|gridInputExemplo2::btnAction|paneAcao2"/>
+                <mcontentpane id="paneAcao2"/>
+            </mgridinput>
+            <mgridinput id="gridInputExemplo3" caption="GridInput - Exemplo3 - Usando View" value="" actionGrid="controls/gridInputExemplo3">
+                <mtextfield id="codigoExemplo3" label="Código" size="5"/>
+                <mtextfield id="descricaoExemplo3" label="Descrição" size="25"/>
+                <mbutton id="gridInputExemplo3::btnAdd" text="Inserir" action="!gridInputExemplo3.add();"/>
+                <mbutton id="gridInputExemplo3::btnRemove" text="Remover" action="!gridInputExemplo3.remove();"/>
+            </mgridinput>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar" action="@exemplos/controls/gridInput"/>
+        </buttons>
+    </mform>
+</view>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform title="Pesquisa Pessoa" close="close" enterAction="submit">
+        <fields>
+            <mhcontainer>
+                <mtextfield id="lookupPessoa::nome" label="Nome"  value="$this->data->lookup->nome" size="20"/>
+                <mtextfield id="lookupPessoa::cpf" label="CPF"  value="$this->data->lookup->cpf" size="20"/>
+                <mtextfield id="lookupPessoa::email" label="Email"  value="$this->data->lookup->email" size="20"/>
+                <mbuttonfind/>
+            </mhcontainer>
+            <mlookupgrid id="lookupTable" query="$this->data->query" pageLength="15">
+                <mdatagridcolumn field="idPessoa" visible="false"/>
+                <mdatagridcolumn field="nome" title="Nome" width="15%"/>
+                <mdatagridcolumn field="cpf" title="CPF" width="15%"/>
+                <mdatagridcolumn field="email" title="Email" width="15%"/>
+            </mlookupgrid>
+        </fields>
+    </mform>
+</view>

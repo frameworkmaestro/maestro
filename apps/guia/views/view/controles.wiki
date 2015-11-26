@@ -1,0 +1,48 @@
+<text xml:space="preserve">
+= Controles =
+Os '''controles''' (também chamados ''widgets'') são componentes visuais utilizados para construir a interface com o usuário (através das [[>view/view|Views]]). Alguns controles são próprios do Maestro, enquanto outros controles apenas encapsulam ''widgets'' do [[>frameworks/dojo|DOJO]] (escritos em Javascript).
+Os controles são classes programadas em PHP5 e que encapsulam controles HTML ou Javascript. Os controles estão organizados em uma hierarquia. 
+Os controles devem encapsular a lógica do controle (em PHP - com propriedades e métodos), o código Javascript associado (se houver), eventos associados e indicar as classes CSS usadas na renderização.
+'''Controles Atômicos''' são aqueles renderizados diretamente através de uma tag HTML. A renderização de controles atômicos é feita pelo framework – deve-se evitar escrever qualquer código HTML dentro da lógica do controle, bem como qualquer estilo que possa ser definido via CSS. Como regra geral, um controle não-atômico é formado pela composição de controles atômicos. Controles não-atômicos mais complexos e com finalidades específicas são tratados como [[>view/componentes|Componentes]].
+Quando a ''View'' é definida através de XML, os atributos CSS podem ser definidos diretamente como propriedades do objeto referente ao controle. Em PHP, os atributos CSS  podem ser definidos diretamente como properiedades do controle.
+
+Em XML:
+<pre lang="xml">
+  <mcontentpane id="myPane" width="300px" height="100px" color="red" border="1px solid blue">
+     <mlabel text="Texto em vermelho"/>
+  </mcontentpane>
+</pre>
+Em PHP:
+<pre lang="php">
+  $label = new MLabel('Texto em vermelho');
+  $pane = new MContentPane('myPane', $label);
+  $pane->width = '300px';
+  $pane->height = '100px';
+  $pane->color = 'red';
+  $pane->addStyle('border','1px solid blue');
+</pre>
+
+As classes CSS podem ser definidas diretamente, através da propriedade <code>class</code>, ou via o método <code>setClass()</code>:
+Em XML:
+<pre lang="xml">
+  <mlabel text="Texto em vermelho" class="redText"/>
+</pre>
+Em PHP:
+<pre lang="php">
+  $label = new MLabel('Texto em vermelho');
+  $label->setClass('redText');
+</pre>
+
+Cada controle é definido em um arquivo próprio, no diretório <code>maestro/core/classes/ui/controls</code>. O desenvolvedor também pode construir controles próprios de uma aplicação (geralmente como componentes) com base nos controles já existentes, através de herança ou composição.
+
+== Identificação dos controles ==
+Na geração da página HTML, cada controle deve possuir sua própria identificação, através da qual pode ser referenciado. Esta identificação é feita através dos atributos <code>id</code> e <code>name</code>.
+O atributo <code>id</code> é necessário para operações no [http://en.wikipedia.org/wiki/Document_Object_Model|DOM|_blank] e o atributo <code>name</code> é necessário em operações feitas pelo browser (tais como a submissão de formulários).
+O atributo <code>id</code> pode ser definido pelo desenvolvedor, ou pode ser atribuído dinamicamente pelo Maestro. No caso da submissão via POST, os valores dos controles são agrupados no [[>fundamentos/dto|objeto $data]] para que possam ser tratados pelas ''actions''.
+Este atributo pode ser expresso em 3 formatos:
+*um nome simples, ex. <code>id="idPessoa"</code>
+*um elemento de array, ex. <code>id="pessoa[idPessoa]"</code> (no objeto $data, "pessoa" será um array associativo)
+*um atributo de objeto, ex. <code>id="pessoa::idPessoa"</code> (no objeto $data, "pessoa" será um objeto plano)
+
+Os formatos de array ou objeto são úteis para agrupar os dados de um formulário referentes a uma mesma entidade.
+</text>

@@ -1,0 +1,40 @@
+<text xml:space="preserve">
+= Forms - Help =
+A tag '''help''' em formulários é utilizada para definir textos de ajuda online. Estes textos podem ser pequenas mensagens (via ''tooltip''), ou textos maiores apresentados em caixas de diálogo.
+
+<pre lang="xml">
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform>
+...
+            <mhcontainer>
+                <mtoolbutton icon="help" action="help:nomeHelp" />
+            </mhcontainer>
+            <mtextfield id="endereco" label="Endereço" value="$this->data->nome" size="35" hint="hint"  help="Help curto via tooltip"/>
+...
+        <help>
+            <mhelp id="form" caption="Exemplo Help">
+<![CDATA[
+<h1>Form XML</h1>
+<p><b>Lorem Ipsum</b> é simplesmente uma simulação de texto da indústria tipográfica e de impressos...
+</p>
+]]>
+            </mhelp>
+            <mhelp id="nomeHelp" caption="Nome">
+<![CDATA[
+<p>Um texto maior para help de um campo específico, escrito em <b>html</b>.</p><p>Lorem ipsum dolor sit amet...</p>
+
+]]>
+            </mhelp>
+        </help>
+    </mform>
+</view>
+</pre>
+O exemplo acima mostra que o '''help''' pode ser associado com:
+*um controle <code>toolButton</code> com a tag ''action'' indicando o help a ser exibido
+*um controle de entrada de dados, via tag ''help'' usando um tooltip
+*uma tag ''mhelp'' com <code>id="form"</code> para gerar um <code>toolButton</code> para o formulário 
+
+
+</text>

@@ -1,0 +1,79 @@
+<text xml:space="preserve">
+= Componentes =
+No Maestro '''Componentes''' são controles mais complexos. O principal uso de componentes é encapsular alguma funcionalidade, agregando outros controles e implementando uma lógica própria. 
+Geralmente os componentes herdam de algum controle básico e definem valores específicos para alguns dos atributos.
+Alguns componentes podem também fazer acesso diretamente à camada ''Model'' a fim de implementar sua funcionalidade.
+Via de regra os componentes estão no nível da aplicação e ficam localizados na pasta '''apps/aplicação/components'''. Podem ser chamados diretamente na [[>controlle/urlformat|URL]].
+
+Os componentes podem ser definidos em PHP ou XML.
+
+Exemplo de um componente em PHP - um lookup específico para o ''model'' Pessoa:
+<pre lang="php">
+<?php
+
+class MLookupPessoa extends MLookupComponente {
+
+     public function onAfterCreate(){
+        parent::onAfterCreate();
+        $this->setAction('exemplos/pessoa/lookup');
+        $this->setSize(35);
+        $this->setRelated($this->idHidden  . ':idPessoa,' . $this->getId() . ':nome');
+    }
+
+    public function init($name = '', $value = NULL, $label = '', $related = '') {
+        $this->object = $value ? : NULL;
+        parent::init($name ? : 'pessoa', $this->getObjectId(), $label ? : 'Pessoa', 35, 'exemplos/pessoa/lookup', 'idPessoa,nome', $name ? : 'pessoa');
+    }
+
+    public function getFieldValue(){
+        return $this->object->nome;
+    }
+
+    public function getObjectId(){
+        return $this->object ? $this->object->idPessoa : '';
+    }
+}
+
+?>
+</pre>
+
+Exemplo de um componente em XML - um formulário de Login:
+<pre lang="xml">
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mform id="formLogin" onsubmit="doChallengeResponse()" >
+        <fields>
+            <javascript code="function doChallengeResponse() {
+                var str = manager.getElementById('user').value + ':' + manager.md5.MD5(manager.getElementById('password').value) + ':' + manager.getElementById('challenge').value;
+                manager.setElementValueById('password','');
+                manager.setElementValueById('response',manager.md5.MD5(str));
+                return true;
+                }"/>
+            <mhiddenfield id="tries"/>
+            <mhiddenfield id="url"/>
+            <mhiddenfield id="challenge" value ="{{ uniqid(rand()); }}"/>
+            <mhiddenfield id="response"/>
+            <mhiddenfield id="return_to_url"/>
+            <mhcontainer>
+                <mtextfield id="user" label="Login" />
+                <mvcontainer>
+                    <mpasswordfield id="password" label="Senha" />
+                    <mlink text= "Esqueci minha senha" action=">exemplos/main/lostpass"/>
+                </mvcontainer>
+                <mbutton id="btnLogin" text="Entrar" action="@exemplos/main/authenticate"/>
+            </mhcontainer>
+        </fields>
+    </mform>
+</view>
+
+</pre>
+
+Os componentes podem ser incluidos em uma ''view'' através da tag <code>include</code>:
+<pre lang="xml">
+<include component="containerPessoa.php" message="Mensagem como parâmetro"/>
+<include component="gridTable.xml"/>
+</pre>
+
+
+</text>

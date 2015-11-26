@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mhcontainer>
+            <mtextfield id="nome" label="Nome" value="$this->data->nome" size="15" />
+            <mbuttonfind/>
+        </mhcontainer>
+        <mdatagrid id="gridFind" query="$this->data->query" pageLength="15">
+            <mdatagridcolumn field="$this->object->idPessoa" visible="false"/>
+            <mdatagridhyperlink field="nome" action=">eventdriven/formUpdate/#0#" title="Nome" width="100%"/>
+        </mdatagrid>
+    </fields>
+</view>

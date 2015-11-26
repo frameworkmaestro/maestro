@@ -1,0 +1,10 @@
+/******************************************************************************
+ * Exemplo de StyleSheet externa - específica para uma view
+ ******************************************************************************/
+
+.myCSSExternal {
+    background-color: black;
+    color: white;
+}
+
+

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formInputField" title="Input Field" close=">exemplos/main/controls">
+        <fields>
+            <mhcontainer>
+                <mvcontainer>
+                    <minputfield type="text" id="nome" label="InputField [type=text]" width="20em" placeholder="Digite o nome" hint="hintNome"/>
+                    <minputfield type="text" id="mask" label="InputField Mask" width="15em" mask="(##)(aa)[***]" hint="mask: (##)(aa)[***]"/>
+                    <minputfield type="password" id="senha" label="InputField [type=password]" />
+                </mvcontainer>
+                <mvcontainer>
+                    <minputfield type="date" id="dataNascimento" label="InputField [type=date]"/>
+                    <minputfield type="date" id="dataRange" label="Date Range" range="{{array('01/07/2011',Manager::getSysDate())}}" />
+                    <minputfield type="time" id="timeField" label="InputField [type=time]" value="12:34" width="8em"/>
+                    <minputfield type="timestamp"  id="timestamp" label="InputField [type=timestamp]" value="12/10/2005 23:21:34"/>
+                </mvcontainer>
+                <mvcontainer>
+                    <minputfield type="email" id="email" label="InputField [type=email]" width="15em"/>
+                    <minputfield type="currency" id="currency" label="InputField [type=currency]" width="15em" value="12.34" hint="indicar os centavos" />
+                    <minputfield type="number" id="number" label="InputField [type=number]"/>
+                    <minputfield type="spinner" id="spinner" label="InputField [type=spinner]" value="10" width="5em" />
+                    <minputfield type="phone" id="telefone" label="InputField [type=phone]"/>
+                </mvcontainer>
+                <mvcontainer>
+                    <minputfield type="cpf" id="cpf" label="InputField [type=cpf]"/>
+                    <minputfield type="cnpj" id="cnpj" label="InputField [type=cnpj]" width="15em"/>
+                    <minputfield type="nit" id="nit" label="InputField [type=nit]"/>
+                    <minputfield type="cep" id="cep" label="InputField [type=cep]"/>
+                    <minputfield type="siape" id="siape" label="InputField [type=siape]" />
+                </mvcontainer>
+            </mhcontainer>
+        
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+        <validators>
+            <mrequiredvalidator field="nome" message="preencha o campo nome" active="$this->data->nomeValidator"/>
+            <mrequiredvalidator field="mask" message="preencha o campo mask"/>
+            <mrequiredvalidator field="senha" message="preencha o campo senha"/>
+            <mrequiredvalidator field="dataNascimento" message="preencha o campo data"/>
+            <mrequiredvalidator field="dataRange" message="preencha o campo data range"/>
+            <mrequiredvalidator field="email" message="preencha o campo email"/>
+            <mrequiredvalidator field="currency" message="preencha o campo currency"/>
+            <mrequiredvalidator field="number" message="preencha o campo number"/>
+            <mrequiredvalidator field="spinner" message="preencha o campo spinner"/>
+            <mrequiredvalidator field="timeField" message="preencha o campo time"/>
+            <mrequiredvalidator field="timestamp" message="preencha o campo timestamp"/>
+            <mrequiredvalidator field="telefone" message="preencha o campo telefone"/>
+            <mrequiredvalidator field="cpf" message="preencha o campo cpf"/>
+            <mrequiredvalidator field="cnpj" message="preencha o campo cnpj"/>
+            <mrequiredvalidator field="nit" message="preencha o campo nit"/>
+            <mrequiredvalidator field="cep" message="preencha o campo cep"/>
+            <mrequiredvalidator field="siape" message="preencha o campo siape"/>            
+        </validators>
+    </mform>
+</view>

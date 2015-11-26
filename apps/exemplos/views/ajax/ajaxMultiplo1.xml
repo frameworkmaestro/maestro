@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mhcontainer>
+     <mselection id="ajaxPessoaMultiplo1" value="" label="Ajax Multiplo1" options="$this->data->options"/>
+    </mhcontainer>
+</view>

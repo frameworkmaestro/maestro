@@ -1,0 +1,466 @@
+[globals]
+database = "fnapolo"
+app = "fnbr20"
+module = "auth"
+
+[annotationset]
+table = "annotationset"
+attributes['idAnnotationSet'] = "idAnnotationSet,string,not null,primary,identity"
+attributes['timeline'] = "timeline,string,,"
+attributes['idSubCorpus'] = "idSubCorpus,string,not null,foreign"
+attributes['idSentence'] = "idSentence,string,not null,foreign"
+attributes['idAnnotationStatus'] = "idAnnotationStatus,integer,not null,foreign"
+association['annoatationset_subcorpus'] = "\fnbr20\models\subcorpus,oneToOne,idSubCorpus:idSubCorpus"
+association['sentence'] = "\fnbr20\models\sentence,oneToOne,idSentence:idSentence"
+association['typeinstance'] = "\fnbr20\models\typeinstance,oneToOne,idAnnotationStatus:idTypeInstance"
+association['layers'] = "\fnbr20\models\layer,oneToMany,idAnnotationSet:idAnnotationSet"
+
+[subcorpus]
+table = "subcorpus"
+attributes['idSubCorpus'] = "idSubCorpus,string,not null,primary,identity"
+attributes['name'] = "name,string,not null,foreign"
+attributes['rank'] = "rank,integer,,"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+association['annotationsetannoatationset_subcorpuss'] = "\fnbr20\models\annotationset,oneToMany,idSubCorpus:idSubCorpus"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+
+[sentence]
+table = "sentence"
+attributes['idSentence'] = "idSentence,string,not null,primary,identity"
+attributes['text'] = "text,string,,"
+attributes['paragraphOrder'] = "paragraphOrder,integer,,"
+attributes['timeline'] = "timeline,string,,"
+attributes['idParagraph'] = "idParagraph,string,not null,foreign"
+attributes['idLanguage'] = "idLanguage,string,not null,foreign"
+association['annotationsets'] = "\fnbr20\models\annotationset,oneToMany,idSentence:idSentence"
+association['language'] = "\fnbr20\models\language,oneToOne,idLanguage:idLanguage"
+association['paragraph'] = "\fnbr20\models\paragraph,oneToOne,idParagraph:idParagraph"
+
+[typeinstance]
+table = "typeinstance"
+attributes['idTypeInstance'] = "idTypeInstance,integer,not null,primary,identity"
+attributes['entry'] = "entry,string,not null,foreign"
+attributes['info'] = "info,string,,"
+attributes['flag'] = "flag,string,,"
+attributes['idType'] = "idType,string,not null,foreign"
+attributes['idColor'] = "idColor,string,not null,foreign"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+association['annotationsets'] = "\fnbr20\models\annotationset,oneToMany,idTypeInstance:idAnnotationStatus"
+association['labels'] = "\fnbr20\models\label,oneToMany,idTypeInstance:idInstantiationType"
+association['color'] = "\fnbr20\models\color,oneToOne,idColor:idColor"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+association['type'] = "\fnbr20\models\type,oneToOne,idType:idType"
+
+[auth_access]
+table = "auth_access"
+attributes['idAccess'] = "idAccess,integer,not null,primary,identity"
+attributes['rights'] = "rights,integer,,"
+attributes['idGroup'] = "idGroup,integer,not null,foreign"
+attributes['idTransaction'] = "idTransaction,integer,not null,foreign"
+association['group'] = "\fnbr20\models\auth_group,oneToOne,idGroup:idGroup"
+association['transaction'] = "\fnbr20\models\auth_transaction,oneToOne,idTransaction:idTransaction"
+
+[auth_group]
+table = "auth_group"
+attributes['idGroup'] = "idGroup,integer,not null,primary,identity"
+attributes['name'] = "name,string,,"
+attributes['description'] = "description,string,,"
+association['auth_accessgroups'] = "\fnbr20\models\auth_access,oneToMany,idGroup:idGroup"
+association['auth_users'] = "\fnbr20\models\auth_user,manyToMany,auth_user_group"
+
+[auth_transaction]
+table = "auth_transaction"
+attributes['idTransaction'] = "idTransaction,integer,not null,primary,identity"
+attributes['name'] = "name,string,,"
+attributes['description'] = "description,string,,"
+association['auth_accesstransactions'] = "\fnbr20\models\auth_access,oneToMany,idTransaction:idTransaction"
+
+[auth_log]
+table = "auth_log"
+attributes['idLog'] = "idLog,integer,not null,primary,identity"
+attributes['ts'] = "ts,string,,"
+attributes['operation'] = "operation,string,,"
+attributes['idUser'] = "idUser,integer,not null,foreign"
+association['user'] = "\fnbr20\models\auth_user,oneToOne,idUser:idUser"
+
+[auth_user]
+table = "auth_user"
+attributes['idUser'] = "idUser,integer,not null,primary,identity"
+attributes['login'] = "login,string,,"
+attributes['pwd'] = "pwd,string,,"
+attributes['passMD5'] = "passMD5,string,,"
+attributes['config'] = "config,string,,"
+attributes['theme'] = "theme,string,,"
+attributes['active'] = "active,string,,"
+attributes['idPerson'] = "idPerson,integer,not null,foreign"
+association['auth_logusers'] = "\fnbr20\models\auth_log,oneToMany,idUser:idUser"
+association['auth_messages'] = "\fnbr20\models\auth_message,oneToMany,idUser:idUser"
+association['auth_messageboxs'] = "\fnbr20\models\auth_messagebox,oneToMany,idUser:idUser"
+association['person'] = "\fnbr20\models\auth_person,oneToOne,idPerson:idPerson"
+association['auth_groups'] = "\fnbr20\models\auth_group,manyToMany,auth_user_group"
+
+[auth_message]
+table = "auth_message"
+attributes['idMessage'] = "idMessage,integer,not null,primary,identity"
+attributes['subject'] = "subject,string,,"
+attributes['body'] = "body,string,,"
+attributes['dateSent'] = "dateSent,string,,"
+attributes['idUser'] = "idUser,integer,not null,foreign"
+attributes['idMsgStatus'] = "idMsgStatus,integer,not null,foreign"
+association['auth_user'] = "\fnbr20\models\auth_user,oneToOne,idUser:idUser"
+association['auth_msgstatus'] = "\fnbr20\models\auth_msgstatus,oneToOne,idMsgStatus:idMsgStatus"
+association['auth_messageboxs'] = "\fnbr20\models\auth_messagebox,oneToMany,idMessage:idMessage"
+
+[auth_msgstatus]
+table = "auth_msgstatus"
+attributes['idMsgStatus'] = "idMsgStatus,integer,not null,primary,identity"
+attributes['status'] = "status,string,,"
+attributes['description'] = "description,string,,"
+association['auth_messages'] = "\fnbr20\models\auth_message,oneToMany,idMsgStatus:idMsgStatus"
+association['auth_messageboxs'] = "\fnbr20\models\auth_messagebox,oneToMany,idMsgStatus:idMsgStatus"
+
+[auth_messagebox]
+table = "auth_messagebox"
+attributes['idMessageBox'] = "idMessageBox,integer,not null,primary"
+attributes['idUser'] = "idUser,integer,not null,foreign"
+attributes['idMsgStatus'] = "idMsgStatus,integer,not null,foreign"
+attributes['idMessage'] = "idMessage,integer,not null,foreign"
+association['auth_user'] = "\fnbr20\models\auth_user,oneToOne,idUser:idUser"
+association['auth_msgstatus'] = "\fnbr20\models\auth_msgstatus,oneToOne,idMsgStatus:idMsgStatus"
+association['auth_message'] = "\fnbr20\models\auth_message,oneToOne,idMessage:idMessage"
+
+[auth_person]
+table = "auth_person"
+attributes['idPerson'] = "idPerson,integer,not null,primary,identity"
+attributes['name'] = "name,string,,"
+attributes['email'] = "email,string,,"
+attributes['nick'] = "nick,string,,"
+association['auth_userpersons'] = "\fnbr20\models\auth_user,oneToMany,idPerson:idPerson"
+
+[color]
+table = "color"
+attributes['idColor'] = "idColor,string,not null,primary,identity"
+attributes['name'] = "name,string,,"
+attributes['rgbFg'] = "rgbFg,string,,"
+attributes['rgbBg'] = "rgbBg,string,,"
+association['constructionelements'] = "\fnbr20\models\constructionelement,oneToMany,idColor:idColor"
+association['frameelementelement_colors'] = "\fnbr20\models\frameelement,oneToMany,idColor:idColor"
+association['genericlabels'] = "\fnbr20\models\genericlabel,oneToMany,idColor:idColor"
+association['typeinstances'] = "\fnbr20\models\typeinstance,oneToMany,idColor:idColor"
+
+[construction]
+table = "construction"
+attributes['idConstruction'] = "idConstruction,integer,not null,primary,identity"
+attributes['entry'] = "entry,string,not null,foreign"
+attributes['active'] = "active,string,,"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+
+[entity]
+table = "entity"
+attributes['idEntity'] = "idEntity,string,not null,primary,identity"
+attributes['alias'] = "alias,string,not null,"
+attributes['type'] = "type,string,,"
+attributes['timeline'] = "timeline,string,,"
+attributes['idOld'] = "idOld,integer,,"
+association['constructions'] = "\fnbr20\models\construction,oneToMany,idEntity:idEntity"
+association['constructionelements'] = "\fnbr20\models\constructionelement,oneToMany,idEntity:idEntity"
+association['entityrelations'] = "\fnbr20\models\entityrelation,oneToMany,idEntity:idEntity3"
+association['frameschema_entitys'] = "\fnbr20\models\frame,oneToMany,idEntity:idEntity"
+association['frameelementelement_entitys'] = "\fnbr20\models\frameelement,oneToMany,idEntity:idEntity"
+association['genericlabels'] = "\fnbr20\models\genericlabel,oneToMany,idEntity:idEntity"
+association['labellabeltypes'] = "\fnbr20\models\label,oneToMany,idEntity:idLabelType"
+association['layertypes'] = "\fnbr20\models\layertype,oneToMany,idEntity:idEntity"
+association['lus'] = "\fnbr20\models\lu,oneToMany,idEntity:idEntity"
+association['poss'] = "\fnbr20\models\pos,oneToMany,idEntity:idEntity"
+association['propertys'] = "\fnbr20\models\property,oneToMany,idEntity:idEntity"
+association['semantictypes'] = "\fnbr20\models\semantictype,oneToMany,idEntity:idEntity"
+association['subcorpuss'] = "\fnbr20\models\subcorpus,oneToMany,idEntity:idEntity"
+association['templates'] = "\fnbr20\models\template,oneToMany,idEntity:idEntity"
+association['typeinstances'] = "\fnbr20\models\typeinstance,oneToMany,idEntity:idEntity"
+
+[constructionelement]
+table = "constructionelement"
+attributes['idConstructionElement'] = "idConstructionElement,integer,not null,primary,identity"
+attributes['entry'] = "entry,string,,foreign"
+attributes['active'] = "active,string,,"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+attributes['idColor'] = "idColor,string,not null,foreign"
+association['color'] = "\fnbr20\models\color,oneToOne,idColor:idColor"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+
+[corpus]
+table = "corpus"
+attributes['idCorpus'] = "idCorpus,string,not null,primary,identity"
+attributes['entry'] = "entry,string,,foreign"
+attributes['timeline'] = "timeline,string,,"
+association['documents'] = "\fnbr20\models\document,oneToMany,idCorpus:idCorpus"
+
+[document]
+table = "document"
+attributes['idDocument'] = "idDocument,string,not null,primary,identity"
+attributes['entry'] = "entry,string,not null,foreign"
+attributes['author'] = "author,string,,"
+attributes['timeline'] = "timeline,string,,"
+attributes['idGenre'] = "idGenre,string,not null,foreign"
+attributes['idCorpus'] = "idCorpus,string,not null,foreign"
+association['corpus'] = "\fnbr20\models\corpus,oneToOne,idCorpus:idCorpus"
+association['genre'] = "\fnbr20\models\genre,oneToOne,idGenre:idGenre"
+association['paragraphs'] = "\fnbr20\models\paragraph,oneToMany,idDocument:idDocument"
+
+[genre]
+table = "genre"
+attributes['idGenre'] = "idGenre,string,not null,primary,identity"
+attributes['entry'] = "entry,string,,foreign"
+association['documents'] = "\fnbr20\models\document,oneToMany,idGenre:idGenre"
+
+[domain]
+table = "domain"
+attributes['idDomain'] = "idDomain,string,not null,primary,identity"
+attributes['entry'] = "entry,string,not null,foreign"
+association['relationtypes'] = "\fnbr20\models\relationtype,oneToMany,idDomain:idDomain"
+association['semantictypes'] = "\fnbr20\models\semantictype,oneToMany,idDomain:idDomain"
+
+[entityrelation]
+table = "entityrelation"
+attributes['idEntityRelation'] = "idEntityRelation,string,not null,primary,identity"
+attributes['idRelationType'] = "idRelationType,string,not null,foreign"
+attributes['idEntity1'] = "idEntity1,string,not null,foreign"
+attributes['idEntity2'] = "idEntity2,string,not null,foreign"
+attributes['idEntity3'] = "idEntity3,string,,foreign"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity3:idEntity"
+association['relationtype'] = "\fnbr20\models\relationtype,oneToOne,idRelationType:idRelationType"
+
+[relationtype]
+table = "relationtype"
+attributes['idRelationType'] = "idRelationType,string,not null,primary,identity"
+attributes['entry'] = "entry,string,not null,foreign"
+attributes['nameEntity1'] = "nameEntity1,string,not null,foreign"
+attributes['nameEntity2'] = "nameEntity2,string,not null,foreign"
+attributes['idRelationGroup'] = "idRelationGroup,string,not null,foreign"
+attributes['idDomain'] = "idDomain,string,not null,foreign"
+association['entityrelations'] = "\fnbr20\models\entityrelation,oneToMany,idRelationType:idRelationType"
+association['domain'] = "\fnbr20\models\domain,oneToOne,idDomain:idDomain"
+association['relationgroup'] = "\fnbr20\models\relationgroup,oneToOne,idRelationGroup:idRelationGroup"
+
+[entry]
+table = "entry"
+attributes['idEntry'] = "idEntry,integer,not null,primary,identity"
+attributes['entry'] = "entry,string,,foreign"
+attributes['name'] = "name,string,,"
+attributes['description'] = "description,string,,"
+attributes['nick'] = "nick,string,,"
+attributes['idLanguage'] = "idLanguage,string,not null,foreign"
+association['language'] = "\fnbr20\models\language,oneToOne,idLanguage:idLanguage"
+
+[language]
+table = "language"
+attributes['idLanguage'] = "idLanguage,string,not null,primary,identity"
+attributes['language'] = "language,string,,"
+attributes['description'] = "description,string,,"
+association['entrys'] = "\fnbr20\models\entry,oneToMany,idLanguage:idLanguage"
+association['genericlabels'] = "\fnbr20\models\genericlabel,oneToMany,idLanguage:idLanguage"
+association['lemmas'] = "\fnbr20\models\lemma,oneToMany,idLanguage:idLanguage"
+association['lexemes'] = "\fnbr20\models\lexeme,oneToMany,idLanguage:idLanguage"
+association['sentences'] = "\fnbr20\models\sentence,oneToMany,idLanguage:idLanguage"
+association['translations'] = "\fnbr20\models\translation,oneToMany,idLanguage:idLanguage"
+
+[frame]
+table = "frame"
+attributes['idFrame'] = "idFrame,string,not null,primary,identity"
+attributes['entry'] = "entry,string,not null,foreign"
+attributes['active'] = "active,string,,"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+association['schema_entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+
+[frameelement]
+table = "frameelement"
+attributes['idFrameElement'] = "idFrameElement,string,not null,primary,identity"
+attributes['entry'] = "entry,string,,foreign"
+attributes['active'] = "active,string,,"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+attributes['idColor'] = "idColor,string,not null,foreign"
+association['element_color'] = "\fnbr20\models\color,oneToOne,idColor:idColor"
+association['element_entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+
+[genericlabel]
+table = "genericlabel"
+attributes['idGenericLabel'] = "idGenericLabel,string,not null,primary,identity"
+attributes['name'] = "name,string,not null,foreign"
+attributes['definition'] = "definition,string,,"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+attributes['idColor'] = "idColor,string,not null,foreign"
+attributes['idLanguage'] = "idLanguage,string,not null,foreign"
+association['color'] = "\fnbr20\models\color,oneToOne,idColor:idColor"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+association['language'] = "\fnbr20\models\language,oneToOne,idLanguage:idLanguage"
+
+[label]
+table = "label"
+attributes['idLabel'] = "idLabel,string,not null,primary,identity"
+attributes['startChar'] = "startChar,integer,,"
+attributes['endChar'] = "endChar,integer,,"
+attributes['multi'] = "multi,string,,"
+attributes['idLabelType'] = "idLabelType,string,not null,foreign"
+attributes['idLayer'] = "idLayer,string,not null,foreign"
+attributes['idInstantiationType'] = "idInstantiationType,integer,not null,foreign"
+association['labeltype'] = "\fnbr20\models\entity,oneToOne,idLabelType:idEntity"
+association['layer'] = "\fnbr20\models\layer,oneToOne,idLayer:idLayer"
+association['typeinstance'] = "\fnbr20\models\typeinstance,oneToOne,idInstantiationType:idTypeInstance"
+
+[layer]
+table = "layer"
+attributes['idLayer'] = "idLayer,string,not null,primary,identity"
+attributes['rank'] = "rank,integer,,"
+attributes['timeline'] = "timeline,string,,"
+attributes['idAnnotationSet'] = "idAnnotationSet,string,not null,foreign"
+attributes['idLayerType'] = "idLayerType,string,not null,foreign"
+association['labels'] = "\fnbr20\models\label,oneToMany,idLayer:idLayer"
+association['annotationset'] = "\fnbr20\models\annotationset,oneToOne,idAnnotationSet:idAnnotationSet"
+association['layertype'] = "\fnbr20\models\layertype,oneToOne,idLayerType:idLayerType"
+
+[layertype]
+table = "layertype"
+attributes['idLayerType'] = "idLayerType,string,not null,primary,identity"
+attributes['entry'] = "entry,string,not null,foreign"
+attributes['allowsApositional'] = "allowsApositional,string,,"
+attributes['isAnnotation'] = "isAnnotation,string,,"
+attributes['order'] = "order,string,,"
+attributes['idLayerGroup'] = "idLayerGroup,string,not null,foreign"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+association['layers'] = "\fnbr20\models\layer,oneToMany,idLayerType:idLayerType"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+association['layergroup'] = "\fnbr20\models\layergroup,oneToOne,idLayerGroup:idLayerGroup"
+
+[layergroup]
+table = "layergroup"
+attributes['idLayerGroup'] = "idLayerGroup,string,not null,primary,identity"
+attributes['name'] = "name,string,,"
+association['layertypes'] = "\fnbr20\models\layertype,oneToMany,idLayerGroup:idLayerGroup"
+
+[lemma]
+table = "lemma"
+attributes['idLemma'] = "idLemma,string,not null,primary,identity"
+attributes['name'] = "name,string,,foreign"
+attributes['timeline'] = "timeline,string,,"
+attributes['idOld'] = "idOld,integer,,"
+attributes['idPOS'] = "idPOS,string,not null,foreign"
+attributes['idLanguage'] = "idLanguage,string,not null,foreign"
+association['language'] = "\fnbr20\models\language,oneToOne,idLanguage:idLanguage"
+association['pos'] = "\fnbr20\models\pos,oneToOne,idPOS:idPOS"
+association['lexemeentrys'] = "\fnbr20\models\lexemeentry,oneToMany,idLemma:idLemma"
+association['lus'] = "\fnbr20\models\lu,oneToMany,idLemma:idLemma"
+
+[pos]
+table = "pos"
+attributes['idPOS'] = "idPOS,string,not null,primary,identity"
+attributes['POS'] = "POS,string,,"
+attributes['entry'] = "entry,string,not null,foreign"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+association['lemmas'] = "\fnbr20\models\lemma,oneToMany,idPOS:idPOS"
+association['lexemes'] = "\fnbr20\models\lexeme,oneToMany,idPOS:idPOS"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+
+[lexeme]
+table = "lexeme"
+attributes['idlexeme'] = "idlexeme,string,not null,primary,identity"
+attributes['name'] = "name,string,,foreign"
+attributes['timeline'] = "timeline,string,,"
+attributes['idPOS'] = "idPOS,string,not null,foreign"
+attributes['idLanguage'] = "idLanguage,string,not null,foreign"
+association['language'] = "\fnbr20\models\language,oneToOne,idLanguage:idLanguage"
+association['pos'] = "\fnbr20\models\pos,oneToOne,idPOS:idPOS"
+association['lexemeentrys'] = "\fnbr20\models\lexemeentry,oneToMany,idlexeme:idLexeme"
+association['wordforms'] = "\fnbr20\models\wordform,oneToMany,idlexeme:idLexeme"
+
+[lexemeentry]
+table = "lexemeentry"
+attributes['idLexemeEntry'] = "idLexemeEntry,string,not null,primary,identity"
+attributes['lexemeOrder'] = "lexemeOrder,integer,,"
+attributes['breakBefore'] = "breakBefore,string,,"
+attributes['headWord'] = "headWord,string,,"
+attributes['idLexeme'] = "idLexeme,string,not null,foreign"
+attributes['idLemma'] = "idLemma,string,not null,foreign"
+association['lemma'] = "\fnbr20\models\lemma,oneToOne,idLemma:idLemma"
+association['lexeme'] = "\fnbr20\models\lexeme,oneToOne,idLexeme:idlexeme"
+
+[lu]
+table = "lu"
+attributes['idLU'] = "idLU,string,not null,primary,identity"
+attributes['name'] = "name,string,,"
+attributes['senseDescription'] = "senseDescription,string,,"
+attributes['active'] = "active,string,,"
+attributes['importNum'] = "importNum,string,,"
+attributes['incorporatedFE'] = "incorporatedFE,string,,"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+attributes['idLemma'] = "idLemma,string,not null,foreign"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+association['lemma'] = "\fnbr20\models\lemma,oneToOne,idLemma:idLemma"
+
+[paragraph]
+table = "paragraph"
+attributes['idParagraph'] = "idParagraph,string,not null,primary,identity"
+attributes['documentOrder'] = "documentOrder,integer,,"
+attributes['idDocument'] = "idDocument,string,not null,foreign"
+association['document'] = "\fnbr20\models\document,oneToOne,idDocument:idDocument"
+association['sentences'] = "\fnbr20\models\sentence,oneToMany,idParagraph:idParagraph"
+
+[property]
+table = "property"
+attributes['idProperty'] = "idProperty,integer,not null,primary,identity"
+attributes['entry'] = "entry,string,,"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+
+[relationgroup]
+table = "relationgroup"
+attributes['idRelationGroup'] = "idRelationGroup,string,not null,primary,identity"
+attributes['entry'] = "entry,string,,"
+association['relationtypes'] = "\fnbr20\models\relationtype,oneToMany,idRelationGroup:idRelationGroup"
+
+[semantictype]
+table = "semantictype"
+attributes['idSemanticType'] = "idSemanticType,integer,not null,primary,identity"
+attributes['entry'] = "entry,string,not null,foreign"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+attributes['idDomain'] = "idDomain,string,not null,foreign"
+association['domain'] = "\fnbr20\models\domain,oneToOne,idDomain:idDomain"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+
+[template]
+table = "template"
+attributes['idTemplate'] = "idTemplate,string,not null,primary,identity"
+attributes['entry'] = "entry,string,not null,foreign"
+attributes['active'] = "active,string,,"
+attributes['idEntity'] = "idEntity,string,not null,foreign"
+association['entity'] = "\fnbr20\models\entity,oneToOne,idEntity:idEntity"
+
+[timeline]
+table = "timeline"
+attributes['idTimeline'] = "idTimeline,integer,not null,primary,identity"
+attributes['timeline'] = "timeline,string,,"
+attributes['order'] = "order,string,,"
+attributes['dateTime'] = "dateTime,string,,"
+attributes['author'] = "author,string,,"
+
+[translation]
+table = "translation"
+attributes['idTranslation'] = "idTranslation,string,not null,primary,identity"
+attributes['resource'] = "resource,string,not null,foreign"
+attributes['text'] = "text,string,,"
+attributes['idLanguage'] = "idLanguage,string,not null,foreign"
+association['language'] = "\fnbr20\models\language,oneToOne,idLanguage:idLanguage"
+
+[type]
+table = "type"
+attributes['idType'] = "idType,string,not null,primary,identity"
+attributes['entry'] = "entry,string,not null,foreign"
+association['typeinstances'] = "\fnbr20\models\typeinstance,oneToMany,idType:idType"
+
+[wordform]
+table = "wordform"
+attributes['idwordform'] = "idwordform,string,not null,primary,identity"
+attributes['form'] = "form,string,,foreign"
+attributes['timeline'] = "timeline,string,,"
+attributes['idLexeme'] = "idLexeme,string,not null,foreign"
+association['lexeme'] = "\fnbr20\models\lexeme,oneToOne,idLexeme:idlexeme"

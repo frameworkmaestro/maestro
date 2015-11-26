@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formCSVDump" title="Exemplo de Dump de Arquivo CSV">      
+        <fields>
+            <mhiddenfield id="url" value=""/>
+            <javascript onload="var url = manager.getElementById('url').value; if (url) { manager.doRedirect(url);}"/>
+            <mtextfield id="login" label="Login"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Obter Arquivo CSV" action="@utils/csvdump"/>
+        </buttons>
+    </mform>
+</view>

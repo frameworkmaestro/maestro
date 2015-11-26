@@ -1,0 +1,91 @@
+<text xml:space="preserve">
+= Classe Manager =
+[[Anchor:top]]
+Um framework geralmente é composto por dezenas de classes, cada uma com funções específicas. Para evitar que o desenvolvedor tenha que instanciar cada uma delas separadamente, geralmente é usado o padrão Facade. Através deste padrão, uma classe única concentra o acesso aos métodos de outras classes específicas. No Maestro, este padrão é implementado através da classe '''Manager'''.
+A classe Manager possui dezenas de métodos estáticos, que realizam funções de caráter geral. Vários destes métodos são usados no dia-a-dia do desenvolvimento com o Maestro. Os principais métodos são:
+
+[[#paths|Paths]]
+
+[[#seguranca|Segurança]]
+
+[[#objetos|Objetos]]
+
+[[#url|URL]]
+
+[[#utils|Utilitários]]
+
+[[#contexto|Contexto]]
+
+[[#opcoes|Opções]]
+
+
+
+[[Anchor:paths]]
+==Paths==
+<code lang="php">public static function getHome()</code>Path do diretório onde o Maestro está instalado.</br></br>
+<code lang="php">public static function getClassPath($file = '')</code>Path do arquivo no diretório '''core/classes'''</br></br>
+<code lang="php">public static function getConfPath($file = '')</code>Path do arquivo no diretório '''core/conf'''</br></br>
+<code lang="php">public static function getPublicPath($app = '', $module = '', $file = '')</code>Path do arquivo no diretório '''$app/$module/public'''</br></br>
+<code lang="php">public static function getApplicationPath($app = '', $module = '', $file = '')</code>Path do arquivo no diretório '''$app/$module'''</br></br>
+<code lang="php">public static function getAppPath($file = '', $module = '')</code>Path do arquivo no diretório '''aplicação_atual/$module'''</br></br>
+<code lang="php">public static function getModulePath($module, $file)</code>Path do arquivo no diretório '''aplicação_atual/$module'''</br></br>
+<code lang="php">public static function getFrameworkPath($file = '')</code>Path do arquivo no diretório do framework</br></br>
+[[#top|Início]]
+
+[[Anchor:seguranca]]
+==Segurança==
+<code lang="php">public static function checkLogin($deny = true)</code>Verifica se o usuário está logado. <code>$deny</code> indica se uma exceção será gerada, em caso de falha.</br></br>
+<code lang="php">public static function checkAccess($trans, $access, $deny = false)</code>Verifica se o usuário tem permissão de acesso. <code>$deny</code> indica se uma exceção será gerada, em caso de falha.</br></br>
+<code lang="php">public static function isLogged()</code>Verifica se o usuário está logado.</br></br>
+<code lang="php">public static function logMessage($msg)</code>Envia uma mensagem para o arquivo de log.</br></br>
+[[#top|Início]]
+
+[[Anchor:objetos]]
+==Objetos==
+<code lang="php">public static function getSession()</code>Obtém objeto da sessão (MSession)</br></br>
+<code lang="php">public static function getAuth()</code>Obtém objeto da autenticação (MAuth)</br></br>
+<code lang="php">public static function getPerms()</code>Obtém objeto das permissões (MPerms)</br></br>
+<code lang="php">public static function getLogin()</code>Obtém objeto do login (MLogin)</br></br>
+<code lang="php">public static function getPage()</code>Obtém objeto da página (MPage)</br></br>
+<code lang="php">public static function getAjax()</code>Obtém objeto Ajax (MAjax)</br></br>
+<code lang="php">public static function getModelMAD($name = 'main', $data = NULL)</code>Instancia um objeto Model do módulo MAD.</br></br>
+<code lang="php">public static function getData()</code>Obtém o [[>fundamentos/dto|objeto $data]]</br></br>
+[[#top|Início]]
+
+[[Anchor:urls]]
+==URLs==
+<code lang="php">public static function getBaseURL($absolute = false)</code>Obtém a URL base para acesso ao framework. <code>$absolute</code> indica se será acrescentado o nome do host.</br></br>
+<code lang="php">public static function getAppURL($app = '', $file = '')</code>Obtém a URL para acesso ao arquivo <code>$file</code>, dentro da aplicação <code>$app</code>.</br></br>
+<code lang="php">public static function getStaticURL($app = '', $file = '', $absolute = false)</code>Obtém a URL para acesso ao arquivo <code>$file</code>, dentro do diretório "public" da aplicação <code>$app</code>.</br></br>
+<code lang="php">public static function getURL($action = 'main/main', $args = array())</code>Obtém a URL para acesso a <code>$action</code> (a ação de estar no formato module/controller/action.</br></br>
+<code lang="php">public static function getCurrentURL()</code>Obtém a URL que está sendo executada.</br></br>
+[[#top|Início]]
+
+[[Anchor:utils]]
+==Utilitários==
+<code lang="php">public static function _REQUEST($vars, $from = 'ALL', $order='')</code>Obtém o valor de uma variável enviada na requisição, examinando os arrays globais do PHP.</br></br>
+<code lang="php">public static function getSysDate($format = 'd/m/Y')</code>Obtém a data atual.</br></br>
+<code lang="php">public static function getSysTime($format = 'd/m/Y H:i:s')</code>Obtém a data/hora atual.</br></br>
+<code lang="php">public static function date($value, $format = '')</code>Obtém um objeto MDate correspondente ao parâmetro $value.</br></br>
+<code lang="php">public static function timestamp($value, $format = '')</code>Obtém um objeto MTimeStamp correspondente ao parâmetro $value.</br></br>
+<code lang="php">public static function currency($value)</code>Obtém um objeto MCurrency correspondente ao parâmetro $value.</br></br>
+[[#top|Início]]
+
+[[Anchor:contexto]]
+==Contexto==
+<code lang="php">public static function getApp()</code>Nome da aplicação atual</br></br>
+<code lang="php">public static function getModule()</code>Nome do módulo atual</br></br>
+<code lang="php">public static function getMAD()</code>Nome do módulo de administração (Maestro ADministration)</br></br>
+<code lang="php">public static function isAjaxCall()</code>Indica se a requisição foi feita via AJAX</br></br>
+[[#top|Início]]
+
+[[Anchor:opcoes]]
+==Opções==
+<code lang="php">public static function DEV()</code>Indica se o modo atual de execução é desenvolvimento ( e não produção).</br></br>
+<code lang="php">public static function getConf($key)</code>Obtém o valor de uma entrada do arquivo de configuração.</br></br>
+<code lang="php">public static function getOptions($key)</code>Obtém o valor de uma entrada "options" do arquivo de configuração.</br></br>
+<code lang="php">public static function getParams($key)</code>Obtém o valor de uma entrada "params" do arquivo de configuração.</br></br>
+<code lang="php">public static function getTheme()</code>Obtém o nome do tema atual.</br></br>
+<code lang="php">public static function getLocale()</code>Obtém o valor do locale atual.</br></br>
+[[#top|Início]]
+</text>

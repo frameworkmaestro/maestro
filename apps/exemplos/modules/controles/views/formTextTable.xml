@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mcss id="css1" selector=".dgrid-row-even" backgroundColor="#EEE"/>
+    <mcss id="css2" selector=".dgrid-row-odd" backgroundColor="#FFF"/>
+    <mform id="formTextTable" title="Text Table" close=">main/controls">
+        <fields>
+            <mtexttable id="textTable" value="$this->data->rows" scrollHeight="400px" width="400px" title="id|id|{width:15px;color:blue},Nome,DataNasc,Email,CPF" />
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>

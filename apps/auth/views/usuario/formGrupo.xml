@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mformaction id="formGrupo" title="Grupo" close=">auth/usuario/formFind" base="formObject">
+        <mhiddenfield id="idUsuario" value="$this->data->id"/>
+        <mgridfield id="gridGrupo" caption="" value="$this->data->id" actionGrid="auth/gridGrupo/grid"
+                actionInsert="auth/gridGrupo/add" actionDelete="auth/gridGrupo/del"  >                
+                <mselection id="idGrupo" label="Grupos" options="$this->data->grupos" width="15em"/>
+            </mgridfield>
+    </mformaction>
+</view>

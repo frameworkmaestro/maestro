@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<view>
+    <mdialog id="dlgAlunoNew" title="Novo Aluno" onClose="jQuery('#gridMainAluno').mgrid('reload');" state="open">
+        <mform id="formNew">
+            <include file="fields.xml" />
+        </mform>
+    </mdialog>
+</view>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formBoxPane" caption="Box">
+        <fields>
+            <mlabel text="O controle MBox é um container de uso geral. Quando preenchido dinamicamente, pode executar scripts Javascript."/>
+            <mbox id="box1" caption="Título">
+                <mlabel text="Um MBox é renderizado como um div, contendo um título (caption) e uma área de conteúdo (content)"/>
+            </mbox>
+            <mbox id="box2" caption="Título [width=250px]" width="250px">
+                <tool title="Ajuda" action="help:form" icon="help" />
+                <mlabel text="Um MBox pode ser dimensionado via CSS e pode conter ToolButtons"/>
+            </mbox>
+            <mbox id="box3" caption="Título [width=500px]" width="500px">
+                <actions>
+                    <mbutton id="btnBox" text="Ação"/>
+                    <mlink id="linkBox" text="Ação"/>
+                </actions>
+                <mlabel text="Um MBox pode conter uma barra de ações"/>
+            </mbox>
+        </fields>
+    </mform>
+</view>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formLookup" title="Form Lookup" close=">exemplos/controles/input">
+        <fields>
+            <mhiddenfield id="idPessoa"/>
+            <mtextfield id="cpf" label="CPF"/>
+            <memailfield id="email" label="Email" width="250px"/>
+            <mlookup id="lookupPessoa" label="Nome" filters="cpf,email" related="cpf:CPF,email:email,idPessoa:idPessoa"
+                     idField="idPessoa" textField="nome" width="200px" action="exemplos/crud/pessoa/lookupNome">
+                <options loadMsg="Carregando..." panelWidth="350" fitColumns="false"  minLength="3"/>
+                <mlookupcolumn field="idPessoa" title="idPessoa" visible="false"/>
+                <mlookupcolumn field="nome" title="Nome" width="60%"/>
+                <mlookupcolumn field="CPF" title="CPF" width="40%"/>
+            </mlookup>
+        </fields>
+
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" action="POST"/>
+        </buttons>
+    </mform>
+</view>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mgrid id="gridGridUsuario" data="$this->data->array" pageLength="0" actionSelect="marca" hasForm="true" width="99%">        
+        <mgridcolumn index="1" title="Login" width="100%"/>        
+    </mgrid>
+</view>

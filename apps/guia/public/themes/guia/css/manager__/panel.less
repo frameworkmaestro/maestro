@@ -1,0 +1,65 @@
+/* 
+ Controls 
+ */
+
+@import "variables.less";
+@import "mvariables.less";
+
+/* Tan hack for IE/Win */
+
+* html .mPanelBody {
+    height: 1%;
+}
+
+.mPanelBody {
+    overflow:   hidden;
+    margin-top: -2px;
+}
+
+.dj_ie6 .mPanelBody {
+    overflow: visible;
+}
+
+.mPanelBody .mImageLink img {
+}
+
+.mPanelBody .mImageLink img:hover {
+}
+
+.mPanelBody .mPanelCellBox {
+    margin-left:     5px;
+    margin-right:    5px;
+    margin-top:      2px;
+    margin-bottom:   2px;
+    border:          @panel-cellbox-border;
+    text-decoration: none;
+    display:         block;
+}
+
+.dj_ie6  .mPanelCellBox {
+    border: @panel-cellbox-border;
+}
+
+.mPanelBody .mPanelCellLeft {
+    float: left;
+}
+
+.mPanelBody .mPanelCellClear {
+    clear: both;
+}
+
+.mPanelBody .mPanelCellNormal {
+    width: 90px;
+    height: 70px;
+}
+
+.mPanelBody .mPanelCellSmall {
+    width: 125px;
+    height: 30px;
+}
+
+.mPanelBody .mPanelCellMedium {
+    width: 180px;
+    height: 20px;
+}
+

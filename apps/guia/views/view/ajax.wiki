@@ -1,0 +1,117 @@
+<text xml:space="preserve">
+= Ajax =
+De maneira simplificada, o uso do Ajax permite que as ações [[>controller/getpost|GET e POST]] do browser possam ser respondidas sem a necessidade de renderizar a página inteira novamente. Os usos mais comuns do Ajax são o envio de ''HTML snippets'' (trechos de código HTML) e o envio de dados a serem usados em algum controle renderizado na página.
+O Maestro utiliza a estrutura fornecida pelo [[>frameworks/dojo|framework DOJO]] para tratamento do Ajax. A execução do Ajax pode ser definida explicitamente, como um evento Javascript, ou implicitamente através do controle <code>MContentPane</code>.
+
+==Ajax como evento==
+Nesta situação, é feita uma submissão ao servidor Web na ocorrência de um evento Javascript em determinado controle.
+Nos exemplos abaixo, a execuaçao do Ajax é definida através da tag <code>ajax</code>:
+<pre lang="xml">
+<view>
+   ...
+            <mhcontainer>
+                <mselection id="letra" label="Letras" options="$this->data->letras">
+                    <ajax type="text" event="onChange" url="ajax/ajaxPessoa" load="pessoas" />
+                </mselection>
+                <mcontentpane id="pessoas"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mselection id="letraJson" label="Letras JSON" options="$this->data->letras" >
+                    <ajax type="json" event="onSelectionChange" url="ajax/ajaxPessoaJSON" />
+                </mselection>
+                <mselection id="pessoasJson" label="Pessoas JSON" />
+            </mhcontainer>
+   ...
+</view>
+</pre>
+A tag <code>ajax</code> tem os seguintes atributos:
+<pre>
+{| cellspacing=5
+!Atributo!!Descrição
+|-
+| type
+| (text/json) define o tipo de resposta do evento ajax.
+|-
+|
+| text: retorna um texto HTML, que deve ser inserido em algum controle da página.
+|-
+|
+| json: retorna dados no formato de um objeto JSON, a ser utilizado por algum controle da página.
+|-
+| event
+| evento Javascript que vai disparar a ação do Ajax (o evento onSelectionChange é usado para preencher um MSelection já renderizado na página).
+|-
+| url
+| Action URL que, sendo executada no servidor, retorna o resultado Ajax.
+|-
+| load
+| para <code>type=text</code>, indica qual o controle terá seu conteúdo preenchido com a resposta Ajax.
+|}
+</pre>
+
+O Ajax também pode ser usada através de uma Action URL:
+<pre lang="xml">
+<view>
+   ...
+            <mcontentpane id="pane"/>
+            <mbutton id="btnAjax" text="Ajax" action=":exemplo/ajax|btnAjax|pane"/>
+   ...
+</view>
+</pre>
+
+
+==Ajax implícito==
+
+A execução implícita do Ajax é realizada através do controle <code>MContentPane</code>. A definição da propriedade <code>href</code> indica a Action URL que será executada e que deve retornar um texto HTML. Este texto HTML será usado como conteúdo do controle.
+
+Exemplo:
+<pre lang="xml">
+<view>
+   ...
+      <mcontentpane id="implicitAjax" href="ajax/ajaxImplicit"/>
+   ...
+</view>
+</pre>
+
+É possível também definir a propriedade <code>href</code> dinamicamente, o que possibilita a execução simultânea (múltipla) de várias chamadas Ajax. No exemplo a seguir, a View define um botão <code>MButton</code> e várias áreas (<code>MContentPane</code>) que serão preenchidas quando o botão for clicado (o modificador ":" indica que a ação será executada via Ajax - ver [actions-url#Control&#32;Action ControlAction]):
+<pre lang="xml">
+<view>
+   ...
+            <mbutton id="btAjaxMultiplo" text="Ajax Múltiplo" action=":ajax/ajaxMultiplo" />
+            <mcontentpane id="ajaxMultiplo1"/>
+            <mcontentpane id="ajaxMultiplo2"/>
+            <mcontentpane id="ajaxMultiplo3"/>
+            <mcontentpane id="ajaxMultiplo4"/>
+   ...
+</view>
+</pre>
+
+No ''Controller'' <code>AjaxController</code> é executada a ação <code>ajaxMultiplo</code>, que define as Action URLs relativas a cada <code>MContentPane</code>:
+
+<pre lang="php">
+class AjaxController extends MController {
+    ...
+
+    public function ajaxMultiplo() {
+        $pessoa = new models\Pessoa();
+        $this->data->multiplo1 = Manager::getURL('ajax/ajaxMultiplo1');
+        $this->data->multiplo2 = Manager::getURL('ajax/ajaxMultiplo2');
+        $this->data->multiplo3 = Manager::getURL('ajax/ajaxMultiplo3');
+        $this->data->multiplo4 = Manager::getURL('ajax/ajaxMultiplo4');
+        $this->render();
+    }
+
+    ...
+}
+</pre>
+
+A ''View'' <code>ajaxMultiplo</code> utiliza um ''javascript Helper'' para alterar a propriedade <code>href</code> do <code>MContentPane</code> em tempo de execução. Esta alteração dispara, implicitamente, a chamada Ajax que vai preencher o conteúdo do controle <code>MContentPane</code>:</br>
+
+<pre lang="xml">
+<view>
+    <javascript helper="{{ MUI::set('ajaxMultiplo1','href',$this->data->multiplo1); }}"/>
+    <javascript helper="{{ MUI::set('ajaxMultiplo2','href',$this->data->multiplo2); }}"/>
+    <javascript helper="{{ MUI::set('ajaxMultiplo3','href',$this->data->multiplo3); }}"/>
+    <javascript helper="{{ MUI::set('ajaxMultiplo4','href',$this->data->multiplo4); }}"/>
+</view></pre>
+</text>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mhcontainer>
+            <mselection id="letra" label="Letras" options="$this->data->letras" />
+            <mcontentpane id="pessoas"/>
+        </mhcontainer>
+        <mhcontainer>
+            <mselection id="letraJson" label="Letras JSON" options="$this->data->letras" />
+            <mselection id="pessoasJson" label="Pessoa JSON" />
+        </mhcontainer>
+    </fields>
+    <buttons>
+        <mbutton id="btnSubmit" text="Submit" />
+    </buttons>
+</view>

@@ -1,0 +1,34 @@
+<text xml:space="preserve">
+= Tratamento de Exceções =
+O Maestro define diversas classes que estendem a classe PHP [http://www.php.net/manual/en/class.exception.php|Exception|_blank] para o tratamento de exceções:
+<pre lang="php">
+class ERuntimeException ($msg = null, $code = 0)
+class ENotFoundException ($msg = null, $code = 0)
+class EControlException ($msg = null, $code = 0)
+class EFileNotFoundException ($fileName, $msg = '')
+class ESessionException ($msg = null, $code = 0) 
+class EBusinessException ($msg = null, $code = 0)
+class EModelException ($msg = null, $code = 0)
+class EControllerException ($msg = null, $code = 0)
+class ETimeOutException ($msg = null, $code = 0)
+class ELoginException ($msg = null, $code = 0) 
+class ESecurityException ($msg = null, $code = 0) 
+</pre>
+Além disso o [[>controller/frontcontroller|FrontController]] captura todas as exceções que não tenham sido tratadas pelo desenvolvedor na definição de uma dada ''action''.
+
+Exemplo:
+
+<pre lang="php">
+public function save() { 
+        try{                  
+            $matricula = Aluno::create()->retrieveByMatricula($this->matricula)->getMatricula();            
+            if((strlen($matricula) > 0)){
+                throw new \EModelException('Esse número de matrícula já está cadastrado');
+            }
+            parent::save();            
+        } catch (Exception $e) {            
+            throw new \EModelException('Erro cadastrar aluno');
+        }        
+    }
+</pre>
+</text>

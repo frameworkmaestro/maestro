@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <fields>
+        <mtextfield id="nome" label="Nome label bem grande ..sssss" value="$this->data->nome" size="35" hint="hint" />
+        <mselection id="sel" label="Lista" options="$this->data->options" hint="choose one" />
+        <mhcontainer>
+            <mhiddenfield id="hidden" value=""/>
+            <mtextfield id="text" label="Text" size="15" />
+            <mtextfield id="text1" label="Text1"  hint="for text1"/>
+        </mhcontainer>
+        <mhcontainer>
+            <mtextfield id="text2" label="Text2"/>
+            <mbooleanfield id="boolean" label="Boolean?" hint="hint"/>
+            <mtextfield id="text3" label="Text3"/>
+            <mtextfield id="text4" label="Text4"/>
+        </mhcontainer>
+        <mcheckboxgroup caption="ChkGroup">
+            <mcheckbox id="chkA" label="chkA" text="textA"/>
+            <mcheckbox id="chkB" label="chkB" text="textB"/>
+            <mcheckbox id="chkC" label="chkC" text="textC"/>
+        </mcheckboxgroup>
+        <mcheckboxgroup caption="ChkGroup2" disposition="{{MContainer::DISPOSITION_HORIZONTAL}}">
+            <mcheckbox id="chkA2" label="chkA" text="textA"/>
+            <mcheckbox id="chkB2" label="chkB" text="textB"/>
+            <mcheckbox id="chkC2" label="chkC" text="textC"/>
+        </mcheckboxgroup>
+        <mradiobuttongroup id="radio" caption="RadioGroup2" value="B" disposition="{{MContainer::DISPOSITION_HORIZONTAL}}">
+            <mradiobutton id="rd1" label="rdA" value="A" text="rdA"/>
+            <mradiobutton id="rd2" label="rdB" value="B" text="rdB"/>
+            <mradiobutton id="rd3" label="rdC" value="C" text="rdC"/>
+        </mradiobuttongroup>
+        <mhcontainer>
+            <mtextfield id="text5" label="Text" size="15" />
+            <mcheckboxgroup caption="ChkGroup3">
+                <mcheckbox id="chkA3" label="chkA" text="textA"/>
+                <mcheckbox id="chkB3" label="chkB" text="textB"/>
+                <mcheckbox id="chkC3" label="chkC" text="textC"/>
+            </mcheckboxgroup>
+            <mtextfield id="text6" label="Text"  hint="for text"/>
+        </mhcontainer>
+        <mhcontainer>
+            <mtextfield id="text7" label="Text" size="15" />
+            <mcheckboxgroup caption="ChkGroup4" disposition="{{MContainer::DISPOSITION_HORIZONTAL}}">
+                <mcheckbox id="chkA4" label="chkA" text="textA"/>
+                <mcheckbox id="chkB4" label="chkB" text="textB"/>
+                <mcheckbox id="chkC4" label="chkC" text="textC"/>
+            </mcheckboxgroup>
+            <mtextfield id="text8" label="Text"/>
+        </mhcontainer>
+    </fields>
+</view>

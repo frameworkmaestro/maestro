@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formEzPDF" title="PDF com EzPDF">
+        <fields>
+            <mlabel text="Geração de arquivos PDF usando biblioteca EzPDF"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost1" text="Fontes e tamanhos" action="@relatorios/repEzPDFFontes"/>
+            <mbutton id="btnPost2" text="Linhas" action="@relatorios/repEzPDFLinhas"/>
+        </buttons>
+    </mform>
+</view>

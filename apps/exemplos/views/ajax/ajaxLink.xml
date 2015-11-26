@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mhcontainer>
+        <mhiddenfield id="linkPressed" value="$this->data->linkPressed"/>
+        <mlabel id="labelField" label="$this->data->linkLabel"/>
+    </mhcontainer>
+</view>

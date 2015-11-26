@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view>
+    <mlabel text="Pane preenchido via Ajax" />
+</view>

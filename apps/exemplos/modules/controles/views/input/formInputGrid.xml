@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formInputGrid" title="Input Grid" close=">exemplos/controles/input">
+        <fields>
+            <minputgrid id="inputGrid" numRows="10" numCols="5"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>

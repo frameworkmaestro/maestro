@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formRand" title="Zend Math" >
+        <fields>
+            <mlabel text="$this->data->bytes" />
+            <mlabel text="$this->data->boolean" />
+            <mlabel text="$this->data->integer" />
+            <mlabel text="$this->data->float" />
+            <mlabel text="$this->data->string" />
+        </fields>
+    </mform>
+</view>

@@ -1,0 +1,141 @@
+<text xml:space="preserve">
+= Smarty Framework =
+
+O Smarty Framework é usado pelo Maestro para a renderização de templates na camada view das aplicações. O projeto Smarty pode ser localizado em [http://www.smarty.net/ http://www.smarty.net/]
+
+== O que são templates? ==
+Um template é usado para organizar uma determinada parte do código com uma sintaxe mais clara e objetiva, de forma a diminuir os excessos nela contida. O uso de templates torna-se necessário principalmente quando há a necessidade de unir uma linguagem de marcação de texto com uma linguagem de programação. No exemplo a seguir ilustramos como o Smarty pode ser usado em um arquivo HTML comum, de forma a imprimir uma mensagem de texto ao usuário.
+
+<code lang="php">
+<h1> Hello, &lt;?php echo $userName&gt; </h1>
+</code>
+Neste exemplo, o uso do comando <i>echo</i> é necessário, o que dificulta a leitura do arquivo html para um ser humano. Quando usamos templates, a sintaxe para se obter o mesmo resultado do exemplo a seguir é:
+
+<code lang="php">
+<h1> Hello, {$userName} </h1>
+</code>
+
+Neste caso, o template se encarrega de atribuir as devidas modificações no arquivo html de forma que a linguagem PHP possa ser usada no template. 
+
+
+== Quando usar Smarty no Maestro? ==
+O uso do Smarty no Framework Maestro está aplicado principalmente na manipulação do tema da aplicação. Ou seja, você deverá conhecer o Smarty caso necessite fazer manipulações no tema. Se o objetivo é a criação da interface da aplicação (formulários, grids, relatórios), não há necessidade de conhecer este framework.
+
+== Exemplos ==
+
+A seguir listamos alguns exemplos que podem ser usados no framework Maestro.
+
+<code lang="php">
+{$foo}        <-- displaying a simple variable (non array/object)
+{$foo[4]}     <-- display the 5th element of a zero-indexed array
+{$foo.bar}    <-- display the "bar" key value of an array, similar to PHP $foo['bar']
+{$foo.$bar}   <-- display variable key value of an array, similar to PHP $foo[$bar]
+{$foo->bar}   <-- display the object property "bar"
+{$foo->bar()} <-- display the return value of object method "bar"
+{#foo#}       <-- display the config file variable "foo"
+{$smarty.config.foo} <-- synonym for {#foo#}
+{$foo[bar]}   <-- syntax only valid in a section loop, see {section}
+{assign var=foo value='baa'}{$foo} <--  displays "baa", see {assign}
+
+Many other combinations are allowed
+
+{$foo.bar.baz}
+{$foo.$bar.$baz}
+{$foo[4].baz}
+{$foo[4].$baz}
+{$foo.bar.baz[4]}
+{$foo->bar($baz,2,$bar)} <-- passing parameters
+{"foo"}       <-- static values are allowed
+
+{* display the server variable "SERVER_NAME" ($_SERVER['SERVER_NAME'])*}
+{$smarty.server.SERVER_NAME}
+
+Math and embedding tags:
+
+{$x+$y}                             // will output the sum of x and y.
+{assign var=foo value=$x+$y}        // in attributes 
+{$foo[$x+3]}                        // as array index
+{$foo={counter}+3}                  // tags within tags
+{$foo="this is message {counter}"}  // tags within double quoted strings
+
+Defining Arrays:
+
+{assign var=foo value=[1,2,3]}
+{assign var=foo value=['y'=>'yellow','b'=>'blue']}
+{assign var=foo value=[1,[9,8],3]}   // can be nested
+
+Short variable assignment:
+
+{$foo=$bar+2}
+{$foo = strlen($bar)}               // function in assignment
+{$foo = myfunct( ($x+$y)*3 )}       // as function parameter 
+{$foo.bar=1}                        // assign to specific array element
+{$foo.bar.baz=1}                    
+{$foo[]=1}                          // appending to an array
+
+Smarty "dot" syntax (note: embedded {} are used to address ambiguities):
+
+{$foo.a.b.c}        =>  $foo['a']['b']['c'] 
+{$foo.a.$b.c}       =>  $foo['a'][$b]['c']         // with variable index
+{$foo.a.{$b+4}.c}   =>  $foo['a'][$b+4]['c']       // with expression as index
+{$foo.a.{$b.c}}     =>  $foo['a'][$b['c']]         // with nested index
+
+PHP-like syntax, alternative to "dot" syntax:
+
+{$foo[1]}             // normal access
+{$foo['bar']}
+{$foo['bar'][1]}
+{$foo[$x+$x]}         // index may contain any expression
+{$foo[$bar[1]]}       // nested index
+{$foo[section_name]}  // smarty {section} access, not array access!
+
+Variable variables:
+
+$foo                     // normal variable
+$foo_{$bar}              // variable name containing other variable 
+$foo_{$x+$y}             // variable name containing expressions 
+$foo_{$bar}_buh_{$blar}  // variable name with multiple segments
+{$foo_{$x}}              // will output the variable $foo_1 if $x has a value of 1.
+
+Object chaining:
+
+{$object->method1($x)->method2($y)}
+
+Direct PHP function access:
+
+{time()}
+
+Conditions:
+
+{if $logged_in}
+    Welcome, <span style="color:{#fontColor#}">{$name}!</span>
+{else}
+    hi, {$name}
+{/if}
+
+Variáveis do servidor:
+
+{* display value of page from URL ($_GET) http://www.example.com/index.php?page=foo *}
+{$smarty.get.page}
+
+{* display the variable "page" from a form ($_POST['page']) *}
+{$smarty.post.page}
+
+{* display the value of the cookie "username" ($_COOKIE['username']) *}
+{$smarty.cookies.username}
+
+{* display the server variable "SERVER_NAME" ($_SERVER['SERVER_NAME'])*}
+{$smarty.server.SERVER_NAME}
+
+{* display the system environment variable "PATH" *}
+{$smarty.env.PATH}
+
+{* display the php session variable "id" ($_SESSION['id']) *}
+{$smarty.session.id}
+
+{* display the variable "username" from merged get/post/cookies/server/env *}
+{$smarty.request.username}
+
+</code>
+
+</text>

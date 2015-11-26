@@ -1,0 +1,36 @@
+<text xml:space="preserve">
+= Forms - Validator =
+A validação pode ser usada nos formulários XML e PHP da camada view. Deve-se inserir o validador na tag <code>validators</code> do formulário XML, por exemplo:
+
+<pre lang="xml">
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+ <fields>
+      ... campos
+ </fields>
+ <buttons>
+     ... botões
+ </buttons>
+ 
+ <validators>
+    <mrequiredvalidator field="nome" message="Preencha o Nome do Fornecedor"/>
+    <memailvalidator field="email" message="Preencha o email do Fornecedor"/>
+    <mregexpvalidator field="regexp" parameter="[A-Za-z]+[0-9][0-9]"/>
+    <mrangevalidator field="numero" parameter="0:1000"/>
+ </validators>
+
+</view>
+</pre>
+==Validators disponíveis==
+
+- <code>mrequiredvalidator</code>: É o mais comum e define um campo como requerido.
+- <code>memailvalidator</code>: Verifica se um email é válido
+- <code>mregexpvalidator</code>: Valida de acordo com a expressão regular fornecida pela parâmetro "parameter"
+- <code>mdateDMYvalidator</code>: Verifica se a data está no formato dd/mm/yyyy
+- <code>mdateYMDvalidator</code>: Verifica se a data está no formato yyyy/mm/dd
+- <code>mrangevalidator</code>: Verifica se o valor do campo está em uma faixa de valores
+
+
+'''Obs''': Caso deseje validar CPF ou CNPJ, use os controles '''mcpffield''' e '''mcnpjfield'''. Não use '''mtextfield''' com um validator anexado.
+</text>

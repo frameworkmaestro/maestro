@@ -1,0 +1,44 @@
+<text xml:space="preserve">
+= Imagens =
+A fim de facilitar a manutenção da interface com o usuário e a adaptação a temas diferentes, no Maestro as imagens devem ser acessadas '''apenas''' via CSS.
+
+== Icones - Framework Dojo ==
+
+*imagens de uso geral
+*Classe CSS: dijitIcon<ação>, onde "ação" é um dos seguintes valores:
+Save|Print|Cut|Copy|Clear|Delete|Undo|Edit|NewTask|EditTask|EditProperty|Task|Filter|Configure|Search|Application|Bookmark|Chart|Connector|Database|Documents|Mail|File|Function|Key|Package|Sample|Table|Users|FolderClosed|FolderOpen|Error
+
+[[Image:dojo_icons.png"]]
+
+== Icones - Framework Maestro | Uso dos temas ==
+* imagens de uso geral
+* As classes devem ser definidas no arquivo do tema '''public/themes/nome_do_tema/manager/manager.css''' e usadas com <code escaped="true">managerIcon managerIcon<Id></code>
+Exemplos (tema ''default''):
+Arquivo: <code>public/themes/default/manager/manager.css</code>
+
+<pre lang="css">
+.managerIconEditOn {
+    background-image: url(images/button_edit.png);
+}
+
+.managerIconEditOff {
+    background-image: url(images/button_noedit.png);
+}
+</pre>
+
+== Icones e imagens - CSS da Aplicação ==
+* imagens usadas na aplicação
+* As classes devem ser definidas no arquivo '''apps/aplicacao/public/css/style.css'''
+Exemplo (aplicação Exemplos):
+Arquivo: <code>apps/exemplos/public/css/style.css</code>
+
+<pre lang="css">
+.exemplosIconControls {
+    background-image: url(../images/32x32/controls.png);
+}
+
+.exemplosIconForm {
+    background-image: url(../images/32x32/form.png);
+}
+</pre>
+</text>

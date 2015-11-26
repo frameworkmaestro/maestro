@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mlabel text="Passo 3" />
+        <mtextfield id="campo3" label="Campo3" width="15em"/>
+        <mhcontainer>
+            <mlabel text="Selecionados no passo 2" />
+            <mlabel text="$this->data->marca" />
+        </mhcontainer>
+    </fields>
+    <buttons>
+        <mbutton id="btnBack" text="Anterior" action="@flow/passo2" />
+        <mbutton id="btnNext" text="Próximo" action="@flow/fim" />
+    </buttons>
+</view>

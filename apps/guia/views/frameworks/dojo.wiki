@@ -1,0 +1,10 @@
+<text xml:space="preserve">
+= DOJO Framework =
+
+O Dojo é um framework escrito na linguagem Javscript que provê diversas funcionalidades para a camada de visualização do Maestro. Dentre estas funcionalidades temos a manipulação de páginas ajax, os controles dos formulários (textiput, selection, datagrid etc), as mensagens de alerta ao usuário, entre outros.
+
+Não é necessário ter conhecimento no Dojo para criar aplicações em Maestro, pois o framework abstrai todas as suas funcionalidades principais. 
+
+Site: [http://dojotoolkit.org/ http://dojotoolkit.org/]
+
+</text>

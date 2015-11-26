@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formContainer" caption="Form Container">
+        <fields>
+            <mseparator id="exemplo1"  text="Exemplo 1"/>
+            <mtable id="tableExemplo1">
+                <mtr>
+                    <mtd>
+                        <mlabel text="11"/>
+                    </mtd>
+                    <mtd>
+                        <mlabel text="12"/>
+                    </mtd>
+                    <mtd>
+                        <mlabel text="13"/>
+                    </mtd>
+                    <mtd>
+                        <mlabel text="14"/>
+                    </mtd>
+                </mtr>
+                <mtr>
+                    <mtd>
+                        <mlabel text="21"/>
+                    </mtd>
+                    <mtd>
+                        <mlabel text="22"/>
+                    </mtd>
+                    <mtd>
+                        <mlabel text="23"/>
+                    </mtd>
+                    <mtd>
+                        <mlabel text="24"/>
+                    </mtd>
+                </mtr>
+            </mtable>
+            <mseparator id="exemplo2"  text="Exemplo 2"/>
+            <mtable id="tableExemplo2" caption="Exemplo 2" border="1px solid black">
+                <mtr  border="1px solid black">
+                    <mtd  border="1px solid black">
+                        <mlabel text="11"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="12"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="13"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="14"/>
+                    </mtd>
+                </mtr>
+                <mtr  border="1px solid black">
+                    <mtd border="1px solid black">
+                        <mlabel text="21"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="22"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="23"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="24"/>
+                    </mtd>
+                </mtr>
+            </mtable>
+            <mseparator id="exemplo3"  text="Exemplo 3"/>
+            <mtable id="tableExemplo3" caption="Exemplo 3" width="400px" border="2px solid black">
+                <mtablecolgroup width="20%"/>
+                <mtablecolgroup width="30%"/>
+                <mtablecolgroup width="20%"/>
+                <mtablecolgroup width="30%"/>
+                <mthead>
+                    <mtr>
+                        <mth><mlabel text="coluna 1"/></mth>
+                        <mth><mlabel text="coluna 2"/></mth>
+                        <mth><mlabel text="coluna 3"/></mth>
+                        <mth><mlabel text="coluna 4"/></mth>
+                    </mtr>
+                </mthead>
+                <mtbody width="100%">
+                <mtr  border="1px solid black">
+                    <mtd  border="1px solid black">
+                        <mlabel text="11"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="12"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="13"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="14"/>
+                    </mtd>
+                </mtr>
+                <mtr  border="1px solid black">
+                    <mtd border="1px solid black">
+                        <mlabel text="21"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="22"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="23"/>
+                    </mtd>
+                    <mtd border="1px solid black">
+                        <mlabel text="24"/>
+                    </mtd>
+                </mtr>
+                </mtbody>
+            </mtable>
+        </fields>
+    </mform>
+</view>

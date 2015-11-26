@@ -1,0 +1,58 @@
+[globals]
+database = "fnbr20"
+app = "fnbr20"
+module = "auth"
+
+[Person]
+table = "auth_person"
+attributes['idPerson'] = "idPerson,integer,not null,primary,identity,"
+attributes['name'] = "name,string,not null,,"
+attributes['email'] = "email,string,not null,,"
+attributes['nick'] = "nick,string,not null,,"
+associations['users'] = "fnbr20\models\User,oneToMany,idPerson:idPerson"
+
+[User]
+table = "auth_user"
+attributes['idUser'] = "idUser,integer,not null,primary,identity,"
+attributes['login'] = "login,string,not null,,"
+attributes['pwd'] = "pwd,string,not null,,"
+attributes['passMD5'] = "passMD5,string,not null,,"
+attributes['theme'] = "theme,string,not null,,"
+attributes['active'] = "active,integer,not null,,"
+attributes['idPerson'] = "idPerson,integer,not null,,foreign"
+associations['person'] = "fnbr20\models\Person,oneToOne,idPerson:idPerson"
+associations['logs'] = "fnbr20\models\Log,oneToMany,idUser:idUser"
+associations['groups'] = "fnbr20\models\Group,manyToMany,auth_user_auth_group"
+
+[Group]
+table = "auth_group"
+attributes['idGroup'] = "idGroup,integer,not null,primary,identity,"
+attributes['name'] = "name,string,not null,,"
+attributes['description'] = "description,string,not null,,"
+associations['access'] = "fnbr20\models\Access,oneToMany,idGroup:idGroup"
+associations['users'] = "fnbr20\models\User,manyToMany,auth_user_auth_group"
+
+[Transaction]
+table = "auth_transaction"
+attributes['idTransaction'] = "idTransaction,integer,not null,primary,identity,"
+attributes['name'] = "name,string,not null,,"
+attributes['description'] = "description,string,not null,,"
+associations['accesss'] = "fnbr20\models\Access,oneToMany,idTransaction:idTransaction"
+
+[Access]
+table = "auth_access"
+attributes['idAccess'] = "idAccess,integer,not null,primary,identity,"
+attributes['rights'] = "rights,integer,not null,,"
+attributes['idGroup'] = "idGroup,integer,not null,,foreign"
+attributes['idTransaction'] = "idTransaction,integer,not null,,foreign"
+associations['group'] = "fnbr20\models\Group,oneToOne,idGroup:idGroup"
+associations['transaction'] = "fnbr20\models\Transaction,oneToOne,idTransaction:idTransaction"
+
+[Log]
+table = "auth_log"
+attributes['idLog'] = "idLog,integer,not null,primary,identity,"
+attributes['ts'] = "ts,timestamp,not null,,"
+attributes['operation'] = "operation,string,not null,,"
+attributes['idUser'] = "idUser,integer,not null,,foreign"
+associations['user'] = "fnbr20\models\User,oneToOne,idUser:idUser"
+

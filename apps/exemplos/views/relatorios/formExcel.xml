@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formExemploExcel" title="Relatório Exemplo Excel">
+        <fields>
+            <mmultitextfield id="planilha1" caption="Planilha 1" layout="{{ MContainer::DISPOSITION_VERTICAL }}">
+                <mtextfield id="idTeste1" label="id" width="5em"/>
+                <mtextfield id="teste1" label="Teste" width="10em"/>
+                <mselection id="selection1" label="Seleção" options="$this->data->options"/>
+                <mtextfield id="nome1" label="Nome" width="15em"/>
+            </mmultitextfield>
+            <mmultitextfield id="planilha2" caption="Planilha 2" layout="{{ MContainer::DISPOSITION_VERTICAL }}">
+                <mtextfield id="idTeste2" label="id" width="5em"/>
+                <mtextfield id="teste2" label="Teste" width="10em"/>
+                <mselection id="selection2" label="Seleção" options="$this->data->options"/>
+                <mtextfield id="nome2" label="Nome" width="15em"/>
+            </mmultitextfield>            
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar" action="@relatorios/repExemploExcel"/>
+        </buttons>
+    </mform>
+</view>

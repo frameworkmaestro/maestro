@@ -1,0 +1,45 @@
+[globals]
+database = "unittest"
+app = "unittest"
+module = ""
+
+[App]
+table = "App"
+attributes['idApp'] = "idApp,integer,not null,primary,seq_app"
+attributes['name'] = "name,string,not null,"
+associations['models'] = "\unittest\models\Model,oneToMany,idApp:idApp"
+
+[Method]
+table = "Method"
+attributes['idMethod'] = "idMethod,integer,not null,primary,seq_method"
+attributes['name'] = "name,string,not null,"
+attributes['idModel'] = "idModel,integer,not null,foreign"
+associations['model'] = "\unittest\models\Model,oneToOne,idModel:idModel"
+associations['tests'] = "\unittest\models\Test,oneToMany,idMethod:idMethod"
+
+[Model]
+table = "Model"
+attributes['idModel'] = "idModel,integer,not null,primary,seq_model"
+attributes['name'] = "name,string,not null,"
+attributes['module'] = "module,string,,"
+attributes['idApp'] = "idApp,integer,not null,foreign"
+associations['methods'] = "\unittest\models\Method,oneToMany,idModel:idModel"
+associations['app'] = "\unittest\models\App,oneToOne,idApp:idApp"
+
+[Parameter]
+table = "Parameter"
+attributes['idParameter'] = "idParameter,integer,not null,primary,seq_parameter"
+attributes['name'] = "name,string,not null,"
+attributes['value'] = "value,string,,"
+attributes['idTest'] = "idTest,integer,not null,foreign"
+attributes['order'] = "order,integer,,"
+associations['test'] = "\unittest\models\Test,oneToOne,idTest:idTest"
+
+[Test]
+table = "Test"
+attributes['idTest'] = "idTest,integer,not null,primary,set_test"
+attributes['name'] = "name,string,not null,"
+attributes['idObject'] = "idObject,string,,"
+attributes['idMethod'] = "idMethod,integer,not null,foreign"
+associations['parameters'] = "\unittest\models\Parameter,oneToMany,idTest:idTest"
+associations['method'] = "\unittest\models\Method,oneToOne,idMethod:idMethod"

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../public/layouts/view.dtd">
+<view>
+    <mvcontainer>
+        <mtextfield id="containerPessoa[idPessoa]" label="Id" />
+        <mtextfield id="containerPessoa[nome]" label="Nome" />
+        <mcalendarfield id="containerPessoa[dataNascimento]" label="Data Nascimento" />
+    </mvcontainer>
+</view>

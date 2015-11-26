@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formVersion" title="Zend Version" >
+        <fields>
+            <mlabel id="versao" text="$this->data->versao" />
+        </fields>
+    </mform>
+</view>

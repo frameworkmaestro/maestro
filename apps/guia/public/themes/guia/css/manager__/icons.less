@@ -1,0 +1,302 @@
+/* 
+ Icons 
+ */
+
+@import "patriglyphs.less";
+@import "famfamfam.less";
+@import "mvariables.less";
+
+.managerIcon {
+    vertical-align:      middle;
+    margin:              0px;
+    padding:             0px;
+    border:              none;
+    float:               left;
+    display:             block;
+    width:               16px;
+    height:              16px;
+    background-repeat:   no-repeat;
+    background-position: center;
+    overflow:            hidden;
+}
+
+.managerIconText {
+    display:             block;
+    width:               auto;
+    height:              16px;
+    background-repeat:   no-repeat;
+    background-position: 1px 1px;
+    padding-left:        16px;
+    margin-left:         2px;
+}
+
+.managerIconCursor {
+    cursor: pointer;
+}
+
+.managerIconEdit,.managerIconEditOn {
+    background: url(@image-icon-sprite) no-repeat top left;
+    cursor: pointer;
+    background-position: -237px 3px;
+}
+
+.managerIconEditOff {
+    background: url(@image-icon-sprite) no-repeat top left;
+    background-position: -237px -17px;
+}
+
+.managerIconDelete,.managerIconDeleteOn {
+    background: url(@image-icon-sprite) no-repeat top left;
+    cursor: pointer;
+    background-position: -199px 2px;
+}
+
+.managerIconDeleteOff {
+    background: url(@image-icon-sprite) no-repeat top left;
+    background-position: -199px -17px;
+}
+
+.managerIconButtonNew {
+    background: url(@image-icon-sprite) no-repeat top left;
+    cursor: pointer;
+    background-position: -237px 3px;
+}
+
+.managerIconButtonHelp {
+    background: url("images/famfamfamSprite.png") no-repeat top left;
+    background-position: -528px -396px; width: 16px; height: 16px;
+    cursor: pointer;
+}
+
+
+/*
+ * Tools Icons
+ */
+
+.toolIcon {
+	background-color: transparent;
+	background-image: url(@image-tool-sprite);
+	background-repeat: no-repeat;
+	cursor: pointer;
+	height: 15px;
+	margin: 0;
+	overflow: hidden;
+	width: 15px;
+}
+.mBoxPaneTitleBar .toolIcon {
+	margin-left: 2px;
+}
+.mBoxPaneTitleBar .toolIcon {
+	margin-bottom: 2px;
+}
+.toolIconPlaceholder {
+	visibility: hidden;
+}
+.toolIconToggle {
+	background-position: 0 -60px;
+}
+.toolIconHover .toolIconToggle {
+	background-position: -15px -60px;
+}
+.mBoxPaneTitleBar .toolIconToggle {
+	background-position: 0 -75px;
+}
+.mBoxPaneTitleBar .toolIconHover .toolIconToggle {
+	background-position: -15px -75px;
+}
+.toolIconClose {
+	background-position: 0 0;
+}
+.toolIconMinimize {
+	background-position: 0 -15px;
+}
+.toolIconMaximize {
+	background-position: 0 -30px;
+}
+.toolIconRestore {
+	background-position: 0 -45px;
+}
+.toolIconGear {
+	background-position: 0 -90px;
+}
+.toolIconPrev {
+	background-position: 0 -105px;
+}
+.toolIconNext {
+	background-position: 0 -120px;
+}
+.toolIconPin {
+	background-position: 0 -135px;
+}
+.toolIconUnpin {
+	background-position: 0 -150px;
+}
+.toolIconRight {
+	background-position: 0 -165px;
+}
+.toolIconLeft {
+	background-position: 0 -180px;
+}
+.toolIconHelp {
+	background-position: 0 -300px;
+}
+.toolIconSave {
+	background-position: 0 -285px;
+}
+.toolIconSearch {
+	background-position: 0 -270px;
+}
+.toolIconMinus {
+	background-position: 0 -255px;
+}
+.toolIconPlus {
+	background-position: 0 -240px;
+}
+.toolIconRefresh {
+	background-position: 0 -225px;
+}
+.toolIconUp {
+	background-position: 0 -210px;
+}
+.toolIconDown {
+	background-position: 0 -195px;
+}
+.toolIconMove {
+	background-position: 0 -375px;
+}
+.toolIconResize {
+	background-position: 0 -360px;
+}
+.toolIconCollapse {
+	background-position: 0 -345px;
+}
+.toolIconExpand {
+	background-position: 0 -330px;
+}
+.toolIconPrint {
+	background-position: 0 -315px;
+}
+.toolIconExpandBottom,.toolIconCollapseBottom {
+	background-position: 0 -195px;
+}
+.toolIconExpandTop,.toolIconCollapseTop {
+	background-position: 0 -210px;
+}
+.toolIconExpandLeft,.toolIconCollapseLeft {
+	background-position: 0 -180px;
+}
+.toolIconExpandRight,.toolIconCollapseRight {
+	background-position: 0 -165px;
+}
+.toolIconHover .toolIconClose {
+	background-position: -15px 0;
+}
+.toolIconHover .toolIconMinimize {
+	background-position: -15px -15px;
+}
+.toolIconHover .toolIconMaximize {
+	background-position: -15px -30px;
+}
+.toolIconHover .toolIconRestore {
+	background-position: -15px -45px;
+}
+.toolIconHover .toolIconGear {
+	background-position: -15px -90px;
+}
+.toolIconHover .toolIconPrev {
+	background-position: -15px -105px;
+}
+.toolIconHover .toolIconNext {
+	background-position: -15px -120px;
+}
+.toolIconHover .toolIconPin {
+	background-position: -15px -135px;
+}
+.toolIconHover .toolIconUnpin {
+	background-position: -15px -150px;
+}
+.toolIconHover .toolIconRight {
+	background-position: -15px -165px;
+}
+.toolIconHover .toolIconLeft {
+	background-position: -15px -180px;
+}
+.toolIconHover .toolIconDown {
+	background-position: -15px -195px;
+}
+.toolIconHover .toolIconUp {
+	background-position: -15px -210px;
+}
+.toolIconHover .toolIconRefresh {
+	background-position: -15px -225px;
+}
+.toolIconHover .toolIconPlus {
+	background-position: -15px -240px;
+}
+.toolIconHover .toolIconMinus {
+	background-position: -15px -255px;
+}
+.toolIconHover .toolIconSearch {
+	background-position: -15px -270px;
+}
+.toolIconHover .toolIconSave {
+	background-position: -15px -285px;
+}
+.toolIconHover .toolIconHelp {
+	background-position: -15px -300px;
+}
+.toolIconHover .toolIconPrint {
+	background-position: -15px -315px;
+}
+.toolIconHover .toolIconExpand {
+	background-position: -15px -330px;
+}
+.toolIconHover .toolIconCollapse {
+	background-position: -15px -345px;
+}
+.toolIconHover .toolIconResize {
+	background-position: -15px -360px;
+}
+.toolIconHover .toolIconMove {
+	background-position: -15px -375px;
+}
+.toolIconHover .toolIconExpandBottom,.toolIconHover .toolIconCollapseBottom {
+	background-position: -15px -195px;
+}
+.toolIconHover .toolIconExpandTop,.toolIconHover .toolIconCollapseTop {
+	background-position: -15px -210px;
+}
+.toolIconHover .toolIconExpandLeft,.toolIconHover .toolIconCollapseLeft {
+	background-position: -15px -180px;
+}
+.toolIconHover .toolIconExpandRight,.toolIconHover .toolIconCollapseRight {
+	background-position: -15px -165px;
+}
+.toolIconFind {
+    background-color: transparent;
+    background: url("images/patriglyphsSprite.png") no-repeat top left;
+    background-position: -66px -858px;
+    border: 1px solid #bbb;
+    height: 16px;
+    cursor: pointer;
+    height: 17px;
+    margin: 0;
+    overflow: hidden;
+    width: 16px;
+}
+.toolIconExcel {
+	background: url("images/excel.gif") no-repeat top left !important;
+	width: 16px !important;
+	height: 16px !important;
+}
+.toolIconCSV {
+	background: url("images/csv.gif") no-repeat !important;
+	height: 16px !important;
+	width: 16px !important;
+}
+.toolIconPDF {
+	background: url("images/pdf.gif") no-repeat !important;
+	height: 16px !important;
+	width: 16px !important;
+}
+

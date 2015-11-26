@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formMail" title="Enviar Mail" close=">exemplos/crud/pessoa">
+        <property class="col-md-4" labelClass="col-md-6" />
+        <fields>
+            <mhiddenfield id="idPessoa" />
+            <mtextfield id="nome" label="Nome" readonly="true"/>
+            <mtextfield id="email" label="Email" readonly="true" />
+            <mtextfield id="assunto" label="Assunto" size="40"/>
+            <mmultilinefield id="mensagem" label="Mensagem" rows="10" cols="200"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+        </buttons>
+        <data load="$this->data->object" />
+    </mform>
+</view>

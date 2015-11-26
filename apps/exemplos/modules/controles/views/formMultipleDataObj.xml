@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform>
+        <property title="Form Multiple Data Object" close=">controls/form"/>
+        <fields>
+            <mhcontainer>
+                <mtextfield id="pessoa::nome" label="Nome" value="" size="25" hint="pessoa::nome"/>
+                <mcpffield id="pessoa::cpf" label="CPF" hint="pessoa::cpf"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mtextfield id="setor::sigla" label="Sigla" value="" size="25" hint="setor::sigla"/>
+                <mtextfield id="setor::nome" label="Nome" value="" size="25" hint="setor::nome"/>
+            </mhcontainer>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar"/>
+        </buttons>
+    </mform>
+</view>

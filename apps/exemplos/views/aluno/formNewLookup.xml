@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mformaction id="formNew" title="Novo [Lookup]" close=">exemplos/aluno/formFind" base="formBase">
+        <fields>
+            <mhiddenfield id="idAluno" /> 
+            <!-- usando controle MLookupFieldValue -->       
+            <mhiddenfield id="idPessoa" /> 
+            <mlookupfieldvalue id="nome" label="Pessoa" width="30px" action="pessoa/lookup" related="idPessoa:idPessoa,nome:nome" filter="nome"/>
+            <mtextfield id="matricula" label="Matricula" />        
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+        </buttons>
+    </mformaction>
+</view>

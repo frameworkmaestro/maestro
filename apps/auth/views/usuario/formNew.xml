@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mformaction id="formNew" title="Novo" close=">auth/usuario/formFind" base="formBase">
+        <include file="fields.xml" />
+    </mformaction>
+</view>

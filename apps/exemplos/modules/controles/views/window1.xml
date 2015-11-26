@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formWindow1" title="Window 1" close="close:controls/formWindowBase">
+        <fields>
+            <mlabel text="$this->data->id" />
+            <mwindow id="window2" url="controls/window2"/>
+            <mbutton id="btnWin2" text="Abrir Window 2 via MButton" action="open:window2"/>
+        </fields>
+    </mform>
+</view>

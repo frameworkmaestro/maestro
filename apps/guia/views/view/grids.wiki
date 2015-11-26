@@ -1,0 +1,267 @@
+<text xml:space="preserve">
+= Grids =
+'''Grids''' são usados para exibir dados tabulares, geralmente resultados de consultas ao banco de dados que retornam mais de um registro. No Maestro, os grids são Controles, que podem ser usados em views. Os grids controlam a paginação, permitem a seleção de linhas, o uso de controles visuais e a definição de uma função de callback durante a construção do grid.
+
+==Elementos==
+Três elementos são fundamentais para se entender o funcionamento dos grids: os '''dados''', as '''colunas''' e as '''ações'''.
+
+- '''Dados''': os dados são estruturados em um array bidimensional, chamado <code>$data</code>. Os índices deste array são números inteiros, iniciando em 0 (zero). Os elementos deste array podem ser de tipos simples (números, strings, objetos) ou podem ser um Controle. 
+No exemplo abaixo, o array possui 6 colunas (de 0 a 5) onde os dados são, respectivamente: um inteiro, uma string, uma string, um float, um boolean, uma string:
+
+<pre>
+{| cellspacing=5
+|
+|0
+|1
+|2
+|3
+|4
+|5
+|-
+|0
+|132
+|Fowler
+|12/01/2007
+|123.34
+|true
+|A
+|-
+|1
+|243
+|Ambler
+|05/04/2005
+|234.56
+|true
+|T
+|-
+|2
+|561
+|Jackson
+|16/07/2003
+|456.78
+|false
+|A
+|-
+|3
+|1987
+|Gane
+|23/10/2002
+|23.45
+|true
+|T
+|-
+|..
+|..
+|..
+|..
+|..
+|..
+|..
+|-
+|200
+|112
+|Beck
+|25/03/2004
+|55.89
+|false
+|T
+|}
+</pre>
+Se os dados são provenientes do resultado de uma consulta (através de um objeto MQuery), as colunas são referenciadas pelo nome dos campos usados na consulta. Por exemplo:
+{|
+| ||id||nome||dataInclusao||valor||ativo||categoria
+|-
+|0||132||Fowler||12/01/2007||123.34||true||A
+|-
+|1||243||Ambler||05/04/2005||234.56||true||T
+|-
+|2||561||Jackson||16/07/2003||456.78||false||A
+|-
+|3||1987||Gane||23/10/2002||23.45||true||T
+|-
+|...||...||...||...||...||...||...
+|-
+|200||112||Beck||25/03/2004||55.89||false||T
+|}
+- '''Colunas''': as colunas de um grid são definidas através de objetos, chamados <code>$columns</code>. Um grid pode apresentar uma ou mais colunas do array <code>$data</code>. As colunas podem ser de tipos diferentes, dependendo de como serão renderizadas:
+
+'''MGridColumn'''/'''MDataGridColumn''': Para exibição do dado como texto plano.
+'''MGridColumn'''/'''MDataGridColumn''', '''type="link"'''': Para exibição do dado com um link. 
+'''MGridColumn'''/'''MDataGridColumn''', '''type="control"''': Para exibição de um controle específico. 
+
+- '''Ações''': as ações em um grid (chamadas <code>$actions</code>) são definidas em colunas especiais e representam, geralmente, uma [[>controller/actionsurl|Action URL]]. As ações podem ser renderizadas como imagens (icones) ou textos (links).
+
+== Controles ==
+
+São usados basicamente 2 controles de grids:
+
+- '''MGrid''': Para exibição de dados que estão em um array bidimensional. 
+- '''MDataGrid''': Para exibição de resultados de consultas (queries) feitas no banco de dados. O grid recebe o objeto <code>MQuery</code> como parâmetro e executa a consulta. O resultado da query é obtido internamente ao grid através do método <code>getResult()</code>. As colunas do grid referenciam os nomes das colunas usadas na consulta.
+
+O código a seguir apresenta um exemplo de '''MGrid''', usando o array <code>$data</code> apresentado anteriormente:
+
+<pre lang="xml">
+        <mgrid id="gridExemplo" data="$this->data->array" pageLength="15" actionUpdate="@table/save/#0#"
+            actionDelete="@table/delete/#0#"  actionSelect="marca" rowCount="$this->data->rowCount" range="$this->data->range" rowMethod="{{ array('form','rowMethod')}}">
+            <mgridcolumn index="0" visible="false"/>
+            <mgridcolumn type="link" index="1" action=">table/formObject/#0#" title="Nome" width="40%"/>
+            <mgridcolumn index="3" title="Valor" width="20%" render="float"/>
+            <mgridcolumn index="2" title="Data de Inclusão" render="{{ array('form','renderColorData')}}"  width="20%"/>
+            <mgridcolumn index="4" title="Ativo?" render="{{ array('form','renderSimNao')}}"  width="10%"/>
+            <!-- $id: pega o valor da coluna indice -->
+            <!-- por default, o valor do control é o valor do field correspondente -->
+            <!-- para usar outro valor, usar o modificador %coluna% -->
+            <mgridcolumn type="control" index="5" title="Categoria" >
+                <mtextfield id="colCategoria[$id]" size="10"  value ="%5%" height="15px"/>
+            </mgridcontrol>
+            <mgridaction type="icon" value="delete" action="@table/delete/#0#" enabled="true"/>
+            <mgridaction type="text" value="Delete" action="@table/delete/#0#" enabled="true"/>
+        </mgrid>
+</pre>
+
+O código a seguir apresenta um exemplo de <b>MDataGrid</b>, usando o array <code>$data</code> apresentado anteriormente:
+
+<pre lang="xml">
+        <mdatagrid id="gridFind" query="$this->data->query" pageLength="15" actionUpdate="@pessoa/save/#0#"
+                   actionDelete="@pessoa/delete/#0#"  actionSelect="marca" rowMethod="{{ array('form','rowMethod')}}">
+            <mdatagridcolumn field="idPessoa" visible="false"/>
+            <mdatagridcolumn type="link" field="nome" action=">pessoa/formObject/#0#" title="Nome" width="40%"/>
+            <mdatagridcolumn field="salario" title="Salário" width="20%" render="float"/>
+            <!-- render localizado em components \ renders.php -->
+            <mdatagridcolumn field="dataNascimento" title="DataNascimento" render="{{ array('renders','colorData')}}"  width="20%"/>
+            <!-- render localizado no próprio form (formFullGrid.php) -->
+            <mdatagridcolumn field="cpf" title="Ativo?" render="{{ array('form','renderSimNao')}}"  width="10%"/>
+            <!-- mdatagridcolumn type=control: -->
+            <!-- .no atributo id a variavel $id pega o valor da coluna indice -->
+            <!-- .por default, o valor do control é o valor do field correspondente -->
+            <!-- .para usar outro valor, usar o modificador %nome_da_coluna% -->
+            <mdatagridcolumn type="control" field="email" title="Opcional" >
+                <mtextfield id="colOpcional[$id]" size="10"  value ="%valor%" height="15px">
+                    <event event="onBlur" handler="atualizaTotal(this.id);" preventDefault="false"/>
+                </mtextfield>    
+            </mdatagridcolumn>
+            <mgridaction type="icon" value="delete" action="@pessoa/deleteFullGrid/#0#" enabled="true"/>
+            <mgridaction type="text" value="Delete" action="@pessoa/deleteFullGrid/#0#" enabled="true"/>
+        </mdatagrid>
+</pre>
+
+==Principais atributos do grid==
+<pre>
+{| cellspacing=5
+|id||Id do controle
+|-
+|query (MDataGrid)
+|Indica o objeto MQuery relativo à consulta ao banco de dados
+|-
+|data (MGrid)
+|Indica o array <code>$data</code>
+|-
+|pageLength
+|Quantas linhas deverão ser exibidas por página. Se ogrid não for paginado, deve ser definido como 0 (zero)
+|-
+|range (MGrid)
+|Indica o objeto MRange, usado para fazer os cálculos referentes à paginação
+|-
+|index
+|Indica a coluna definida como “coluna índice” do grid (default = 0)
+|-
+|actionUpdate
+|Indica a [[>controller/actionsurl|Action URL]] associada ao icone Update em cada linha
+|-
+|actionDelete
+|Indica a Action URL associada ao icone Delete em cada linha
+|-
+|actionSelect 
+|Indica o id base dos checkbox exibidos para seleção em cada linha
+|-
+|rowMethod
+|Método callback executado durante a renderizaçao do grid (ver rowMethod). O array indica a classe onde o método está definido (em geral o próprio formulário onde o grid está sendo exibido) e o método a ser executado
+|-
+|hasForm (true|false])
+|Se <code>true</code> indica que o grid já está inserido em um formulário, não sendo necessário renderizar um box para ele. Usado no caso de grids gerados via AJAX
+|}
+</pre>
+ 
+== Parâmetros de ações ==
+
+As ações ocupam colunas específicas e geralmente estão associadas a uma [http://maestro.org.br/?wiki=url_actions Action URL]. Nestas URLs podem ser usados os seguintes parâmetros:</br></br>
+
+'''#n#''': onde "n" é um número inteiro. Valor do dado na linha atual da n-ésima coluna definida em <code>$columns</code>.</br>
+'''#?#''': Valor do dado em <code>$data &#91;linha atual,coluna "index"&#93;</code>.</br>
+'''%n%''': onde "n" é um número inteiro. Valor do dado em <code>$data &#91;linha atual,coluna "n"&#93;</code>.</br>
+'''%field%''': &#91;MDataGrid&#93; onde "field" é uma string. Valor do dado em <code>$data &#91;linha atual,coluna "field"&#93;</code>.</br>
+'''$id''': Valor do dado na coluna definida como índice do grid (atributo <code>index</code>), na linha atual.</br>
+
+== rowMethod ==
+
+'''rowMethod''' é um método definido pelo desenvolvedor que é executado antes de cada linha ser construída para renderização e após os controles de cada coluna já terem sido definidos. Através deste método é possível realizar procedimentos de cálculo, formatação de dados, alteração de valores, etc. 
+
+=== Exemplo com MGrid===
+
+<pre lang="php">
+    public function rowMethod($currentRow, $rowData, $actions, $columns) {
+        $columns[3]->control[$currentRow]->setHTMLTitle("HTML title incluido via rowmethod");
+        if ($rowData[3] < 0){
+            $columns[3]->control[$currentRow]->addStyle('color','red');
+        }
+    }   
+</pre>
+
+====Parâmetros====
+*<code>$currentRow</code> : número da linha sendo renderizada
+*<code>$rowData</code> : array que contém os dados do array <code>$data$</code> na linha atual (indice inicial = 0)
+*<code>$actions</code> : array que contém os controles relativos às ações
+*<code>$columns</code> : array que contém os dados de cada coluna (índice definido pelo atributo <code>index</code> da coluna).
+
+===Exemplo com MDataGrid===
+
+<pre lang="php">
+    public function rowMethod($currentRow, $rowData, $actions, $columns, $query, $grid) {
+        $columns['valor']->control[$currentRow]->setHTMLTitle("HTML title incluido via rowmethod");
+        if ($rowData[3] < 0){
+            $columns['valor']->control[$currentRow]->addStyle('color','red');
+        }
+    }  
+</pre>
+
+====Parâmetros====
+*<code>$currentRow</code> : número da linha sendo renderizada
+*<code>$rowData</code> : array que contém os dados do array $data$ na linha atual (indice inicial = 0)
+*<code>$actions</code> : array que contém os controles relativos às ações
+*<code>$columns</code> : array que contém os dados de cada coluna (índice definido pelo atributo <code>field</code> da coluna).
+*<code>$query</code> : objeto MQuery passado como parâmetro para o grid.
+*<code>$grid</code> : o próprio objeto MDataGrid que está sendo executado.
+
+==render==
+
+<code>render</code> é um atributo das colunas e indica como serão renderizados os valores daquela coluna. O atributo deve indicar um método que retorne o controle que será renderizado na coluna.
+
+Existem 3 valores pré-definidos para <code>render</code>:
+- currency: exibe um valor monetário formatado
+- currencyValue: exibe um valor monetário sem formatação
+- float: exibe um valor do tipo <code>float</code>.
+
+O desenvolvedor pode criar seu próprio método de renderização, por exemplo:
+
+<pre lang="php">
+    public function renderSimNao($value) {
+        $text = ($value == '1') ? 'Sim' : 'Não';
+        return new MLabel($text);
+    }
+    
+    public function renderColorData($value) {
+        $control = new MLabel($value);
+        $date = Manager::date($value);
+        $color = $date->compare('>','01/10/2011') ? 'blue' : 'red';
+        $control->addStyle('color', $color);
+        return $control;
+    }
+</pre>
+
+e indicar o método no atributo da coluna:
+
+<pre lang="xml">
+     <mdatagridcolumn field="dataInclusao" title="Data de Inclusão" render="{{ array('form','renderColorData')}}"  width="20%"/>
+     <mdatagridcolumn field="ativo" title="Ativo?" render="{{ array('form','renderSimNao')}}"  width="10%"/>
+</pre>
+</text>

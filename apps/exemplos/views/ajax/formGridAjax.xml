@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formGridAjax" title="Grid com AJAX" close=">controls/main">
+        <fields>
+            <mvcontainer>
+                <mdatagrid id="gridSetor" query="$this->data->query" pageLength="15" >
+                    <mgridaction type="icon" value="edit" action="ajax/ajaxGrid/#0#" enabled="true">
+                        <ajax type="text" event="click" load="gridDetailPane" />
+                    </mgridaction>
+                    <mdatagridcolumn field="idSetor" title="ID"/>
+                    <mdatagridcolumn field="sigla" title="Sigla" width="20%"/>
+                    <mdatagridcolumn field="nome" title="Nome" width="80%"/>
+                </mdatagrid>
+                <mlabel text="[Grid de Detalhes - Usuários do Setor]"/>
+                <mcontentpane id="gridDetailPane">
+                    <mlabel text="..vazio.."/>
+                </mcontentpane>
+            </mvcontainer>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>

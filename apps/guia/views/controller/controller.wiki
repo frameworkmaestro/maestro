@@ -1,0 +1,38 @@
+<text xml:space="preserve">
+= Controller =
+O ''Controller'' é a camada intermediária entre o ''Model'' e a ''View''. 
+Ela é usada principalmente para obter/processar informações utilizando o ''Model'' e repassar informações para a ''View''. 
+O ''Controller'' está relacionado com a URL usada na requisição. 
+O ''Controller'' é implementado através de uma classe PHP. Cada método desta classe é uma ação (''action'') do ''Controller''. Um ''Controller'' reúne ações que estão associadas entre si, por exemplo implementando um caso de uso ou o [http://en.wikipedia.org/wiki/Create,_read,_update_and_delete|CRUD|_blank] de um modelo. 
+
+No formato mais básico, uma URL do Maestro é composta por:
+
+<code>http://servidor:porta/index.php/app/module/controller/action/id</code>
+
+
+Por exemplo:
+
+<code>http://meu.servidor:8500/index.php/siga/adm/licitacao/new</code>
+
+Na URL acima, estamos acessando a ''action'' <b>new</b>, do ''controller'' <b>licitacao</b>, do ''módulo'' <b>adm</b>, da ''aplicação'' <b>siga</b>.
+
+Exemplo parcial de uma classe Controller:
+
+<pre lang="php" line="1">
+Manager::import('exemplos\models\*');
+ 
+class PessoaController extends \MController {
+ 
+public function main() {
+    $this->render("formBase");
+}
+ 
+public function formFind() {
+    $this->data->object = new Pessoa();
+    $filter->nome = $this->data->nome;
+    $this->data->query = $this->data->object->listByFilter($filter)->asQuery();
+    $this->render();
+}
+</pre>
+Cada classe ''Controller'' também pode sobrepor dois métodos: <code>init()</code> (executado antes do método relativo à ação solicitada ser executado) e <code>terminate()</code> (executado após a ação solicitada ter sido executada).
+</text>

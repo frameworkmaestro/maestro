@@ -1,0 +1,32 @@
+/* 
+ Container 
+ */
+
+.mManager .mContainerControls {
+    overflow: hidden;
+}
+
+.mManager .mContainer {
+    width: 100%;
+    overflow: auto;
+}
+
+.mManager .mContainerCell {
+    vertical-align:top;
+    padding-left: 2px;
+    padding-right: 2px;
+    float:left;
+}
+
+.mManager .mContainerCell .firstCell {
+    padding-left: 0px;
+}
+
+.mManager .mContainerCell .lastCell {
+    padding-right: 0px;
+}
+
+.mManager .mContainerRow {
+    width: 100%;
+    padding-bottom: 2px;
+}

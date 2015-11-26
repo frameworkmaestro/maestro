@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <css file="{{ $this->view->getPath() . '/formCSS.css' }}"  code=".myCSSCode {background-color: yellow;color: green;}"/>
+    <mcss id="css1" selector=".myCssGreen" backgroundColor="green" color="white"/>
+    <mcss id="css2" selector=".myBoxRed" width="30px" height="30px" backgroundColor="red" border="1px black solid"/>
+    <mcss id="css3" selector="#myBoxBlue" width="30px" height="30px" backgroundColor="blue" border="1px black solid"/>
+    <mform id="formCSS" title="Usando CSS" >
+        <fields>
+            <mlabel id="label1" text="Texto exemplo para CSS Interna" class="myCssGreen" />
+            <mdiv id="myBox" class="myBoxRed"/>
+            <mdiv id="myBoxBlue" />
+            <mlabel id="label2" text="Texto exemplo para CSS Externa" class="myCSSExternal" />
+            <mlabel id="label3" text="Texto exemplo para CSS Code" class="myCSSCode" />
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>

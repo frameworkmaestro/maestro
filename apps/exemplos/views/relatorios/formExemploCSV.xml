@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formExemploCSV" title="Relatório Exemplo JasperReport - CSV">
+        <fields>
+            <mlabel text="Exemplo de uso do JasperReport, com a geração dos dados para o relatório em formato CSV"/>
+            <mtextfield id="param1" label="Parametro 1" value="" size="25"/>
+            <mtextfield id="param2" label="Parametro 2" value="" size="25"/>
+            <mtextfield id="param3" label="Parametro 3" value="" size="25"/>
+            <mtextfield id="param4" label="Parametro 4" value="" size="25"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar" action="@relatorios/repExemploCSV"/>
+        </buttons>
+    </mform>
+</view>

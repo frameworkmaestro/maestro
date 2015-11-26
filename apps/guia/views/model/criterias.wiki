@@ -1,0 +1,328 @@
+<text xml:space="preserve">
+= Criterias =
+<blockquote>
+<a href="#join_auto_expressoes">Join Automático e Expressões</a></br>
+<a href="#join_auto_parametro">Join Automático e Parâmetro</a></br>
+<a href="#join_forcado">Join Forçado</a></br>
+<a href="#alias_join_automatico">Alias com join automatico</a></br>
+<a href="#alias_join_forcado">Alias com join forçado </a></br>
+<a href="#parametros">Parâmetros</a></br>
+<a href="#clausula_distinct">Cláusula distinct   </a></br>
+<a href="#associacao_many-to-many">Associação Many-to-many</a></br>
+<a href="#operador_in">Operador IN</a></br>
+<a href="#groupBy_agregacoes">Group By e Agregações</a></br>
+<a href="#auto-associacao">Auto-associação</a></br>
+<a href="#subqueries_parametros">Subqueries e parâmetros</a></br>
+<a href="#subqueries_query_externa">Subqueries com referência a query externa</a></br>
+<a href="#outer_join">Outer join</a></br>
+<a href="#by-pass_superclass">by-pass a SuperClasse</a></br>
+<a href="#condicao_complexa">Condição complexa</a></br>
+<a href="#parametros_nomeados_array">Parâmetros nomeados (com array)</a></br>
+<a href="#parametros_nomeados_objetos">Parâmetros nomeados (com objetos)</a>
+</blockquote>
+<a name="join_auto_expressoes"></a></br>
+* Join automatico e expressões
+<pre lang="php">public function criteriaMethod01() {
+        $criteria = $this->getCriteria()->
+                        select("*, (pessoa.nome || ' ' || pessoa.email) as nome")->
+                        where('pessoa.idPessoa = 1')->
+                        orderBy('pessoa.nome');
+        return $criteria;
+    }</pre>
+<pre lang="php">public function criteriaCommand01() {
+        $criteria = $this->getCriteria(
+                        "select *, (pessoa.nome || pessoa.email) as nome " .
+                        "where pessoa.idPessoa = 1 " .
+                        "order by pessoa.nome"
+        );
+        return $criteria;
+}</pre>
+
+<a name="join_auto_parametro"></a></br>
+* Join automático e parâmetro
+    <pre lang="php">public function criteriaMethod02($filter) {
+        $criteria = $this->getCriteria()->
+                        select('idUsuario, login, pessoa.nome')->
+                        where('login', '=', "'{$filter->login}'");
+        return $criteria;
+    }</pre>
+<pre lang="php">public function criteriaCommand02($filter) {
+        $criteria = $this->getCriteria(
+                        "select idUsuario, login, pessoa.nome " .
+                        "where login = '{$filter->login}'"
+        );
+        return $criteria;
+}</pre>
+<a name="join_forcado"></a></br>
+ * Join forçado  
+    <pre lang="php">public function criteriaMethod03($filter) {
+        $criteria = $this->getCriteria()->
+                        select('idUsuario, login')->
+                        join('usuario', 'pessoa', 'usuario.idPessoa=pessoa.idPessoa')->
+                        where('login', '=', '?')->
+                        parameters($filter->login);
+        return $criteria;
+    }</pre>
+ <pre lang="php">public function criteriaCommand03($filter) {
+        $criteria = $this->getCriteria(
+                        "select idUsuario, login " .
+                        "from usuario join pessoa on (usuario.idPessoa=pessoa.idPessoa) " .
+                        "where login = '{$filter->login}'"
+        );
+        return $criteria;
+}</pre>
+<a name="alias_join_automatico"></a></br>
+* Alias com join automatico
+    <pre lang="php">public function criteriaMethod04($filter) {
+        $criteria = $this->getCriteria()->
+                        select('U.idUsuario, P.nome')->
+                        where('U.login', '=', "'{$filter->login}'")->
+                        setAlias('U')->
+                        setAssociationAlias('pessoa', 'P');
+        return $criteria;
+    }</pre>
+<pre lang="php">public function criteriaCommand04($filter) {
+        $criteria = $this->getCriteria(
+                                "select U.idUsuario, P.nome " .
+                                "where U.login = '{$filter->login}'")->
+                        setAlias('U')->
+                        setAssociationAlias('pessoa', 'P');
+        return $criteria;
+}</pre>
+<a name="alias_join_forcado"></a></br>
+* Alias com join forçado 
+    <pre lang="php">public function criteriaMethod05($filter) {
+        $criteria = $this->getCriteria()->
+                        select('U.idUsuario, P.nome')->
+                        join('usuario U', 'pessoa P', 'U.idPessoa = P.idPessoa')->
+                        where('U.login', '=', "'{$filter->login}'");
+        return $criteria;
+    }</pre>
+<pre lang="php">public function criteriaCommand05($filter) {
+        $criteria = $this->getCriteria(
+                        "select U.idUsuario, P.nome " .
+                        "from usuario U join pessoa P on (U.idPessoa = P.idPessoa) " .
+                        "where (U.login = '{$filter->login}')"
+        );
+        return $criteria;
+}</pre>
+<a name="parametros"></a></br>
+* Parâmetros
+    <pre lang="php">public function criteriaMethod06() {
+        $criteria = $this->getCriteria()->
+                        select('U.idUsuario, P.nome')->
+                        join('usuario U', 'pessoa P', 'U.idPessoa = P.idPessoa')->
+                        where('U.login', '=', "?")->
+                        where('P.nome', 'LIKE', "?");
+        return $criteria;
+    }</pre>
+<pre lang="php">public function criteriaCommand06() {
+        $criteria = $this->getCriteria(
+                        "select U.idUsuario, P.nome " .
+                        "from usuario U join pessoa P on (U.idPessoa = P.idPessoa) " .
+                        "where (U.login = ?) and (P.nome LIKE ?)"
+        );
+        return $criteria;
+}</pre>
+<a name="clausula_distinct"></a></br>
+* Cláusula distinct   
+    <pre lang="php">public function criteriaMethod07() {
+        $criteria = $this->getCriteria()->
+                        select('P.nome')->
+                        distinct()->
+                        join('usuario U', 'pessoa P', 'U.idPessoa = P.idPessoa');
+        return $criteria;
+    }</pre>
+ <pre lang="php">public function criteriaCommand07() {
+        $criteria = $this->getCriteria(
+                        "select distinct P.nome " .
+                        "from usuario U join pessoa P on (U.idPessoa = P.idPessoa)"
+        );
+        return $criteria;
+}</pre>
+<a name="associacao_many-to-many"></a></br>
+* Associação Many-to-many
+    <pre lang="php">public function criteriaMethod08() {
+        $criteria = $this->getCriteria()->
+                        select('login, grupos.grupo');
+        return $criteria;
+    }</pre>
+ <pre lang="php">public function criteriaCommand08() {
+        $criteria = $this->getCriteria(
+                        "select login, grupos.grupo"
+        );
+        return $criteria;
+}</pre>
+<a name="groupBy_agregacoes"></a></br>
+* Group By e Agregações    
+<pre lang="php">public function criteriaMethod09() {
+        $criteria = $this->getCriteria()->
+                        select('grupos.grupo, count(idUsuario)')->
+                        groupBy('grupos.grupo')->
+                        having("count(idUsuario) > 5");
+        return $criteria;
+    }</pre>
+<pre lang="php">public function criteriaCommand09() {
+        $criteria = $this->getCriteria(
+                        "select grupos.grupo, count(idUsuario) " .
+                        "group by grupos.grupo " .
+                        "having count(idUsuario) > 5"
+        );
+        return $criteria;
+}</pre>
+<a name="operador_in"></a></br>
+* Operador IN
+    <pre lang="php">public function criteriaMethod10() {
+        $logins = array('abc', 'cde', 'fgf');
+        $criteria = $this->getCriteria()->
+                        select('login')->
+                        where('login', 'IN', $logins);
+        return $criteria;
+    }</pre>
+    <pre lang="php">public function criteriaCommand10() {
+        $logins = new \OperandArray(array('abc', 'cde', 'fgf'));
+        $criteria = $this->getCriteria(
+                        "select login " .
+                        "where login IN " . $logins->getSql()
+        );
+        return $criteria;
+}</pre>
+<a name="auto-associacao"></a></br>
+* Auto-associação
+    <pre lang="php">public function criteriaMethod11() {
+        $criteria = $this->getCriteria()->
+                        select('U1.login')->
+                        autoAssociation('U1', 'U2', 'U1.login = U2.login');
+        return $criteria;
+    }</pre>
+<pre lang="php">public function criteriaCommand11() {
+        $criteria = $this->getCriteria(
+                        "select U1.login " .
+                        "from usuario U1 join usuario U2 on (U1.login = U2.login)"
+        );
+        return $criteria;
+}</pre>
+<a name="subqueries_parametros"></a></br>
+* Subqueries e parâmetros
+    <pre lang="php">public function criteriaMethod12() {
+        $parameter = '4%';
+        $subCriteria = $this->getCriteria()->
+                        select('idUsuario')->
+                        where("login LIKE ?");
+        $criteria = $this->getCriteria()->
+                        select('login')->
+                        where('idUsuario', 'IN', $subCriteria)->
+                        parameters($parameter);
+        return $criteria;
+    }</pre>
+<pre lang="php">public function criteriaCommand12() {
+        $parameter = 'A%';
+        $criteria = $this->getCriteria(
+                        "select login " .
+                        "where idUsuario IN (" . "select idUsuario where login LIKE ?" . ")"
+                )->parameters($parameter);
+        return $criteria;
+}</pre>
+<a name="subqueries_query_externa"></a></br>
+* Subqueries com referência a query externa
+    <pre lang="php">public function criteriaMethod13() {
+        $subCriteria = $this->getCriteria()->
+                        select('count(idUsuario)')->
+                        where("idSetor = S.idSetor");
+        $setor = new Setor();
+        $criteria = $setor->getCriteria()->
+                        select('nome')->
+                        setAlias('S')->
+                        where($subCriteria, '>', '150');
+        return $criteria;
+    }</pre>
+<pre lang="php">public function criteriaCommand13() {
+        $setor = new Setor();
+        $criteria = $this->getCriteria(
+                                "select S.nome " .
+                                "from setor S " .
+                                "where (select count(U.idUsuario) from usuario U where U.idSetor = S.idSetor) > 150")->
+                        addClass('\exemplos\models\setor', 'S');
+        return $criteria;
+}</pre>
+<a name="outer_join"></a></br>
+* Outer join
+    <pre lang="php">public function criteriaMethod14() {
+        $setor = new Setor();
+        $criteria = $setor->getCriteria()->
+                        associationType('usuarios', 'left')->
+                        select('nome, count(usuarios.idUsuario)')->
+                        where("login like 'A%'")->
+                        groupBy('nome')->
+                        having("count(usuarios.idUsuario) = 0");
+        return $criteria;
+    }</pre>
+<pre lang="php">public function criteriaCommand14() {
+        $setor = new Setor();
+        $criteria = $setor->getCriteria(
+                        "select nome, count(usuarios.idUsuario) " .
+                        "where login like 'A%' " .
+                        "group by nome " .
+                        "having count(usuarios.idUsuario) = 0"
+                )->setAssociationType('usuarios', 'left');
+        return $criteria;
+}</pre>
+<a name="by-pass_superclass"></a></br>
+* by-pass a SuperClasse
+<pre lang="php">public function criteriaMethod15() {
+        $criteria = $this->getCriteria()->
+                        select('login,A.matricula')->
+                        join('usuario', 'aluno A', 'usuario.idPessoa=A.idPessoa', 'left');
+        return $criteria;
+    }</pre>
+ <pre lang="php">public function criteriaCommand15() {
+        $criteria = $this->getCriteria(
+                        "select login,A.matricula " .
+                        "from usuario left join aluno A on (usuario.idPessoa = A.idPessoa)"
+        );
+        return $criteria;
+}</pre>
+<a name="condicao_complexa"></a></br>
+* Condição complexa
+<pre lang="php">public function criteriaMethod16() {
+        $criteria = $this->getCriteria()->
+                        select('login')->
+                        condition(
+                                array('', 'login', 'LIKE', "'N%'"), array('AND', array(
+                                array('', 'login', 'LIKE', "'C%'"),
+                                array('OR', 'login', 'LIKE', "'D%'")
+                            )
+                                )
+        );
+        return $criteria;
+    }</pre>
+<pre lang="php">public function criteriaCommand16() {
+        $criteria = $this->getCriteria(
+                        "select login " .
+                        "where (login LIKE 'N%') or ((login LIKE 'C%') or (login LIKE 'D%'))"
+        );
+        return $criteria;
+}</pre>
+<a name="parametros_nomeados_array"></a></br>
+* Parâmetros nomeados (com array)
+    <pre lang="php">public function criteriaMethod17($filter) {
+        $filter->nome = '%NICK%';
+        $criteria = $this->getCriteria()->
+                        select('idUsuario, login')->
+                        where('upper(login)', 'LIKE', ':nome')->
+                        or_('upper(pessoa.nome)', 'LIKE', ':nome')->
+                        parameters(array('nome' => $filter->nome));
+        return $criteria;
+    }</pre>
+<a name="parametros_nomeados_objetos"></a></br>
+* Parâmetros nomeados (com objetos)
+    <pre lang="php">public function criteriaMethod18($filter) {
+        $filter->nome = '%NICK%';
+        $criteria = $this->getCriteria()->
+                        select('idUsuario, login')->
+                        where('upper(login)', 'LIKE', ':login')->
+                        or_('upper(pessoa.nome)', 'LIKE', ':nome')->
+                        parameters($filter);
+        return $criteria;
+    }</pre>
+</text>

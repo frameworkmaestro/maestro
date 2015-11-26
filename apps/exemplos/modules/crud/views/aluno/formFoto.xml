@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<view>
+    <mdialog id="dlgAlunoFoto" title="Foto" onClose="jQuery('#gridMainAluno').mgrid('reload');" state="open">
+        <mform id="formFoto">
+            <property labelClass="col-md-4" width="450px" border="false"/>
+            <fields>
+                <mhiddenfield id="idAluno"/>
+                <mimage id="imgFoto" label="Foto Atual" source="$this->data->url"/>
+                <mfilefield id="novaFoto" label="Nova Foto" width="300px" multiple="false" text="Selecionar Arquivo"/>            
+            </fields>
+            <data load="$this->data->object" />        
+            <buttons>
+                <mbutton id="btnPost" text="Salvar" action="@exemplos/crud/aluno/saveFoto/{{$this->data->object->idAluno}}"/>
+            </buttons>
+        </mform>
+    </mdialog>
+</view>

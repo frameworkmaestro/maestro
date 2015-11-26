@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formComponentContainer" title="Exemplo de Uso de Componentes">
+        <fields>
+            <mtextfield id="teste" label="Teste" value="" size="35" hint="hint" />
+            <include component="containerPessoa.xml"/>
+            <mtextfield id="bottom" label="Bottom" value="" size="35" hint="hint" />
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar" />
+        </buttons>
+    </mform>
+</view>

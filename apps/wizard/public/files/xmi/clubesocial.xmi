@@ -1,0 +1,2439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.0" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1">
+	<xmi:Documentation exporter="Visual Paradigm for UML" exporterVersion="7.0.1">
+		<xmi:Extension extender="Visual Paradigm for UML">
+			<nickname exportedFromDifferentName="false"/>
+		</xmi:Extension>
+	</xmi:Documentation>
+	<xmi:Extension extender="Visual Paradigm for UML">
+		<projectProperties>
+			<projectProperty name="company" value=""/>
+			<projectProperty name="author" value=""/>
+			<projectProperty name="description" value=""/>
+		</projectProperties>
+		<defaultClassDiagram value="SLONmCyGQgwmp.aT"/>
+		<defaultERD value="pw9jmCyGQgwmp23D"/>
+	</xmi:Extension>
+	<uml:Model name="ClubeSocial" xmi:id="kkkNmCyGQgwmp9jN">
+		<xmi:Extension extender="Visual Paradigm for UML">
+			<vpumlChildModels>
+				<vpumlModel id="UkkNmCyGQgwmp9ko" modelType="UseCasePropConfig">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="UseCasePropConfig"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+						<property name="pmLastModified" type="string" value="1323281383715"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="UkkNmCyGQgwmp9kx"/>
+						<modelRef value="UkkNmCyGQgwmp9k6"/>
+						<modelRef value="UkkNmCyGQgwmp9lD"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="UkkNmCyGQgwmp9kx" modelType="UseCaseRank">
+							<properties>
+								<property name="name" type="string" value="Low"/>
+								<property name="modelType" type="string" value="UseCaseRank"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+								<property name="pmLastModified" type="string" value="1323281383715"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="UkkNmCyGQgwmp9k6" modelType="UseCaseRank">
+							<properties>
+								<property name="name" type="string" value="Medium"/>
+								<property name="modelType" type="string" value="UseCaseRank"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+								<property name="pmLastModified" type="string" value="1323281383716"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="UkkNmCyGQgwmp9lD" modelType="UseCaseRank">
+							<properties>
+								<property name="name" type="string" value="High"/>
+								<property name="modelType" type="string" value="UseCaseRank"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+								<property name="pmLastModified" type="string" value="1323281383716"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="UkkNmCyGQgwmp9lM" modelType="WSDLContainer">
+					<properties>
+						<property name="name" type="string" value="WSDLContainer"/>
+						<property name="modelType" type="string" value="WSDLContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="UkkNmCyGQgwmp9lN"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="UkkNmCyGQgwmp9lN" modelType="XSDSchema">
+							<properties>
+								<property name="name" type="string" value="http://www.w3.org/2001/XMLSchema"/>
+								<property name="modelType" type="string" value="XSDSchema"/>
+								<property name="import" type="boolean" value="false"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+								<property name="pmLastModified" type="string" value="1323281383716"/>
+								<property name="attributeFormDefault" type="int" value="0"/>
+								<property name="elementFormDefault" type="int" value="0"/>
+								<property name="targetNamespace" type="string" value="http://www.w3.org/2001/XMLSchema"/>
+							</properties>
+							<vpumlChildModelRefs>
+								<modelRef value="UkkNmCyGQgwmp9lW"/>
+								<modelRef value="UkkNmCyGQgwmp9lf"/>
+								<modelRef value="UkkNmCyGQgwmp9lo"/>
+								<modelRef value="UkkNmCyGQgwmp9lx"/>
+								<modelRef value="UkkNmCyGQgwmp9l6"/>
+								<modelRef value="UkkNmCyGQgwmp9mD"/>
+								<modelRef value="UkkNmCyGQgwmp9mM"/>
+								<modelRef value="UkkNmCyGQgwmp9mV"/>
+								<modelRef value="UkkNmCyGQgwmp9me"/>
+								<modelRef value="0kkNmCyGQgwmp9mn"/>
+								<modelRef value="0kkNmCyGQgwmp9mw"/>
+								<modelRef value="0kkNmCyGQgwmp9m5"/>
+								<modelRef value="0kkNmCyGQgwmp9nC"/>
+								<modelRef value="0kkNmCyGQgwmp9nL"/>
+								<modelRef value="0kkNmCyGQgwmp9nU"/>
+								<modelRef value="0kkNmCyGQgwmp9nd"/>
+								<modelRef value="0kkNmCyGQgwmp9nm"/>
+								<modelRef value="0kkNmCyGQgwmp9nv"/>
+								<modelRef value="0kkNmCyGQgwmp9n4"/>
+								<modelRef value="0kkNmCyGQgwmp9oB"/>
+								<modelRef value="0kkNmCyGQgwmp9oK"/>
+								<modelRef value="0kkNmCyGQgwmp9oT"/>
+								<modelRef value="0kkNmCyGQgwmp9oc"/>
+								<modelRef value="0kkNmCyGQgwmp9ol"/>
+								<modelRef value="0kkNmCyGQgwmp9ou"/>
+								<modelRef value="0kkNmCyGQgwmp9o3"/>
+								<modelRef value="MkkNmCyGQgwmp9pA"/>
+								<modelRef value="MkkNmCyGQgwmp9pJ"/>
+								<modelRef value="MkkNmCyGQgwmp9pS"/>
+								<modelRef value="MkkNmCyGQgwmp9pb"/>
+								<modelRef value="MkkNmCyGQgwmp9pk"/>
+								<modelRef value="MkkNmCyGQgwmp9pt"/>
+								<modelRef value="MkkNmCyGQgwmp9p2"/>
+								<modelRef value="MkkNmCyGQgwmp9p_"/>
+								<modelRef value="MkkNmCyGQgwmp9qI"/>
+								<modelRef value="MkkNmCyGQgwmp9qR"/>
+								<modelRef value="MkkNmCyGQgwmp9qa"/>
+								<modelRef value="MkkNmCyGQgwmp9qj"/>
+								<modelRef value="MkkNmCyGQgwmp9qs"/>
+								<modelRef value="MkkNmCyGQgwmp9q1"/>
+								<modelRef value="MkkNmCyGQgwmp9q."/>
+								<modelRef value="MkkNmCyGQgwmp9rH"/>
+								<modelRef value="MkkNmCyGQgwmp9rQ"/>
+								<modelRef value="MkkNmCyGQgwmp9rZ"/>
+							</vpumlChildModelRefs>
+							<vpumlChildModels>
+								<vpumlModel id="UkkNmCyGQgwmp9lW" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="ENTITIES"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="UkkNmCyGQgwmp9lf" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="ENTITY"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="UkkNmCyGQgwmp9lo" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="ID"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="UkkNmCyGQgwmp9lx" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="IDREF"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="UkkNmCyGQgwmp9l6" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="IDREFS"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="UkkNmCyGQgwmp9mD" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="NCName"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="UkkNmCyGQgwmp9mM" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="NMTOKEN"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="UkkNmCyGQgwmp9mV" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="NMTOKENS"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929354"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="UkkNmCyGQgwmp9me" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="NOTATION"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9mn" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="Name"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9mw" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="QName"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9m5" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="anyURI"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9nC" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="base64Binary"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9nL" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="boolean"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9nU" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="byte"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9nd" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="date"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9nm" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="dateTime"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9nv" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="decimal"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9n4" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="double"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9oB" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="duration"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9oK" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="float"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9oT" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="gDay"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9oc" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="gMonth"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9ol" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="gMonthDay"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9ou" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="gYear"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="0kkNmCyGQgwmp9o3" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="gYearMonth"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929355"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9pA" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="hexBinary"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9pJ" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="int"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9pS" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="integer"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9pb" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="language"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9pk" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="long"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9pt" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="negativeInteger"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9p2" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="nonNegativeInteger"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9p_" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="nonPositiveInteger"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9qI" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="normalizedString"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9qR" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="positiveInteger"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9qa" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="short"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9qj" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="string"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9qs" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="time"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9q1" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="token"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9q." modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="unsignedByte"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9rH" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="unsignedInt"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9rQ" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="unsignedLong"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="MkkNmCyGQgwmp9rZ" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="unsignedShort"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1323280929356"/>
+										<property name="pmLastModified" type="string" value="1323281383716"/>
+									</properties>
+								</vpumlModel>
+							</vpumlChildModels>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="skkNmCyGQgwmp9ri" modelType="PMStatusContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMStatusContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="skkNmCyGQgwmp9rj"/>
+						<modelRef value="skkNmCyGQgwmp9rk"/>
+						<modelRef value="skkNmCyGQgwmp9rl"/>
+						<modelRef value="skkNmCyGQgwmp9rm"/>
+						<modelRef value="skkNmCyGQgwmp9rn"/>
+						<modelRef value="skkNmCyGQgwmp9ro"/>
+						<modelRef value="skkNmCyGQgwmp9rp"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="skkNmCyGQgwmp9rj" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Proposed"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9rk" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Approved"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9rl" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Planned"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9rm" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Designed"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9rn" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Implemented"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9ro" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Tested"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9rp" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Deployed"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="skkNmCyGQgwmp9rq" modelType="PMDifficultyContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMDifficultyContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="skkNmCyGQgwmp9rr"/>
+						<modelRef value="skkNmCyGQgwmp9rs"/>
+						<modelRef value="skkNmCyGQgwmp9rt"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="skkNmCyGQgwmp9rr" modelType="PMDifficulty">
+							<properties>
+								<property name="name" type="string" value="Easy"/>
+								<property name="modelType" type="string" value="PMDifficulty"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9rs" modelType="PMDifficulty">
+							<properties>
+								<property name="name" type="string" value="Medium"/>
+								<property name="modelType" type="string" value="PMDifficulty"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9rt" modelType="PMDifficulty">
+							<properties>
+								<property name="name" type="string" value="Difficult"/>
+								<property name="modelType" type="string" value="PMDifficulty"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="skkNmCyGQgwmp9ru" modelType="PMPriorityContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMPriorityContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="skkNmCyGQgwmp9rv"/>
+						<modelRef value="skkNmCyGQgwmp9rw"/>
+						<modelRef value="skkNmCyGQgwmp9rx"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="skkNmCyGQgwmp9rv" modelType="PMPriority">
+							<properties>
+								<property name="name" type="string" value="Low"/>
+								<property name="modelType" type="string" value="PMPriority"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9rw" modelType="PMPriority">
+							<properties>
+								<property name="name" type="string" value="Medium"/>
+								<property name="modelType" type="string" value="PMPriority"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9rx" modelType="PMPriority">
+							<properties>
+								<property name="name" type="string" value="High"/>
+								<property name="modelType" type="string" value="PMPriority"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="skkNmCyGQgwmp9ry" modelType="PMVersionContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMVersionContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="skkNmCyGQgwmp9rz"/>
+						<modelRef value="skkNmCyGQgwmp9r0"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="skkNmCyGQgwmp9rz" modelType="PMVersion">
+							<properties>
+								<property name="name" type="string" value="1.0"/>
+								<property name="modelType" type="string" value="PMVersion"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9r0" modelType="PMVersion">
+							<properties>
+								<property name="name" type="string" value="2.0"/>
+								<property name="modelType" type="string" value="PMVersion"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="skkNmCyGQgwmp9r1" modelType="PMIterationContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMIterationContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="skkNmCyGQgwmp9r2"/>
+						<modelRef value="skkNmCyGQgwmp9r3"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="skkNmCyGQgwmp9r2" modelType="PMIteration">
+							<properties>
+								<property name="name" type="string" value="Iteration 1"/>
+								<property name="modelType" type="string" value="PMIteration"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9r3" modelType="PMIteration">
+							<properties>
+								<property name="name" type="string" value="Iteration 2"/>
+								<property name="modelType" type="string" value="PMIteration"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="skkNmCyGQgwmp9r4" modelType="PMPhaseContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMPhaseContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="skkNmCyGQgwmp9r5"/>
+						<modelRef value="skkNmCyGQgwmp9r6"/>
+						<modelRef value="skkNmCyGQgwmp9r7"/>
+						<modelRef value="skkNmCyGQgwmp9r8"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="skkNmCyGQgwmp9r5" modelType="PMPhase">
+							<properties>
+								<property name="name" type="string" value="Inception"/>
+								<property name="modelType" type="string" value="PMPhase"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9r6" modelType="PMPhase">
+							<properties>
+								<property name="name" type="string" value="Elaboration"/>
+								<property name="modelType" type="string" value="PMPhase"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9r7" modelType="PMPhase">
+							<properties>
+								<property name="name" type="string" value="Construction"/>
+								<property name="modelType" type="string" value="PMPhase"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="skkNmCyGQgwmp9r8" modelType="PMPhase">
+							<properties>
+								<property name="name" type="string" value="Transition"/>
+								<property name="modelType" type="string" value="PMPhase"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="skkNmCyGQgwmp9r9" modelType="PMDisciplineContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMDisciplineContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="skkNmCyGQgwmp9r."/>
+						<modelRef value="ckkNmCyGQgwmp9r_"/>
+						<modelRef value="ckkNmCyGQgwmp9sA"/>
+						<modelRef value="ckkNmCyGQgwmp9sB"/>
+						<modelRef value="ckkNmCyGQgwmp9sC"/>
+						<modelRef value="ckkNmCyGQgwmp9sD"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="skkNmCyGQgwmp9r." modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="Business Modeling"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="ckkNmCyGQgwmp9r_" modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="Requirements"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="ckkNmCyGQgwmp9sA" modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="Analysis &amp; Design"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="ckkNmCyGQgwmp9sB" modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="Implementation"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="ckkNmCyGQgwmp9sC" modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="Testing"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="ckkNmCyGQgwmp9sD" modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="QA &amp; Maintenance"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="ckkNmCyGQgwmp9sE" modelType="PMAuthorContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMAuthorContainer"/>
+						<property modelRef="ckkNmCyGQgwmp9sF" name="defaultValue" type="modelRef"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="ckkNmCyGQgwmp9sF"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="ckkNmCyGQgwmp9sF" modelType="ValueSpecification">
+							<properties>
+								<property name="name" type="string" value="ematos"/>
+								<property name="modelType" type="string" value="ValueSpecification"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmCreateDateTime" type="string" value="1323280929358"/>
+								<property name="pmLastModified" type="string" value="1323281383718"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="ckkNmCyGQgwmp9sO" modelType="BRKeywords">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="BRKeywords"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1323280929358"/>
+						<property name="pmLastModified" type="string" value="1323281383718"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="ckkNmCyGQgwmp9sX"/>
+						<modelRef value="ckkNmCyGQgwmp9sg"/>
+						<modelRef value="ckkNmCyGQgwmp9sp"/>
+						<modelRef value="ckkNmCyGQgwmp9sy"/>
+						<modelRef value="ckkNmCyGQgwmp9s7"/>
+						<modelRef value="8kkNmCyGQgwmp9tE"/>
+						<modelRef value="8kkNmCyGQgwmp9tN"/>
+						<modelRef value="8kkNmCyGQgwmp9tW"/>
+						<modelRef value="8kkNmCyGQgwmp9tf"/>
+						<modelRef value="8kkNmCyGQgwmp9to"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="ckkNmCyGQgwmp9sX" modelType="BRKeyword">
+							<properties>
+								<property name="name" type="string" value="must"/>
+								<property name="modelType" type="string" value="BRKeyword"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929358"/>
+								<property name="pmLastModified" type="string" value="1323281383718"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="ckkNmCyGQgwmp9sg" modelType="BRKeyword">
+							<properties>
+								<property name="name" type="string" value="must be"/>
+								<property name="modelType" type="string" value="BRKeyword"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929358"/>
+								<property name="pmLastModified" type="string" value="1323281383718"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="ckkNmCyGQgwmp9sp" modelType="BRKeyword">
+							<properties>
+								<property name="name" type="string" value="if"/>
+								<property name="modelType" type="string" value="BRKeyword"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929358"/>
+								<property name="pmLastModified" type="string" value="1323281383718"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="ckkNmCyGQgwmp9sy" modelType="BRKeyword">
+							<properties>
+								<property name="name" type="string" value="when"/>
+								<property name="modelType" type="string" value="BRKeyword"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929358"/>
+								<property name="pmLastModified" type="string" value="1323281383718"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="ckkNmCyGQgwmp9s7" modelType="BRKeyword">
+							<properties>
+								<property name="name" type="string" value="must not"/>
+								<property name="modelType" type="string" value="BRKeyword"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929358"/>
+								<property name="pmLastModified" type="string" value="1323281383718"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="8kkNmCyGQgwmp9tE" modelType="BRKeyword">
+							<properties>
+								<property name="name" type="string" value="only"/>
+								<property name="modelType" type="string" value="BRKeyword"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929359"/>
+								<property name="pmLastModified" type="string" value="1323281383718"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="8kkNmCyGQgwmp9tN" modelType="BRKeyword">
+							<properties>
+								<property name="name" type="string" value="may"/>
+								<property name="modelType" type="string" value="BRKeyword"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929359"/>
+								<property name="pmLastModified" type="string" value="1323281383718"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="8kkNmCyGQgwmp9tW" modelType="BRKeyword">
+							<properties>
+								<property name="name" type="string" value="may not"/>
+								<property name="modelType" type="string" value="BRKeyword"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929359"/>
+								<property name="pmLastModified" type="string" value="1323281383718"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="8kkNmCyGQgwmp9tf" modelType="BRKeyword">
+							<properties>
+								<property name="name" type="string" value="need"/>
+								<property name="modelType" type="string" value="BRKeyword"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929359"/>
+								<property name="pmLastModified" type="string" value="1323281383718"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="8kkNmCyGQgwmp9to" modelType="BRKeyword">
+							<properties>
+								<property name="name" type="string" value="need not"/>
+								<property name="modelType" type="string" value="BRKeyword"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323280929359"/>
+								<property name="pmLastModified" type="string" value="1323281383718"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="OIHtmCyGQgwmp15P" modelType="AutoAttributeTypeModelContainer">
+					<properties>
+						<property name="name" type="string" value="AutoAttributeTypeModelContainer"/>
+						<property name="modelType" type="string" value="AutoAttributeTypeModelContainer"/>
+						<property name="autoAttributes" type="models">
+							<vpumlModels>
+								<vpumlModel id="teLtmCyGQgwmp1Pn" modelType="AutoAttributeTypeModel">
+									<properties>
+										<property name="name" type="string" value="idSocio"/>
+										<property name="modelType" type="string" value="AutoAttributeTypeModel"/>
+										<property name="type" type="string" value="integer"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="VWvtmCyGQgwmp2O4" modelType="AutoAttributeTypeModel">
+									<properties>
+										<property name="name" type="string" value="idMensalidade"/>
+										<property name="modelType" type="string" value="AutoAttributeTypeModel"/>
+										<property name="type" type="string" value="integer"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="WzAdmCyGQgwmp2gJ" modelType="AutoAttributeTypeModel">
+									<properties>
+										<property name="name" type="string" value="dataVencimento"/>
+										<property name="modelType" type="string" value="AutoAttributeTypeModel"/>
+										<property name="type" type="string" value="date"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="RlIdmCyGQgwmp3DS" modelType="AutoAttributeTypeModel">
+									<properties>
+										<property name="name" type="string" value="valorTotal"/>
+										<property name="modelType" type="string" value="AutoAttributeTypeModel"/>
+										<property name="type" type="string" value="date"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="QqYdmCyGQgwmp3Xz" modelType="AutoAttributeTypeModel">
+									<properties>
+										<property name="name" type="string" value="dataPagamento"/>
+										<property name="modelType" type="string" value="AutoAttributeTypeModel"/>
+										<property name="type" type="string" value="date"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="RhGdmCyGQgwmp5yY" modelType="AutoAttributeTypeModel">
+									<properties>
+										<property name="name" type="string" value="atrasado"/>
+										<property name="modelType" type="string" value="AutoAttributeTypeModel"/>
+										<property name="type" type="string" value="bool"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="o5WdmCyGQgwmp6Ji" modelType="AutoAttributeTypeModel">
+									<properties>
+										<property name="name" type="string" value="juros"/>
+										<property name="modelType" type="string" value="AutoAttributeTypeModel"/>
+										<property name="type" type="string" value="float"/>
+									</properties>
+								</vpumlModel>
+							</vpumlModels>
+						</property>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="hlsjmCyGQgwmp2md" modelType="AutoColumnTypeModelContainer">
+					<properties>
+						<property name="name" type="string" value="AutoColumnTypeModelContainer"/>
+						<property name="modelType" type="string" value="AutoColumnTypeModelContainer"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="Co89mCyGQgwmp4Jd" modelType="ModelRelationshipContainer">
+					<properties>
+						<property name="name" type="string" value="relatioships"/>
+						<property name="modelType" type="string" value="ModelRelationshipContainer"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1323281740113"/>
+						<property name="pmLastModified" type="string" value="1323282442506"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="io89mCyGQgwmp4Jm"/>
+						<modelRef value="4JXjmCyGQgwmp3a9"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="io89mCyGQgwmp4Jm" modelType="ModelRelationshipContainer">
+							<properties>
+								<property name="name" type="string" value="Association"/>
+								<property name="modelType" type="string" value="ModelRelationshipContainer"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323281740113"/>
+								<property name="pmLastModified" type="string" value="1323281740115"/>
+							</properties>
+							<vpumlChildModelRefs>
+								<modelRef value="H2JdmCyGQgwmp9rd"/>
+							</vpumlChildModelRefs>
+						</vpumlModel>
+						<vpumlModel id="4JXjmCyGQgwmp3a9" modelType="ModelRelationshipContainer">
+							<properties>
+								<property name="name" type="string" value="DBForeignKey"/>
+								<property name="modelType" type="string" value="ModelRelationshipContainer"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="ematos"/>
+								<property name="pmCreateDateTime" type="string" value="1323282442503"/>
+								<property name="pmLastModified" type="string" value="1323282636141"/>
+							</properties>
+							<vpumlChildModelRefs>
+								<modelRef value=".D8jmCyGQgwmp2wM"/>
+							</vpumlChildModelRefs>
+							<vpumlChildModels>
+								<ownedMember from="mD8jmCyGQgwmp2tY" fromMultiplicity="1" fromPhrase="socio" identifying="false" name="fk_AD_MENSALIDADE_AD_SOCIO" relationshipEndModel="H2JdmCyGQgwmp9rg" syncType="0" to="uD8jmCyGQgwmp2ux" toMultiplicity="0..*" toPhrase="mensalidades" xmi:id=".D8jmCyGQgwmp2wM" xmi:type="dbForeignKey"/>
+							</vpumlChildModels>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="aqq4EAyGQgwmpwO4" modelType="ValueSpecification">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="ValueSpecification"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+						<property name="pmLastModified" type="string" value="1323281383718"/>
+						<property name="value" type="textModel" value="Summary"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="aqq4EAyGQgwmpwPB" modelType="ValueSpecification">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="ValueSpecification"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+						<property name="pmLastModified" type="string" value="1323281383718"/>
+						<property name="value" type="textModel" value="User"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="aqq4EAyGQgwmpwPK" modelType="ValueSpecification">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="ValueSpecification"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+						<property name="pmLastModified" type="string" value="1323281383718"/>
+						<property name="value" type="textModel" value="Subfunction"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="aqq4EAyGQgwmpwPT" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="Complexity"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+						<property name="pmLastModified" type="string" value="1323281383718"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="2"/>
+						<property modelRef="aqq4EAyGQgwmpwOl" name="tagDefStereotype" type="modelRef"/>
+						<property name="enumerationValues" type="models">
+							<vpumlModels>
+								<vpumlModel id="aqq4EAyGQgwmpwPc" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Low"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="aqq4EAyGQgwmpwPl" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Medium"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="aqq4EAyGQgwmpwPu" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="High"/>
+									</properties>
+								</vpumlModel>
+							</vpumlModels>
+						</property>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="aqq4EAyGQgwmpwP3" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="Use Case Status"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+						<property name="pmLastModified" type="string" value="1323281383718"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="2"/>
+						<property modelRef="aqq4EAyGQgwmpwOl" name="tagDefStereotype" type="modelRef"/>
+						<property name="enumerationValues" type="models">
+							<vpumlModels>
+								<vpumlModel id="aqq4EAyGQgwmpwQA" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Name Only"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="aqq4EAyGQgwmpwQJ" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Initial"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="aqq4EAyGQgwmpwQS" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Base"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="aqq4EAyGQgwmpwQb" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Complete"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="aqq4EAyGQgwmpwQk" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Deferred"/>
+									</properties>
+								</vpumlModel>
+							</vpumlModels>
+						</property>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="aqq4EAyGQgwmpwQt" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="Implementation Status"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+						<property name="pmLastModified" type="string" value="1323281383718"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="2"/>
+						<property modelRef="aqq4EAyGQgwmpwOl" name="tagDefStereotype" type="modelRef"/>
+						<property name="enumerationValues" type="models">
+							<vpumlModels>
+								<vpumlModel id="aqq4EAyGQgwmpwQ2" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Scheduled"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="aqq4EAyGQgwmpwQ_" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Started"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="aqq4EAyGQgwmpwRI" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Partially Complete"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="aqq4EAyGQgwmpwRR" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Complete"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="aqq4EAyGQgwmpwRa" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+										<property name="pmLastModified" type="string" value="1323281383718"/>
+										<property name="value" type="textModel" value="Partially Deferred"/>
+									</properties>
+								</vpumlModel>
+							</vpumlModels>
+						</property>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="aqq4EAyGQgwmpwRj" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="Preconditions"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+						<property name="pmLastModified" type="string" value="1323281383718"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="4"/>
+						<property modelRef="aqq4EAyGQgwmpwOl" name="tagDefStereotype" type="modelRef"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="aqq4EAyGQgwmpwRs" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="Post-conditions"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+						<property name="pmLastModified" type="string" value="1323281383719"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="4"/>
+						<property modelRef="aqq4EAyGQgwmpwOl" name="tagDefStereotype" type="modelRef"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="aqq4EAyGQgwmpwR1" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="Author"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+						<property name="pmLastModified" type="string" value="1323281383719"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="0"/>
+						<property modelRef="aqq4EAyGQgwmpwOl" name="tagDefStereotype" type="modelRef"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="aqq4EAyGQgwmpwR." modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="Assumptions"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806198102"/>
+						<property name="pmLastModified" type="string" value="1323281383719"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="4"/>
+						<property modelRef="aqq4EAyGQgwmpwOl" name="tagDefStereotype" type="modelRef"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="pMq4EAyGQgwmpwAZ" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="ID"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806197541"/>
+						<property name="pmLastModified" type="string" value="1323281383719"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="0"/>
+						<property modelRef="oMq4EAyGQgwmpwAE" name="tagDefStereotype" type="modelRef"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="pMq4EAyGQgwmpwAi" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="source"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806197541"/>
+						<property name="pmLastModified" type="string" value="1323281383719"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="0"/>
+						<property modelRef="oMq4EAyGQgwmpwAE" name="tagDefStereotype" type="modelRef"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="pMq4EAyGQgwmpwAr" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="kind"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806197541"/>
+						<property name="pmLastModified" type="string" value="1323281383719"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="2"/>
+						<property modelRef="oMq4EAyGQgwmpwAE" name="tagDefStereotype" type="modelRef"/>
+						<property name="enumerationValues" type="models">
+							<vpumlModels>
+								<vpumlModel id="LMq4EAyGQgwmpwA1" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Functional"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwA." modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Performance"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwBH" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Interface"/>
+									</properties>
+								</vpumlModel>
+							</vpumlModels>
+						</property>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="LMq4EAyGQgwmpwBQ" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="verifyMethod"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+						<property name="pmLastModified" type="string" value="1323281383719"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="2"/>
+						<property modelRef="oMq4EAyGQgwmpwAE" name="tagDefStereotype" type="modelRef"/>
+						<property name="enumerationValues" type="models">
+							<vpumlModels>
+								<vpumlModel id="LMq4EAyGQgwmpwBZ" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Analysis"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwBi" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Demonstration"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwBr" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Inspection"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwB0" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Test"/>
+									</properties>
+								</vpumlModel>
+							</vpumlModels>
+						</property>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="LMq4EAyGQgwmpwB9" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="risk"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+						<property name="pmLastModified" type="string" value="1323281383719"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="2"/>
+						<property modelRef="oMq4EAyGQgwmpwAE" name="tagDefStereotype" type="modelRef"/>
+						<property name="enumerationValues" type="models">
+							<vpumlModels>
+								<vpumlModel id="LMq4EAyGQgwmpwCG" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="High"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwCP" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Medium"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwCY" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Low"/>
+									</properties>
+								</vpumlModel>
+							</vpumlModels>
+						</property>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="LMq4EAyGQgwmpwCh" modelType="TaggedValueDefinition">
+					<properties>
+						<property name="name" type="string" value="status"/>
+						<property name="modelType" type="string" value="TaggedValueDefinition"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="ematos"/>
+						<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+						<property name="pmLastModified" type="string" value="1323281383719"/>
+						<property name="defaultValue" type="string" value=""/>
+						<property name="defaultHTMLValue" type="string" value=""/>
+						<property name="type" type="int" value="2"/>
+						<property modelRef="oMq4EAyGQgwmpwAE" name="tagDefStereotype" type="modelRef"/>
+						<property name="enumerationValues" type="models">
+							<vpumlModels>
+								<vpumlModel id="LMq4EAyGQgwmpwCq" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Proposed"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwCz" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Approved"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwC8" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Rejected"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwDF" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Deferred"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwDO" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Implemented"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwDX" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Mandatory"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="LMq4EAyGQgwmpwDg" modelType="ValueSpecification">
+									<properties>
+										<property name="name" type="string" value=""/>
+										<property name="modelType" type="string" value="ValueSpecification"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="ematos"/>
+										<property name="pmCreateDateTime" type="string" value="1305806197556"/>
+										<property name="pmLastModified" type="string" value="1323281383719"/>
+										<property name="value" type="textModel" value="Obsolete"/>
+									</properties>
+								</vpumlModel>
+							</vpumlModels>
+						</property>
+					</properties>
+				</vpumlModel>
+			</vpumlChildModels>
+		</xmi:Extension>
+		<ownedMember name="UseCase" xmi:id="UseCase_UseCase_id" xmi:type="uml:Stereotype">
+			<xmi:Extension extender="Visual Paradigm for UML">
+				<baseType value="UseCase"/>
+				<taggedValueDefinitions>
+					<taggedValueDefinition htmlValue="" id="aqq4EAyGQgwmpwOv" name="Level" type="2" value="">
+						<value id="aqq4EAyGQgwmpwO4" value="Summary"/>
+						<value id="aqq4EAyGQgwmpwPB" value="User"/>
+						<value id="aqq4EAyGQgwmpwPK" value="Subfunction"/>
+					</taggedValueDefinition>
+					<taggedValueDefinition htmlValue="" id="aqq4EAyGQgwmpwPT" name="Complexity" type="2" value="">
+						<value id="aqq4EAyGQgwmpwPc" value="Low"/>
+						<value id="aqq4EAyGQgwmpwPl" value="Medium"/>
+						<value id="aqq4EAyGQgwmpwPu" value="High"/>
+					</taggedValueDefinition>
+					<taggedValueDefinition htmlValue="" id="aqq4EAyGQgwmpwP3" name="Use Case Status" type="2" value="">
+						<value id="aqq4EAyGQgwmpwQA" value="Name Only"/>
+						<value id="aqq4EAyGQgwmpwQJ" value="Initial"/>
+						<value id="aqq4EAyGQgwmpwQS" value="Base"/>
+						<value id="aqq4EAyGQgwmpwQb" value="Complete"/>
+						<value id="aqq4EAyGQgwmpwQk" value="Deferred"/>
+					</taggedValueDefinition>
+					<taggedValueDefinition htmlValue="" id="aqq4EAyGQgwmpwQt" name="Implementation Status" type="2" value="">
+						<value id="aqq4EAyGQgwmpwQ2" value="Scheduled"/>
+						<value id="aqq4EAyGQgwmpwQ_" value="Started"/>
+						<value id="aqq4EAyGQgwmpwRI" value="Partially Complete"/>
+						<value id="aqq4EAyGQgwmpwRR" value="Complete"/>
+						<value id="aqq4EAyGQgwmpwRa" value="Partially Deferred"/>
+					</taggedValueDefinition>
+					<taggedValueDefinition htmlValue="" id="aqq4EAyGQgwmpwRj" name="Preconditions" type="4" value=""/>
+					<taggedValueDefinition htmlValue="" id="aqq4EAyGQgwmpwRs" name="Post-conditions" type="4" value=""/>
+					<taggedValueDefinition htmlValue="" id="aqq4EAyGQgwmpwR1" name="Author" type="0" value=""/>
+					<taggedValueDefinition htmlValue="" id="aqq4EAyGQgwmpwR." name="Assumptions" type="4" value=""/>
+				</taggedValueDefinitions>
+			</xmi:Extension>
+		</ownedMember>
+		<ownedMember name="requirement" xmi:id="Requirement_requirement_id" xmi:type="uml:Stereotype">
+			<xmi:Extension extender="Visual Paradigm for UML">
+				<baseType value="Requirement"/>
+				<taggedValueDefinitions>
+					<taggedValueDefinition htmlValue="" id="pMq4EAyGQgwmpwAQ" name="Text" type="3" value=""/>
+					<taggedValueDefinition htmlValue="" id="pMq4EAyGQgwmpwAZ" name="ID" type="0" value=""/>
+					<taggedValueDefinition htmlValue="" id="pMq4EAyGQgwmpwAi" name="source" type="0" value=""/>
+					<taggedValueDefinition htmlValue="" id="pMq4EAyGQgwmpwAr" name="kind" type="2" value="">
+						<value id="LMq4EAyGQgwmpwA1" value="Functional"/>
+						<value id="LMq4EAyGQgwmpwA." value="Performance"/>
+						<value id="LMq4EAyGQgwmpwBH" value="Interface"/>
+					</taggedValueDefinition>
+					<taggedValueDefinition htmlValue="" id="LMq4EAyGQgwmpwBQ" name="verifyMethod" type="2" value="">
+						<value id="LMq4EAyGQgwmpwBZ" value="Analysis"/>
+						<value id="LMq4EAyGQgwmpwBi" value="Demonstration"/>
+						<value id="LMq4EAyGQgwmpwBr" value="Inspection"/>
+						<value id="LMq4EAyGQgwmpwB0" value="Test"/>
+					</taggedValueDefinition>
+					<taggedValueDefinition htmlValue="" id="LMq4EAyGQgwmpwB9" name="risk" type="2" value="">
+						<value id="LMq4EAyGQgwmpwCG" value="High"/>
+						<value id="LMq4EAyGQgwmpwCP" value="Medium"/>
+						<value id="LMq4EAyGQgwmpwCY" value="Low"/>
+					</taggedValueDefinition>
+					<taggedValueDefinition htmlValue="" id="LMq4EAyGQgwmpwCh" name="status" type="2" value="">
+						<value id="LMq4EAyGQgwmpwCq" value="Proposed"/>
+						<value id="LMq4EAyGQgwmpwCz" value="Approved"/>
+						<value id="LMq4EAyGQgwmpwC8" value="Rejected"/>
+						<value id="LMq4EAyGQgwmpwDF" value="Deferred"/>
+						<value id="LMq4EAyGQgwmpwDO" value="Implemented"/>
+						<value id="LMq4EAyGQgwmpwDX" value="Mandatory"/>
+						<value id="LMq4EAyGQgwmpwDg" value="Obsolete"/>
+					</taggedValueDefinition>
+				</taggedValueDefinitions>
+			</xmi:Extension>
+		</ownedMember>
+		<ownedMember isAbstract="false" isLeaf="false" name="UFJF" visibility="public" xmi:id="Nt8NmCyGQgwmp.S3" xmi:type="uml:Package">
+			<xmi:Extension extender="Visual Paradigm for UML">
+				<isRoot xmi:value="false"/>
+			</xmi:Extension>
+			<ownedMember isAbstract="false" isLeaf="false" name="ClubeSocial_Tabelas" visibility="public" xmi:id=".0GTmCyGQgwmpz7I" xmi:type="uml:Package">
+				<xmi:Extension extender="Visual Paradigm for UML">
+					<isRoot xmi:value="false"/>
+					<subdiagram xmi:value="pw9jmCyGQgwmp23D"/>
+				</xmi:Extension>
+				<ownedMember classModel="SqitmCyGQgwmpxH." ddlClauses="" name="AD_MENSALIDADE" ormSyncState="1" primaryKeyConstraintName="pk_AD_MENSALIDADE" schema="" syncType="0" type="0" xmi:id="uD8jmCyGQgwmp2ux" xmi:type="dbTable">
+					<childrens>
+						<ownedMember attributeModel="za3tmCyGQgwmp1_c" idGenerator="native" length="10" name="idMensalidade" nullable="true" primaryKey="true" scale="0" syncType="0" type="9" unique="false" xmi:id="uD8jmCyGQgwmp2vC" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember idGenerator="native" length="10" name="idSocio" nullable="true" primaryKey="false" scale="0" syncType="1" type="9" unique="false" xmi:id=".D8jmCyGQgwmp2wW" xmi:type="dbColumn">
+							<foreignKeyConstraints>
+								<ownedMember foreignKey=".D8jmCyGQgwmp2wM" name="" refColumn="2D8jmCyGQgwmp2tp" xmi:id=".D8jmCyGQgwmp2wf" xmi:type="dbForeignKeyConstraint"/>
+							</foreignKeyConstraints>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="1WvtmCyGQgwmp2PJ" idGenerator="native" length="0" name="dataVencimento" nullable="true" primaryKey="false" scale="0" syncType="0" type="17" unique="false" xmi:id="eD8jmCyGQgwmp2vM" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="WzAdmCyGQgwmp2ga" idGenerator="native" length="10" name="valorTotal" nullable="true" primaryKey="false" scale="0" syncType="0" type="9" unique="false" xmi:id="eD8jmCyGQgwmp2vW" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="RlIdmCyGQgwmp3Dr" idGenerator="native" length="0" name="dataPagamento" nullable="true" primaryKey="false" scale="0" syncType="0" type="17" unique="false" xmi:id="eD8jmCyGQgwmp2vg" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="QqYdmCyGQgwmp3YU" idGenerator="native" length="10" name="valorPago" nullable="true" primaryKey="false" scale="0" syncType="0" type="9" unique="false" xmi:id="eD8jmCyGQgwmp2vq" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="kFSdmCyGQgwmp5SM" idGenerator="native" length="0" name="atrasado" nullable="false" primaryKey="false" scale="0" syncType="0" type="1" unique="false" xmi:id="eD8jmCyGQgwmp2v0" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="RhGdmCyGQgwmp5zJ" idGenerator="native" length="10" name="juros" nullable="false" primaryKey="false" scale="0" syncType="0" type="4" unique="false" xmi:id=".D8jmCyGQgwmp2v." xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+					</childrens>
+				</ownedMember>
+				<ownedMember classModel="LbfNmCyGQgwmp.ab" ddlClauses="" name="AD_SOCIO" ormSyncState="1" primaryKeyConstraintName="pk_AD_SOCIO" schema="" syncType="0" type="0" xmi:id="mD8jmCyGQgwmp2tY" xmi:type="dbTable">
+					<childrens>
+						<ownedMember attributeModel="KejtmCyGQgwmp007" idGenerator="native" length="10" name="idSocio" nullable="true" primaryKey="true" scale="0" syncType="0" type="9" unique="false" xmi:id="2D8jmCyGQgwmp2tp" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="WD4tmCyGQgwmp.ci" idGenerator="native" length="255" name="nome" nullable="true" primaryKey="false" scale="0" syncType="0" type="27" unique="false" xmi:id="2D8jmCyGQgwmp2tz" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="YCktmCyGQgwmp.fO" idGenerator="native" length="255" name="carteira" nullable="true" primaryKey="false" scale="0" syncType="0" type="27" unique="false" xmi:id="2D8jmCyGQgwmp2t9" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="QRUtmCyGQgwmp.jq" idGenerator="native" length="255" name="endereco" nullable="true" primaryKey="false" scale="0" syncType="0" type="27" unique="false" xmi:id="OD8jmCyGQgwmp2uH" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="Si0tmCyGQgwmpwAO" idGenerator="native" length="0" name="dataNascimento" nullable="true" primaryKey="false" scale="0" syncType="0" type="17" unique="false" xmi:id="OD8jmCyGQgwmp2uR" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="mmMtmCyGQgwmpwHy" idGenerator="native" length="255" name="telefone" nullable="true" primaryKey="false" scale="0" syncType="0" type="27" unique="false" xmi:id="OD8jmCyGQgwmp2ub" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+						<ownedMember attributeModel="U6stmCyGQgwmpwQ2" idGenerator="native" length="255" name="email" nullable="true" primaryKey="false" scale="0" syncType="0" type="27" unique="false" xmi:id="OD8jmCyGQgwmp2ul" xmi:type="dbColumn">
+							<foreignKeyConstraints/>
+							<columnUserTypes/>
+						</ownedMember>
+					</childrens>
+				</ownedMember>
+			</ownedMember>
+			<ownedMember isAbstract="false" isLeaf="false" name="ClubeSocial_Classes" visibility="public" xmi:id="fPSNmCyGQgwmp.VS" xmi:type="uml:Package">
+				<xmi:Extension extender="Visual Paradigm for UML">
+					<isRoot xmi:value="false"/>
+					<subdiagram xmi:value="SLONmCyGQgwmp.aT"/>
+				</xmi:Extension>
+				<ownedMember isAbstract="false" isActive="false" isLeaf="false" name="Socio" visibility="public" xmi:id="LbfNmCyGQgwmp.ab" xmi:type="uml:Class">
+					<xmi:Extension extender="Visual Paradigm for UML">
+						<isRoot xmi:value="false"/>
+						<modelType value="Class"/>
+						<ormDetail cache="0" inheritanceStrategy="0" name="" reference="false" tableModel="mD8jmCyGQgwmp2tY" xmi:id="ZbYjmCyGQgwmp1bX" xmi:type="ormClassDetail"/>
+						<businessModel xmi:value="false"/>
+						<appliedStereotype xmi:value="Class_ORM Persistable_id"/>
+					</xmi:Extension>
+					<ownedAttribute aggregation="none" isDerived="false" name="idSocio" ownerScope="instance" type="integer_id" visibility="private" xmi:id="KejtmCyGQgwmp007" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="2D8jmCyGQgwmp2tp" lazy="false" name="" persistable="1" xmi:id="u1QjmCyGQgwmp1aH" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+							<appliedStereotype xmi:value="Attribute_PK_id"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="nome" ownerScope="instance" type="string_id" visibility="private" xmi:id="WD4tmCyGQgwmp.ci" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="2D8jmCyGQgwmp2tz" lazy="false" name="" persistable="1" xmi:id="u1QjmCyGQgwmp1aI" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="carteira" ownerScope="instance" type="string_id" visibility="private" xmi:id="YCktmCyGQgwmp.fO" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="2D8jmCyGQgwmp2t9" lazy="false" name="" persistable="1" xmi:id="u1QjmCyGQgwmp1aJ" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="endereco" ownerScope="instance" type="string_id" visibility="private" xmi:id="QRUtmCyGQgwmp.jq" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="OD8jmCyGQgwmp2uH" lazy="false" name="" persistable="1" xmi:id="u1QjmCyGQgwmp1aK" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="dataNascimento" ownerScope="instance" type="date_id" visibility="private" xmi:id="Si0tmCyGQgwmpwAO" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="OD8jmCyGQgwmp2uR" lazy="false" name="" persistable="1" xmi:id="u1QjmCyGQgwmp1aL" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="telefone" ownerScope="instance" type="string_id" visibility="private" xmi:id="mmMtmCyGQgwmpwHy" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="OD8jmCyGQgwmp2ub" lazy="false" name="" persistable="1" xmi:id="e1QjmCyGQgwmp1aM" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="email" ownerScope="instance" type="string_id" visibility="private" xmi:id="U6stmCyGQgwmpwQ2" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="OD8jmCyGQgwmp2ul" lazy="false" name="" persistable="1" xmi:id="e1QjmCyGQgwmp1aN" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+				</ownedMember>
+				<ownedMember isAbstract="false" isActive="false" isLeaf="false" name="Mensalidade" visibility="public" xmi:id="SqitmCyGQgwmpxH." xmi:type="uml:Class">
+					<xmi:Extension extender="Visual Paradigm for UML">
+						<isRoot xmi:value="false"/>
+						<modelType value="Class"/>
+						<ormDetail cache="0" inheritanceStrategy="0" name="" reference="false" tableModel="uD8jmCyGQgwmp2ux" xmi:id="47YjmCyGQgwmp1cx" xmi:type="ormClassDetail"/>
+						<businessModel xmi:value="false"/>
+						<appliedStereotype xmi:value="Class_ORM Persistable_id"/>
+					</xmi:Extension>
+					<ownedAttribute aggregation="none" isDerived="false" name="idMensalidade" ownerScope="instance" type="integer_id" visibility="private" xmi:id="za3tmCyGQgwmp1_c" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="uD8jmCyGQgwmp2vC" lazy="false" name="" persistable="1" xmi:id="e1QjmCyGQgwmp1aO" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+							<appliedStereotype xmi:value="Attribute_PK_id"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="dataVencimento" ownerScope="instance" type="date_id" visibility="private" xmi:id="1WvtmCyGQgwmp2PJ" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="eD8jmCyGQgwmp2vM" lazy="false" name="" persistable="1" xmi:id="e1QjmCyGQgwmp1aP" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="valorTotal" ownerScope="instance" type="currency_id" visibility="private" xmi:id="WzAdmCyGQgwmp2ga" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="eD8jmCyGQgwmp2vW" lazy="false" name="" persistable="1" xmi:id="e1QjmCyGQgwmp1aQ" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="dataPagamento" ownerScope="instance" type="date_id" visibility="private" xmi:id="RlIdmCyGQgwmp3Dr" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="eD8jmCyGQgwmp2vg" lazy="false" name="" persistable="1" xmi:id="e1QjmCyGQgwmp1aR" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="valorPago" ownerScope="instance" type="currency_id" visibility="private" xmi:id="QqYdmCyGQgwmp3YU" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="eD8jmCyGQgwmp2vq" lazy="false" name="" persistable="1" xmi:id="e1QjmCyGQgwmp1aS" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="atrasado" ownerScope="instance" type="boolean_id" visibility="private" xmi:id="kFSdmCyGQgwmp5SM" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel="eD8jmCyGQgwmp2v0" lazy="false" name="" persistable="1" xmi:id="e1QjmCyGQgwmp1aT" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+					<ownedAttribute aggregation="none" isDerived="false" name="juros" ownerScope="instance" type="float_id" visibility="private" xmi:id="RhGdmCyGQgwmp5zJ" xmi:type="uml:Property">
+						<xmi:Extension extender="Visual Paradigm for UML">
+							<attribute/>
+							<ormDetail columnModel=".D8jmCyGQgwmp2v." lazy="false" name="" persistable="1" xmi:id="e1QjmCyGQgwmp1aU" xmi:type="ormAttributeDetail"/>
+							<isVisble xmi:value="true"/>
+						</xmi:Extension>
+					</ownedAttribute>
+				</ownedMember>
+			</ownedMember>
+		</ownedMember>
+		<ownedMember name="ORM Persistable" xmi:id="Class_ORM Persistable_id" xmi:type="uml:Stereotype">
+			<xmi:Extension extender="Visual Paradigm for UML">
+				<baseType value="Class"/>
+			</xmi:Extension>
+		</ownedMember>
+		<ownedMember name="PK" xmi:id="Attribute_PK_id" xmi:type="uml:Stereotype">
+			<xmi:Extension extender="Visual Paradigm for UML">
+				<baseType value="Attribute"/>
+			</xmi:Extension>
+		</ownedMember>
+		<ownedMember isAbstract="false" isDerived="false" isLeaf="false" name="" xmi:id="H2JdmCyGQgwmp9rd" xmi:type="uml:Association">
+			<xmi:Extension extender="Visual Paradigm for UML">
+				<ormDetail cache="0" collectionType="Unspecified" fromLazyInitialzationOptions="0" name="" persistable="1" toLazyInitialzationOptions="0" xmi:id="S7YjmCyGQgwmp1ea" xmi:type="ormAssociationDetail"/>
+			</xmi:Extension>
+			<memberEnd xmi:idref="H2JdmCyGQgwmp9re"/>
+			<ownedEnd aggregation="none" association="H2JdmCyGQgwmp9rd" isDerived="false" isNavigable="true" name="socio" type="LbfNmCyGQgwmp.ab" xmi:id="H2JdmCyGQgwmp9re" xmi:type="uml:Property">
+				<xmi:Extension extender="Visual Paradigm for UML">
+					<associationEnd/>
+					<qualifier name="" xmi:id="H2JdmCyGQgwmp9rf" xmi:type="qualifier"/>
+					<ormDetail foreignKeyModel=".D8jmCyGQgwmp2wM" name="" xmi:id="S7YjmCyGQgwmp1eP" xmi:type="ormAssociationEndDetail"/>
+				</xmi:Extension>
+				<lowerValue value="1" xmi:id="H2JdmCyGQgwmp9re_multiplicity_lowerValue" xmi:type="uml:LiteralString"/>
+			</ownedEnd>
+			<memberEnd xmi:idref="H2JdmCyGQgwmp9rg"/>
+			<ownedEnd aggregation="none" association="H2JdmCyGQgwmp9rd" isDerived="false" isNavigable="true" name="mensalidades" type="SqitmCyGQgwmpxH." xmi:id="H2JdmCyGQgwmp9rg" xmi:type="uml:Property">
+				<xmi:Extension extender="Visual Paradigm for UML">
+					<associationEnd/>
+					<qualifier name="" xmi:id="H2JdmCyGQgwmp9rh" xmi:type="qualifier"/>
+					<ormDetail name="" xmi:id="S7YjmCyGQgwmp1eQ" xmi:type="ormAssociationEndDetail"/>
+				</xmi:Extension>
+				<lowerValue value="0" xmi:id="H2JdmCyGQgwmp9rg_multiplicity_lowerValue" xmi:type="uml:LiteralString"/>
+				<upperValue value="*" xmi:id="H2JdmCyGQgwmp9rg_multiplicity_upperValue" xmi:type="uml:LiteralString"/>
+			</ownedEnd>
+		</ownedMember>
+		<ownedMember name="integer" visibility="public" xmi:id="integer_id" xmi:type="uml:DataType"/>
+		<ownedMember name="string" visibility="public" xmi:id="string_id" xmi:type="uml:DataType"/>
+		<ownedMember name="boolean" visibility="public" xmi:id="boolean_id" xmi:type="uml:DataType"/>
+		<ownedMember name="date" visibility="public" xmi:id="date_id" xmi:type="uml:DataType"/>
+		<ownedMember name="float" visibility="public" xmi:id="float_id" xmi:type="uml:DataType"/>
+		<ownedMember name="currency" visibility="public" xmi:id="currency_id" xmi:type="uml:DataType"/>
+	</uml:Model>
+	<uml:Diagram diagramType="ClassDiagram" documentation="" name="Socio" toolName="Visual Paradigm for UML" xmi:id="SLONmCyGQgwmp.aT">
+		<xmi:Extension extender="Visual Paradigm for UML">
+			<properties>
+				<apmAuthor value="ematos"/>
+				<apmCreateDateTime value="1323281009938"/>
+				<apmLastModified value="1323284055321"/>
+				<ashowPackageNameStyle value="0"/>
+				<ashowConnectorName value="0"/>
+				<apaintConnectorThroughLabel value="0"/>
+				<atransitTo value="3fkTmCyGQgwmpzl2,pw9jmCyGQgwmp23D"/>
+				<ashowActivityStateNodeCaption value="0"/>
+				<aeditable value="true"/>
+				<afollowDiagramParentElement value="true"/>
+				<aautoFitShapesSize value="false"/>
+				<ashowTaggedValues value="false"/>
+				<ashowStereotypes value="true"/>
+				<ashowConstraints value="false"/>
+				<aalignToGrid value="true"/>
+				<agridVisible value="false"/>
+				<agridWidth value="10"/>
+				<agridHeight value="10"/>
+				<agridColor value="Cr:192,192,192,255"/>
+				<adiagramBackground value="Cr:255,255,255,255"/>
+				<aconnectorStyle value="1"/>
+				<aconnectorLineJumps value="0"/>
+				<aconnectorLineJumpsSize value="0"/>
+				<aconnectionPointStyle value="0"/>
+				<aconnectorLabelOrientation value="0"/>
+				<amodelElementNameAlignment value="4"/>
+				<azoomRatio value="1.0"/>
+				<amaximized value="false"/>
+				<ax value="0"/>
+				<ay value="0"/>
+				<awidth value="1392"/>
+				<aheight value="700"/>
+				<aparentModel value="fPSNmCyGQgwmp.VS"/>
+				<a_globalPaletteOption value="true"/>
+				<a_alwaysShowReferenceAndSubdiagramResource value="false"/>
+				<ainitializeDiagramForCreate value="true"/>
+				<arequestValidateSnapToGrid value="false"/>
+				<ashowDefaultPackage value="true"/>
+				<adefaultPackage value="fPSNmCyGQgwmp.VS"/>
+				<ashowAttributeGetterSetter value="false"/>
+				<ashowClassOwner value="2"/>
+				<ashowPackageOwner value="2"/>
+				<ashowTemplateInfoOfGeneralizationAndRealization value="false"/>
+				<asuppressImplied1MultiplicityForAttributeAndAssociationEnd value="false"/>
+				<ashowClassEmptyCompartments value="2"/>
+				<ashowAttributesCodeDetails value="2"/>
+				<ashowAttributesType value="1"/>
+				<ashowOperationsParameters value="1"/>
+				<ashowOperationsReturnType value="1"/>
+				<ashowOperationsCodeDetails value="2"/>
+				<ashowParametersCodeDetails value="2"/>
+				<ashowEllipsisForUnshownClassMembers value="2"/>
+				<ageneralizationSetNotation value="2"/>
+			</properties>
+		</xmi:Extension>
+		<uml:Diagram.element>
+			<uml:DiagramElement geometry="190,90,160,180" preferredShapeType="Class" subject="LbfNmCyGQgwmp.ab" xmi:id="JbfNmCyGQgwmp.aa">
+				<xmi:Extension extender="Visual Paradigm for UML">
+					<captionBounds value="0,0,160,30"/>
+					<captionVisible value="true"/>
+					<captionSide value="12"/>
+					<properties>
+						<abackground value="Cr:122,207,245,255"/>
+						<aforeground value="Cr:0,0,0,255"/>
+						<azOrder value="10"/>
+						<acreatorDiagramType value="ClassDiagram"/>
+						<aselectable value="true"/>
+						<arequestResetCaption value="false"/>
+						<arequestResetCaptionSize value="false"/>
+						<adisplayStereotypeIcon value="false"/>
+						<aoverrideAppearanceWithStereotypeIcon value="true"/>
+						<arequestSetSizeOption value="0"/>
+						<aparentConnectorHeaderLength value="40"/>
+						<aparentConnectorLineLength value="10"/>
+						<aconnectToPoint value="true"/>
+						<aparentConnectorDTheta value="0.0"/>
+						<aconnectionPointType value="2"/>
+						<amodelElementNameAlignment value="9"/>
+						<arequestDefaultSize value="false"/>
+						<arequestFitSize value="false"/>
+						<arequestFitSizeFromCenter value="false"/>
+						<adisplayAsRobustnessAnalysisIcon value="true"/>
+						<avisibilityStyle value="1"/>
+						<ashowAttributeType value="1"/>
+						<ashowOperationType value="1"/>
+						<amSwTpPts value="true"/>
+						<alshRfAts value="true"/>
+						<amShDrAt value="false"/>
+						<akShDrOp value="false"/>
+						<akSwCsMbSt value="true"/>
+						<ashowClassMemberConstraints value="true"/>
+						<alShCmMl value="false"/>
+						<ashowOperationParameterDirection value="false"/>
+						<ashowOperationRaisedExceptions value="false"/>
+						<ashowParameterNameInOperationSignature value="true"/>
+						<ashowOperationTemplateParameters value="false"/>
+						<ashowOperationProperties value="false"/>
+						<awpMbs value="false"/>
+						<aattributeSortType value="0"/>
+						<aoperationSortType value="0"/>
+						<ashowInitialAttributeValue value="true"/>
+						<ashowOperationSignature value="true"/>
+						<ainterfaceBall value="false"/>
+						<ashowEmptyCompartments value="0"/>
+						<ashowEllipsisForUnshownMembers value="0"/>
+						<ashowAttributesCodeDetails value="0"/>
+						<ashowOperationsCodeDetails value="0"/>
+						<ashowParametersCodeDetails value="0"/>
+						<ashowTypeOption value="0"/>
+						<ashowOwnerOption value="3"/>
+						<ashowAttributesType value="0"/>
+						<ashowOperationsParameters value="0"/>
+						<ashowOperationsReturnType value="0"/>
+					</properties>
+				</xmi:Extension>
+				<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+				<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+				<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+			</uml:DiagramElement>
+			<uml:DiagramElement geometry="500,90,170,180" preferredShapeType="Class" subject="SqitmCyGQgwmpxH." xmi:id="SqitmCyGQgwmpxH9">
+				<xmi:Extension extender="Visual Paradigm for UML">
+					<captionBounds value="0,0,170,30"/>
+					<captionVisible value="true"/>
+					<captionSide value="12"/>
+					<properties>
+						<abackground value="Cr:122,207,245,255"/>
+						<aforeground value="Cr:0,0,0,255"/>
+						<azOrder value="8"/>
+						<acreatorDiagramType value="ClassDiagram"/>
+						<aselectable value="true"/>
+						<arequestResetCaption value="false"/>
+						<arequestResetCaptionSize value="false"/>
+						<adisplayStereotypeIcon value="false"/>
+						<aoverrideAppearanceWithStereotypeIcon value="true"/>
+						<arequestSetSizeOption value="0"/>
+						<aparentConnectorHeaderLength value="40"/>
+						<aparentConnectorLineLength value="10"/>
+						<aconnectToPoint value="true"/>
+						<aparentConnectorDTheta value="0.0"/>
+						<aconnectionPointType value="2"/>
+						<amodelElementNameAlignment value="9"/>
+						<arequestDefaultSize value="false"/>
+						<arequestFitSize value="false"/>
+						<arequestFitSizeFromCenter value="false"/>
+						<adisplayAsRobustnessAnalysisIcon value="true"/>
+						<avisibilityStyle value="1"/>
+						<ashowAttributeType value="1"/>
+						<ashowOperationType value="1"/>
+						<amSwTpPts value="true"/>
+						<alshRfAts value="true"/>
+						<amShDrAt value="false"/>
+						<akShDrOp value="false"/>
+						<akSwCsMbSt value="true"/>
+						<ashowClassMemberConstraints value="true"/>
+						<alShCmMl value="false"/>
+						<ashowOperationParameterDirection value="false"/>
+						<ashowOperationRaisedExceptions value="false"/>
+						<ashowParameterNameInOperationSignature value="true"/>
+						<ashowOperationTemplateParameters value="false"/>
+						<ashowOperationProperties value="false"/>
+						<awpMbs value="false"/>
+						<aattributeSortType value="0"/>
+						<aoperationSortType value="0"/>
+						<ashowInitialAttributeValue value="true"/>
+						<ashowOperationSignature value="true"/>
+						<ainterfaceBall value="false"/>
+						<ashowEmptyCompartments value="0"/>
+						<ashowEllipsisForUnshownMembers value="0"/>
+						<ashowAttributesCodeDetails value="0"/>
+						<ashowOperationsCodeDetails value="0"/>
+						<ashowParametersCodeDetails value="0"/>
+						<ashowTypeOption value="0"/>
+						<ashowOwnerOption value="3"/>
+						<ashowAttributesType value="0"/>
+						<ashowOperationsParameters value="0"/>
+						<ashowOperationsReturnType value="0"/>
+					</properties>
+				</xmi:Extension>
+				<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+				<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+				<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+			</uml:DiagramElement>
+			<uml:DiagramElement geometry="350,150;499,150;" preferredShapeType="Association" subject="H2JdmCyGQgwmp9rd" xmi:id="n2JdmCyGQgwmp9r6">
+				<xmi:Extension extender="Visual Paradigm for UML">
+					<captionBounds value="394,150,20,0"/>
+					<captionVisible value="true"/>
+					<captionSide value="1"/>
+					<roleA multiplicity="360,130,26,16" roleName="350,150,46,16"/>
+					<roleB multiplicity="460,150,37,16" roleName="410,130,88,16"/>
+					<properties>
+						<abackground value="Cr:122,207,245,255"/>
+						<aforeground value="Cr:0,0,0,255"/>
+						<azOrder value="-1"/>
+						<acreatorDiagramType value="ClassDiagram"/>
+						<aselectable value="true"/>
+						<arequestResetCaption value="false"/>
+						<arequestResetCaptionSize value="false"/>
+						<aconnectorStyle value="3"/>
+						<aconnectorLineJumps value="4"/>
+						<aconnectorLabelOrientation value="4"/>
+						<afromShapeXDiff value="0"/>
+						<afromShapeYDiff value="0"/>
+						<atoShapeXDiff value="0"/>
+						<atoShapeYDiff value="0"/>
+						<afromConnectType value="0"/>
+						<atoConnectType value="0"/>
+						<auseFromShapeCenter value="true"/>
+						<auseToShapeCenter value="true"/>
+						<afromPinType value="1"/>
+						<atoPinType value="1"/>
+						<arequestRebuild value="false"/>
+						<ashowConnectorName value="2"/>
+						<apaintThroughLabel value="2"/>
+						<ahasRoleAShape value="true"/>
+						<ahasRoleBShape value="true"/>
+						<ashowMultiplicityConstraints value="false"/>
+						<aroleARectangle value="Re:350.0,150.0,46.0,16.0"/>
+						<aroleBRectangle value="Re:410.0,130.0,88.0,16.0"/>
+						<amultiplicityBRectangle value="Re:460.0,150.0,37.0,16.0"/>
+						<amultiplicityARectangle value="Re:360.0,130.0,26.0,16.0"/>
+						<ahasMultiplicityAShape value="true"/>
+						<ahasMultiplicityBShape value="true"/>
+						<a0SwDr value="false"/>
+						<ashowStereotypes value="true"/>
+						<ashowFromRoleName value="true"/>
+						<ashowToRoleName value="true"/>
+						<ashowFromMultiplicity value="true"/>
+						<ashowToMultiplicity value="true"/>
+						<ashowFromRoleVisibility value="true"/>
+						<ashowToRoleVisibility value="true"/>
+						<ashowAssociationEndPropertyStrings value="false"/>
+						<ahasAssociationEndPropertyStringsAShape value="false"/>
+						<ahasAssociationEndPropertyStringsBShape value="false"/>
+					</properties>
+				</xmi:Extension>
+				<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+				<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+			</uml:DiagramElement>
+		</uml:Diagram.element>
+	</uml:Diagram>
+	<uml:Diagram diagramType="ERDiagram" documentation="" name="Socio" toolName="Visual Paradigm for UML" xmi:id="pw9jmCyGQgwmp23D">
+		<xmi:Extension extender="Visual Paradigm for UML">
+			<properties>
+				<apmAuthor value="ematos"/>
+				<apmCreateDateTime value="1323282395365"/>
+				<apmLastModified value="1323284076677"/>
+				<ashowPackageNameStyle value="0"/>
+				<ashowConnectorName value="0"/>
+				<apaintConnectorThroughLabel value="0"/>
+				<atransitFrom value="SLONmCyGQgwmp.aT"/>
+				<ashowActivityStateNodeCaption value="0"/>
+				<aeditable value="true"/>
+				<afollowDiagramParentElement value="true"/>
+				<aautoFitShapesSize value="false"/>
+				<ashowTaggedValues value="false"/>
+				<ashowStereotypes value="true"/>
+				<ashowConstraints value="false"/>
+				<aalignToGrid value="true"/>
+				<agridVisible value="false"/>
+				<agridWidth value="10"/>
+				<agridHeight value="10"/>
+				<agridColor value="Cr:192,192,192,255"/>
+				<adiagramBackground value="Cr:255,255,255,255"/>
+				<aconnectorStyle value="1"/>
+				<aconnectorLineJumps value="0"/>
+				<aconnectorLineJumpsSize value="0"/>
+				<aconnectionPointStyle value="0"/>
+				<aconnectorLabelOrientation value="0"/>
+				<amodelElementNameAlignment value="4"/>
+				<azoomRatio value="1.0"/>
+				<amaximized value="false"/>
+				<ax value="0"/>
+				<ay value="0"/>
+				<awidth value="1392"/>
+				<aheight value="700"/>
+				<aparentModel value=".0GTmCyGQgwmpz7I"/>
+				<a_globalPaletteOption value="true"/>
+				<a_alwaysShowReferenceAndSubdiagramResource value="false"/>
+				<ainitializeDiagramForCreate value="true"/>
+				<arequestValidateSnapToGrid value="false"/>
+				<ashowDefaultPackage value="false"/>
+				<adefaultPackage value=".0GTmCyGQgwmpz7I"/>
+				<a_showDBTableColumns value="true"/>
+				<a_showColumnStereotypes value="true"/>
+				<a_showProcedureStereotypes value="true"/>
+				<a_showTriggerStereotypes value="true"/>
+				<a_showDBViewColumns value="true"/>
+				<a_showStoredProcedureResultSetColumns value="true"/>
+				<a_showTriggers value="true"/>
+				<a_showStoredProcedures value="true"/>
+				<adataModel value="2"/>
+				<aForeignKeyArrowHeadSize value="3"/>
+				<ashowSchemaName value="true"/>
+				<a_showColumnTypes value="true"/>
+				<a_showColumnUserType value="false"/>
+				<a_columnConstraintsDisplayOption value="2"/>
+				<a_showExtraColumnProperties value="true"/>
+				<a_pointForeignKeyEndToColumn value="false"/>
+				<a_alignColumnProperties value="true"/>
+			</properties>
+		</xmi:Extension>
+		<uml:Diagram.element>
+			<uml:DiagramElement geometry="60,30,220,150" preferredShapeType="DBTable" subject="mD8jmCyGQgwmp2tY" xmi:id="BI9jmCyGQgwmp23I">
+				<xmi:Extension extender="Visual Paradigm for UML">
+					<captionBounds value="0,0,220,15"/>
+					<captionVisible value="true"/>
+					<captionSide value="12"/>
+					<properties>
+						<abackground value="Cr:245,182,122,255"/>
+						<aforeground value="Cr:0,0,0,255"/>
+						<azOrder value="3"/>
+						<aselectable value="true"/>
+						<arequestResetCaption value="false"/>
+						<arequestResetCaptionSize value="false"/>
+						<adisplayStereotypeIcon value="false"/>
+						<aoverrideAppearanceWithStereotypeIcon value="true"/>
+						<arequestSetSizeOption value="0"/>
+						<aparentConnectorHeaderLength value="0"/>
+						<aparentConnectorLineLength value="0"/>
+						<aconnectToPoint value="false"/>
+						<aparentConnectorDTheta value="0.0"/>
+						<aconnectionPointType value="2"/>
+						<amodelElementNameAlignment value="9"/>
+						<arequestDefaultSize value="false"/>
+						<arequestFitSize value="false"/>
+						<arequestFitSizeFromCenter value="false"/>
+						<acolSortType value="0"/>
+						<ashowColumnStereotypes value="0"/>
+						<ashowColumnsMode value="0"/>
+					</properties>
+				</xmi:Extension>
+				<elementFill color1="Cr:245,182,122,255" color2="" style="1" transparency="0" type="1"/>
+				<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+				<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+			</uml:DiagramElement>
+			<uml:DiagramElement geometry="800,40,220,170" preferredShapeType="DBTable" subject="uD8jmCyGQgwmp2ux" xmi:id="NI9jmCyGQgwmp25A">
+				<xmi:Extension extender="Visual Paradigm for UML">
+					<captionBounds value="0,0,220,15"/>
+					<captionVisible value="true"/>
+					<captionSide value="12"/>
+					<properties>
+						<abackground value="Cr:245,182,122,255"/>
+						<aforeground value="Cr:0,0,0,255"/>
+						<azOrder value="0"/>
+						<aselectable value="true"/>
+						<arequestResetCaption value="false"/>
+						<arequestResetCaptionSize value="false"/>
+						<adisplayStereotypeIcon value="false"/>
+						<aoverrideAppearanceWithStereotypeIcon value="true"/>
+						<arequestSetSizeOption value="0"/>
+						<aparentConnectorHeaderLength value="0"/>
+						<aparentConnectorLineLength value="0"/>
+						<aconnectToPoint value="false"/>
+						<aparentConnectorDTheta value="0.0"/>
+						<aconnectionPointType value="2"/>
+						<amodelElementNameAlignment value="9"/>
+						<arequestDefaultSize value="false"/>
+						<arequestFitSize value="false"/>
+						<arequestFitSizeFromCenter value="false"/>
+						<acolSortType value="0"/>
+						<ashowColumnStereotypes value="0"/>
+						<ashowColumnsMode value="0"/>
+					</properties>
+				</xmi:Extension>
+				<elementFill color1="Cr:245,182,122,255" color2="" style="1" transparency="0" type="1"/>
+				<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+				<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+			</uml:DiagramElement>
+			<uml:DiagramElement geometry="280,100;799,100;" preferredShapeType="DBForeignKey" subject=".D8jmCyGQgwmp2wM" xmi:id="HI9jmCyGQgwmp27G">
+				<xmi:Extension extender="Visual Paradigm for UML">
+					<captionBounds value="445,83,187,15"/>
+					<captionVisible value="true"/>
+					<captionSide value="1"/>
+					<properties>
+						<abackground value="Cr:122,207,245,255"/>
+						<aforeground value="Cr:0,0,0,255"/>
+						<azOrder value="-1"/>
+						<aselectable value="true"/>
+						<arequestResetCaption value="false"/>
+						<arequestResetCaptionSize value="false"/>
+						<aconnectorStyle value="3"/>
+						<aconnectorLineJumps value="4"/>
+						<aconnectorLabelOrientation value="4"/>
+						<afromShapeXDiff value="0"/>
+						<afromShapeYDiff value="0"/>
+						<atoShapeXDiff value="0"/>
+						<atoShapeYDiff value="0"/>
+						<afromConnectType value="0"/>
+						<atoConnectType value="0"/>
+						<auseFromShapeCenter value="true"/>
+						<auseToShapeCenter value="true"/>
+						<afromPinType value="1"/>
+						<atoPinType value="1"/>
+						<arequestRebuild value="false"/>
+						<ashowConnectorName value="2"/>
+						<apaintThroughLabel value="2"/>
+						<ahasFromLabel value="true"/>
+						<ahasToLabel value="true"/>
+						<afromLabelRect value="Re:300.0,80.0,40.0,20.0"/>
+						<atoLabelRect value="Re:700.0,80.0,88.0,20.0"/>
+					</properties>
+				</xmi:Extension>
+				<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+				<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+			</uml:DiagramElement>
+		</uml:Diagram.element>
+	</uml:Diagram>
+</xmi:XMI>

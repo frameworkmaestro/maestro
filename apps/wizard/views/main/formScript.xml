@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<view>
+    <mformdialog id="formScript" title="Script Wizard">
+        <fields>
+            <mtextfield id="script" label="Script File" hint="inside files/scripts" value=""/>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Generate" action="@wizard/main/createScript"/>
+        </buttons>
+    </mformdialog>
+</view>

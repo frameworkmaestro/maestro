@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mformbase id="formObject" close=">exemplos/aluno/formFind" base="formBase">
+        <property title="$this->data->object->description" />
+        <action action="{{ 'formUpdate/' . $this->data->id }}" label="Editar" />
+        <action action="{{ 'formDelete/' . $this->data->id }}" label="Excluir" />
+    </mformbase>
+</view>

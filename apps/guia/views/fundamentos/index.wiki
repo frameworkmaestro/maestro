@@ -1,0 +1,22 @@
+<text xml:space="preserve">
+= Script index.php =
+O script <code>index.php</code> (também chamado de <code>dispatch</code> ou ''<code>entry script</code>''), localizado no diretório base do Maestro, é o script PHP responsável por tratar as solicitações dos clientes. É o único script acessado diretamente pelos usuários finais (via browser) em uma aplicação Maestro.
+
+O código deste script é simples:
+<pre lang="php" line="1">
+<?php
+ini_set("error_reporting", E_ALL & ~E_NOTICE);
+ini_set("log_errors","on");
+ini_set("error_log","var/log/php_error.log");
+
+$maestro = dirname(__FILE__);
+$conf = dirname(__FILE__).'/conf/conf.php';
+
+require_once($maestro . '/classes/manager.php');
+Manager::init($conf, $maestro);
+Manager::processRequest();
+?>
+</pre>
+Basicamente, o script altera algumas configurações do PHP (relativas a exibição de erros e logs), obtém o diretório onde o Maestro está instalado (o diretório base), define o arquivo de configuração a ser usado, instancia a [[>servicos/manager|Classe Manager]] e delega a ela o processamento da requisição. 
+Esta estrutura facilita, por exemplo, que uma aplicação seja executada com outras opções de configuração, sem ser necessário alterar arquivos da própria aplicação.
+</text>

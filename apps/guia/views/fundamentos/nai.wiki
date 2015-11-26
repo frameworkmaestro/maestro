@@ -1,0 +1,89 @@
+<text xml:space="preserve">
+= Namespaces, Autoload e Import =
+
+==Namespace==
+Um '''namespace''' se refere a um grupo lógico de nomes de classes. Declarar uma classe dentro de um '''namespace''' permite que outra classe tenha o mesmo nome em um '''namespace''' diferente. Referências sobre o uso de ''namespaces'' em PHP podem ser obtidas [href="http://php.net/manual/en/language.namespaces.php|aqui|_blank].
+No Maestro, ''namespaces'' são usados basicamente em classes [[>fundamentos/fmodel|Model]], para permitir modelos com o mesmo nome em módulos diferentes da mesma aplicação. 
+O '''namespace''' padrão é <code>aplicação_ou_módulo/models</code>. Naturalmente, outras classes podem estar sob outros ''namespaces'', mas a convenção é que os ''namespaces'' sempre sejam iniciados com o nome da aplicação ou do módulo, devido ao mecanismo de Importação.
+É importante não confundir os ''namespaces'' das classes com o '''path''' da classe (a localização do arquivo onde a classe é declarada), embora seja uma prática comum que os ''namespaces'' espelhem os ''paths''. São, no entanto, conceitos diferentes.
+
+==Autoload==
+'''Autoload''' se refere ao mecanismo de carga automática do script onde uma classe é declarada, quando a classe é referenciada pela primeira vez. Esta carga automática evita que seja feita uma referência explícita à inclusão do arquivo (usando <code>include</code> ou <code>require</code>).
+O Maestro possui um mecanismo de '''autoload''' ''estático'' (para as classes internas ao framework) e ''dinâmico'' (para classes da aplicação sendo executada - ''models'', ''views'' e ''controllers''), que é implementado de forma transparente para o desenvolvedor.
+
+==Import==
+'''Import''' se refere ao mecanismo que permite uma classe declarar que outras classes serão acessadas internamente. É um processo semelhante ao '''autoload''' (no sentido que permite a carga automática da classe), mas que usa os ''namespaces'' como referência. 
+Isto permite que uma classe declarada em um '''namespace''' (ou no <code>namespace</code> global) possa referenciar uma classe declarada em outro '''namespace''', sem a necessidade de usar o nome totalmente qualificado (uma vez que é criado um alias para a classe). 
+Além disso, permite que seja feita a referência a todas as classes de um mesmo '''namespace'''. 
+A restrição para uso do '''import''' é que os ''namespaces'' devem espelhar a localização física (<code>path</code>) das classes.
+Por exemplo, sem o uso do '''import''', teríamos o seguinte código em um ''Controller:''</br>
+
+<pre lang="php" line="1">
+<?php
+class PessoaController extends MController {
+     ...
+    // A referência ao Model Pessoa, declarado no namespace exemplos\models, é feita
+    // com o nome totalmente qualificado (exemplos\models\Pessoa)
+ 
+    public function formFind() {
+        $model = new exemplos\models\Pessoa($this->data->id);
+        $filter->nome = $this->data->nome . '%';
+        $this->data->query = $model->listByFilter($filter)->asQuery();
+        $this->render();
+    }
+     ...
+</pre>
+
+A cláusula <code>use</code> do PHP pode ser usada para criar um alias:
+
+<pre lang="php" line="1">
+<?php
+use exemplos\models\Pessoa as Pessoa;
+ 
+class PessoaController extends MController {
+    ...
+    public function formFind() {
+        $model = new Pessoa($this->data->id);
+        $filter->nome = $this->data->nome . '%';
+        $this->data->query = $model->listByFilter($filter)->asQuery();
+        $this->render();
+    }
+    ...
+</pre>
+
+Com a mesma finalidade, pode ser usado o mecanismo '''import''' do Maestro:
+
+<pre lang="php" line="1">
+<?php
+Manager::import('exemplos\models\Pessoa');
+ 
+class PessoaController extends MController {
+    ...
+    public function formFind() {
+        $model = new Pessoa($this->data->id);
+        $filter->nome = $this->data->nome . '%';
+        $this->data->query = $model->listByFilter($filter)->asQuery();
+        $this->render();
+    }
+    ...
+</pre>
+
+O mecanismo '''import''' também pode ser usado para criar um alias para todas as classes de um namespace:
+<pre lang="php" line="1">
+<?php
+Manager::import('exemplos\models\*');
+ 
+class PessoaController extends MController {
+     ...
+    public function formFind() {
+        $model = new Pessoa($this->data->id);
+        $filter->nome = $this->data->nome . '%';
+        $this->data->query = $model->listByFilter($filter)->asQuery();
+        $this->render();
+    }
+    ...
+</pre>
+
+==import.modules==
+No arquivo de configuração [[>introducao/configuracao|conf.php]] é possível indicar, através da chave <code>import.modules</code>, quais módulos devem ser automaticamente registrados para importação. O registro de um módulo (feito geralmente na configuração da Aplicação) permite que as classes deste módulo sejam acessadas pelos demais módulos sem que seja necessário fazer uma inclusão explicíta das classes.
+</text>

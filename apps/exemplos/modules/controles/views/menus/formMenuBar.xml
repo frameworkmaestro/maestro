@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formMenuBar" title="MenuBar" close=">exemplos/controles/menus">
+        <fields>
+            <mmenubar id="menuBar">
+                <mmenubaritem id="menuBarFile" label="File" icon="icon-file">
+                    <mmenu id="menuFile">
+                        <mmenuitem id="menuFileOpen" label="Open" glyph="folder-open" action=">controles/menus/formMenuBar"/>
+                        <mmenuitem id="menuFileSave" label="Save" glyph="floppy-save"/>
+                        <mmenuitem id="menuFileClose" label="Close" glyph="folder-close" action=">controles/menus/formMenuBar"/>
+                        <mmenuseparator/>
+                        <mmenuitem id="menuFileExit" label="Exit"/>
+                    </mmenu>    
+                </mmenubaritem>
+                <mmenubaritem id="menuBarEdit" label="Edit" icon="icon-edit" action=">controles/menus/formMenuBar"/>
+                <mmenubaritem id="menuBarPopup" label="Popup">
+                    <mmenu id="menuNew" label="New" icon="task">
+                        <mmenuitem id="menuNewFile" label="File" icon="icon-add"/>
+                        <mmenuitem id="menuPrint" label="Print"  icon="icon-print"/>
+                        <mmenuitem id="menuItemToolbar" label="Toolbar">
+                            <mmenu id="menuToobar">
+                                <mmenuitem id="menuToobarLink" label="Link"/>
+                                <mmenuitem id="menuToobarAddress" label="Address"/>
+                            </mmenu>
+                        </mmenuitem>
+                    </mmenu>
+                </mmenubaritem>
+                <mmenubaritem id="menuBarTools" label="Tools"  action=">controles/menus/formMenuBar"/>
+            </mmenubar>
+        </fields>
+    </mform>
+</view>

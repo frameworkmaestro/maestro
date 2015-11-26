@@ -1,0 +1,88 @@
+<text xml:space="preserve">
+= Instalação =
+
+== Requisitos gerais para instalação ==
+ 
+* Servidor Apache (versão 2 ou superior).
+* Linguagem PHP (versão 5.4 ou superior), com extensões PDO instaladas para o banco de dados a ser usado (PostgreSql ou MySql).
+* Banco de dados PostgreSql (versão 9 ou superior) ou MySql (versão 5 ou superior).
+
+A instalação pode ser feita na sua distribuição GNU/Linux preferida. No caso do S.O. Windows é recomendado o uso do WAMP (http://www.wampserver.com).
+
+== Hardware mínimo necessário ==
+ 
+* Memória RAM: 512MB RAM (2GB RAM recomendável)
+* HD: 15GB para instalar o GNU/Linux, o CACIC e a base de dados (50GB SCSI recomendável)
+
+== Sequência de instalação básica (Linux) ==
+ 
+# Localizar a pasta de documentos do Apache (“DocumentRoot”).
+# Criar a pasta “maestro”.
+# Fazer o download do arquivo maestro-1.0.0.zip; extrair os arquivos para a pasta “maestro”.
+# Testar o acesso (ex. http://localhost/maestro).
+
+Acesso à aplicação Exemplo
+# Considerando que o servidor de banco de dados (PostgreSql ou MySql) já esteja instalado, é necessário criar o banco “exemplos” (os scripts SQL estão na pasta <maestro>/apps/exemplos/models/sql).
+# Alterar o arquivo de configuração em <maestro>/apps/exemplos/conf/conf.php:
+
+Para PostgreSql:
+<pre lang="php" line="1">
+'db' => array(
+    'exemplos' => array(
+        'driver' => 'pdo_pgsql',
+        'host' => 'localhost', // servidor do banco de dados
+        'dbname' => 'exemplos',
+        'user' => 'postgres', // alterar para o usuario owner do banco
+        'password' => 'senha', // senha do usuario owner do banco
+        'formatDate' => 'DD/MM/YYYY',
+        'formatTime' => 'HH24:MI:SS',
+        'configurationClass' => 'Doctrine\DBAL\Configuration',
+    ),
+),
+</pre>
+
+Para MySQL:
+<pre lang="php" line="1">
+'db' => array(
+    'exemplos' => array(
+        'driver' => 'pdo_mysql',
+        'host' => 'localhost', // servidor do banco de dados
+        'dbname' => 'exemplos',
+        'user' => 'postgres', // alterar para o usuario owner do banco
+        'password' => 'senha', // senha do usuario owner do banco
+        'formatDate' => '%e/%m/%Y',
+        'formatDateWhere' => '%Y/%m/%e',
+        'formatTime' => '%T',
+        'charset' => 'UTF8',
+        'configurationClass' => 'Doctrine\DBAL\Configuration',
+    ),
+),
+</pre>
+
+Caso seja usado o banco de dados SQLite3:
+<pre lang="php" line="1">
+        'exemplos' => array(
+            'driver' => 'sqlite3',
+            'path' => Manager::getAppPath('models/sql/exemplos.db'),
+            'formatDate' => '%d/%m/%Y',
+            'formatTime' => '%H:%M:%S',
+            'configurationClass' => 'Doctrine\DBAL\Configuration',
+        ),
+
+</pre>
+
+
+== Uso de relatórios JasperReports ==
+
+Para geração de relatórios no formato PDF, é possível usar a integração com a biblioteca JasperReports. Como a biblioteca é escrita em Java, a integração é feita através da aplicação PHPJavaBridge (http://php-java-bridge.sourceforge.net/pjb/), executada sob um servidor de aplicação (ex. Tomcat).
+# Fazer o download do arquivo maestro_ext-1.0.0.zip; extrair os arquivos para uma pasta temporária.
+# Fazer o deploy da aplicação JavaBridge.war (disponível na pasta “java”) no Tomcat.
+# Copiar os arquivos da pasta “java/lib” para a pasta <tomcat>/webapps/JavaBridge/WEB-INF/lib.
+# No arquivo de configuração do Maestro, localizado em <maestro>/core/conf/conf.php, alterar as configurações relativa ao Java:
+
+<pre lang="php" line="1">
+'options' => array(
+    'javaPath' => '/opt/java', // onde o Java está instalado
+    'javaBridge' => 'http://localhost:8080/JavaBridge/java/Java.inc', // atualizar o endereço do servidor Tomcat
+</pre>
+</text>

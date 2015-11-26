@@ -1,0 +1,67 @@
+<text xml:space="preserve">
+= Melhores Práticas =
+Mesmo que o padrão MVC seja conhecido por muito desenvolvedores Web, seu uso no desenvolvimento real de uma aplicação pode ser confuso para alguns. É preciso ter em mente que a idéia central do MVC é a reusabilidade de código e a separação de responsabilidades ([http://en.wikipedia.org/wiki/Separation_of_concerns|Separation of Concerns|_blank]). 
+A implementação destes dois conceitos é fundamental para que sejam usufruidas as vantagens do MVC. Para isso, alguns pontos devem ser observados.
+
+==Model==
+
+As classes ''Model'' representam, basicamente, as estruturas de dados da aplicação. Geralmente os modelos são compartilhados pelos vários módulos de uma mesma aplicação. 
+Em um Projeto Orientado a Objetos (POO), os modelos estão associados às classes do domínio e implementam, em seus métodos, as regras de negócio. 
+No Maestro, os modelos também são objetos persistentes, responsáveis pelo acesso aos dados em um banco de dados.
+ 
+Os modelos devem/podem conter:
+<code>
+* métodos que representem as regras de negócio, encapsuladas em transações, possivelmente acessando outros modelos;
+* código para validação dos dados a serem armazenados;
+* consultas/alterações no banco de dados;
+* disparo de exceções na ocorrência de erros.
+</code>
+
+Os modelos '''NÃO''' devem/podem conter:
+
+<code>
+* métodos que acessem ou que gerem algum tipo de interface com o usuário;
+* acesso direto aos dados submetidos pelo usuário.
+</code>
+
+==View==
+
+As classes ''View'' são responsáveis pela interface com o usuário. Todo o tratamento de código HTML, Javascript, CSS, etc. deve ser feito no contexto de uma View. Assim também, as ações relativas a temas, templates e layouts.
+ 
+As views devem/podem conter:
+<code>
+* métodos que implementem a lógica de visualização.
+</code>
+
+As views '''NÃO''' devem/podem conter:
+
+<code>
+* métodos que acessem o banco de dados;
+* métodos que controlem o fluxo de execução de uma ação;
+* métodos que acessem as classes Model ou Controller.
+</code>
+
+==Controller==
+
+As classes ''Controller'' são responsáveis pelo fluxo de execução de uma ação solicitada pelo usuário. Atuam como intermediárias entre as ''Views'' e os ''Models'', transferindo e/ou gerando dados (através do [[>fundamentos/dto|objeto $data]]) entre estas camadas.
+
+Os controllers devem/podem conter:
+
+<code>
+* código que instancie modelos;
+* código que valide o acesso do usuário a determinadas ações;
+* código que decida o fluxo de execução baseado no contexto;
+* indicação de qual View deve ser renderizada ao fim da execução.
+</code>
+
+Os controllers '''NÃO''' devem/podem conter:
+
+<code>
+* métodos que acessem o banco de dados;
+* métodos que representem as regras de negócio;
+* código para validação de dados;
+* métodos que implementem a lógica de visualização.
+</code>
+
+
+</text>

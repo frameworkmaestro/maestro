@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formKrono" title="MKrono" close=">exemplos/util/main">
+        <fields>
+            <mbasegroup id="bg1" caption="Usando MKrono" width="550px">
+                <mvcontainer>
+                    <mlabel text="$this->data->dayToN"/>    
+                    <mlabel text="$this->data->NToDay"/>    
+                    <mlabel text="$this->data->NToMonth"/>    
+                    <mlabel text="$this->data->monthToN"/>    
+                    <mlabel text="$this->data->isDay1"/>    
+                    <mlabel text="$this->data->isDay2"/>    
+                    <mlabel text="$this->data->daysDiff"/>    
+                    <mlabel text="$this->data->weeksDiff"/>    
+                    <mlabel text="$this->data->monthsDiff"/>    
+                    <mlabel text="$this->data->yearsDiff"/>    
+                    <mlabel text="$this->data->timeDiff"/>    
+                    <mlabel text="$this->data->timeAdd1"/>    
+                    <mlabel text="$this->data->timeAdd2"/>    
+                    <mlabel text="$this->data->howTo"/>    
+                    <mlabel text="$this->data->getDateWDay"/>    
+                    <mlabel text="$this->data->getDateYDay"/>    
+                    <mlabel text="$this->data->secsToTime"/>    
+                    <mlabel text="$this->data->isValid1"/>    
+                    <mlabel text="$this->data->isValid2"/>    
+                    <mlabel text="$this->data->invertDate"/>    
+                    <mlabel text="$this->data->compare1"/>    
+                    <mlabel text="$this->data->compare2"/>    
+                    <mlabel text="$this->data->compare3"/>    
+                    <mlabel text="$this->data->compare4"/>    
+                    <mlabel text="$this->data->getDay"/>    
+                    <mlabel text="$this->data->getMonth"/>    
+                    <mlabel text="$this->data->getYear"/>    
+                    <mlabel text="$this->data->between1"/>    
+                    <mlabel text="$this->data->between2"/>    
+                    <mlabel text="$this->data->last1"/>    
+                    <mlabel text="$this->data->last2"/>    
+                </mvcontainer>
+            </mbasegroup>    
+        </fields>    
+    </mform>
+</view>

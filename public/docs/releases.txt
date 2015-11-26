@@ -1,0 +1,45 @@
+----------------
+Maestro Releases
+----------------
+
+Release 1.2 - 22/01/2014
+
+- MDesigner
+	. Aplicação Windows WYSIWYG para criação de arquivos para views XML.
+	. Disponível na pasta core/support/mdesigner.
+
+- Refatoração da camada View do Framework
+	. Separação mais estrita entre os controles e os painters: o controles contém a _estrutura_, os painters atuam como _decorators_ incluindo as partes "visuais".
+	. Criação do painter DojoPainter.
+	. Alterações na evocação dos renders.
+	. Reestruturação das pastas dos controles.
+	. Script PHP para geração automática do autoload.php.
+	. Reestruturação dos temas.
+	. Atualização da versão do framework Smarty.
+
+- Temas
+	. Separação mais estrita dos temas do Dojo em relação aos temas do Maestro.
+	. Reestruturação das pastas do tema.
+	. Inclusão do Bootstrap no tema Default.
+	. Alteração nos scripts para "compilação" de temas no maestro_dev.
+	. Remoção da extensão "dev".
+	. Inclusão do Javascript no final da página HTML.
+	. Reformulação de como os scripts são chamados.
+	. Criação do arquivo custom.css para permitir pequenas mudanças em um tema, sem ter que escrever um novo tema.
+	. Inclusão do tema Bootstrap como os templates de exemplo.
+
+- Bootstrap
+	. Inclusão da aplicação Bootstrap (http://getbootstrap.com), exemplificando como o Maestro pode ser usado para construir aplicações HTML5 responsivas.
+
+- Novos controles
+	. MInputGrid : grid de MTextField para entrada de múltiplos valores.
+	. MBreadcrumb : controle auxiliar para construção de "breadcrumbs".
+
+- Aplicação Exemplos
+	. Reestruturação dos exemplos de controles.
+
+- Aplicação Wizard
+	. Opção para gerar o arquivo de Script a partir de um banco de dados MySQL.
+
+- Database
+	. Inclusão do driver para acesso a bancos SQLServer, em Windows.

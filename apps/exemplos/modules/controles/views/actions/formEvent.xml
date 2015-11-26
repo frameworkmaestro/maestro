@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formEvent" title="Form Event" close=">exemplos/controles/actions">
+        <fields>
+            <javascript onload="console.log('exemplo de codigo em onload');" code="console.log('exemplo de jscode');"/>
+            <mselection id="tipo" label="Tipo" options="{{ ['bg1' => 'Opção 1', 'bg2' => 'Opção 2', 'bg3' => 'Opção 3'] }}" value="bg1" width="150px">
+                <event event="select" handler="!onTipoChange" preventDefault="false"/>
+            </mselection>
+            <mselection id="opt" label="Opt" options="{{ ['bga' => 'Opção a', 'bgb' => 'Opção b', 'bgc' => 'Opção c'] }}" value="bgb" width="150px">
+                <event event="select" handler="console.log('Exemplo')" preventDefault="false"/>
+            </mselection>
+            <mdiv height="100px" width="100px" border="1px solid black">
+                <event event="mouseenter" handler="jQuery(this).css('background-color','red');" preventDefault="true"/>
+                <event event="mouseleave" handler="jQuery(this).css('background-color','white');" preventDefault="true"/>
+                <event event="click" handler="jQuery(this).css('background-color','blue');" preventDefault="true"/>
+            </mdiv>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" action="POST"/>
+        </buttons>
+        <javascript>
+            function onTipoChange(record) {
+                console.log('exemplo de evento registrado via xml'); 
+                console.log(record.value);
+            }
+        </javascript>
+    </mform>
+</view>

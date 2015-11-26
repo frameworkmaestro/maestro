@@ -1,0 +1,104 @@
+<text xml:space="preserve">
+= Eventos =
+Os [[>view/controles|Controles]] no Maestro podem ser configurados para responder a '''eventos''' Javascript. Os eventos são disparados pelo browser e podem executar um código Javascript previamente definido.
+
+No exemplo abaixo, é definido o tratamento para o evento <code>onChange</code> do controle <code>MSelection</code>, através da tag <code>event</code>:
+
+<pre lang="xml">
+<view>
+    <mform id="formEvent" title="Form Event" close="controls/main">
+        <fields>
+            <mselection id="tipo" label="Tipo" options="{{ array('bg1' => 'Opção 1', 'bg2' => 'Opção 2', 'bg3' => 'Opção 3') }}">
+                <event event="onChange" handler="console.log('exemplo de evento registrado via xml');" preventDefault="false"/>
+            </mselection>
+        </fields>
+        ...
+    </mform>
+</view>
+</pre>
+
+A tag <code>event</code> tem os seguintes atributos:
+
+<pre>
+{| cellspacing=5
+!Atributo!!Descrição
+|-
+|event
+|define qual evento será capturado (ver Tipos de eventos)
+|-
+|handler
+|código Javascript para tratamento do evento (ver Event Object)
+|-
+|preventDefault
+|(true/false) define se o handler default do evento será executado ou não
+|}
+</pre>
+
+== Tipos de eventos ==
+
+São usados nomes normalizados para os eventos:
+
+<pre>
+{| cellspacing=5
+|-
+|onClick
+|o usuário clicou em um nó
+|-
+|onFocus
+|o nó recebeu o foco
+|-
+|onBlur
+|o nó perdeu o foco
+|-
+|onChange
+|o valor de entrada mudou
+|-
+|onKeyPress
+|o usuário pressionou uma tecla
+|-
+|onMouseOver
+|o mouse passou sobre o nó
+|-
+|onSubmit
+|o formulário foi submetido
+|}
+</pre>
+
+== Event Object ==
+
+Os handlers de eventos recebem um parâmetro normalizado, chamado '''Event Object''', com os seguintes atributos:
+
+<pre>
+{| cellspacing=5
+|event.target
+|o elemento que gerou o evento
+|-
+|event.currentTarget
+|o elemento objeto do evento
+|-
+|event.layerX
+|a coordenada x, relativa a event.currentTarget
+|-
+|event.layerY
+|a coordenada y, relativa a event.currentTarget
+|-
+|event.pageX
+|a coordenada x, relativa ao viewport
+|-
+|event.pageY
+|a coordenada y, relativa ao viewport
+|-
+|event.relatedTarget
+|em eventos onmouseover e onmouseout, o objeto em que o mouse está entrando ou saindo
+|-
+|event.charCode
+|em eventos de teclado, o código do caracter da tecla pressionada
+|-
+|event.keyCode
+|em eventos de teclado, trata teclas especiais como ENTER e barra de espaços
+|-
+|event.charOrCode
+|uma versão normalizada de charCode and keyCode
+|}
+</pre>
+</text>

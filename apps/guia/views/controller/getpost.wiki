@@ -1,0 +1,13 @@
+<text xml:space="preserve">
+= GET x POST =
+Como é comum nas aplicações Web, a interação do browser com o Maestro é feita através das requisições HTTP, usando os métodos GET e POST.
+
+O método '''GET''' é executado quando o endereço é digitado na barra de endereços do browser. 
+Através dele uma nova página HTML é carregada, a barra de endereços é alterada e o histórico do browser é atualizado.
+No caso do Maestro, o desenvolvedor pode determinar, no código, se um link será executado da via browser (usando a tag HTML < a href="..."></a>) ou se o método GET será executado via AJAX. 
+Em qualquer situação o método GET deve ser usado '''para obter''' dados (enventualmente passando alguns parâmetros) e '''não para enviar''' dados. 
+Por exemplo, GET é usado para se obter um novo formulário ou realizar uma mudança de contexto.
+
+O método '''POST''' é executado '''para enviar''' dados para a aplicação, tipicamente na submissão de formulários e na execução de ações sobre os objetos do Modelo.
+No Maestro, o método POST é '''sempre''' executado via AJAX, e as respostas mais comuns a uma submissão de dados são: exibição de um prompt, carga de um ''HTML snippet'', redirecionamento para outra página, recepção de dados via JSON.
+</text>

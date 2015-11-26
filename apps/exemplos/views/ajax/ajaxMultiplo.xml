@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <javascript helper="{{ MUI::set('ajaxMultiplo1','href',$this->data->multiplo1); }}"/>
+    <javascript helper="{{ MUI::set('ajaxMultiplo2','href',$this->data->multiplo2); }}"/>
+    <javascript helper="{{ MUI::set('ajaxMultiplo3','href',$this->data->multiplo3); }}"/>
+    <javascript helper="{{ MUI::set('ajaxMultiplo4','href',$this->data->multiplo4); }}"/>
+</view>

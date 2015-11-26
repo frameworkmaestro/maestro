@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mformaction id="formNovoAluno" title="Novo Aluno" close=">exemplos/main">
+    <fields>
+        <mhiddenfield id="idAluno" /> 
+        <mtextfield id="matricula" label="Matricula" />        
+        <mtextfield id="nome" label="Nome" />
+        <mcpffield id="cpf" label="CPF"/>
+        <mcalendarfield id="dataNascimento" label="DataNascimento" />
+        <memailfield id="email" label="Email" />
+    </fields>
+    <buttons>
+        <mbutton id="btnURL" text="Service via URL" action="$this->data->actionURL"/>
+        <mbutton id="btnController" text="Service via Controller" action="$this->data->actionController"/>
+    </buttons>
+    </mformaction>
+</view>

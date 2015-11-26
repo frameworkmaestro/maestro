@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formSession" title="Usando Zend Session" >
+        <fields>
+            <mlabel id="teste" text="$this->data->teste" />
+            <mlabel id="integer" text="$this->data->integer" />
+            <mlabel id="limitedr" text="$this->data->limited" />
+        </fields>
+    </mform>
+</view>

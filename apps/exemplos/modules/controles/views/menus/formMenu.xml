@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formMenu" title="Menu" close=">exemplos/controles/menus" height="400px">
+        <fields>
+            <mlabel text="Clique com o botão direito dentro da div para exibir o menu."/>
+            <mdiv id="divFile" height="100px" width="100px" border="1px solid black">divFile</mdiv>
+            <mdiv id="divOpcoes" height="100px" width="100px" border="1px solid black">divOpcoes</mdiv>
+            <mcontextmenu id="menuFile" context="divFile">
+                <mmenuitem id="menuFileOpen" label="Open" glyph="folder-open" action=">controles/menus/formMenuBar"/>
+                <mmenuitem id="menuFileSave" label="Save" glyph="floppy-save"/>
+                <mmenuitem id="menuFileClose" label="Close" glyph="folder-close" action=">controles/menus/formMenuBar"/>
+                <mmenuseparator/>
+                <mmenuitem id="menuFileExit" label="Exit"/>
+            </mcontextmenu>   
+            <mcontextmenu id="menuOpcoes" context="divOpcoes">
+                <mmenuitem id="menuOpcao1" label="Opção 1" glyph="folder-open" action=">controles/menus/formMenuBar"/>
+                <mmenuitem id="menuOpcao2" label="Opção 2" glyph="folder-save" action=">controles/menus/formMenuBar"/>
+            </mcontextmenu>   
+        </fields>
+    </mform>
+</view>

@@ -1,0 +1,24 @@
+<text xml:space="preserve">
+= Integração com Zend Framework =
+
+O Framework Maestro possui embutido em seu código fonte o Framework Zend, para que
+possa ser utilizado quando necessário. Pode-se instanciar o framework Zend na camada de controle ou de modelo, bastando apenas importar as bibliotecas necessárias e instanciar as classes do framework.
+
+[http://framework.zend.com/manual/2.2/en/index.html Documentação do Zend Framwork]
+
+== Exemplo: Como ver a versão do Zend Framework que está instalada no Maestro ==
+O framework Maestro está preparado para que o Zend Framework seja utilizado de forma independente, bastando apenas que seja instanciada a classe referente do Zend Framework.
+
+Para verificar a versão do Zend Framework, pode-se utilizar o método <i>getLatest</i>
+da classe <i>Zend\Version\Version</i> do Zend. Supondo que exista a action <i>formVersion</i> em um controller qualquer da sua aplicação, podemos ter o seguinte código:
+
+<code lang="php">
+public function formVersion() {
+    $this->data->versao = "Zend Version = " . Zend\Version\Version::getLatest();
+    $this->render();
+}
+</code>
+
+
+
+</text>

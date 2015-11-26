@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<view>
+    <mdialog id="dlgAlunoUpdate" title="Editar" onClose="jQuery('#gridMainAluno').mgrid('reload');" state="open">
+        <mform id="formNew">
+            <include file="fields.xml" />
+            <data load="$this->data->object"/>
+        </mform>
+    </mdialog>
+</view>

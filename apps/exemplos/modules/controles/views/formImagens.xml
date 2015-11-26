@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formImagens" title="Imagens" close="main/controls">
+        <fields>
+            <mimage label="Imagem via URL" source="$this->data->location" />
+            <mimage label="Imagem via CSS, definindo width e height" css="exemplosIconControls" width="32px" height="32px"/>
+            <mimage label="Imagem via URL - modificando dimensões" source="$this->data->location" width="55px" height="55px"/>
+            <mlabel text="Exemplos de Icons"/>
+            <mhcontainer>
+                <mimage css="famfamfam famfamfam-application"/>    
+                <mimage css="famfamfam famfamfam-note"/>    
+                <mimage css="famfamfam famfamfam-report"/>    
+                <mimage css="patriglyph patriglyph-bin"/>    
+                <mimage css="patriglyph patriglyph-calendar"/>    
+                <mimage css="patriglyph patriglyph-grid1"/>    
+                <mimage css="patriglyph patriglyph-person"/>    
+                <mimage css="patriglyph patriglyph-settings"/>    
+            </mhcontainer>
+            <mimagelink id="imageLinkURL" label="MImageLink via URL" source="$this->data->location" action="!console.log('MImageLink URL');"/>
+            <mimagelink id="imageLinkCSS" label="MImageLink via CSS" css="exemplosIconControls" action="!console.log('MImageLink CSS');" width="32px" height="32px"/>
+            <mimagelinklabel id="imageLinkLabelURL" label="MImageLinkLabel via URL" source="$this->data->location" action="!console.log('MImageLink URL');"/>
+            <mimagelinklabel id="imageLinkLabelCSS" label="MImageLinkLabel via CSS" css="exemplosIconControls" action="!console.log('MImageLink URL');"/>
+            <mimagelinklabel id="imageLinkLabelIconURL" imageType="icon" label="MImageLinkLabel via URL - icon" source="$this->data->icon" action="!console.log('MImageLink URL');"/>
+            <mimagelinklabel id="imageLinkLabelIconCSS" imageType="icon" label="MImageLinkLabel via CSS - icon" css="exemplosIconFind" action="!console.log('MImageLink URL');"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>

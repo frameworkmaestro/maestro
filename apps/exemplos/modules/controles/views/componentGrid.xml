@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formComponentGrid" title="Exemplo de Uso de Componentes">
+        <fields>
+            <mtextfield id="nome" label="Nome" value="" size="35" hint="hint" />
+            <include component="gridTable.xml"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar" />
+        </buttons>
+    </mform>
+</view>

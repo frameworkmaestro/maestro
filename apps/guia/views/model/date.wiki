@@ -1,0 +1,39 @@
+<text xml:space="preserve">
+= MDate e MTimestamp =
+A classe '''MDate''' encapsula a classe [http://php.net/manual/en/class.datetime.php|DateTime] do PHP; a classe '''MTimeStamp''' estende a classe '''MDate''' para tratar também o horário. 
+Ambas provêm alguns métodos utilitários:
+<br/>
+<pre lang="php">public function getDateTime()</pre>- Obtém o objeto [http://php.net/manual/en/class.datetime.php|DateTime] encapsulado, possibilitando executar seus métodos.
+<br/>
+<pre lang="php">public function copy()</pre>- Obtém um clone do objeto.
+<br/>
+<pre lang="php">public function format($format = '')</pre>- Retorna uma string que representada a data, conforme a configuração de locale.
+<br/>
+<pre lang="php">public function invert()</pre>- Inverte a data representada (para consulta a banco de dados, por exemplo).
+<br/>
+<pre lang="php">public function add($interval)</pre>- Adiciona um intervalo a uma data.
+<br/>
+<pre lang="php">public function sub($interval)</pre>- Subtrai um intervalo de uma data.
+<br/>
+<pre lang="php">public function diff($date, $format = '%d')</pre>- Retorna a diferença entre duas datas, de acordo com $format (por exemplo, %d retorna a diferença em dias).
+<br/>
+<pre lang="php">public function getPeriod($dateInitial, $interval, $dateFinal)</pre>- Obtem um objeto DataPeriod.
+<br/>
+<pre lang="php">public function compare($operator, $date)</pre>- Compara a data do objeto com $date.
+<br/>
+<pre lang="php">public function getDay($format = 'd')</pre>- Obtem o dia referente à data.
+<br/>
+<pre lang="php">public function getMonth($format = 'm')</pre>- Obtem o mês referente à data.
+<br/>
+<pre lang="php">public function getYear($format = 'Y')</pre>- Obtem o ano referente à data.
+<br/>
+<pre lang="php">public function getDayNick()</pre>- Obtem o nome abreviado do dia referente à data.
+<br/>
+<pre lang="php">public function getDayName()</pre>- Obtem o nome do dia referente à data.
+<br/>
+<pre lang="php">public function getMonthNick()</pre>- Obtem o nome abreviado do mês referente à data.
+<br/>
+<pre lang="php">public function getMonthName()</pre>- Obtem o nome do mês referente à data.
+<br/>
+<pre lang="php">public function getFullName($dayOfWeek = false)</pre>- Obtem a descrição completa da data.
+</text>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mgrid id="gridGridAcesso" data="$this->data->array" pageLength="0" actionSelect="marca" hasForm="true" width="99%">        
+        <mgridcolumn index="2" title="Grupo" width="30%"/>        
+        <mgridcolumn index="3" title="Direito" width="70%" options="$this->data->direitos"/>
+    </mgrid>
+</view>

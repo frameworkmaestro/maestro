@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formTextField" title="Text Field e Validators" close=">exemplos/controles/input">
+        <fields>
+            <mhiddenfield id="hiddenField"/>
+            <mhcontainer>
+                <mvcontainer>
+                    <mtextfield id="nome" label="MTextField" width="200px" placeholder="Digite o nome" hint="hintNome">
+                        <validator type="required" message="Preencha o campo nome."/>
+                    </mtextfield>>                        
+                    <mtextfield id="mask" label="MTextField Mask" width="150px" mask="(##)(aa)[***]">
+                        <validator type="required" message="preencha o campo mask (##)(aa)[***]"/>
+                    </mtextfield>
+                    <mpasswordfield id="senha" label="MPasswordField">
+                        <validator type="required" message="preencha o campo senha"/>
+                    </mpasswordfield>
+                    <mtextfield id="length" label="MTextField [min,max] length" placeholder="3 a 10 caract.">
+                        <validator type="required" message="preencha o campo length"/>
+                        <validator type="length" parameter="{{array(3,10)}}" message="3 a 10 caracteres"/>
+                    </mtextfield>    
+                    <mmultilinefield id="multiline" label="MMultilineField" rows="5" cols="40">
+                        <validator type="required" message="preencha o campo multiline"/>
+                    </mmultilinefield>
+                </mvcontainer>
+                <mvcontainer>
+                    <mcalendarfield id="dataNascimento" label="MCalendarField"  width="120px">
+                        <validator type="required" message="preencha o campo data"/>
+                    </mcalendarfield>
+                    <mcalendarfield id="dataRange" label="MCalendarField - Range"  width="120px">
+                        <validator type="required" message="preencha o campo data range"/>
+                        <validator type="daterange" parameter="{{array('01/07/2011',Manager::getSysDate())}}" message="preencha com uma data no intervalo"/>
+                    </mcalendarfield>
+                    <mtimefield id="timefield" label="MTimeField" value="12:34">
+                        <validator type="required" message="preencha o campo time"/>
+                    </mtimefield>
+                    <mtimestampfield id="timestamp" label="MTimestampField" value="12/10/2005 23:21:34">
+                        <validator type="required" message="preencha o campo timestamp"/>
+                    </mtimestampfield>
+                </mvcontainer>
+                <mvcontainer>
+                    <mtextfield id="re" label="MTextField RegExp" placeholder="[A-Za-z]+[0-9][0-9]">
+                        <validator type="required" message="preencha o campo regexp"/>
+                        <validator type="regexp" parameter="[A-Za-z]+[0-9][0-9]"/>
+                    </mtextfield>
+                    <mtextfield id="numberRange" label="Number Range" hint="faixa: 10 a 15">
+                        <validator type="required" message="preencha o campo number range"/>
+                        <validator type="range" parameter="{{array(10,15)}}" message="preencha com um número entre 10 e 15"/>
+                    </mtextfield>
+                    <memailfield id="email" label="MEmailField">
+                        <validator type="required" message="preencha o campo email"/>
+                    </memailfield>
+                    <mcurrencyfield id="currency" label="MCurrencyField" hint="indicar os centavos">
+                        <validator type="required" message="preencha o campo currency"/>
+                    </mcurrencyfield>
+                    <mnumberfield id="number" label="MNumberField">
+                        <validator type="required" message="preencha o campo number"/>
+                    </mnumberfield>
+                    <mnumberspinner id="spinner" label="MNumberSpinner" value="10" />
+                    <mphonefield id="telefone" label="MPhoneField">
+                        <validator type="required" message="preencha o campo telefone"/>
+                    </mphonefield>
+                </mvcontainer>
+                <mvcontainer>
+                    <mcpffield id="cpf" label="MCPFField">
+                        <validator type="required" message="preencha o campo cpf"/>
+                    </mcpffield>
+                    <mcnpjfield id="cnpj" label="MCNPJField">
+                        <validator type="required" message="preencha o campo cnpj"/>
+                    </mcnpjfield>
+                    <mnitfield id="nit" label="MNITField"/>
+                    <mcepfield id="cep" label="MCEPField">
+                        <validator type="required" message="preencha o campo cep"/>
+                    </mcepfield>
+                    <msiapefield id="siape" label="MSIAPEField"/>
+                </mvcontainer>           
+            </mhcontainer>     
+            <meditor id="richTextEditor" label="MEditor" height="300px"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" action="@exemplos/controls/form" />
+        </buttons>
+        <data load="$this->data"/>
+    </mform>
+</view>

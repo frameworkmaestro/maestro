@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../public/layouts/view.dtd">
+<view>
+    <mdatagrid id="gridTable" query="$this->data->query" pageLength="5" rowMethod="{{ array('gridTable','rowMethod')}}">
+        <mdatagridcolumn field="idPessoa" title="ID"/>
+        <mdatagridcolumn field="nome" title="Nome" width="80%"/>
+        <method name="rowMethod" args="$currentRow, $rowData, $actions, $columns, $query, $grid">
+        <![CDATA[  $columns['nome']->control[$currentRow]->setHTMLTitle("HTML title incluido via rowmethod"); ]]>    
+        </method>        
+    </mdatagrid>
+</view>

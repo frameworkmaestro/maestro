@@ -1,0 +1,206 @@
+/* 
+ Grid 
+ */
+
+@import "variables.less";
+@import "mvariables.less";
+
+.mGrid {
+    background-color:       #fff;
+    width:                  99%;
+    text-align:             left;	
+    font: @grid-font-size;
+}
+
+.mGridNoScroll {
+    border:                 1px solid #ddd;
+}
+
+.mGrid .mGridLink { 
+    color:                  @grid-link-color;
+    text-decoration:        @grid-link-text-decoration;
+}
+
+.mGrid .mGridLink:hover {
+    text-decoration:        @grid-hovered-text-decoration;
+}
+
+.mGrid .mGridDetail { 
+    text-decoration:        @grid-detail-text-decoration;
+    cursor:                 '#';
+}
+
+.mGrid .mGridNavigation {
+    background-color:       @grid-navigation-background-color;
+    text-decoration:        none;
+    height:                 20px;
+    line-height:            20px;
+    position:               relative;
+}
+
+.mGrid .mGridNavigation .mGridNavigatorLinks {
+   float: left;
+   padding-right: 3px;
+}
+
+.mGrid .mGridNavigation .mGridNavigatorImages {
+    float: left;
+}
+
+.mGrid .mGridNavigation .mGridNavigatorRange {
+    float: right;
+}
+
+.mGrid thead tr {
+    background-color:       @grid-thead-tr-background-color;
+    text-decoration:        @grid-thead-tr-text-decoration;
+    height:100%;
+}
+
+.mGrid thead tr th {
+    background-color:       @grid-thead-tr-th-background-color;
+    padding: 2px 3px 1px 4px;
+    margin:0px;
+    height:100%;
+    font-weight: bold;
+}
+
+.mGrid thead tr th.select {
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+    width: 20px;
+}
+
+.mGrid thead tr th.action {
+    width: 18px;
+    text-align: center;
+    height:100%;
+    padding: 1px 1px 1px 1px;
+    margin: 0px;
+}
+
+.mGrid tbody {
+    border-left : @grid-tbody-border-left;
+    border-bottom : @grid-tbody-border-bottom;
+}
+
+.mGrid tbody tr {
+    height:100%;
+    color: @grid-tbody-tr;
+}
+
+.mGrid tbody tr td {
+    border-color: @grid-tbody-tr-td-border-color;
+    border-style: @grid-tbody-tr-td-border-style;
+    border-width: @grid-tbody-tr-td-border-width;
+    padding: 1px 3px 1px 4px;
+    margin:0px;
+    height:100%;
+}
+
+.mGrid tbody tr td.detail {
+    padding: 0px;
+    width:50px;
+}
+
+.mGrid tbody tr.rowenter {
+    background-color: @grid-tbody-tr-rowenter-background-color;
+}
+
+.mGrid tbody tr.row {
+    background-color: @grid-tbody-tr-row-background-color;
+}
+
+.mGrid tbody tr.rowchecked {
+    background-color: @grid-tbody-tr-rowchecked-background-color;
+}
+
+.mGrid tbody tr.row0 {
+    background-color: @grid-tbody-tr-row0-background-color;
+}
+
+.mGrid tbody tr.row0checked {
+    background-color: @grid-tbody-tr-row0checked-background-color;
+}
+
+.mGrid tbody tr.row1 {
+    background-color: @grid-tbody-tr-row1-background-color;
+}
+
+.mGrid tbody tr.row1checked {
+    background-color: @grid-tbody-tr-row1checked-background-color;
+}
+
+.mGrid tbody td.actionIcon {
+    width: 18px;
+    text-align: center;
+    height:100%;
+    padding: 1px 1px 1px 1px;
+    margin: 0px;
+}
+
+.mGrid tbody td.actionText {
+    
+}
+
+.mGrid tbody td a.actionTextLink {
+    color:            @grid-tbody-actiontext-link-color;
+    font-weight:      @grid-tbody-actiontext-link-font-weight;
+    font-size:        @grid-tbody-actiontext-link-font-size;
+}
+
+.mGrid tbody td a.actionTextDisable {
+    color:            @grid-tbody-actiontext-disable-color;
+    font-weight:      @grid-tbody-actiontext-disable-font-weight;
+    font-size:        @grid-tbody-actiontext-disable-font-size;
+}
+
+.mGrid tbody td.select {
+    padding: 0px 0px 0px 2px;
+    text-align: center;
+    width:20px;
+}
+
+.mGrid tbody td div.detail {
+    padding: 0px;
+    width:45px;
+}
+
+.mGrid tbody tr.detail {
+    padding: 0px;
+    height:0px;
+}
+
+.mGrid .mGridColumnOrder {
+    text-decoration: underline;
+    text-align: center;
+    color: #000;
+    vertical-align: middle;
+    height: 15px;
+}
+
+.mGrid .mGridColumnLink {
+    font-weight: normal;
+    padding: 1x;
+    color: #000;
+    text-decoration: underline;
+}
+
+.mGrid .mGridColumn {
+    padding:                1px;
+    border-left:            @grid-column-border-left;
+}
+
+.mGrid .mGridFooter {
+    font-weight:           @grid-footer-font-weight;
+    text-decoration:       @grid-footer-text-decoration;
+}
+
+.mGrid .mGridActionIcon {
+    border:                  0;
+    margin-left:             1px;
+    padding-left:            1px;
+    display:                 block;
+    text-decoration:         none;
+}
+

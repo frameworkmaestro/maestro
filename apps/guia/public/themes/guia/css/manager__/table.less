@@ -1,0 +1,174 @@
+/* 
+ Table 
+ */
+
+@import "variables.less";
+@import "mvariables.less";
+
+.mTable {
+    border-collapse:collapse;
+}
+
+.mSimpleTable {
+}
+
+.mTableRaw {
+    background-color:   @tableraw-background-color;
+    padding:            4px;
+    border-collapse:    collapse;
+}
+
+.mTableRaw td {
+    padding: 3px;
+    margin: 1px;
+}
+
+.mTableRawTitle {
+    background-color: @tableraw-title-background-color;
+    color:            @tableraw-title-color;
+    font-weight:      @tableraw-title-font-weight;
+    text-decoration:  @tableraw-title-text-decoration;
+    text-align:       @tableraw-title-text-align;
+}
+
+.mTableRawColumnTitle {
+    background-color:  @tableraw-column-title-background-color;
+    color:             @tableraw-column-title-color;
+    text-decoration:   @tableraw-column-title-text-decoration;
+}
+
+.mTableRawRow {
+    background-color:  @tableraw-row-background-color;
+    color:             @tableraw-row-color;
+    text-decoration:   @tableraw-row-text-decoration;
+}
+
+.mTableRawRow0 {
+    background-color: @tableraw-row0-background-color;
+}
+
+.mTableRawRow1 {
+    background-color: @tableraw-row1-background-color;
+}
+
+.mTableRawRow0:hover, .mTableRawRow1:hover {
+    background-color:   @tableraw-row0-hovered-background-color;
+}
+
+.mTableRawCell {
+}
+
+@media print
+{
+    .mTableRawTitle {
+        background-color:           white !important;
+        color:                      black !important;
+        font-weight:                bold !important;
+        font-size:                  10px !important;
+        text-decoration:            none !important;
+        text-align:                 center !important;
+        border:                     solid 1px black !important;
+    }
+
+    .mTableRawColumnTitle {
+        background:                 white !important;
+        color:                      black !important;
+        font-weight:                bold !important;
+        font-size:                  10px !important;
+        text-decoration:            none !important;
+        border:                     solid 1px black !important;
+    }
+}
+
+
+.mTextTable {
+}
+
+.mTextTable table {
+    border-color: #DDDDDD #CCCCCC;
+    border-style: none none none solid;
+    border-width: medium medium medium 1px;
+}
+
+.mTextTable tr th span.columnTitle {
+    display:block;
+    overflow:hidden;
+    font-weight: normal;
+}
+
+.mTextTable tr th {
+    background-color: #DDD;
+    border-color: #DDDDDD #CCCCCC;
+    border-style: solid solid none none;
+    border-width: 1px 1px medium medium;
+     padding: 2px 3px 3px 4px;
+}
+
+.mTextTable tr th.select {
+    border-left: 1px solid black;
+    width: 10px;
+}
+
+.mTextTable tr th.select .linkSelect {
+    background-color: threedface;
+    height:15px;
+    width:10px;
+    text-decoration: none;
+}
+
+.mTextTable .scroll {
+    background-color: transparent;
+    overflow: auto;
+    overflow-x: hidden;
+    font-weight: normal;
+}
+
+.mTextTable .scroll .row0 {
+    background-color: #FFF;
+    color: black;
+    cursor:default;
+}
+
+.mTextTable .scroll .row1 {
+    background-color: #EEE;
+    color: black;
+    cursor:default;
+}
+
+.mTextTable .scroll .hover {
+    background-color: highlight;
+    color: highlighttext;
+    cursor:default;
+}
+
+.mTextTable .scroll table {
+    border-color: #DDDDDD #CCCCCC;
+    border-style: none none solid solid;
+    border-width: medium medium 1px 1px;
+}
+
+.mTextTable .scroll table tr {
+    height: 15px;
+    background-color: black;
+}
+
+.mTextTable .scroll table tr td {
+    border-color: #DDDDDD #CCCCCC;
+    border-style: solid solid none none;
+    border-width: 1px 1px medium medium;
+    padding: 2px 3px 3px 4px;
+}
+
+.mTextTable .scroll table tr td.select {
+    height:15px;
+    width: 10px;
+    padding:0px;
+}
+
+.mTextTable .scroll table tr td.select .linkSelect {
+    background-color: threedface;
+    height:15px;
+    width:10px;
+    text-decoration: none;
+}
+

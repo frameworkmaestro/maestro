@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mhcontainer id="$this->data->idContainer">
+        <mlabel text="$this->data->message" />
+    </mhcontainer>
+</view>

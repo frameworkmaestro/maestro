@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formTransferBox" title="TransferBox" close=">exemples/main/controls">
+        <fields>            
+            <mtransferbox id="transferBox" caption="Exemplo TransferBox" list="$this->data->list" />
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>

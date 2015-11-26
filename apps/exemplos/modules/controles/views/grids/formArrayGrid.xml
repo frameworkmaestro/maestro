@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formArrayGrid" title="Exemplo de Form com DataGrid" close=">exemplos/main/controls" width="1000px">
+        <fields>
+            <mdatagrid id="gridFind"  title="Datagrid com campos anônimos (dados em um array)" idField="0" singleSelect="true" checkbox="true"
+                   url="$this->data->url" pageLength="10">
+                <mtoolbar>
+                    <mtextfield id="filter::nome" label="Nome" size="15" placeholder="Nome" />
+                    <mlinkbutton id="lbSearch" action="!$('#gridFind').mgrid('filter', event)" iconCls="icon-search" plain="true"/>
+                </mtoolbar>
+                <mdatagridcolumn type="link" index="1" action="^exemplos/controls/window1/#F0#" title="Nome" width="35%"/>
+                <mdatagridcolumn index="3" title="DataNascimento" width="10%"/>
+                <mdatagridcolumn index="2" title="CPF" width="10%"/>
+                <mdatagridcolumn index="5" title="Ativo?" options="$this->data->textoAtivo"  width="5%"/>
+                <mdatagridcolumn index="6" title="Calculo 1" width="15%"/>
+                <mdatagridcolumn index="7" title="Calculo 2" width="15%"/>
+            </mdatagrid>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Enviar" action="@exemplos/controls/formArrayGrid" />
+        </buttons>
+    </mform>
+</view>

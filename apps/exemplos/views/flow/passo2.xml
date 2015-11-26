@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mhcontainer>
+            <mtextfield id="nome" label="Nome" value="$this->data->nome" size="15" />
+            <mbuttonfind/>
+        </mhcontainer>
+        <mdatagrid id="gridFind" query="$this->data->query" pageLength="15" actionUpdate="@examples/controls/save/#0#"
+            actionDelete="@examples/controls/delete/#0#"  actionSelect="marca">
+            <mdatagridcolumn field="$this->object->idName" visible="false"/>
+            <mdatagridhyperlink field="nome" action=">examples/table/formObject/#0#" title="Nome" width="40%"/>
+            <mdatagridcolumn field="valor" title="Valor" width="20%"/>
+            <mdatagridcolumn field="dataNascimento" title="DataNascimento" width="20%"/>
+            <mdatagridcolumn field="ativo" title="Ativo?" options="$this->data->textoAtivo"  width="10%"/>
+            <!-- $id: pega o valor da coluna indice -->
+            <!-- por default, o valor do control é o valor do field correspondente -->
+            <!--
+            <mdatagridcontrol field="opcional" title="Opcional" width="10%">
+                <mtextfield id="colOpcional[$id]" size="10"/>
+            </mdatagridcontrol>
+            -->
+            <!-- para usar outro valor, usar o modificador %coluna% -->
+            <mdatagridcontrol field="opcional" title="Opcional" width="10%">
+                <mtextfield id="colOpcional[$id]" size="10"  value ="%valor%" />
+            </mdatagridcontrol>
+           
+        </mdatagrid>
+        <mhcontainer>
+            <mlabel text="ids selecionados:"/>
+            <mlabel text="$this->data->marca"/>
+        </mhcontainer>
+    </fields>
+    <buttons>
+        <mbutton id="btnNext" text="Próximo" action="@flow/passo3" />
+        <mbutton id="btnSubmit" text="Submit" />
+    </buttons>
+</view>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formBigInteger" title="Zend BigInteger" >
+        <fields>
+            <mlabel text="$this->data->bigint" />
+        </fields>
+    </mform>
+</view>

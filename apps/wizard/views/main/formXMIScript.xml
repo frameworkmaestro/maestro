@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formXMIScript" title="XMI Script Wizard" close=">wizard/main">
+        <fields>
+            <mvcontainer>
+                <mtextfield id="xmi" label="XMI File" width="500px" placeholder="inside files/xmi" value=""/>
+                <mtextfield id="app" label="App" width="500px" placeholder="A app que o script pertence (abaixo do maestro/apps)" value=""/>
+                <mtextfield id="module" label="Module" width="500px" placeholder="O módulo da app (abaixo de maestro/apps/nomedaapp/modules)"
+                            value=""/>
+                <mtextfield id="database" label="Database" width="500px" placeholder="O nome do banco de dados (definido em conf/conf.php)"
+                            value=""/>
+                <mtextfield id="package" label="Package" width="500px"
+                            placeholder="O Package que você deseja gerar o Script. Algo como 'Bolsa_Classes'"
+                            value=""/>
+            </mvcontainer>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Generate" action="@wizard/main/createXMIScript"/>
+        </buttons>
+    </mform>
+</view>

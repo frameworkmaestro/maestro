@@ -1,0 +1,17 @@
+<text xml:space="preserve">
+= MFile =
+A classe '''MFile''' encapsula os métodos para manipulação de arquivos.
+O parâmetro <code>$inline</code> indica se no processo de download será enviado a string com o contéudo do arquivo ou se será apresentado um prompt para o usuário salvar o arquivo.
+<br/>
+<pre lang="php">public static function file($value, $inline = true, $name = '')</pre>- Método estático para criação do objeto MFile com base no conteúdo ($value) do arquivo.
+<br/>
+<pre lang="php">public function copyTo($file)</pre>- Copia o arquivo para a localização indica por $file.
+<br/>
+<pre lang="php">public function saveToCache($inline = true, $name = '')</pre>- Copia o arquivo para a área de cache do Maestro.
+<br/>
+<pre lang="php">public function saveTo($file)</pre>- Salva o arquivo em disco no path indicado por $file.
+<br/>
+<pre lang="php">public function setPath($file, $inline = true)</pre>- Define o path do arquivo.
+<br/>
+<pre lang="php">public function getURL()</pre>- Obtém a URL para download do arquivo.
+</text>

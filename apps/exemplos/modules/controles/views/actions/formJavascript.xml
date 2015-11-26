@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<view>    
+    <mform id="formJavascript" title="Javascript Helpers" close=">exemplos/controles/actions">
+        <javascript file="{{ $this->view->getPath() . '/formJavascript.js' }}"/>    
+        <javascript src="{{ Manager::getStaticURL('exemplos','scripts/javascriptSrc.js', true) }}"/>    
+        <fields>
+            <javascript onload="dummy('Função em um script externo'); dummy2('Dummy2'); dummySrc('Função carregada dinamicamente.');" code="console.log('exemplo de jscode');"/>
+            <mhcontainer>
+                <mbutton id="btnShow" text="Mostrar" action="{{ '!' . MUI::show('pane1'); }} "/>
+                <mbutton id="btnHide" text="Ocultar" action="{{ '!' . MUI::hide('pane1'); }} "/>
+                <mbutton id="btnToggle" text="Inverter Visibilidade" action="{{ '!' . MUI::toggle('pane1'); }} "/>
+                <mbutton id="btnHighlight" text="HighLight" action="{{ '!' . MUI::highlight('pane1'); }} "/>
+                <mbutton id="btnReplace" text="Definir HTML" action="{{ '!' . MUI::replace('pane1','&lt;span&gt;texto html&lt;/span&gt;'); }} "/>
+                <mbutton id="btnCopyValue" text="Copiar Valor" action="{{ '!' . MUI::copyValue('from','to'); }} "/>
+            </mhcontainer>
+            <mdiv id="pane1" width="200px">
+                <mlabel text="pane 1"/>
+            </mdiv> 
+            <mtextfield id="from" value="Valor Original" label="Valor Base" />
+            <mtextfield id="to" value="" label="Valor Copiado" />
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+        <javascript>
+            function dummy2(msg) {
+                console.log('Função definida diretamente na view. ' + msg);
+            }
+        </javascript>
+    </mform>
+</view>

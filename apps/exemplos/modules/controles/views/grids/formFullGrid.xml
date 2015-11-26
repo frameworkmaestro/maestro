@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formFullGrid" title="Exemplo de Form com DataGrid" close=">exemplos/main/controls">
+        <fields>
+            <!-- mdatagrid -->
+            <!-- . quando a propriedade 'query' é definida, não há paginação, ex: query="$this->data->query" height="350px" -->
+            <!-- . para haver paginação, os dados devem ser obtidos via json, através de uma action específica (atributo url) -->
+            <mdatagrid id="gridFind"  title="Datagrid" idField="idPessoa" singleSelect="true" checkbox="true" width="100%"
+                       url="$this->data->url" pageLength="10">
+                <mtoolbar>
+                    <mtextfield id="filter::nome" label="Nome" size="15" placeholder="Nome" />
+                    <mlinkbutton id="lbSearch" action="!$('#gridFind').mgrid('filter', event)" iconCls="icon-search" plain="true"/>
+                </mtoolbar>
+                <tool title="Salvar" action="@exemplos/controls/gridSave" icon="icon-save" />
+                <tool title="Excluir" action="@exemplos/controls/gridDelete" icon="icon-remove" />
+                <mdatagridcolumn field="idPessoa" visible="false"/>
+                <mdatagridcolumn type="link" field="nome" action="^exemplos/controls/window1/#idPessoa#" title="Nome" width="25%"/>
+                <mdatagridcolumn field="cpf" title="CPF" width="10%" halign="center" align="right"/>
+                <mdatagridcolumn type="control" field="salario" title="Salário" width="10%">
+                    <mcurrencyfield id="colSalario"  width="120px"  value="#salario#" >
+                        <event event="blur" handler="atualizaSalarioTotal(e);" preventDefault="true"/>
+                    </mcurrencyfield>
+                </mdatagridcolumn>
+                <mdatagridcolumn field="dataNascimento" title="DataNascimento" width="15%" render="semestre"/>
+                <mdatagridcolumn type="control" title="Novo Nome" field="novoNome">
+                    <mtextfield id="novoNome" value="#nome#" width="150px" />
+                </mdatagridcolumn>
+            </mdatagrid>
+            <mhcontainer>
+                <mlabel text="Salário Total:"/>
+                <mcurrencyfield id="total" size="10"  value ="0,00"/>
+            </mhcontainer>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" action="@exemplos/controls/formFullGrid" />
+        </buttons>
+        <javascript>
+<![CDATA[
+    // exemplo de formatação da coluna, via javascript
+    // renderiza a dataNascimento em vermelho ou azul, dependendo do semestre
+    function semestre(value,row,index){
+        var mes = value.match(/(.*)-(.*)-(.*)/)[2];
+        var color = (mes <= 6) ? '#FF0000' : '#0000FF'; 
+        return "<span style='color:" + color + "'>" + value + "</span>";
+    }
+            
+    jQuery(function($) {
+
+        // exemplo de atribuição de evento aos controles criados dinamicamente
+        // a função onAfterLoad é executada após os dados serem carregados no grid
+        
+        $('#gridFind').mgrid().onAfterLoad =  function() {
+            atualizaTotalSalario();
+            
+            // associa um evento 'blur' em cada campo 
+            // para atualizar o total, em caso de edição
+            $('.gridFind_colSalario').each(function() {
+                $(this).textbox('textbox').on('blur', atualizaTotalSalario);
+            });
+        }
+        
+        function atualizaTotalSalario() {
+            var total = 0;
+            $('.gridFind_colSalario').each(function() {
+                var value = $(this).numberbox('getValue');
+                if (value == '') value = '0';
+                total = total + parseFloat(value); 
+            });
+            $('#total').numberbox('setValue', total);
+        }    
+    });        
+            
+]]>
+        </javascript>
+    </mform>
+
+</view>

@@ -1,0 +1,5 @@
+<text xml:space="preserve">
+= FrontController =
+'''FrontController''' se refere a um [http://en.wikipedia.org/wiki/Front_Controller_pattern|padrão de projeto|_blank], onde todas as requisições feitas a uma aplicação são concentradas em um único ponto de entrada.
+No Maestro este padrão é implementado através da classe <code>MFrontController</code>.
+</text>

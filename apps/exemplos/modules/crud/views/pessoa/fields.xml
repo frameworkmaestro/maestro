@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<view>
+    <!-- propriedades do formulário usadas na definição do layout -->
+    <property class="col-md-4" labelClass="col-md-6" />
+    <fields>
+        <mhiddenfield id="idPessoa" />
+        <mtextfield id="nome" label="Nome" />
+        <!-- exemplo de uso da permissão de acesso a um campo -->
+        <mcpffield id="cpf" label="CPF"  access="ADMIN:A_EXECUTE"/>
+        <mcalendarfield id="dataNascimento" label="DataNascimento" />
+        <memailfield id="email" label="Email" />
+        <!-- exemplo da possibilidade de ignorar ou não o processamento de um campo (atributo 'process') -->
+        <mselection id="selection" label="Exemplo Selection" options="$this->data->options" hint="hintSelection" optional="false" process="$this->data->process"/>
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+</view>

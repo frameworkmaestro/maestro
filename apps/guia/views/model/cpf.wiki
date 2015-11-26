@@ -1,0 +1,10 @@
+<text xml:space="preserve">
+= MCPF =
+A classe '''MCPF''' encapsula os métodos para manipulação de strings de CPF.
+<br/>
+<pre lang="php">static public function validate($value)</pre>- Método estático que indica se $value representa um CPF válido.
+<br/>
+<pre lang="php">public function format()</pre>- Retorna a string formatada como CPF.
+<br/>
+<pre lang="php">public static function create($value)</pre>- Método estático para criar um objeto MCPF a partir de uma string.
+</text>

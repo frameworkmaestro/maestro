@@ -1,0 +1,81 @@
+<text xml:space="preserve">
+= Forms =
+'''Formulários''' (''forms'') são a interface com o usuário mais comum em aplicações Web. No Maestro, os formulários são [[>view/controles|Controles]], que podem ser usados em ''Views''. Como regra geral, são usadas ''views'' XML. Esta seção apresenta as principais opções em formulários definidos via XML (''XML Forms'').
+
+O código a seguir mostra a estrutura básica de um XML Form:
+
+<pre lang="xml">
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform>
+        <property title="Form XML" close=">controls/form"/>
+        <tool title="Ajuda" action="help:form" icon="help" />
+        <data id="teste" value="Conteudo de teste" />
+        <fields>
+            <mhcontainer>
+                <mtextfield id="nome" label="Nome" value="$this->data->nome" size="25" hint="hint"/>
+                <mtoolbutton icon="help" action="help:nomeHelp" />
+            </mhcontainer>
+            <mselection id="sel" label="Lista" options="$this->data->options" hint="choose one" />
+            <mtextfield id="endereco" label="Endereço" value="$this->data->nome" size="35" hint="hint"  help="Help curto via tooltip"/>
+            <mtextfield id="teste" label="Teste" size="25"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar"/>
+        </buttons>
+        <help>
+            <mhelp id="form" caption="Exemplo Help">
+<![CDATA[
+<h1>Form XML</h1>
+<p><b>Lorem Ipsum</b> é simplesmente uma simulação de texto da indústria tipográfica e de impressos...
+</p>
+]]>
+            </mhelp>
+            <mhelp id="nomeHelp" caption="Nome">
+<![CDATA[
+<p>Um texto maior para help de um campo específico, escrito em <b>html</b>.</p><p>Lorem ipsum dolor sit amet...</p>
+
+]]>
+            </mhelp>
+        </help>
+    </mform>
+</view>
+</pre>
+
+==Tags principais==
+
+
+<b>property</b>
+<pre lang="xml"><property title="Form XML" close=">controls/form"/>
+</pre>Define valores para as propriedades dor formulário.
+
+<b>tool</b>
+<pre lang="xml"><tool title="Ajuda" action="help:form" icon="help" />
+</pre>Define ferramentas que são exibidas na barra de título do formulário. 
+
+<b>data</b>
+<pre lang="xml"><data id="teste" value="Conteudo de teste" />
+</pre>Força a definição do valor do campo indicado pelo atributo @id@.
+
+<pre lang="xml"><data load="$this->data->object" />
+</pre>Força a definição do valores do campos do formulário cujo "id" seja um atributo do objeto indicado em @load@.
+
+<b>fields</b>
+Define quais são os campos (controles) do formulário.
+
+<b>buttons</b>
+Define quais são os botões do formulário.
+
+<b>help</b>
+Define quais são os textos de ajuda (help) disponíveis neste formulário. Para cada texto é usado um controle @mhelp@. 
+
+<b>include</b>
+<pre lang="xml"><include file="fields.xml" />
+</pre>Inclui no formulário atual as definições feitas em outro XML Form.
+<pre lang="xml">
+<include component="containerPessoa.php" message="Mensagem como parâmetro"/>
+<include component="gridTable.xml"/>
+</pre>Inclui no formulário atual as definições feitas em um [[>view/componentes|Componente]] PHP ou XML.
+
+</text>

@@ -1,0 +1,74 @@
+<text xml:space="preserve">
+= Javascript =
+Na construção de aplicações Web o uso de '''Javascript''' como forma de tornar a interface com o usuário mais responsiva e acessível tornou-se quase universal. 
+As ''Views'' construídas pelo Maestro estão fortemente baseadas em Javascript, usando a estrutura fornecida pelo [[>frameworks/dojo|framework DOJO]]. Por exemplo, são definidos automaticamente métodos a serem executados quando a página é carregada (''onLoad''), quando um formulário é submetido (''onSubmit''), validações de campos do formulário, etc.
+Em Views XML o código Javascript pode ser definido da seguinte forma:
+
+<pre lang="xml">
+<view>
+    <javascript file="{{ $this->view->getPath() . '/formJavascript.js' }}"/>    
+    <mform id="formJS" title="Exemplo JS" close="controls/main">
+        <fields>
+            <javascript onload="console.log('exemplo de codigo em onload');" code="console.log('exemplo de jscode');"/>
+            ...
+            <javascript helper="{{ MUI::set('pane','href',$this->data->url); }}"/>
+            ... 
+        </fields>
+    </mform>
+</view>
+</pre>
+
+{|
+!Atributo!!Descrição
+|-
+|file|| gera código para que o script Javascript seja carregado pelo browser
+|-
+|onload|| código executado após a página ser completamente carregada pelo browser
+|-
+|code|| código executado durante o carregamento da página (ex. inclusão de um outro arquivo Javascript)
+|-
+|helper|| métodos PHP que geram código Javascript executados no evento @onLoad@|
+|}
+
+== Helpers Javascript == 
+O Maestro fornece também a classe '''MUI''', com métodos estáticos em PHP que geram códigos Javascript de uso geral:
+{|
+!Método!!Descrição
+|-
+|MUI::show($id)|| Exibe o controle $id
+|-
+|MUI::hide($id)|| Oculta o controle $id
+|-
+|MUI::toogle($id)||  Inverte a visibilidade do controle $id
+|-
+|MUI::highlight($id)|| Acrescenta um fundo amarelo ao controle $id
+|-
+|MUI::replace($id, $html)|| Troca o conteúdo HTML do controle $id para $html
+|-
+|MUI::copyValue($idFrom, $idTo')|| Define o valor do controle $idTo com o valor do controle $idFrom
+|-
+|MUI::set($id, $property, $value)|| Define o valor da propriedade $property do controle $id via Javascript
+|}
+
+Estes métodos podem ser usados com ações, por exemplo (o modificador "!" indica que a ação é um código Javascript - ver [[>controller/actionsurl|Actions URL]]):
+
+<code>
+<pre lang="xml">
+<view>
+    <mform id="formJS" title="Exemplo JS" close="controls/main">
+        <fields>
+                <mbutton id="btnShow" text="Mostrar" action="{{ '!' . MUI::show('pane1'); }} "/>
+                <mbutton id="btnHide" text="Ocultar" action="{{ '!' . MUI::hide('pane1'); }} "/>
+                <mbutton id="btnToggle" text="Inverter Visibilidade" action="{{ '!' . MUI::toogle('pane1'); }} "/>
+                <mbutton id="btnHighlight" text="HighLight" action="{{ '!' . MUI::highlight('pane1'); }} "/>
+                <mbutton id="btnReplace" text="Definir HTML" action="{{ '!' . MUI::replace('pane1','&lt;span&gt;texto html&lt;/span&gt;'); }} "/>
+                <mbutton id="btnCopyValue" text="Copiar Valor" action="{{ '!' . MUI::copyValue('from','to'); }} "/>
+            ...
+        </fields>
+    </mform>
+</view>
+</pre>
+</code>
+
+
+</text>

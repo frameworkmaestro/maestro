@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mhiddenfield id="idAluno" /> 
+        <!-- usando componente Lookup: id deve ser correspondente ao model para gerar id{Model} -->       
+        <mlookuppessoa id="pessoa" label="Pessoa" value="$this->data->object"/>
+        <mtextfield id="matricula" label="Matricula" />        
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

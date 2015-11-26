@@ -1,0 +1,69 @@
+<text xml:space="preserve">
+= Ciclo de Execução =
+A execução da aplicação segue o seguinte ciclo:
+
+* Uma requisição HTTP é feita pelo usuário e o servidor Web trata esta requisição executando o [[>fundamentos/index|script index.php]].
+* Um objeto [[>servicos/manager|Manager]] é instanciado e a aplicação é executada.
+* Os dados enviados pelo usuário são armazenados no [[>fundamentos/dto|Objeto $data]].
+* O framework analisa a [[>controller/url|URL]] e define qual o ''Controller''/''Action'' será executado.
+* A ''Action'' executa os comandos (acessando os modelos, se necessário).
+* A ''Action'' renderiza a ''View''.
+* A ''View'' é construída com base em arquivos de template (que definem o layout, scripts e CSS, quando necessário), definindo alguns [[>view/controles|controles]].
+* O resultado construído pela ''View'' é escrito como uma resposta HTTP, enviada para o browser.
+
+A figura a seguir ilustra este procedimento:
+
+[[Image:diagrams_path.png"]]
+
+O exemplo a seguir detalha o ciclo de execução:
+
+Dada a URL
+<blockquote>http://&lt;servidor:porta&gt;/index.php/exemplos/main/formMain</blockquote>
+
+será executada a ação '''formMain''' da classe '''mainController''' (da aplicação '''exemplos'''):
+
+<pre>
++ maestro
+    + apps
+	+ exemplos
+	    + controllers
+		+ mainController.php
+</pre>
+
+A classe '''mainController''':
+<pre lang="php">
+<?php
+
+class MainController extends \MController {
+
+    public function init(){
+        Manager::checkLogin(false);
+    }
+
+    public function formMain() {
+        $this->render();
+    }
+}
+?>
+</pre>
+
+O método '''formMain''' possui a chamada <code>$this->render()</code> que diz ao framework para processar a ''View'' (que neste caso tem o mesmo nome do método). 
+Será acessado o arquivo <code>formMain.php</code> (ou <code>formMain.xml</code>, caso não exista o arquivo PHP), no diretório '''views/main''':
+
+<pre>
++ maestro
+    + apps
+	+ exemplos
+	    + views
+		+ main
+		    + formMain.xml
+</pre>
+
+<pre lang="xml">
+  <?xml version="1.0"?>
+  <!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+  <view>
+    <mactionpanel id="mainPanel" title="Exemplos" close=">exemplos/main/logout" actions="exemplos" />
+  </view>
+</pre>
+</text>

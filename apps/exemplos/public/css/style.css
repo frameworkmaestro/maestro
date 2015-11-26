@@ -1,0 +1,19 @@
+/******************************************************************************
+ * Icons and Images
+ ******************************************************************************/
+
+.exemplosIconControls {
+    background-image: url(../images/32x32/controls.png);
+}
+
+.exemplosIconForm {
+    background-image: url(../images/32x32/form.png);
+}
+
+.exemplosIconFind {
+    background-image: url(../images/16x16/find.png);
+}
+
+.exemplosIconSave {
+    background-image: url(../images/16x16/save.png);
+}

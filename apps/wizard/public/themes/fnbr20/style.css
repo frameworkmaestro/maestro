@@ -1,0 +1,17 @@
+/*
+Arquivo: styles.css
+Autor: Maestro
+Descrição: Tema para a app Exemplos, distribuída com o Maestro
+Version: 2.0
+Licença: GNU General Public License
+Licença URI: license.txt
+*/
+
+@CHARSET "UTF-8"; 
+@import url('css/main.css'); /* Estilos das tags html */
+@import url('css/font-awesome.css'); 
+@import url('fonts/oxygen/stylesheet.css');
+@import url('fonts/opensans_regular_macroman/stylesheet.css');
+@import url('css/controls.css'); /* Estilos do controles renderizados em classes/painter.php */
+@import url('css/layout.css');   /* Estrutura da página */
+@import url('css/custom.css');   /* Customizações de estilos definidos previamente */

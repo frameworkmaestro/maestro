@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formToolBar" title="ToolBar" close=">exemplos/main/controls">
+        <fields>
+            <msimpletoolbar id="tbExemplo">
+                <mtoolbaritem id="tbFileOpen" HTMLTitle="File Open" icon="expand" action="@controls/formToolBar"/>
+                <mtoolbaritem id="tbFileClose" HTMLTitle="File Close" icon="collapse" action="@controls/formToolBar"/>
+                <mtoolbaritem id="tbEdit" HTMLTitle="Edit" icon="toggle" action="@controls/formToolBar"/>
+                <mtoolbaritem id="tbSave" HTMLTitle="Save" icon="save" action="@controls/formToolBar"/>
+            </msimpletoolbar>
+        </fields>
+    </mform>
+</view>

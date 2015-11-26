@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formDates" title="Datas" close=">exemplos/types/main">
+        <fields>
+            <mbasegroup id="bg1" caption="Usando MDate" width="550px">
+                <mvcontainer>
+                    <mlabel text="$this->data->baseDate"/>    
+                    <mlabel text="$this->data->cloneDate"/>    
+                    <mlabel text="$this->data->addDate"/>    
+                    <mlabel text="$this->data->subDate"/>    
+                    <mlabel text="$this->data->diffDate1"/>    
+                    <mlabel text="$this->data->diffDate2"/>    
+                    <mlabel text="$this->data->compDate1"/>    
+                    <mlabel text="$this->data->compDate2"/>    
+                    <mlabel text="$this->data->compDate3"/>    
+                    <mlabel text="$this->data->getDay"/>    
+                    <mlabel text="$this->data->getMonth"/>    
+                    <mlabel text="$this->data->getYear"/>    
+                    <mlabel text="$this->data->getDayNick"/>    
+                    <mlabel text="$this->data->getMonthNick"/>    
+                    <mlabel text="$this->data->getYear"/>    
+                    <mlabel text="$this->data->getDayName"/>    
+                    <mlabel text="$this->data->getMonthName"/>    
+                    <mlabel text="$this->data->getFullName"/>    
+                    <mlabel text="$this->data->getFullNameTrue"/>    
+                    <mlabel text="$this->data->invertDate"/>    
+
+                </mvcontainer>
+            </mbasegroup>    
+            <mbasegroup id="bg2" caption="Usando Períodos" width="550px">
+                <mvcontainer>
+                    <mlabel text="$this->data->periodoTitulo1"/>    
+                    <mlabel text="$this->data->periodo1"/>    
+                    <mlabel text="$this->data->periodoTitulo2"/>    
+                    <mlabel text="$this->data->periodo2"/>    
+                </mvcontainer>
+            </mbasegroup>    
+        </fields>    
+    </mform>
+</view>

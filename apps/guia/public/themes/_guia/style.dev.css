@@ -1,0 +1,15 @@
+/*
+Tema: Default
+Autor: Maestro
+Descrição: Tema base, distribuído com o Maestro
+Version: 1.0
+Licença: GNU General Public License
+Licença URI: license.txt
+*/
+
+@CHARSET "UTF-8"; 
+@import url('css/blueprint/screen.css'); /* Definições do framework Blueprint */
+@import url('css/blueprint/ie.css'); /* Definições do framework Blueprint para o IE */
+@import url('css/dojo/dojo.css'); /* Estilos dos widgets Dojo */
+@import url('css/manager/manager.dev.css'); /* Estilos do controles do Maestro */
+@import url('css/layout.dev.css'); /* Estrutura da página */

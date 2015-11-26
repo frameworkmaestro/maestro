@@ -1,0 +1,20 @@
+<text xml:space="preserve">
+= Classe MKrono =
+
+A classe MKrono é usada para realizar operações com datas. 
+
+== Como comparar duas datas  ==
+
+<code lang="php">
+$date = Manager::date($dataInicial);
+$dateFim = Manager::date($dataFinal);
+
+if ($date->compare('>', $dateFim)) 
+{
+
+}
+</code>
+
+Para um melhor entendimento da classe, consulte: maestro\core\classes\utils\mkrono.php
+
+</text>

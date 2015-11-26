@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formGridField" title="Grid Field" close=">exemples/main/controls">
+        <fields>            
+            <mgridfield id="gridField" caption="Exemplo GridField" value="" actionGrid="exemplos/gridField/grid"
+                actionInsert="exemplos/gridField/add" actionDelete="exemplos/gridField/del"  >
+                <mtextfield id="sigla" label="Sigla" width="10em"/>
+                <mtextfield id="nome" label="Nome" width="15em"/>
+            </mgridfield>
+        </fields>
+    </mform>
+</view>

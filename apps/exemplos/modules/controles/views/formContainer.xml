@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <css code="#containerCSS_hlayout .firstCell {border: 1px black solid} #containerCSS_hlayout .cell2 {color:red}  #containerCSS_hlayout .cell4 {background-color:#CCC}"/>
+    <mform id="formContainer" caption="Containers (MHContainer e MVContainer)">
+        <fields>
+            <mlabel id="label1" text="Usando columnWidth (MHContainer)" fontWeight="bold"/>
+            <mhcontainer width="100%">
+                <mcontentpane id="div1" columnWidth="50%">
+                    <mlabel text="div1 columnWidth = 50%"/>
+                </mcontentpane>
+                <mlabel text="mlabel columnWidth = 30%" columnWidth="30%"/>
+                <mlabel text="mlabel columnWidth = 10%" columnWidth="10%"/>
+            </mhcontainer>
+            <mspacer height="10px"/>
+            <mlabel id="label2" text="Usando rowHeight (MVContainer)" fontWeight="bold"/>
+            <mvcontainer>
+                <mlabel text="mlabel rowHeight = 25px" rowHeight="25px"/>
+                <mlabel text="mlabel sem rowHeigth"/>
+                <mlabel text="mlabel rowHeight = 35px" rowHeight="35px"/>
+                <mlabel text="mlabel rowHeight = 15px" rowHeight="15px"/>
+            </mvcontainer>    
+            <mspacer height="10px"/>
+            <mlabel id="label3" text="Encapsulando controles" fontWeight="bold"/>
+            <mhcontainer width="80%">
+                <mbox id="box1" caption="Box1" width="250px" />
+                <mbox id="box2" caption="Box2" width="500px" />
+            </mhcontainer>
+            <mspacer height="10px"/>
+            <mlabel id="label4" text="Usando CSS" fontWeight="bold"/>
+            <mhcontainer id="containerCSS">
+                <mcontentpane id="css0" >
+                    <mlabel text="ccs0"/>
+                </mcontentpane>    
+                <mcontentpane id="css1" >
+                    <mlabel text="ccs1"/>
+                </mcontentpane>    
+                <mcontentpane id="css2" >
+                    <mlabel text="ccs2"/>
+                </mcontentpane>    
+                <mcontentpane id="css3" >
+                    <mlabel text="ccs3"/>
+                </mcontentpane>    
+                <mcontentpane id="css4" >
+                    <mlabel text="ccs4"/>
+                </mcontentpane>    
+            </mhcontainer>
+            <mspacer height="10px"/>
+            <mlabel id="label5" text="MTContainer - renderizado usando table" fontWeight="bold"/>
+            <mtcontainer id="mtExemplo" width="50%" borderCollapse="separate" borderSpacing="2px">
+                <mhcontainer>
+                    <mlabel text="Nome:"  columnWidth="80px"/>
+                    <mtextfield id="nome" size="25"/>
+                </mhcontainer>  
+                <mhcontainer>
+                    <mlabel text="Endereço:"/>
+                    <mtextfield id="endereco" size="25"/>
+                </mhcontainer>  
+                <mhcontainer>
+                    <mlabel text="Cidade:"/>
+                    <mtextfield id="cidade" size="25"/>
+                </mhcontainer>  
+                <mhcontainer>
+                    <mlabel text="CEP:"/>
+                    <mcepfield id="cep" size="8"/>
+                </mhcontainer>  
+            </mtcontainer>
+        </fields>
+    </mform>
+</view>

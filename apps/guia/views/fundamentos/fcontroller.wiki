@@ -1,0 +1,5 @@
+<text xml:space="preserve">
+= Controller =
+O Controller é a camada intermediária entre o ''Model'' e a ''View''. Ela é usada principalmente para obter/processar informações utilizando o ''Model'' e repassar informações para a ''View''. 
+Para mais informações, veja [[>controller/controller|Camada Controller]]
+</text>

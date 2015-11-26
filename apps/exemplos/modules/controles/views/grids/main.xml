@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view>
+    <mactionpanel id="grids" title="Controles.Grids" close=">exemplos/controles/grids" actions="exemplos.controles.grids" />
+</view>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mformbase id="formSaida" title="Saida de Caixa" close=">dlivro/main">
+        <fields>            
+            <mhcontainer>
+                <mlabel text="Valor em caixa: R$"/>
+                <mlabel text="$this->data->creditoCaixa" class="$this->data->labelClass"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mcurrencyfield id="valor" label="Valor"/>
+                <mcalendarfield id="dataSaida" label="Data Saída"/>
+            </mhcontainer>
+            <mmultilinefield id="motivo" label="Motivo" rows="5" cols="40"/>            
+            <mhiddenfield id="tipo"/>            
+        </fields>
+        <buttons>
+            <mbutton id="btnSave" text="Salvar" action="$this->data->btnSave"/>
+        </buttons>
+        <data load="$this->data" />
+    </mformbase>   
+</view>

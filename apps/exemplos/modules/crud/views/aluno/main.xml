@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formMainAluno">
+        <mdatagrid id="gridMainAluno" url="$this->data->url" idField="idAluno" pageLength="10" title="Aluno" singleSelect="true">
+            <mtoolbar>
+                <mtextfield id="matricula" placeholder="Matrícula"/>
+                <mtextfield id="nome" placeholder="Nome"/>
+                <mlinkbutton id="lbSearch" action="!jQuery('#gridMainAluno').mgrid('filter', event)" iconCls="icon-search" plain="true"/>
+                <mlinkbutton id="lbNew" text="New" action="^exemplos/crud/aluno/formNew" iconCls="icon-add" plain="true"/>
+                <mlinkbutton id="lbEdit" text="Edit" action="@exemplos/crud/aluno/formUpdate" iconCls="icon-edit" plain="true"/>
+                <mlinkbutton id="lbFoto" text="Foto" action="@exemplos/crud/aluno/formFoto" iconCls="icon-edit" plain="true"/>
+                <mlinkbutton id="lbDelete" text="Delete" action="@exemplos/crud/aluno/formDelete" iconCls="icon-remove" plain="true"/>
+            </mtoolbar>
+            <mdatagridcolumn field="idAluno" visible="false"/>
+            <mdatagridcolumn field="matricula" title="Matrícula" width="20%"/>
+            <mdatagridcolumn field="nome" title="Nome" width="80%"/>
+        </mdatagrid>
+    </mform>
+</view>

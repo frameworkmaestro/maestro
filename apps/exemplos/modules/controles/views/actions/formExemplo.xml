@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formExemplo" title="Form Exemplo">
+        <fields>
+            <mlabel text="Formulário de exemplo"/>
+        </fields>
+    </mform>
+</view>

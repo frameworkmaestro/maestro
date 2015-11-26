@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formPartialViewXML" title="Form Partial View XML">
+        <include file="formPartialView2.xml"/>
+        <fields>
+            <mtextfield id="nome" label="Nome label bem grande ..sssss" value="$this->data->nome" size="35" hint="em - partialviewxml.xml" />
+            <include file="formPartialView3.xml"/>
+            <mtextfield id="nome2" label="Nome label bem grande ..sssss" value="$this->data->nome" size="35" hint="em - partialviewxml.xml" />
+        </fields>
+        <include file="formPartialView4.xml"/>
+    </mform>
+</view>

@@ -1,0 +1,9 @@
+{
+    "name": "UnitTest",
+    "description": "",
+    "autoload": {
+        "psr-4": {
+            "unittest\\": ""
+        }
+    }
+}

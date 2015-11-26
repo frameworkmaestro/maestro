@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<view>
+    <mcontentpane>
+        <h1>Aplicação Exemplos - Módulo CRUD</h1>
+        <mlabel text="Este módulo apresenta dois exemplos de aplicações CRUD (Create, Retrieve, Update, Delete)."/>
+    </mcontentpane>
+</view>

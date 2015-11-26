@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mselection id="idPessoa" label="Nomes" options="$this->data->options" hint="em partialview2.xml" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost2" text="PartialView2" />
+    </buttons>
+</view>

@@ -1,0 +1,34 @@
+<text xml:space="preserve">
+= Classe MUtil =
+A classe '''MUtil''' possui vários métodos estáticos, que realizam funções de caráter geral. Vários destes métodos são usados no dia-a-dia do desenvolvimento com o Maestro. Os principais métodos são:</br></br>
+
+<code lang="php">public function NVL($value1, $value2)</code>Se $value1 é nulo, retorna $value2, senão retorna $value1.</br></br>
+
+<code lang="php">public function ifNull($value1, $value2, $value3)</code>Se $value1 é nulo, retorna $value2, senão retorna $value3.</br></br>
+
+<code lang="php">public function setIfNull(&$value1, $value2)</code>Se $value1 é nulo, $value1 recebe $value2.</br></br>
+
+<code lang="php">public function setIfNotNull(&$value1, $value2)</code>Se $value1 NÃO é nulo, $value1 recebe $value2.</br></br>
+
+<code lang="php">public static function getBooleanValue($value)</code>Retorna true se $value for (true ou 't' ou '1' ou 'true' ou 'True'), senão retorna false.</br></br>
+
+<code lang="php">public function removeSpaceChars($value)</code>Retorna $value sem os caracters de espaçamento ("\r", "\t", "\n", '&nbsp;', ' ').</br></br>
+
+<code lang="php">public function copyDirectory($sourceDir, $destinDir)</code>Copia o conteúdo do diretório $sourceDir para o diretório $destinDir.</br></br>
+
+<code lang="php">public function removeDirectory($directory, $empty=FALSE)</code>Remove recursivamente o conteúdo do diretório $directory</br></br>
+
+<code lang="php">static public function getSystemTempDir()</code>Obtém o path do diretório temporário do sistema.</br></br>
+
+<code lang="php">public static function arraySearchRecursive($needle, $haystack)</code>Procura um valor em um array, recursivamente (no caso de um array de arrays).</br></br>
+
+<code lang="php">public static function parseFiles($id, $index = NULL)</code>Faz um parse da variável global $_FILES e retorna um array de objetos da classe [tipo_mfile MFile]. Caso $index seja informado, retorna o objeto específico.</br></br>
+
+<code lang="php">public static function arrayColumn($array, $key, $insert = NULL)</code>Dado um $array bidimensional, retorna um array relativo à coluna $key. Se o array $insert for informado, ele é inserido na coluna indicada por $key.</br></br>
+
+<code lang="php">public static function arrayTree($array, $group, $node)</code>Dado um $array bidimensional, cria uma estrutura de árvore, agrupando os valores iguais nas colunas indicadas por $group. Cada nó da árvore será um array com os elementos indicados por $node.</br></br>
+
+<code lang="php">public static function arrayInsert($array, $chave = null, $valor = null)</code>Insere um elemento com chave $chave e valor $valor no início do $array.</br></br>
+
+<code lang="php">public static function arrayMergeOverwrite($arr1, $arr2)</code>Faz o merge de dois arrays, sobrepondo os elementos em que a chave exista em ambos. Caso o elemento seja um outro array, é feito o merge deste array.</br></br>
+</text>

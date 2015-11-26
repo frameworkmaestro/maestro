@@ -1,0 +1,17 @@
+{{$page->fetch('header')|noescape}}
+<!-- basic preloader: -->
+<div id="loader"><div id="loaderInner" style="direction:ltr;">Carregando.... </div></div>
+
+<div id="appContainer" > 
+    <div id="mainPane" class="easyui-panel" title="FNBr 2.0" style="height: 100%">
+{{if ($manager->getLogin())}}
+        <div id="topPane">
+            <div id="menuPane" class="melement" data-manager="href:'{{$manager->getURL('main/menu')}}'"></div>    
+            <div id="userPane" class="melement clearfix" data-manager="href:'{{$manager->getURL('main/user')}}'"></div>    
+        </div> 
+{{/if}}
+        <div id="centerPane" style="height: 96%">{{$page->generate('content')|noescape}}</div>
+    </div>
+</div>
+
+{{$page->fetch('footer')|noescape}}

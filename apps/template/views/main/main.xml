@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mcontentpane>
+        <mlabel text="Framework Maestro - Template de Aplicação"/>
+    </mcontentpane>
+</view>

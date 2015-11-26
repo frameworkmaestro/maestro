@@ -1,0 +1,26 @@
+<text xml:space="preserve">
+= Serviços de Mail =
+
+
+<code lang="php">
+$time = Manager::getSysTime();
+$ipaddress = $_SERVER['REMOTE_ADDR'];
+$mail = new PHPMailer();
+$mail->IsSMTP(); // telling the class to use SMTP
+$mail->Host = Manager::getConf('mailer.smtpServer'); // SMTP server
+$mail->From = Manager::getConf('mailer.smtpFrom');
+$mail->FromName = Manager::getConf('mailer.smtpFromName');
+$mail->Subject = $this->data->assunto;
+$mail->isHTML(false);
+$mail->CharSet = 'utf-8';
+$body = 'Enviada de: ' . $ipaddress . ' em ' . $time;
+$mail->Body = $body . "\n" . $this->data->mensagem;
+$mail->WordWrap = 100;
+$mail->addAddress($this->data->email);
+$ok = $mail->send();
+$mail->clearAllRecipients();
+$this->renderPrompt('information', 'Mensagem enviada com sucesso!');
+</code>
+
+
+</text>

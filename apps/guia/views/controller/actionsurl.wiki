@@ -1,0 +1,68 @@
+<text xml:space="preserve">
+= Actions URL =
+Todas as requisições feitas via browser ao framework Maestro indicam a execução de uma ação. Em termos de código fonte, uma ação (''action'') é um método dentro de uma classe controladora (''controller''). 
+Desta forma, as URLs que definem a execução de ações ('''Actions URL''') devem indicar a aplicação, o controlador dentro da aplicação e a ação dentro do controlador (sendo possível ainda a passagem de parâmetros). 
+A construção de uma '''Action URL''' dentro do código é feita através do método <code>Manager::getURL()</code>.
+
+<pre lang="php">
+Manager::getURL([modulo/]controller/action/id[,params]);
+</pre>
+Exemplos:
+<pre lang="php">$url = Manager::getURL('pessoa/main');
+$url = Manager::getURL('pessoa/formObject/13');
+$url = Manager::getURL('pessoa/save/13', array("param"=>"xyz"));
+$url = Manager::getURL('modulo/controlador/acao/13');
+</pre>
+
+<h2>Arquivos</h2>
+Para acessar arquivos (disponíveis no diretório "public" da aplicação ou módulo) é usado o modificador "#".
+<pre lang="php">
+$file = Manager::getURL('#files/faq.html'); // acessa o arquivo faq.html, no diretório public/files
+</pre>
+
+<h2>Control Action</h2>
+Diversos controles visuais (por exemplo, botões e links) utilizam uma '''Action URL'''. Estas URLs podem usadas com ''modificadores'', que indicam como a ação será executada ou visualizada. 
+Os modificadores são apresentados na tabela a seguir:
+
+<pre>
+{|
+!Ação!!Efeito
+|-
+|:action|element|update||AJAX (ação|elemento_base|elemento a ser atualizado)
+|-
+|@action||Post action via ajax
+|-
+|>action|target||Get action via ajax (com target opcional)
+|-
+|!action||Javascript:action
+|-
+|+action||Get action em nova janela do browser
+|-
+|^action||Get action em um dialog
+|-
+|=action||Redirect para action
+|-
+|prompt:id||Exibe o prompt indicado por "id"
+|-
+|post||Post do formulário atual
+|-
+|open:id||Abre o dialogo indicado por "id"
+|-
+|close||Fecha o dialogo corrente
+|-
+|help:id||Abre o dialogo de help indicado por "id"
+|-
+|SUBMIT||Post na URL corrente
+|-
+|PRINT, PDF, REPORT||Nova janela do browser
+|}
+</pre>
+Exemplos:
+<pre lang="php">$url = new MButton('btnPost','Enviar','@siga/main/login');
+$url = New MLink('formNew','Novo','>siga/banco/formNew');
+</pre>
+
+<h2>Links via GET</h2>
+Para se gerar links que serão executados pelo browser com o [[>controller/getpost|método GET]] (por exemplo, em controles MLink), basta que não sejam usados os modificadores. Ex:
+<pre lang="php">$link = new MLink('formNew','Novo','siga/banco/formNew');</pre>
+</text>

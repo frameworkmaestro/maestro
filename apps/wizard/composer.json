@@ -1,0 +1,9 @@
+{
+    "name": "Wizard",
+    "description": "",
+    "autoload": {
+        "psr-4": {
+            "wizard\\": ""
+        }
+    }
+}

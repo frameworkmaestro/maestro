@@ -1,0 +1,21 @@
+<text xml:space="preserve">
+= O padrão MVC =
+Uma aplicação desenvolvida no Maestro segue o padrão de arquitetura MVC (Model-View-Controller). Este padrão divide a aplicação em camadas separadas: a Camada de Apresentação e a Camada de Modelo. A Camada de Apresentação é subdividida em View e Controller.
+
+== Model ==
+O Modelo (Model) representa a informação específica do domínio sobre o qual a aplicação opera. Representa "lógica do domínio" ou as "regras de negócio". A maioria das aplicações utiliza um mecanismo para fazer a persistência dos dados do modelo, como por exemplo um banco de dados.
+
+== View ==
+A Visão (View) representa o modelo de uma forma conveniente, por exemplo através de uma interface com o usuário. É possível existir várias visões para o mesmo modelo, com propósitos diferentes. Em uma aplicação Web, uma visão geralmente é renderizada em um "formato web", como HTML, XML ou JSON. De forma geral, as aplicações que executam no ambiente do browser (como Javascript) também são consideradas como parte da visão.
+
+== Controller ==
+O Controlador (Controller) detecta eventos (geralmente disparados pela interação dos usuários - como o clique em um botão), realiza alguma ''ação'' (um processo que acessa ou não os dados dos modelos) e responde ao evento (gerando uma view). Em uma aplicação Web, os eventos são tipicamente requisições HTTP.
+A figura mostra, de forma simplificada, a interação entre estas 3 camadas:
+
+[[fundamentos/mvc|[[Image:diagrams_mvc.png]] ]]
+
+Além de implementar o MVC, o Maestro implementa também o padrão Front-Controller. No Maestro o Front-Controller representa a própria [[>fundamentos/app|Aplicação]] que está sendo executada.
+Para saber mais sobre o MVC, acesse as seguintes URLs:
+- [http://pt.wikipedia.org/wiki/MVC http://pt.wikipedia.org/wiki/MVC]
+- [http://st-www.cs.illinois.edu/users/smarch/st-docs/mvc.html http://st-www.cs.illinois.edu/users/smarch/st-docs/mvc.html] (em inglês)
+</text>

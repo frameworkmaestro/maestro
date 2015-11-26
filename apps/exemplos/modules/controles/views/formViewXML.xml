@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formViewXML" title="Form View XML - label:Above" focus="teste">
+        <data id="teste" value="Conteudo de teste" />
+        <fields>
+            <mtextfield id="nome" label="Nome Label" value="" size="35" hint="hint" />
+            <mselection id="idTable" label="Lista" options="$this->data->options" hint="choose one" />
+            <mtextfield id="teste" value="$this->data->teste" label="Campo teste" size="15" hint="atribuído via xml" />
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar" />
+        </buttons>
+        <data load="$this->data->object" />
+    </mform>
+    <mspacer height="10px" />
+    <mform id="formViewXMLSide" title="Form View XML - label:Side" labelMode="{{ MFieldLabel::LABEL_SIDE }}" labelWidth="100px">
+        <fields>
+            <mtextfield id="host" label="Host Label" value="" size="35" hint="Nome do Host" help="Nome ou Endereço_IP" />
+            <mtextfield id="port" value="" label="Porta" size="15" hint="Porta/Socket" />
+            <mselection id="idLista" label="Seleção" options="$this->data->options" hint="escolha um" />
+        </fields>
+        <buttons>
+            <mbutton id="btnSend" text="Enviar" />
+        </buttons>
+    </mform>
+</view>

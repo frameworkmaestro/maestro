@@ -1,0 +1,88 @@
+/* 
+ BoxPane 
+ */
+
+@import "mvariables.less";
+
+.mBoxPane {
+	border: 1px solid @popup-border-color;
+} 
+
+.mBoxPaneContent {
+	background: @pane-background-color repeat-x top left;
+	border-top: 1px solid @popup-border-color;
+	padding:10px 8px;
+	position: relative;
+}
+
+.mBoxPaneContentArea {
+	/* trick to get action bar (gray bar at bottom with OK/cancel buttons) to span from
+	 * left to right but still indent dialog content
+	 */ 
+	margin: -10px -8px;
+	padding: 10px 8px;
+	background: @container-background-color;
+}
+
+.mBoxPaneActionBar {
+	/* gray bar at bottom of dialog with OK/Cancel buttons */
+	background-color: @bar-background-color;
+	padding: 3px 5px 2px 7px;
+	text-align: right;
+	border-top: 1px solid @minor-border-color;
+	margin: 10px -8px -10px;
+}
+.mBoxPaneActionBar .dijitButton {
+	float: none;
+}
+
+.mBoxPaneTitleBar {
+	/* outer container for the titlebar of the dialog */
+	border: 1px solid @dialog-titlebar-border-color;
+	border-top:none;
+	background-color: @dialog-titlebar-background-color;
+	background-image: url("images/titlebar.png");
+	background-repeat:repeat-x;
+	padding: 4px 7px 3px 7px;
+	position:relative;
+	top:0px;
+	left:0px;
+}
+
+.mBoxPaneTitle {
+    color: @boxpane-title-color;
+    font-size: @boxpane-title-font-size;
+    font-weight: @boxpane-title-font-weight;
+    padding: 0 1px;
+}
+
+.mBoxPaneCloseIcon {
+	/* the default close icon for the dialog */
+	background: url(@image-boxpane-close);
+	background-repeat:no-repeat;
+	position: absolute;
+	right: 5px;
+	height: 15px;
+	width: 21px;
+}
+.dj_ie6 .mBoxPaneCloseIcon {
+	background-image: url(@image-boxpane-close-ie6);
+}
+.mBoxPaneCloseIconHover {
+	background-position:-21px;
+}
+.mBoxPaneCloseIconActive {
+	background-position:-42px;
+}
+
+.mBoxPane .closeText {
+	display:none;
+	position:absolute;
+}
+
+.mBoxPaneToolBar {
+	padding: 0 1px;
+	font-size: 1.0em;
+	color: @text-color;
+	float:right;
+}

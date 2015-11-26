@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mformaction id="formAcesso" title="Acessos" close=">auth/usuario/formFind" base="formObject">
+        <mhiddenfield id="idTransacao" value="$this->data->id"/>
+        <mgridfield id="gridAcesso" caption="" value="$this->data->id" actionGrid="auth/gridAcesso/grid"
+                    actionInsert="auth/gridAcesso/add" actionDelete="auth/gridAcesso/del"  >
+            <mselection id="idGrupo" label="Grupo" options="$this->data->grupos" width="15em"/>
+            <mselection id="direito" label="Acesso" options="$this->data->direitos" width="15em"/>                
+        </mgridfield>
+    </mformaction>
+</view>

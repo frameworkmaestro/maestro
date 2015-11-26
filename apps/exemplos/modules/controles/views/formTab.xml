@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formTab" title="Form Tab Container" close=">exemples/main/controls">
+        <fields>
+            <mtabcontainer id="tabcontainertop" width="550px" height="250px" selected="bg2">
+                <mbasegroup id="bg1" caption="Opção 1" fieldset="false">
+                    <mhcontainer>
+                        <mtextfield id="t1" label="T1"/>
+                    </mhcontainer>
+                    <mtextfield id="t11" label="T11"/>
+                    <mlookuptextfield id="nome" label="Nome" width="30px" action="pessoa/lookup" related="idTeste:idTable,nome" filter="nome"/>
+                    <mcalendarfield id="c1" label="Data 1"/>
+                </mbasegroup>
+                <mbasegroup id="bg2" caption="Opção 2" fieldset="false">
+                    <mhcontainer>
+                        <mtextfield id="t2" label="T2"/>
+                    </mhcontainer>
+                    <mtextfield id="t22" label="T22"/>
+                    <mcalendarfield id="c2" label="Data 2"/>
+                </mbasegroup>
+                <mbasegroup id="bg3" caption="Opção 3" fieldset="false"  visible="false">
+                    <mhcontainer>
+                        <mtextfield id="t3" label="T3"/>
+                    </mhcontainer>
+                    <mtextfield id="t33" label="T33"/>
+                    <mcalendarfield id="c3" label="Data 3"/>
+                </mbasegroup>
+            </mtabcontainer>
+            <mspacer height="20px"/>
+            <mtabcontainer id="tabcontainerleft" width="550px" height="250px" position="left">
+                <mbasegroup id="bgl1" caption="Opção 1" fieldset="false">
+                    <mhcontainer>
+                        <mtextfield id="tl1" label="T1"/>
+                    </mhcontainer>
+                    <mtextfield id="tl11" label="T11"/>
+                    <mlookuptextfield id="lnome" label="Nome" width="30px" action="pessoa/lookup" related="idTeste:idTable,nome" filter="nome"/>
+                    <mcalendarfield id="cl1" label="Data 1"/>
+                </mbasegroup>
+                <mbasegroup id="bgl2" caption="Opção 2" fieldset="false">
+                    <mhcontainer>
+                        <mtextfield id="tl2" label="T2"/>
+                    </mhcontainer>
+                    <mtextfield id="tl22" label="T22"/>
+                    <mcalendarfield id="cl2" label="Data 2"/>
+                </mbasegroup>
+                <mbasegroup id="bgl3" caption="Opção 3" fieldset="false">
+                    <mhcontainer>
+                        <mtextfield id="tl3" label="T3"/>
+                    </mhcontainer>
+                    <mtextfield id="tl33" label="T33"/>
+                    <mcalendarfield id="cl3" label="Data 3"/>
+                </mbasegroup>
+            </mtabcontainer>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>

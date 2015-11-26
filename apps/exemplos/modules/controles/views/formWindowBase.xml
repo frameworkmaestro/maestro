@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formWindowBase" title="Form Window Base" close="main/controls">
+        <fields>
+            <mwindow id="window1" url="controls/window1"/>
+            <mbutton id="btnWin" text="Abrir Window 1 via MButton" action="open:window1"/>
+            <mlink id="linkWin" text="Abrir Window 1 via MLink" action="open:window1"/>
+        </fields>
+    </mform>
+</view>

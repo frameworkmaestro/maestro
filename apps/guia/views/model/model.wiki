@@ -1,0 +1,46 @@
+<text xml:space="preserve">
+= O que é um Model? =
+'''Model''' é a camada que representa os objetos de modelo, ou seja, os dados da aplicação, geralmente ligados a uma tabela do banco de dados. Se existe uma tabela chamada ''Pessoa'', existirá uma classe no '''Model'' com o nome ''Pessoa''. Cada objeto desta classe representa um registro na tabela, e existem métodos para que se possa recuperar/persistir os dados.
+No Maestro, o '''Model''' é representado por duas classes:
+* <code>NomeDoModel.php</code>
+* <code>NomeDoModelMap.php</code>
+Toda classe do '''Model''' possui uma classe de ''mapeamento'' que contém as informações (ou metadados) sobre os campos e relacionamentos da tabela.
+É recomendável que a classe de mapeamento <code>Map</code> seja gerada automaticamente via Wizard e '''não seja alterada manualmente'''. Para realizar alterações nesta classe, como por exemplo, incluir um novo campo, deve-se alterar a tabela e regerar o <code>Map</code>, para que as alterações tenham efeito (ver [[>model/ormmap|ORMMAP]]).
+
+Exemplo de uma classe ''Model'':
+<pre lang="php">
+<?php
+namespace exemplos\models;
+
+class Pessoa extends map\PessoaMap {
+  
+    public function getDescription() {
+        return $this->getNome();
+    }
+}
+</pre>
+Exemplo da classe ''Map'':
+<pre lang="php">
+<?php
+// wizard - code section created by Wizard Module
+
+namespace exemplos\models\map;
+
+class PessoaMap extends \MBusinessModel {
+
+  public static function ORMMap() {
+
+        return array(
+            'class' => \get_called_class(),
+            'database' => 'exemplos',
+            'table' => 'PESSOA',
+            'attributes' => array(
+                'idPessoa' => array('column' => 'idPessoa','key' => 'primary','idgenerator' => 'seq_PESSOA','type' => 'integer'),
+                'nome' => array('column' => 'nome','type' => 'string'),
+                'cpf' => array('column' => 'cpf','type' => 'string'),
+
+     // ... continua ....
+
+
+}</pre>
+</text>

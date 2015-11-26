@@ -1,0 +1,10 @@
+<text xml:space="preserve">
+= Apresentação =
+O Maestro é um framework orientado a objetos para desenvolvimento de aplicações web, escrito na linguagem PHP (versão >=5.4), que possui como principal característica uma implementação do padrão MVC Modelo 2 (Model View Controller). 
+
+
+* Versão estável: 1.2.0
+* Site: [http://maestro.org.br http://maestro.org.br]
+* Github: [https://github.com/frameworkmaestro https://github.com/frameworkmaestro]
+* SVN checkout: svn://svn.ufjf.br/maestro/trunk 
+</text>

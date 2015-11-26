@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+        <include file="fields.xml" />
+        <data load="$this->data->object" />
+</view>

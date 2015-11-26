@@ -1,0 +1,10 @@
+<text xml:space="preserve">
+= MCurrency =
+A classe '''MCurrency''' encapsula um número tipo ''float'' e é utilizada para se trabalhar com valores monetários.
+<br/>
+<pre lang="php">public function getValue()</pre>- Retorna o valor como float.
+<br/>
+<pre lang="php">public function setValue($value)</pre>- Define o valor do objeto.
+<br/>
+<pre lang="php">public function format()</pre>- Converte para representação string.
+</text>

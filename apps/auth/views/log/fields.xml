@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="idLog" />        
+<mnumberfield id="idUsuario" label="IdUsuario" />        
+<mtimestampfield id="timestamp" label="Timestamp" />        
+<mtextfield id="descricao" label="Descricao" />        
+<mtextfield id="operacao" label="Operacao" />        
+<mnumberfield id="idModel" label="IdModel" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

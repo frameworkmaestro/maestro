@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mcss selector="#cb .mCustomBoxCaptionLabel" color="red" fontSize="20px"/>
+    <mcss selector="#cb .mCustomBoxCaption" height="30px" backgroundColor="#CCC" borderBottom="1px #999 solid"/>
+    <mcss selector="#cb .mCustomBoxContent" height="200px" backgroundColor="#EEE" borderBottom="1px #999 solid"/>
+    <mcss selector="#cb .mCustomBoxAction" height="30px" backgroundColor="#DDD" borderBottom="1px black solid"/>
+    
+    <mform id="formUsingCustomBox" caption="Exemplo Form usando Custom Box" customBox="cb">
+        <fields>
+            <mlabel text="Um MCustomBox é renderizado como um div, contendo outros divs para o Caption, Contents a Actions"/>
+            <mspacer/>
+            <mlabel text="A customização pode ser feita via CSS"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnBox" text="Ação"/>
+            <mlink id="linkBox" text="Ação"/>
+        </buttons>
+    </mform>
+</view>

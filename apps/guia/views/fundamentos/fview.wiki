@@ -1,0 +1,5 @@
+<text xml:space="preserve">
+= View =
+De forma simplificada, uma ''View'' é responsável pela entrada e saída de dados da aplicação. Pode ser um formulário, uma grid, um relatório, dados em texto puro, dados no formato JSON ou códigos Javascript.
+Para mais informações, veja [[>view/view|Camada View]]
+</text>

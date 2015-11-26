@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mhcontainer>
+            <mtextfield id="nome" label="Nome" value="$this->data->nome" size="15" />
+            <mbuttonfind/>
+        </mhcontainer>
+        <mdatagrid id="gridOne" query="$this->data->queryOne" pageLength="5" actionUpdate="@exemplos/controls/save/#0#"
+            actionDelete="@exemplos/controls/delete/#0#"  actionSelect="marca" rowMethod="{{ array('formGridXML','rowMethod')}}">
+            <mdatagridcolumn field="$this->object->idName" visible="false"/>
+            <mdatagridhyperlink field="nome" action=">exemplos/table/formObject/#0#" title="Nome" width="40%"/>
+            <mdatagridcolumn field="valor" title="Valor" width="20%"/>
+            <mdatagridcolumn field="dataNascimento" title="DataNascimento" width="20%"/>
+            <mdatagridcolumn field="ativo" title="Ativo?" options="$this->data->textoAtivo"  width="10%"/>
+            <mdatagridcontrol field="opcional" title="Opcional" width="10%">
+                <mtextfield id="colOpcional[$id]" size="10"  value ="%valor%" />
+            </mdatagridcontrol>
+        </mdatagrid>
+        <mhcontainer>
+            <mlabel text="ids selecionados:"/>
+            <mlabel text="$this->data->marca"/>
+        </mhcontainer>
+        <mdatagrid id="gridTwo" query="$this->data->queryTwo" pageLength="5" actionUpdate="@exemplos/controls/save/#0#"
+            actionDelete="@exemplos/controls/delete/#0#">
+            <mdatagridcolumn field="$this->object->idName" visible="false"/>
+            <mdatagridhyperlink field="nome" action=">exemplos/table/formObject/#0#" title="Nome" width="40%"/>
+            <mdatagridcolumn field="valor" title="Valor" width="20%"/>
+            <mdatagridcolumn field="dataNascimento" title="DataNascimento" width="20%"/>
+            <mdatagridcolumn field="ativo" title="Ativo?" options="$this->data->textoAtivo"  width="10%"/>
+        </mdatagrid>
+    </fields>
+    <buttons>
+        <mbutton id="btnSubmit" text="Submit" />
+    </buttons>
+</view>

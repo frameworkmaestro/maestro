@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formAccordion" title="Form Accordion" close=">exemplos/main/controls">
+        <fields>
+            <maccordion id="accordion" width="550px">
+                <mbasegroup id="bg1" caption="Opção 1" fieldset="false">
+                    <mhcontainer>
+                        <mtextfield id="t1" label="T1"/>
+                    </mhcontainer>
+                    <mtextfield id="t11" label="T11"/>
+                    <mcalendarfield id="c1" label="Data 1"/>
+                </mbasegroup>
+                <mbasegroup id="bg2" caption="Opção 2" fieldset="false">
+                    <mhcontainer>
+                        <mtextfield id="t2" label="T2"/>
+                    </mhcontainer>
+                    <mtextfield id="t22" label="T22"/>
+                    <mcalendarfield id="c2" label="Data 2"/>
+                </mbasegroup>
+                <mbasegroup id="bg3" caption="Opção 3" fieldset="false">
+                    <mhcontainer>
+                        <mtextfield id="t3" label="T3"/>
+                    </mhcontainer>
+                    <mtextfield id="t33" label="T33"/>
+                    <mcalendarfield id="c3" label="Data 3"/>
+                </mbasegroup>
+            </maccordion>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>

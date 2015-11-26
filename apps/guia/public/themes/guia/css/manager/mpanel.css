@@ -1,0 +1,49 @@
+/* Tan hack for IE/Win */
+
+* html .mManager .mPanelBody {
+    height: 1%;
+}
+
+.mManager .mPanelBody {
+    overflow:   hidden;
+    margin-top: 5px;
+}
+
+.mManager .mPanelBody .mImageLink img {
+}
+
+.mManager .mPanelBody .mImageLink img:hover {
+}
+
+.mManager .mPanelBody .mPanelCellBox {
+    margin-left:     5px;
+    margin-right:    5px;
+    margin-top:      2px;
+    margin-bottom:   2px;
+    text-decoration: none;
+    display:         block;
+}
+
+.mManager .mPanelBody .mPanelCellLeft {
+    float: left;
+}
+
+.mManager .mPanelBody .mPanelCellClear {
+    clear: both;
+}
+
+.mManager .mPanelBody .mPanelCellNormal {
+    width: 90px;
+    height: 70px;
+}
+
+.mManager .mPanelBody .mPanelCellSmall {
+    width: 125px;
+    height: 30px;
+}
+
+.mManager .mPanelBody .mPanelCellMedium {
+    width: 180px;
+    height: 20px;
+}
+

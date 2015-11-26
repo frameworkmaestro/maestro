@@ -1,0 +1,14 @@
+/*
+Tema: Default
+Autor: Maestro
+Descrição: Tema base, distribuído com o Maestro
+Version: 2.0
+Licença: GNU General Public License
+Licença URI: license.txt
+*/
+
+@CHARSET "UTF-8"; 
+@import url('css/main.css'); 
+@import url('css/manager/manager.css');  /* Estilos do controles do Maestro */
+@import url('css/layout.css'); /* Estrutura da página */
+@import url('css/custom.css');

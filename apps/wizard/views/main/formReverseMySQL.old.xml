@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<view>
+    <mformdialog id="formReverseMySQL" title="ReverseMySQL">
+        <fields>
+            <mtextfield id="script" label="Script" value="teste.txt"  />
+            <mtextfield id="database" label="Database" value="teste" />
+            <mtextfield id="app" label="App" value="teste" />
+            <mtextfield id="module" label="Module" value="" />
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" action="@wizard/main/reverseMySQL" />
+        </buttons>
+    </mformdialog>
+</view>

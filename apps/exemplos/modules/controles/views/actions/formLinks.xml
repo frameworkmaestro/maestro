@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formLinks" title="Links" close=">exemplos/controles/actions">
+        <fields>
+            <mlinkbutton id="lnkExemplo" plain="true" size="large" icon="exemplosIconForm" text="Link Button - icon" action=">exemplos/controles/actions/formLinks"/>
+            <mlinkbutton id="lnkExemplo2" glyph="star" text="Link Button - glyph" action=">exemplos/controles/actions/formLinks"/>
+            <mlink id="lnkAjax" text="Exemplo - Ajax" action=":controles/actions/ajaxButtons|lnkAjax|paneAjax" />
+            <div id="paneAjax"/>
+            <mlink id="imageLinkCSS" text="Link com ação Javascript (ver console)" action="!console.log('Link Click');"/>
+            <mlink id="linkDlg1" text="Abrir Diálogo via MLink (conteúdo remoto)" action="^exemplos/controles/actions/formExemplo"/>
+            <mlink id="linkDlg2" text="Abrir Diálogo via MLink (conteúdo local)" action="dialog:dlgExemplo"/>
+            <mdialog id="dlgExemplo" title="Diálogo Local" width="300px" height="150px">
+                <mlabel text= "teste"/>
+            </mdialog>
+        </fields>
+    </mform>
+</view>

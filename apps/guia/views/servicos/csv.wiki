@@ -1,0 +1,14 @@
+<text xml:space="preserve">
+= Arquivos CSV =
+
+É possível criar um arquivo CSV a partir de uma conslta ao banco de dados. O exemplo a seguir mostra este processo:
+
+<code  lang="php">
+$pessoa = new models\Pessoa($this->data->id);
+ $columnNames = $query->getColumnNames();
+ $exporter = new MExporter('csv');
+ $exporter->addColumns($columnNames);
+ $urlArquivo = $exporter->execute($dadosArray);
+</code>
+
+</text>

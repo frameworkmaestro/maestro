@@ -1,0 +1,90 @@
+<text xml:space="preserve">
+= O arquivo actions.php =
+A maioria dos frameworks MVC possui o conceito de ''roteamento'' ou ''rotas''. As rotas são usadas para associar uma URL com uma ação específica.
+O Maestro, na sua versão atual, não utiliza um arquivo de "rotas" como os outros frameworks. No caso Maestro, a [[>controller/urlformat|URL]] já indica diretamente qual o Controller/Action deve ser executado.
+No entanto, pode ser útil representar as ações em um nível mais alto, associando um nome amigável para elas e indicando as permissões necessárias para serem executadas. Concentrar estas informações em um só lugar facilita a manutenção e permite que tais configurações sejam compartilhadas por vários controles. Para isso é usado o arquivo '''actions.php'''.
+
+O arquivo '''conf/actions.php''' é geralmente usado no nível da aplicação, indicando todas as ações possíveis em uma aplicação. 
+As configurações são feitas através de um array associativo, com o seguinte formato:
+
+<pre lang="php">
+<?php
+return array(
+    'acaoRaiz' => array(label, actionURL, imagem, transação, direito, array(
+            'acao1' => array(label, actionURL, imagem, transação, direito, array(
+                 'acao11' => array(label, actionURL, imagem, transação, direito, array()),
+                 'acao12' => array(label, actionURL, imagem, transação, direito, array())
+            )),
+            'acao2' => array(label, actionURL, imagem, transação, direito, array(
+                 'acao21' => array(label, actionURL, imagem, transação, direito, array(
+                     ...
+                 )),
+                 'acao22' => array(label, actionURL, imagem, transação, direito, array())
+            )),
+            ....
+     ))
+);
+?>
+</pre>
+As ações são organizadas em uma estrutura hieráquica: uma ação pode conter outras ações. A aplicação, como um todo, é representada pela <code>acaoRaiz</code>. Uma ação pode ser referenciada indicando o caminho a partir da raiz: <code>acaoRaiz.acao1.acao12</code>
+Para cada ação, são definidos os seguintes parâmetros:
+{|
+!Elemento!!Descrição
+|-
+|label||Nome amigável para a ação, a ser usado como label em menus, painéis, etc
+|-
+|actionURL||A [[>controller/actionsurl|Action URL]] relativa à ação
+|-
+|imagem||A classe CSS do icone usado para representar a ação em painéis
+|-
+|transação e direito||Em aplicações que usam autenticação de usuários, indica o direito mínimo de acesso que o usuário deve ter em data transação para executar a ação
+|-
+|array()|| Array com as ações subordinadas
+|}
+
+A classe [[>servicos/manager|Manager]] possui dois métodos para trabalhar com o array de ações:
+<br/>
+<code>public static function getActions($action = '')</code>
+- Retorna o array de ações subordinadas a <code>$action</code>
+- Ex: <code>Manager::getActions('acaoRaiz.acao1');</code>
+<br/>
+
+<code>public static function getAction($action = '')</code>
+- Retorna o array relativo a ação <code>$action</code>
+- Ex: <code>Manager::getAction('acaoRaiz.acao1.acao11');</code>
+<br/>
+
+Exemplo de trecho do arquivo '''actions.php''':
+<pre lang="php">
+<?php
+return array(
+    'guia' => array('mainPanel', 'guia/main/main', 'guiaIconForm', '', A_ACCESS, array(
+            'introducao' => array('Introdução', 'guia/main/introducao', 'guiaIconForm', '', A_ACCESS, array(
+                    'apresentacao' => array('Apresentação', 'guia/introducao/apresentacao', 'guiaIconForm', '', A_ACCESS, array()),
+                    'instalacao' => array('Instalação', 'guia/introducao/instalacao', 'guiaIconForm', '', A_ACCESS, array()),
+                    'diretorios' => array('Diretórios', 'guia/introducao/diretorios', 'guiaIconForm', '', A_ACCESS, array()),
+                    'configuracao' => array('Configuração', 'guia/introducao/configuracao', 'guiaIconForm', '', A_ACCESS, array()),
+            )),
+            'fundamentos' => array('Fundamentos', 'guia/main/fundamentos', 'guiaIconForm', '', A_ACCESS, array(
+                'imvc' => array('MVC', 'guia/fundamentos/imvc', 'guiaIconForm', '', A_ACCESS, array(
+                    'mvc' => array('O padrão MVC', 'guia/fundamentos/mvc', 'guiaIconForm', '', A_ACCESS, array()),
+                    'app' => array('Aplicação', 'guia/fundamentos/app', 'guiaIconForm', '', A_ACCESS, array()),
+                    'module' => array('Módulos', 'guia/fundamentos/module', 'guiaIconForm', '', A_ACCESS, array()),
+                    'fcontroller' => array('Controller', 'guia/fundamentos/fcontroller', 'guiaIconForm', '', A_ACCESS, array()),
+                    'fmodel' => array('Model', 'guia/fundamentos/fmodel', 'guiaIconForm', '', A_ACCESS, array()),
+                    'fview' => array('View', 'guia/fundamentos/fview', 'guiaIconForm', '', A_ACCESS, array()),
+                    'praticas' => array('Melhores práticas', 'guia/fundamentos/praticas', 'guiaIconForm', '', A_ACCESS, array()),
+                )),
+...
+
+            'frameworks' => array('Frameworks usados', 'guia/main/frameworks', 'guiaIconForm', '', A_ACCESS, array(
+                'dojo' => array('DOJO', 'guia/frameworks/dojo', 'guiaIconForm', '', A_ACCESS, array()),
+                'doctrine' => array('Doctrine', 'guia/frameworks/doctrine', 'guiaIconForm', '', A_ACCESS, array()),
+                'smarty' => array('Smarty', 'guia/frameworks/smarty', 'guiaIconForm', '', A_ACCESS, array()),
+            )),
+    ))
+);
+?>
+</pre>
+
+</text>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formBackground" title="Execução Background" >
+        <fields>
+            <mtextfield id="input" label="Input" />
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Executar" action="@diversos/formBackgroundExecute"/>
+        </buttons>
+    </mform>
+</view>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formBaseGroup" title="Form BaseGroup" close=">exemples/main/controls">
+        <fields>
+            <mbasegroup id="bg1" caption="Basegroup 1" width="550px">
+                <mhcontainer>
+                    <mtextfield id="t1" label="T1"/>    
+                    <mtextfield id="t2" label="T2"/>    
+                    <mtextfield id="t3" label="T3"/>    
+                </mhcontainer>
+                <mtextfield id="t4" label="T4"/>
+                <mcalendarfield id="c1" label="Data"/>    
+            </mbasegroup>    
+            <mselection id="tipo" label="Tipo" options="{{ array('1' => 'Opção 1', '2' => 'Opção 2') }}" />
+            <mbasegroup id="bg2" caption="Opção 1"  width="550px" >
+                <mhcontainer>
+                    <mtextfield id="t21" label="T1"/>    
+                    <mtextfield id="t22" label="T2"/>    
+                    <mtextfield id="t23" label="T3"/>    
+                </mhcontainer>
+                <mtextfield id="t24" label="T4"/>
+                <mcalendarfield id="c21" label="Data"/>    
+            </mbasegroup>    
+            <mbasegroup id="bg3" caption="Opção 2"  width="550px">
+                <mhcontainer>
+                    <mtextfield id="t31" label="T1"/>    
+                    <mtextfield id="t32" label="T2"/>    
+                    <mtextfield id="t33" label="T3"/>    
+                </mhcontainer>
+                <mtextfield id="t34" label="T4"/>
+                <mcalendarfield id="c31" label="Data"/>    
+            </mbasegroup>    
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>

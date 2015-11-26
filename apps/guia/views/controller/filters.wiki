@@ -1,0 +1,57 @@
+<text xml:space="preserve">
+= Filtros =
+'''Filtros''' são uma implementação simplificada do padrão [http://www.corej2eepatterns.com/Patterns2ndEd/InterceptingFilter.htm|Intercepting Filter|_blank].
+Os filtros permitem interceptar e tratar uma solicitação e uma resposta antes e depois de a solicitação ser processada (ou seja, antes e depois de a ''action'' solicitada ser executada).
+A lista de filtros que devem ser executados é informada no arquivo [[>introducao/configuracao|conf.php]] da aplicação:
+<pre lang="php">
+<?php
+return array(
+...
+    'filters' => array(
+        'teste', // executa o filtro em apps/aplicacao/filters/testeFilter.php
+    ),
+...
+);
+?>
+</pre>
+Os filtros são implementados através de classes PHP, localizadas na pasta '''apps/aplicação/filters''', com a seguinte estrutura:
+<pre lang="php">
+<?php
+class ExemploFilter extends MFilter {
+
+    public function preProcess() {
+        ...
+    }
+
+    public function postProcess() {
+        ...
+    }
+
+}
+?>
+</pre>
+O método <code>preProcess</code> de cada filtro é executado '''antes''' da execução da ação e o método <code>postProcess</code> é executado '''depois''' da execução da ação.
+É possível um filtro indicar que a ''action'' solicitada não deve ser executada, através do método <code>frontController->canCallHandler(false)</code>. Neste caso o filtro deverá 
+indicar algum resultado de saída. No exemplo abaixo, é feito algum teste com uma variável de sessão, desviando da execução da ''action'' para uma página de erro.
+<pre lang="php">
+<?php
+class ExemploFilter extends MFilter {
+
+    public function preProcess() {
+        $frontController = $this->frontController; 
+        $context = $frontController->getContext();
+        $controller = $context->getController();
+            $timeout = Manager::getSession()->checkTimeout(Manager::getConf('session.exception'));
+        }
+        $session = Manager::getSession();
+        if ( $session->get('something') ) {
+            $frontController->canCallHandler(false);
+            $url = Manager::getURL(Manager::getApp() . '/erro');
+            $frontController->setResult(new MRedirect(NULL, $url));
+        }
+    }
+
+}
+?>
+</pre>
+</text>

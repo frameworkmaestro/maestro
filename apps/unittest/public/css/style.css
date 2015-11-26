@@ -1,0 +1,29 @@
+/******************************************************************************
+ * Icons and Images
+ ******************************************************************************/
+
+.fnbrIconForm {
+    background-image: url(../images/32x32/form.png);
+}
+
+.fnbrIconRefresh {
+    width:32px;
+    height:32px;
+    background-image: url(../images/copa/btn_refresh.png);
+    position:absolute;
+    left: 50%;
+    margin-left: -70px;
+    top: 32px;
+    z-index: 999;
+}
+
+.fnbrIconReturn {
+    width:32px;
+    height:32px;
+    background-image: url(../images/copa/btn_return.png);
+    position:absolute;
+    left: 50%;
+    margin-left: 23px;
+    top: 32px;
+    z-index: 999;
+}

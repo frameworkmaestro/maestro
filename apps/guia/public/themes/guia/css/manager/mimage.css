@@ -1,0 +1,65 @@
+.mManager .mNoImage {
+  background-color: transparent;
+  background-image: url("images/noImage.png");
+  background-repeat: no-repeat;
+  height: 113px;
+  width: 113px;
+  margin: 0;
+  overflow: hidden;
+  display: block;
+}
+
+.mManager .mImageCSS {
+    display: block;
+}
+
+.mManager .mImageLink {
+    text-decoration: none;
+}
+
+.mManager .mImageCentered {
+    text-align:          center;
+    display:             block;
+    background-position: top center;
+    background-repeat:   no-repeat;
+    height:              32px;
+}
+
+.mManager .mImageSource {
+    text-align:          center;
+    height:              auto;
+}
+
+.mManager .mImageIcon {
+    background-position: left;
+    vertical-align:      middle;
+    margin:              2px;
+    padding:             0px;
+    width:               16px;
+    height:              16px;
+    border:              none;
+    float:               left;
+}
+
+.mManager .mImageLabel {
+    text-align: center;
+    margin:     3px 3px 3px 3px;
+    display:    block;
+}
+
+.mManager .mImageLinkLabel {
+}
+
+.mManager .mImageLinkLabel:hover {
+}
+
+.mManager .mImageLinkLabel:active {
+}
+
+.mManager .mImageLinkLabelIcon {
+    display:        block;
+    height:         16px;
+    padding-left:   18px;
+    margin:         2px;
+    vertical-align: middle;
+}

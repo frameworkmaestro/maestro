@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mlabel text="Página Inicial" />
+        <mtextfield id="campo0" label="Campo0" width="15em"/>
+    </fields>
+    <buttons>
+        <mbutton id="btnNext" text="Próximo" action="@flow/passo1" />
+    </buttons>
+</view>

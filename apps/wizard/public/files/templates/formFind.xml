@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mform id="formFind" title="Pesquisar" close=">$_modulemain" base="formBase">
+        <fields>
+            <mhcontainer>
+                <mtextfield id="$_lookup" label="$_lookupC" value="$this->data->$_lookup" size="15" />
+                <mbuttonfind/>
+            </mhcontainer>
+            <mdatagrid id="gridFind" query="$this->data->query" pageLength="15">
+                <mdatagridcolumn field="$_pkName" visible="false"/>
+                <mdatagridhyperlink field="$_lookup" action=">$_module/$_model/formObject/#0#" title="$_lookupC" width="100%"/>
+            </mdatagrid>
+        </fields>
+    </mform>
+</view>

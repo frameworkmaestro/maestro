@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+        <mform title="Pesquisa Usuário" close="close" enterAction="submit">
+
+    <fields>
+        <mhcontainer>
+            <mtextfield id="filter0" label="Login"  value="$this->data->filter0" size="20"/>
+            <mselection id="filter1" label="Teste" options="$this->data->options"/>
+            <mbuttonfind/>
+        </mhcontainer>
+        <mlookupgrid id="lookupTable" query="$this->data->query" pageLength="15">
+            <mdatagridcolumn field="idUsuario" visible="false"/>
+            <mdatagridcolumn field="login" title="Login" width="15%"/>
+            <mdatagridcolumn field="nome" title="Nome" width="55%"/>
+        </mlookupgrid>
+    </fields>
+    </mform>
+</view>

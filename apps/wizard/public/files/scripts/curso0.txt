@@ -1,0 +1,109 @@
+;
+; Script: curso0
+;
+; Formato:
+; [nome_da_classe]
+; table = nome_da_tabela
+; extends = nome_da_classe (em caso de herança)
+; log = lista_de_atributos (se o log automático estiver habilitado)
+; description = nome_do_atributo (nome do atributo que descreve o objeto)
+; attributes[nome_do_atributo] = nome_do_campo,tipo,(null | not null),tipo_de_chave (primary|foreign|reference),generator
+; associations[nome_da_associacao] = to_class,cardinalidade (oneToOne|oneToMany|manyToMany),(from:to | associative)
+;
+
+[globals]
+database = "exemplos"
+app = "curso0"
+module = ""
+
+[Setor]
+table = "Setor"
+log = sigla
+description = nome
+attributes['idSetor'] = "idSetor,integer,,primary,seq_setor"
+attributes['sigla'] = "sigla,string,not null" 
+attributes['nome'] = "nome,string,not null"
+attributes['idSetorPai'] = "idSetorPai,integer,,foreign"
+associations['usuarios'] = "\curso0\models\usuario,oneToMany,idSetor:idSetor"
+associations['setorPai'] = "\curso0\models\setor,oneToOne,idSetorPai:idSetor"
+associations['setoresFilhos'] = "\curso0\models\setor,oneToMany,idSetor:idSetorPai"
+
+[Pessoa] 
+table = "Pessoa"
+log = nome
+description = nome
+attributes['idPessoa'] = "idPessoa,integer,,primary,seq_pessoa"
+attributes['nome'] = "nome,string,not null"
+attributes['cpf'] = "cpf,string,not null"
+attributes['dataNascimento'] = "dataNascimento,date"
+attributes['foto'] = "foto,blob"
+attributes['email'] = "email,string"
+
+[Aluno] 
+table = "Aluno"
+log = matricula
+description = matricula
+extends = "\curso0\models\pessoa"
+attributes['idAluno'] = "idAluno,integer,,primary,seq_aluno"
+attributes['matricula'] = "matricula,string,not null"
+attributes['idPessoa'] = "idPessoa,integer,not null,reference"
+
+
+[Funcionario] 
+table = "Funcionario"
+extends = "\curso0\models\pessoa"
+attributes['idFuncionario'] = "idFuncionario,integer,,primary,seq_funcionario"
+attributes['salario'] = "salario,numeric(15, 2)" 
+attributes['idPessoa'] = "idPessoa,integer,not null,reference"
+
+[Acesso] 
+table = "Acesso"
+attributes['idAcesso'] = "idAcesso,integer,,primary,seq_acesso"
+attributes['idTransacao'] = "idTransacao,integer,not null,foreign"
+attributes['idGrupo'] = "idGrupo,integer,not null,foreign"
+attributes['direito'] = "direito,integer,not null"
+associations['transacao'] = "\curso0\models\transacao,oneToOne,idTransacao:idTransacao"
+associations['grupo'] = "\curso0\models\grupo,oneToOne,idGrupo:idGrupo"
+
+[Grupo] 
+table = "Grupo"
+log = grupo
+description = grupo
+attributes['idGrupo'] = "idGrupo,integer,,primary,seq_grupo"
+attributes['grupo'] = "grupo,string,not null"
+associations['acessos'] = "\curso0\models\acesso,oneToMany,idGrupo:idGrupo"
+associations['usuarios'] = "\curso0\models\usuario,manyToMany,usuario_grupo"
+
+[Log] 
+table = "Log"
+attributes['idLog'] = "idLog,integer,,primary,seq_log"
+attributes['idUsuario'] = "idUsuario,integer,not null,foreign"
+attributes['timestamp'] = "timestamp,timestamp"
+attributes['descricao'] = "descricao,string"
+attributes['operacao'] = "operacao,string"
+attributes['idModel'] = "idModel,integer"
+associations['usuario'] = "\curso0\models\usuario,oneToOne,idUsuario:idUsuario"
+
+[Transacao] 
+table = "Transacao"
+log = transacao
+description = transacao
+attributes['idTransacao'] = "idTransacao,integer,,primary,seq_transacao"
+attributes['transacao'] = "transacao,string,not null"
+attributes['descricao'] = "descricao,string"
+associations['acessos'] = "\curso0\models\acesso,oneToMany,idTransacao:idTransacao"
+
+[Usuario] 
+table = "Usuario"
+log = login
+description = login
+attributes['idUsuario'] = "idUsuario,integer,,primary,seq_usuario"
+attributes['idPessoa'] = "idPessoa,integer,not null,foreign"
+attributes['idSetor'] = "idSetor,integer,not null,foreign"
+attributes['login'] = "login,string,not null"
+attributes['password'] = "password,string"
+attributes['passMD5'] = "passMD5,string"
+associations['pessoa'] = "\curso0\models\pessoa,oneToOne,idPessoa:idPessoa"
+associations['setor'] = "\curso0\models\setor,oneToOne,idSetor:idSetor"
+associations['grupos'] = "\curso0\models\grupo,manyToMany,usuario_grupo"
+

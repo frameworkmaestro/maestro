@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formObject" close=">exemplos/crud/pessoa"  width="100%">
+        <property title="$this->data->object->description" />
+        <action action=":crud/pessoa/formUpdate/{{$this->data->id}}|formObject|formAreaObject" label="Editar" />
+        <action action=":crud/pessoa/formFoto/{{$this->data->id}}|formObject|formAreaObject" label="Foto" />
+        <action action=":crud/pessoa/formMail/{{$this->data->id}}|formObject|formAreaObject" label="Enviar Mail" />
+        <action action=">crud/pessoa/formDelete/{{$this->data->id}}" label="Excluir" />
+        <div id="formAreaObject"/>
+    </mform>
+</view>

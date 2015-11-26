@@ -1,0 +1,340 @@
+/* 
+ Controls 
+ */
+
+@import "variables.less";
+@import "mvariables.less";
+
+.mSpacer {
+    clear: both;
+    line-height: 0px;
+    background-color: transparent;
+    height: 0px;
+}
+
+.mHr {
+    width:          100%;
+    height:         0px;
+    line-height:    0px;
+    font-size:      0px;
+    margin:         0px;
+    border-top:     @hr-border-top;
+    border-bottom:  @hr-border-bottom;
+}
+
+.mSeparator {
+    color: @separator-color;
+    width:             95%;
+    vertical-align:    top;
+    font-weight:       normal;
+    border:            none !important; 
+    margin:            0px;
+}
+
+.mHint {
+    font-size:   @hint-font-size;
+    color:       @hint-color;
+    display: block;
+}
+
+.mFieldLabel {
+    display: block;
+    top: 0;
+}
+
+.mFieldLabel .managerIconButtonHelp {
+    display: inline-block;
+    width:16px;
+    height:13px;
+    vertical-align: middle;
+}
+
+.mLabel , .mCaption {
+    margin-left:                2px;
+}
+
+.mLabelBold {
+    font-weight:                bold;
+}
+
+.mLabelText {
+    font-weight:                @labeltext-font-weight;
+    margin:                     2px;
+}
+
+.mText {
+    margin:                     2px;
+}
+
+.mMultilineField, textarea {
+    font-size:                  @multilinefield-font-size;
+    font-family:                @multilinefield-font-family;
+    vertical-align:             top;
+    margin:                     2px;
+    height:auto;
+}
+
+.mButtonIcon {
+    background-color:    white;
+    background-position: center;
+    border-bottom: @buttonicon-border-bottom;
+    border-right:  @buttonicon-border-right;
+    border-left:   @buttonicon-border-left;
+    border-top:    @buttonicon-border-top;
+    width: 17px;
+    height: 17px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.mBaseGroup {
+    display: block;
+    border:  @basegroup-border;
+    padding: 3px;
+}
+
+.mRadiobuttonGroup {
+    margin-top:     1px;
+    margin-bottom:  1px;
+    vertical-align: 20%;
+}
+
+.mCheckboxGroup {
+    margin-top:     2px;
+    margin-bottom:  1px;
+    vertical-align: 50%;
+}
+
+.mScrollableLabel {
+}
+
+.mScrollableField {
+    background-color: @scrollable-background-color;
+    border:           @scrollable-border;
+    overflow:auto;
+}
+
+.mMultitextField {
+}
+
+.mMultitextField .select {
+    width:            180px;
+    background-color: @unfocused-clickable-color;
+    border:           @border-color;
+    margin:           2px;
+}
+
+.mMultitextField .label {
+    color:            @multitextfield-color;
+    font-size:        @multitextfield-font-size;
+    margin-top:       1px;
+    margin-bottom:    1px;
+    vertical-align:   top;
+}
+
+.mMultitextField .textfield {
+}
+
+.mMultitextField .combo {
+}
+
+.mMultitextField .button {
+    width: 70px;
+    text-align: center;
+    display:block;
+}
+
+.mMultitextField .buttonPosH {
+    float:left;
+}
+
+.mMultitextField .fieldPosH {
+    float:left;
+    width: 200px;
+}
+
+.mMultitextField .selectPosH {
+    float:left;
+}
+
+.mMultitextField .selection {
+    float:left;
+    width: 280px;
+}
+
+.mMultitextField fieldset {
+    padding: @fieldset-padding;
+    border: @fieldset-border;
+}
+
+.mLookupTextField {
+}
+
+.mLookupTextField .textfield {
+   float: left;
+   margin-right: -1px;
+}
+
+.mLookupTextField .mButtonFind {
+   float: left;
+}
+
+.mLookupFieldValue {
+}
+
+.mLookupFieldValue .textfield {
+   float: left;
+}
+
+.mLookupFieldValue .mButtonFind {
+   float: left;
+   margin-right: -1px;
+}
+
+.mFileContent {
+    font: message-box;
+    font-weight: bold;
+    text-align: left;
+}
+
+.mFileField {
+}
+
+.mFileFieldReset {
+}
+
+.mHelp {
+    width:      550px; 
+    max-height: 400px;
+    overflow:   auto;
+}
+
+.mLink {
+    font-weight:     @link-font-weight;
+    text-decoration: @link-text-decoration;
+    color:           @link-color;
+}
+
+.mLink:link
+{
+    text-decoration: @link-text-decoration;
+}
+
+.mLink:visited
+{
+    text-decoration: @link-text-decoration;
+}
+
+.mLink:hover
+{
+    color:           @link-hovered-color;
+    text-decoration: @link-hovered-text-decoration;
+}
+
+.mLink:active
+{
+    color:           @link-active-color;
+    text-decoration: @link-active-text-decoration;
+}
+
+.mNoImage {
+    background-color:  transparent;
+    background-image:  url(@image-no-image);
+    background-repeat: no-repeat;
+    height:            @image-no-image-height;
+    width:             @image-no-image-width;   
+    margin:            0;
+    overflow:          hidden;
+    display:           block;
+}
+
+.mImageCSS {
+    display: block;
+}
+
+.mImageLink {
+    text-decoration: none;
+}
+
+.mImageCentered {
+    text-align:          center;
+    display:             block;
+    background-position: top center;
+    background-repeat:   no-repeat;
+    height:              32px;
+}
+
+.mImageSource {
+    text-align:          center;
+    height:              auto;
+}
+
+.mImageIcon {
+    background-position: left;
+    vertical-align:      middle;
+    margin:              2px;
+    padding:             0px;
+    width:               16px;
+    height:              16px;
+    border:              none;
+    float:               left;
+}
+
+.mImageLabel {
+    text-align: center;
+    margin:     3px 3px 3px 3px;
+    display:    block;
+}
+
+.mImageLinkLabel {
+    text-decoration: @image-link-text-decoration;
+}
+
+.mImageLinkLabel:hover {
+    text-decoration: @image-link-hovered-text-decoration;
+}
+
+.mImageLinkLabel:active {
+    text-decoration: @image-link-active-text-decoration;
+}
+
+.mImageLinkLabelIcon {
+    display:        block;
+    height:         16px;
+    padding-left:   18px;
+    margin:         2px;
+    vertical-align: middle;
+}
+
+.mButtonFind {
+    background: url("images/patriglyphsSprite.png") no-repeat top left;
+    background-position: -66px -858px;
+    height: 16px;
+    cursor: pointer;
+    height: 16px;
+    margin: 0;
+    overflow: hidden;
+    width: 16px;
+	border: 1px solid @button-border-color;
+	background-color: @button-background-color;
+	.border-radius(@button-border-radius);
+	.box-shadow(0 1px 1px rgba(0,0,0,0.15));
+}
+
+.mButtonFind:hover {
+   background-color: @button-hovered-background-color;
+	.transition-duration(.2s);
+}
+
+.mToolIcon {
+    vertical-align:middle;
+}
+
+.mToolBar {
+  zoom:    1;
+}
+
+.default .dijitButtonText {
+    padding:    0px;
+    text-align: center;
+}

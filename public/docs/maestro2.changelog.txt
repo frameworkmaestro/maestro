@@ -1,0 +1,23 @@
+﻿Maestro
+	-jQuery
+	-Nome de arquivos contendo classes PHP seguem o case do nome da Classe.
+	-Não existe tema do Maestro
+	-Não existem controles do Maestro
+	-MApp
+App
+	- Todo app tem composer
+	- fetchStyle no conf
+MVC	
+	*Controller
+		-Actions aceitam parâmetros
+	*Models/Maps
+		-Namespaces
+	*Services
+		-Podem ser acessados via URL com $app/services/$serviceName
+		-Se chamados via URL, retornam um JSON.
+	*Views
+		-Elementos HTML podem ser usados em views XML
+Theme
+	- Todo app tem o próprio tema
+	- Todo tema tem a própria class MControl e Painter
+	

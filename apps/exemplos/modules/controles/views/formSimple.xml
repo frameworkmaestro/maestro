@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mcss id="cssBg" selector=".myBg" backgroundColor="#CCC"/>
+    <mform id="simpleFormExample" title="Exemplo de MSimpleForm">
+        <fields>
+            <mlabel text="Um MFormSimple é um formulário comum, com a diferença que não é renderizada uma Box em torno dos campos."/>
+            <mlabel text="Em caso de POST, o Element para retorno é o elemento que envolve o MSimpleForm (neste exemplo, o elemento divSimpleForm)."/>
+            <mcontentpane id="divSimpleForm" class="myBg">
+                <msimpleform id="simpleForm" >
+                    <fields>
+                        <minputfield type="text" id="nome" label="Nome" value="" size="25" toolTip="teste"/>
+                        <minputfield type="number" id="idade" label="Idade" value="" size="25" toolTip="teste"/>
+                    </fields>
+                    <buttons>
+                        <mbutton id="btnPostSimple" text="Enviar - SimpleForm" action="$this->data->actionSimple"/>
+                    </buttons>
+                </msimpleform>
+            </mcontentpane>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar"/>
+        </buttons>
+    </mform>
+</view>

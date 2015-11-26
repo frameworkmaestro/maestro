@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<view>
+	<mnavbar>
+        <mnavbaritem>
+            <mlink label="link1" href="#"/>
+        </mnavbaritem>
+        <mnavbaritem class="active">
+            <mlink label="link2" href="#"/>
+        </mnavbaritem>
+        <mnavbaritem class="dropdown">
+            <mlink class="dropdown-toggle" href="#" data-toggle="dropdown">
+                <mspan class="fa fa-envelope fa-fw"></mspan>
+                <mspan class="fa fa-caret-down"></mspan>
+            </mlink>
+        </mnavbaritem>
+    </mnavbar>
+</view>

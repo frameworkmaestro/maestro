@@ -1,0 +1,11 @@
+{
+     "name": "Exemplos",
+     "description": "Aplicação Exemplos  - Framework Maestro 2.0",
+     "autoload": {
+	"psr-4": {
+            "exemplos\\": "",
+            "crud\\": "modules/crud/"
+        },
+	"classmap": ["modules/crud/models"]
+     }
+}

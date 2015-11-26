@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formComponentPHP" title="Exemplo de Uso de Componentes PHP">
+        <fields>
+            <mtextfield id="dummy" label="Dummy" value="" size="35" />
+            <include component="containerPessoa.php" message="Mensagem como parâmetro"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar" />
+        </buttons>
+    </mform>
+</view>

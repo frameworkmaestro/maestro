@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform>
+        <property title="Form XML" close=">controls/form"/>
+        <tool title="Ajuda" action="help:form" icon="help" />
+        <data id="campo1" value="Conteudo de teste" />
+        <fields>
+            <mhcontainer>
+                <mtextfield id="nome" label="Nome" value="" size="25" hint="hint" toolTip="teste"/>
+                <mtoolbutton icon="help" action="help:nomeHelp" />
+            </mhcontainer>
+            <mselection id="sel" label="Lista" options="$this->data->options" hint="choose one" />
+            <mtextfield id="endereco" label="Endereço" value="$this->data->nome" size="35" hint="hint"  help="Help curto via tooltip"/>
+            <mbasegroup id="bgIcons" caption="Controle MToolIcon">
+                <mtoolicon icon="delete" action="!console.log('icon');" text="Teste"/>
+                <mtoolicon id="edit" icon="edit" action="!console.log('edit');"/>
+            </mbasegroup>            
+            <mhcontainer>
+                <mtextfield id="campo1" label="Campo1" size="25"/>
+                <mtextfield id="campo2" label="Campo2" size="25"/>
+                <mtextfield id="campo3" label="Campo3" size="25"/>
+            </mhcontainer>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="Enviar"/>
+        </buttons>
+        <help>
+            <mhelp id="form" caption="Exemplo Help">
+<![CDATA[
+<h1>Form XML</h1>
+<p><b>Lorem Ipsum</b> é simplesmente uma simulação de texto da indústria tipográfica e de impressos,
+e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos
+e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos,
+como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado.
+Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum,
+e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.
+</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a nisl quis felis interdum fringilla.
+Etiam non nunc libero. Vivamus pulvinar massa fermentum nulla pellentesque eget venenatis nisi porta. Integer justo quam,
+aliquet et iaculis sed, tempus eu dui. In eu ante vestibulum diam ultrices eleifend. Suspendisse suscipit magna ut ligula
+congue sodales. Vestibulum sit amet neque sed ligula sollicitudin scelerisque. Phasellus at lectus felis.
+Cras congue elementum elit at vestibulum. Pellentesque vestibulum justo tellus. Quisque varius tellus a
+odio ultricies congue tincidunt nunc tincidunt. Sed ultricies hendrerit felis et ornare. Morbi non sapien nec
+risus viverra mollis. Fusce fringilla sollicitudin scelerisque.
+</p>
+
+]]>
+            </mhelp>
+            <mhelp id="nomeHelp" caption="Nome">
+<![CDATA[
+<p>Um texto maior para help de um campo específico, escrito em <b>html</b>.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a nisl quis felis interdum fringilla.
+Etiam non nunc libero. Vivamus pulvinar massa fermentum nulla pellentesque eget venenatis nisi porta.
+</p>
+
+]]>
+            </mhelp>
+        </help>
+    </mform>
+</view>

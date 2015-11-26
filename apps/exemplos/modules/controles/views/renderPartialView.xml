@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="renderPartialView" title="Exemplo de RenderPartial - Parte Final">
+        <fields>
+            <mcalendarfield id="dataNascimento" label="Data Nascimento" value="$this->data->dataNascimento" />
+        </fields>
+    </mform>
+</view>

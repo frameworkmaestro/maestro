@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formSQLtoScript" title="SQL to Script" close=">wizard/main">
+        <fields>
+            <mvcontainer>
+                <mtextfield id="script" label="SQL" value=""  />
+                <mtextfield id="db" label="Database" value="" />
+                <mtextfield id="app" label="App" value="" />
+                <mtextfield id="module" label="Module" value="" />
+            </mvcontainer>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" action="@wizard/main/sqlToScript" />
+        </buttons>
+    </mform>
+</view>

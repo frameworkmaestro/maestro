@@ -1,0 +1,6 @@
+<text xml:space="preserve">
+= Aplicação =
+Para execução de uma aplicação, o Maestro implementa o padrão Front-Controller.
+ A classe [[>controller/frontcontroller|FrontController]] representa a própria aplicação. Esta classe encapsula o contexto da execução para processamento da requisição. 
+A aplicação coleta os dados enviados pelo usuário e então encaminha para o [[>controller/controller|Controller]] apropriado, para a execução da ação.
+</text>

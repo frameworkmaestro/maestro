@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formChoice" title="Choice Fields" close=">exemples/main/controls">
+    <fields>
+        <mcheckbox id="chk1" text="Texto chk1" label="Label chk1" value="A" />
+        <mradiobutton id="rd1" text="Radio rd1" value="R" />
+     
+        <mcheckboxgroup id="chkgroup1" disposition="{{ MContainer::DISPOSITION_VERTICAL }}" caption="Chk Group One" options="$this->data->chkgroup1Options">
+        
+        </mcheckboxgroup>
+
+        <mcheckboxgroup id="chkgroup2" disposition="{{ MContainer::DISPOSITION_HORIZONTAL }}" caption="Chk Group Two">
+            <mcheckbox id="chkgrp21" text="Opção 1" value="1"/>
+            <mcheckbox id="chkgrp22" text="Opção 2" value="2"/>
+            <mcheckbox id="chkgrp23" text="Opção 3" value="3"/>
+            <mcheckbox id="chkgrp24" text="Opção 4" value="4"/>
+        </mcheckboxgroup>
+        <mradiobuttongroup id="rdgroup1" disposition="{{ MContainer::DISPOSITION_HORIZONTAL }}" caption="Radio Group one">
+            <mradiobutton id="rdgrp1" text="Opção 1" value="1"/>
+            <mradiobutton id="rdgrp2" text="Opção 2" value="2"/>
+            <mradiobutton id="rdgrp3" text="Opção 3" value="3"/>
+            <mradiobutton id="rdgrp4" text="Opção 4" value="4"/>
+        </mradiobuttongroup>
+        <mbooleanfield id="boolean" value="1" label="BooleanField" text="Coca > Pepsi?"/>
+    </fields>
+    <buttons>
+        <mbutton id="btnSubmit" text="Submit" />
+    </buttons>
+    </mform>
+</view>

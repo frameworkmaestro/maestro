@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <msimpleform id="formLogin" onsubmit="doChallengeResponse()" >
+        <fields>
+            <javascript code="function doChallengeResponse() {
+                var str = manager.getElementById('user').value + ':' + manager.md5.MD5(manager.getElementById('password').value) + ':' + manager.getElementById('challenge').value;
+                manager.setElementValueById('password','');
+                manager.setElementValueById('response',manager.md5.MD5(str));
+                return true;
+                }"/>
+            <mhiddenfield id="tries"/>
+            <mhiddenfield id="url"/>
+            <mhiddenfield id="challenge" value ="{{ uniqid(rand()); }}"/>
+            <mhiddenfield id="response"/>
+            <mhiddenfield id="return_to_url"/>
+            <mhcontainer>
+                <mtextfield id="user" label="Login" />
+                <mvcontainer>
+                    <mpasswordfield id="password" label="Senha" />
+                    <mlink text= "Esqueci minha senha" action=">siga/main/lostpass"/>
+                </mvcontainer>
+                <mbutton id="btnLogin" text="Entrar" action="@siga/main/authenticate"/>
+            </mhcontainer>
+        </fields>
+    </msimpleform>
+</view>

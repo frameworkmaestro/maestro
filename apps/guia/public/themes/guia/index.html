@@ -1,0 +1,16 @@
+{{$page->fetch('header')}}
+<!-- basic preloader: -->
+<div id="loader"><div id="loaderInner" style="direction:ltr;">Carregando.... </div></div>
+
+<div id="appLayout"> 
+    <div id="mainPane" class="easyui-panel" title="Maestro 2.0 - Guia do Usuário">
+        <div id="appLayoutInternal" class="easyui-layout" style="height:100%;">
+            <div id="leftPane" class="melement" data-options="region:'west',split:true,width:250" data-manager="href:'{{$manager->getURL('mainmenu')}}'"></div>
+            <div id="centerPane" data-options="region:'center',iconCls:'icon-ok'">
+                {{$page->generate('content')}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{$page->fetch('footer')}}

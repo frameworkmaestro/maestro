@@ -1,0 +1,94 @@
+<text xml:space="preserve">
+= ORMMAP =
+O diagrama abaixo mostra a organizaçao das classes envolvidas na persistência de dados dos Modelos:
+
+[[Image:persistencia_model.jpg]]
+
+* '''Model''': Classe que representa um objeto do domínio da aplicação e que encapsula as regras de negócio, através de métodos criados pelo desenvolvedor. É configurada através do método "config". Ex: [[>model/exmodel|Model Pessoa]]
+* '''ModelMap''': Classe que implementa os métodos getters/setters relativos às propriedades da classe Model e o método <code>ORMMap()</code>, que faz o mapeamento da classe/associações para a tabela/relacionamentos.Ex: [[>model/exmodelmap|ModelMap Pessoa]]
+* '''MBusinessModel''': Classe interna ao framework, que implementa os métodos compartilhados por todos os modelos.
+* '''PersistentObject''': Classe interna ao framework, que implementa os métodos específicos da camada de persistência, disponíveis para todos os modelos.
+
+==ORMMap==
+
+O método <code>ORMMap()</code> define o mapeamento entre a classe do Modelo e a tabela no banco de dados.
+
+<pre lang="php">
+    public static function ORMMap() {
+
+        return array(
+            'class' => \get_called_class(),-
+            'database' => 'exemplos',
+            'table' => 'Usuario',
+            'attributes' => array(
+                'idUsuario' => array('column' => 'idUsuario','key' => 'primary','idgenerator' => 'seq_usuario','type' => 'integer'),
+                'idPessoa' => array('column' => 'idPessoa','key' => 'foreign','type' => 'integer'),
+                'idSetor' => array('column' => 'idSetor','key' => 'foreign','type' => 'integer'),
+                'login' => array('column' => 'login','type' => 'string'),
+                'password' => array('column' => 'password','type' => 'string'),
+                'passMD5' => array('column' => 'passMD5','type' => 'string'),
+            ),
+            'associations' => array(
+                'pessoa' => array('toClass' => '\exemplos\models\pessoa', 'cardinality' => 'oneToOne' , 'keys' => 'idPessoa:idPessoa'), 
+                'setor' => array('toClass' => '\exemplos\models\setor', 'cardinality' => 'oneToOne' , 'keys' => 'idSetor:idSetor'), 
+                'grupos' => array('toClass' => '\exemplos\models\grupo', 'cardinality' => 'manyToMany' , 'associative' => 'usuario_grupo'), 
+            )
+        );
+    }
+</pre>
+
+O mapeamento consiste de um array associativo. No primeiro nível deste array são definidos os seguintes índices:
+{|
+!Índice!!Descrição
+|-
+|class||Nome da classe Modelo (<code>get_called_class()</code> obtém o nome automaticamente)
+|-
+|database||Datasource (nome do banco de dados) definido no [[>fundamentos/configuracao|Arquivo de configuração]]
+|-
+|table||Nome da tablea associada à classe
+|-
+|extends||Nome completo da classe pai, no caso de herança
+|-
+|attributes||Array com definição dos atributos da classe
+|-
+|associations||Array com a definição das associações da classe
+|}
+Cada elemento do array <code>attributes</code> tem como índice o nome do atributo e como valor um array definido com os seguintes índices:
+{|
+!Índice!!Descrição
+|-
+|column||Nome da coluna associada ao atributo
+|-
+|type||Tipo do atributo (integer, string, date, timestamp, blob, text, currency, boolean)
+|-
+|key||Se o atributo for chave, qual o tipo da chave: 
+|-
+| ||primary: chave primária
+|-
+| ||foreign: chave estrangeira
+|-
+| ||reference: chave estrangeira que referencia a classe pai
+|-
+|idgenerator||sequência usada para geração de OIDs
+|}
+Cada elemento do array <code>associations</code> tem como índice o nome da associação e como valor um array definido com os seguintes índices:
+{|
+!Índice!!Descrição
+|-
+|toClass||Nome completo da classe associada
+|-
+|cardinality||Cardinalidade do relacionamento referente à associação:
+|-
+| ||oneToOne: um-para-um
+|-
+| ||oneToMany: um-para-muitos
+|-
+| ||manyToMany: muitos para muitos
+|-
+|keys||Em relacionamentos oneToOne a oneToMany indica como as chaves estão associadas
+|-
+| ||''chave_da_classe_base'':''chave_da_classe_associdada''
+|-
+|associative||Em relacionamentos manyToMany, indica a tabela de ligação
+|}
+</text>

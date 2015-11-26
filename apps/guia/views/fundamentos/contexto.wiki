@@ -1,0 +1,6 @@
+<text xml:space="preserve">
+= Contexto =
+
+O '''contexto''' se refere ao objeto <code>MContext</code>, obtido via a chamada <code>Manager::getContext()</code>.
+Este objeto contém informações sobre a requisição que está sendo tratada, tais como: URL chamada, Aplicação, Módulo, Controller, Action, Parâmetros, etc.
+</text>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <javascript onload="console.log(dojo.byId('filter::matricula').value);"/>
+    <mformaction id="formFind" title="Pesquisar" close=">exemplos/main" base="formBase">
+        <fields>
+            <mhcontainer>
+                <mtextfield id="filter::matricula" label="Matricula" value="$this->data->filter->matricula" size="15" />
+                <mtextfield id="filter::nome" label="Nome" value="$this->data->filter->nome" size="25" />
+                <mbuttonfind/>
+            </mhcontainer>
+            <mdatagrid id="gridFind" query="$this->data->query" pageLength="15">
+                <mdatagridcolumn field="idAluno" visible="false"/>
+                <mdatagridcolumn type="link" field="matricula" action=">exemplos/aluno/formObject/#0#" title="Matricula" width="20%"/>
+                <mdatagridcolumn field="nome" title="Nome" width="100%"/>
+            </mdatagrid>
+        </fields>
+    </mformaction>
+</view>

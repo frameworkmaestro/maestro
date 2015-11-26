@@ -1,0 +1,196 @@
+<text xml:space="preserve">
+= Configuração =
+O arquivo de configuração do Maestro está localizado no diretório '''maestro/core/conf''' e é responsável por diversas configurações do framework. 
+
+As configurações são feitas através de um array associativo (exemplo [conf-php conf.php]), com o seguinte formato:
+
+<pre lang="php">
+<?php
+return array(
+  'chave' => 'valor'
+  ...
+);
+?></pre>
+Cada chave representa uma opção, de acordo com os itens a seguir:
+
+<pre  lang="php">
+return array(
+    //O diretório base, onde o framework está instalado
+    'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
+    // Nome default da aplicação; sobrepor na configuração de cada aplicação
+    'name' => 'Framework Maestro',
+    // Classes que devem ser carregadas automaticamente na execução de qualquer requisição
+    'preload' => array('log'),
+    'theme' => array(
+        // O tema utilizado nas aplicações (obs 1)
+        'name' => 'default',
+        // O template default a ser usado
+        'template' => 'index'
+    ),
+    // Indica os módulos que devem ser registrados para importação automática
+    'import' => array(
+        'modules' => array(
+        )
+    ),
+    'options' => array(
+        // A aplicação executada, caso nenhuma seja informada na URL
+        'startup' => 'guia',
+        // Indica se os dados da sessão do usuário serão armazenados no banco de dados
+        'dbsession' => false,
+        // Habilita modo debug
+        'debug' => true,
+        // Codificação dos caracteres (UTF-8 ou ISO-8859-1)
+        'charset' => 'UTF-8',
+        // Fuso horário (obs 2)
+        'timezone' => "America/Sao_Paulo",
+        // Caracter separador nos campos de datas
+        'separatorDate' => '/',
+        // Formato das datas
+        'formatDate' => 'd/m/Y',
+        // Formato de data/hora
+        'formatTimestamp' => 'd/m/Y H:i:s',
+        // Caracter separador de campos nos arquivos CSV
+        'csv' => ';',
+        // Mode de execução (DEV ou PROD)
+        'mode' => 'DEV',
+        // Formato de renderização dos controles
+        'painter' => 'html',
+        // Nome do script de entrada (obs 3)
+        'dispatch' => 'index.php',
+        // Diretório para os arquivos temporários gerados pelo Framework
+        'varPath' => Manager::getHome() . '/core/var/tmp',
+        // Path da instalação do Java
+        'javaPath' => '/opt/java',
+        // URL da aplicação JavaBridge
+        'javaBridge' => 'http://localhost:8080/JavaBridge/java/Java.inc',
+        // Idioma usado nas rotinas de internacionalização
+        'language' => 'pt_br',
+        // Definições para a funçao PHP setlocale() (obs 4)
+        //    no Linux verificar os locales instalados com "locale -a"
+        'locale' => array("pt_BR.utf8", "ptb") 
+    ),
+    // Módulo de administração (Maestro ADministration)
+    'mad' => array(
+        'module' => "auth",
+        // Classe com direitos de acesso
+        'access' => "acesso",
+        // Classe dos grupos de usuários
+        'group' => "grupo",
+        // Classe de Log
+        'log' => "log",
+        // Classe para armazenamento de dados da sessão
+        'session' => "sessao",
+        // Classe de transações
+        'transaction' => "transacao",
+        / Classe dos usuários
+        'user' => "usuario"
+    ),
+    // Configurações para autenticação de usuários
+    'login' => array(
+        // Módulo que contém as classes para autenticação de usuário
+        'module' => "",
+        // Classe do framework usada para autenticação
+        //   MAuthDb: autenticação usando o banco de dados e senhas em texto aberto
+        //   MAuthDbMd5: autenticação usando o banco de dados e senhas MD5
+        //   MAuthLDAP: autenticação usando servidor LDAP
+        'class' => "MAuthDbMd5",
+        // Indica se é necessário conferir se o usuário está logado
+        'check' => false,
+        // Indica que a senha do usuário é usada para autenticação no banco de dados
+        'shared' => true,
+        // Indique que o login é feito automaticamente, com um usuário fictício
+        'auto' => false
+    ),
+    // Parâmetros da sessão
+    'session' => array(
+        // Indica os dados da sessão são armazenados
+        'handler' => "file",
+        // Tempo limite para a sessão permanecer ativa (em minutos)
+        'timeout' => "30",
+        // Indica se a expiração da sessão gera uma exceção
+        'exception' => false,
+        // Verifica se existe uma sessão ativa
+        'check' => true
+    ),
+    // Parâmetros para as mensagens de log
+    'logs' => array(
+        // Indica como as mensagens de log são tratadas
+        //    file: mensagens armazenadas somente em arquivo
+        //    socket: mensagens em arquivo e enviadas via rede TCP/IP
+        //    db: mensagens armazenadas no banco de dados
+        'handler' => "socket",
+        // Indica a pasta dos arquivos de log
+        'path' => Manager::getHome() . '/core/var/log',
+        // Indica o nivel de mensagens de log: 0 (Desligado), 1 (somente erros) ou 2 (erros e comandos SQL)
+        'level' => 2,
+        // para handler=socket, indica o ip da máquina para onde são enviadas as mensagens
+        // se não informado, envia para a maquina do cliente
+        'peer' => '200.131.19.163',
+        // para handler=socket, indica que somente mensagens do cliente indicado serão logadas
+        'strict' => '127.0.0.1',
+        // para handler=socket, indica a porta a ser acessada no cliente
+        'port' => 9999,
+        // Codigos de erros PHP capturados pelo framework
+        'errorCodes' => array(
+            E_ERROR,
+            E_WARNING,
+            E_PARSE,
+            E_RECOVERABLE_ERROR,
+            E_USER_ERROR,
+            E_COMPILE_ERROR,
+            E_CORE_ERROR
+        )
+    ),
+    // Parametros para servidor de Cache (não implementado)
+    'cache' => array(
+        'type' => "php", // php, java, apc, memcache
+        'memcache' => array(
+            'host' => "200.131.19.161",
+            'port' => "11211",
+            'default.ttl' => 0
+        ),
+        'apc' => array(
+            'default.ttl' => 0
+        )
+    ),
+    // Parâmetros default para o envio de email
+    'mailer' => array(
+        'smtpServer' => 'localhost',
+        'smtpFrom' => 'maestro@maestro.org',
+        'smtpFromName' => 'Framework Maestro',
+        'smtpAuthUser' => '',
+        'smtpAuthPass' => '',
+    ),
+    // Classes de extensão carregadas automaticamente
+    'extensions' => array(
+    ),
+    // Configuração dos datasources para acesso a bancos de dados
+    'db' => array(
+        // Nome do Datadource
+        'manager' => array(
+            // O driver de conexão com o banco de dados (obs 5)
+            'driver' => 'pdo_pgsql',
+            'host' => 'localhost',
+            'dbname' => 'exemplos',
+            'user' => 'postgres',
+            'password' => 'pgadmin',
+            'formatDate' => 'DD/MM/YYYY',
+            'formatDateWhere' => 'YYYY/MM/DD',
+            'formatTime' => 'HH24:MI:SS',
+            'configurationClass' => 'Doctrine\DBAL\Configuration',
+        ),
+    ),
+);
+</pre>
+Observações:
+   1. ver [[>view/temas|Temas]]
+   2. ver [http://php.net/manual/en/timezones.php|TimeZone|_blank]
+   3. Ver [[>fundamentos/index|script de entrada]]
+   4. Ver [http://php.net/manual/en/function.setlocale.php|setlocale()|_blank]
+   5. Ver [[>model/ormmap|ORMMAP]]
+
+==Arquivo de configuração das aplicações e módulos==
+
+As aplicações (localizadas no diretório '''apps''') e os módulos também possuem um arquivo de configuração no diretório conf: '''/maestro/apps/nome_da_aplicação/conf/conf.php'''.
+As configurações são as mesmas usadas no framework. As configurações feitas em uma aplicação sobreescrevem às do framework, e as configurações feitas em um módulo sobreescrevem às da aplicação.
+</text>

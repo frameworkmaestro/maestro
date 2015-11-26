@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mform title="Pesquisa $_modelC" close="close" enterAction="submit">
+        <fields>
+            <mhcontainer>
+                <mtextfield id="filter0" label="$_lookupC" value="$this->data->filter0" size="30" />
+                <mbuttonfind />
+            </mhcontainer>
+            <mdatagrid id="lookupTable" query="$this->data->query" pageLength="15">
+                <mdatagridcolumn field="$_pkName" visible="false"/>
+                <mdatagridhyperlink field="$_lookup" title="$_lookupC" width="100%"/>
+            </mdatagrid>
+        </fields>
+    </mform>
+</view>

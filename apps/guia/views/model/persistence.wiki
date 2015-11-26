@@ -1,0 +1,17 @@
+<text xml:space="preserve">
+= Camada de persistência =
+A implementação da Camada de Persistência no Maestro possui as seguintes características principais:
+*O mecanismo de persistência está encapsulado: As classes dos Modelos estendem <code>MBusinessModel</code>, que por sua vez estende a class <code>PersistenteObject</code>. Desta forma, todos os objetos de negócio são virtualmente persistentes. Estão disponíveis métodos tais como ''save'', ''delete'' e ''retrieve'', que tratam automaticamente o acesso ao banco de dados.
+*Ações sobre múltiplos objetos: Mecanismos para recuperação e remoção de múltiplos objetos, que permitem retornar objetos <code>MQuery</code> (com acesso ao resultado da consulta SQL via camada DAO do Maestro), ou um objeto <code>Association</code> (que permite percorrer os objetos retornados).
+*Suporte a associações: Quando um objeto é recuperado, removido ou atualizado, a mesma ação pode ser realizada nos objetos associados, se desejado. As associações são do tipo ''oneToOne'', ''oneToMany'' e ''manyToMany'', espelhando os relacionamentos existentes entre as classes. Associações tipo ''manyToMany'' são tratadas automaticamente pela camada de persistência.
+*Suporte a Outer Joins e Self Joins (Autoassociações).
+*Suporte a herança, através do mapeamento de uma árvore de herança para um esquema no banco de dados.
+*Suporte a transações.
+*Geração automática de identificadores (OID).
+*Geração automática do comando SQL.
+*Acesso a diferentes SGBD, utilizando os mecanismos da camada de acesso (que por sua vez utiliza recursos do [[>frameworks/doctrine|Doctrine]]).
+*Suporte a conversão automática de valores de atributos: objetos com valores monetários, datas, timestamps, etc (implementados em classes PHP) são convertidos para a sintaxe do SGBD usado.
+*Suporte a indexação de campos (vários campos da tabela retornados como um array em PHP).
+*Suporte a operações de conjunto (INTERSECT, MINUS, UNION).
+*Suporte a campos tipo BLOB.
+</text>

@@ -1,0 +1,40 @@
+<text xml:space="preserve">
+= Query =
+A classe '''MQuery''' é usada quando se deseja fazer o acesso ao banco de dados sem usar a [[>model/persistence|Camada de Persitência]] ou quando o resultado dos [[>model/criterias|criterias]] devem ser manipulados.
+Para se obter um objeto '''MQuery''' a partir de um criteria é usado o método <code>asQuery()</code>; por exemplo:
+<pre lang="php">
+    public function formFind() {
+        $model = new Pessoa($this->data->id);
+        $this->data->object = $model->getData();
+        $filter->nome = $this->data->nome . '%';
+        $this->data->query = $model->listByFilter($filter)->asQuery();
+        $this->render();
+    }
+</pre>
+O método <code>listByFilter()</code> retorna um criteria, e o método <code>asQuery()</code> retorna o objeto MQuery correspondente.
+Os principais métodos da classe <code>MQuery</code> são:
+
+<pre lang="php">public function getRowCount()</pre>Retorna o número de linhas (registros) do resultado da consulta.
+<br/>
+<pre lang="php">public function getCSV($fileName = '', $separator =';') </pre>Cria um arquivo CSV com o resultado da consulta.
+<br/>
+<pre lang="php">public function getColumnCount() </pre>Retorna o número de colunas do resultado da consulta.
+<br/>
+<pre lang="php">public function getColumnName($colNumber) </pre>Retorna o nome da coluna na posição indica por $colNumber.
+<br/>
+<pre lang="php">public function getColumnNames() </pre>Retorna um array com os nomes de todas as colunas
+<br/>
+<pre lang="php">public function getColumnNumber($colName) </pre>Retorna o número da coluna indica por $colName.
+<br/>
+<pre lang="php">public function getResult()</pre>Retorna um array bidimensional (linhas e colunas) com resultado da consulta.
+<br/>
+<pre lang="php">public function chunkResult($key = 0, $value = 1, $showKeyValue = false) </pre>Comprime o resultado da consulta em um array com uma coluna.
+<br/>
+<pre lang="php">public function asXML($root = 'root', $node = 'node') </pre>Retorna o resultado da consulta expresso em XML.
+<br/>
+<pre lang="php">public function asObjectArray($fields = null) </pre>Retorna o resultado da consulta como um array de objetos.
+<br/>
+<pre lang="php">public function asJSON($fields = null) </pre>Retorna o resultado da consulta como um objeto JSON.
+<br/>
+<pre lang="php">public function asCSV($showColumnName = false)</pre>Retorna a string CSV correspondente ao resultado da consulta.
+</text>

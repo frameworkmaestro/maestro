@@ -1,0 +1,15 @@
+{{$page->fetch('header')|noescape}}
+<div class="easyui-panel" title="{{$manager->getConf('name')}}">
+    <div class="easyui-layout" style="width:100%;height:300px">
+        <div data-options="region:'west',title:'Menu',split:true" style="width:100px;height: 100px">
+            <a href="#" class="easyui-linkbutton" data-options="plain:'true'"
+               onclick="manager.doAction('>wizard/main/formReverseMySQL','centerPane')">Reverse MySQL</a>
+        </div>
+        <div data-options="region:'center',title:'center title'" style="padding:5px;background:#eee;">
+            <div id="centerPane" style="height: 96%">
+                {{$page->generate('content')|noescape}}
+            </div>
+        </div>
+    </div>
+</div>
+{{$page->fetch('footer')|noescape}}

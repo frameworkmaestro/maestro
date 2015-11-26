@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mdatagrid id="gridUsuario" query="$this->data->query" pageLength="5" >
+        <mdatagridcolumn field="idUsuario" title="ID"/>
+        <mdatagridcolumn field="login" title="Login" width="80%"/>
+    </mdatagrid>
+    <mcalendarfield id="dataNascimento" label="Data Nascimento" value="" hint="em partialview3.xml" />
+</view>

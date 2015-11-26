@@ -1,0 +1,26 @@
+<text xml:space="preserve">
+= Formato da URL =
+A URL no Framework Maestro tem um dos seguintes formatos:
+
+
+<code>http://host:porta/index.php/applicacao/modulo/controlador/acao/id?parametros</code>
+
+
+<code>http://host:porta/index.php/applicacao/modulo/componente/id?parametros</code>
+
+
+<code>http://host:porta/index.php/applicacao/modulo/servico/acao/id?parametros</code>
+
+
+onde:
+'''host:porta''': nome do servidor, indicando opcionalmente uma porta.
+'''index.php''': script PHP que executa o framework (ver [[>fundamentos/index|script index.php]]).
+'''aplicacao''': nome da aplicação a ser executada. Deve existir no diretório em <code>maestro/apps/<aplicacao></code>.
+'''modulo''': Opcional. Caso a aplicação esteja subdividida em módulos, o módulo a ser executado deve ser indicado.
+'''controlador''': nome do controlador a ser executado. Deve existir o arquivo <code>maestro/apps/<aplicacao>/controllers/<controlador>.php</code>.
+'''componente''': nome de um componente a ser renderizado (ver [[>view/componentes|Componente]]).
+'''servico''': nome de um servico a ser executado (ver [[>service/service|Serviços]]).
+'''acao''': nome da ação a ser executada. Deve existir o método "acao" dentro da classe do controlador.
+'''id''': Opcional. Um valor (string ou numérico) que será acessível dentro do método "acao". Geralmente indica uma chave de acesso a um modelo.
+'''parametros''': Opcional. Representa a QueryString (parâmetros adicionais para a ação a ser executada) no formato <code>?param1=valor1&param2=valor2&...</code>
+</text>

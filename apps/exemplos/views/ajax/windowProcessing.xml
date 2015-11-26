@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../layouts/view.dtd">
+<view>
+    <mform id="formWindowProcessing" title="Processing...">
+        <fields>
+            <javascript onload="manager.doAjaxText('ajaxLoading', 'loadingPane', 'retornoAjax1');"/> 
+            <!-- ajaxText(action, container que será atualizado, campo usado para retornar o form) -->  
+            <mcontentpane id="loadingPane">
+                <mhcontainer>
+                    <mimage css="dijitIconLoading"/>  
+                    <mlabel text=" Please wait...."/>
+                </mhcontainer>                
+            </mcontentpane>            
+        </fields>
+    </mform>
+</view>

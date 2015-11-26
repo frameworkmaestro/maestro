@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formNew" title="Editar" close=">exemplos/crud/pessoa" load="$this->data->object">
+        <include file="fields.xml" />
+    </mform>
+</view>

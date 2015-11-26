@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view>
+    <mactionpanel id="action" title="Controles.Actions" close=">exemplos/controles/main" actions="exemplos.controles.actions" />
+</view>

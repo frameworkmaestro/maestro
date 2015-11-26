@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formBase" title="Pessoa" close="&gt;exemplos/main" padding="5px"  width="100%">
+        <action action=":crud/pessoa/formFind|formBase|formAreaBase" label="Pesquisar" />
+        <action action=":crud/pessoa/formNew|formBase|formAreaBase" label="Inserir Novo" />
+        <div id="formAreaBase"/>
+    </mform>
+</view>

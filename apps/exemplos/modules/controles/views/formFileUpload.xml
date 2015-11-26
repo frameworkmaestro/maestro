@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formUploadFile" title="Form Upload" close=">exemplos/controls/input">
+        <fields>
+            <mtextfield id="dummy" label="TextField"/>
+            <mfilefield id="uploadFile" label="Upload Arquivo" text="Selecionar Arquivo"/>
+            <mfilefield id="uploadMultiple" label="Upload Múltiplo" multiple="true" text="Selecionar Arquivos"/>
+        </fields>    
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" action="{{'@exemplos/controls/uploadFile/'.$this->data->object->id}}"/>
+        </buttons>
+    </mform>
+</view>

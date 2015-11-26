@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+        <mlabel id="labelField" label="$this->data->labelField"/>
+</view>

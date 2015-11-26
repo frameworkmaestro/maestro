@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formActions" title="Actions" close=">exemplos/controles/actions">
+        <fields>
+            <mlabel text="Este formulário mostra o uso do parâmetro 'actions', usado em botões e links"/>
+            <mbutton id="btnPostback" label="Post do formulário" text="POST" action="POST"/>
+            <mbutton id="btnPost" label="Post para uma action específica" text="@controles/actions/formActionsPost" action="@controles/actions/formActionsPost"/>
+            <mbutton id="btnGet" label="Get de uma action específica" text=">controles/actions/formActions" action=">controles/actions/formActions"/>
+            <mhcontainer>
+                <mbutton id="btnJs" label="Código Javascript" text="!$('#toggleElement').toggle()" action="!$('#toggleElement').toggle()"/>
+                <div id="toggleElement">Texto exibido ou ocultado através do botão "!$('#toggleElement').toggle()"</div>
+            </mhcontainer>
+            <mbutton id="btnRedirect" label="Redirect para nova URL" text="=controles/actions/formActions" action="=controles/actions/formActions"/>
+            <mhcontainer>
+                <mbutton id="btnAjax" label="Executa Ajax (action|elemento_base|elemento_atualizado)" text=":controles/actions/ajaxButtons|btnAjax|paneAjax" action=":controles/actions/ajaxButtons|btnAjax|paneAjax"/>
+                <div id="paneAjax"></div>
+            </mhcontainer>
+            <mbutton id="btnJson" label="Executa Ajax_JSON (action|elemento_base|callback)" text="*controles/actions/ajaxJson|btnJson|callbackExemplo" action="*controles/actions/ajaxJson|btnJson|callbackExemplo"/>
+            <mbutton id="btnWindow" label="Abre uma nova janela do browser" text="+controles/actions/formActions" action="+controles/actions/formActions"/>
+            <mbutton id="btnDialog" label="Obtém conteúdo via GET e exibe em um diálogo" text="^controles/actions/formExemplo"  action="^controles/actions/formExemplo"/>
+            <mbutton id="btnDialogTeste" label="Abre um diálogo definido na view" text="dialog:dlgTeste" action="dialog:dlgTeste"/>
+            <mdialog id="dlgTeste" title="Diálogo - Teste" width="300px" height="150px">
+                <mlabel text="Conteúdo do diálogo"/>
+            </mdialog>
+            <mbutton id="btnPromptTeste" label="Exibe um prompt definido na view" text="prompt:promptTeste" action="prompt:promptTeste"/>
+            <mprompt id="promptTeste" type="information" msg="Exemplo de uso do MPrompt" action1=">controles/actions/formActions" />
+            <mbutton id="btnHelpTeste" label="Abre um diálogo de help, definido na view" text="help:formHelp" action="help:formHelp"/>
+        </fields>
+        <help>
+            <mhelp id="formHelp" title="Exemplo de Help do Formulário" width="50%" height="50%">
+<![CDATA[
+<h1>Help Form Actions</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a nisl quis felis interdum fringilla.
+Etiam non nunc libero. Vivamus pulvinar massa fermentum nulla pellentesque eget venenatis nisi porta. Integer justo quam,
+aliquet et iaculis sed, tempus eu dui. In eu ante vestibulum diam ultrices eleifend. Suspendisse suscipit magna ut ligula
+congue sodales. Vestibulum sit amet neque sed ligula sollicitudin scelerisque. Phasellus at lectus felis.
+Cras congue elementum elit at vestibulum. Pellentesque vestibulum justo tellus. Quisque varius tellus a
+odio ultricies congue tincidunt nunc tincidunt. Sed ultricies hendrerit felis et ornare. Morbi non sapien nec
+risus viverra mollis. Fusce fringilla sollicitudin scelerisque.
+</p>
+]]>
+            </mhelp>
+        </help>
+    </mform>
+    <javascript> 
+    function callbackExemplo(data) {
+        console.log(data);
+    }
+    </javascript>
+</view>

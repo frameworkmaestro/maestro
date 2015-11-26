@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<view>
+    <mform id="formButtons" title="Buttons" close=">exemplos/controles/actions">
+        <fields>
+            <mbutton id="btnPost" text="Exemplo - Post" action="@exemplos/controles/actions/formButtons"/>
+            <mbutton id="btnAjax" text="Exemplo - Ajax">
+                <ajax type="text" event="click" url="exemplos/controles/actions/ajaxButtons" target="paneAjax" />
+            </mbutton>
+            <div id="paneAjax"></div>
+            <mlabel text="Usando icones disponíveis na aplicação:"/>
+            <mbutton id="btnIcone1" text="Exemplo - Icon Aplicação" icon="exemplosIconSave" action="POST" />
+            <mlabel text="Usando icones disponíveis no tema:"/>
+            <mbutton id="btnIcone2" text="Exemplo - Icon Tema" icon="icon-search" action="POST" />
+            <mlabel text="Usando glyphs distribuidos com o Bootstrap (http://getbootstrap.com/components/):"/>
+            <mbutton id="btnIcone3" text="Exemplo - Glyph" glyph="star" action="POST" />
+            <mlabel text="Usando a fonte awesome (http://fortawesome.github.io/Font-Awesome/icons/):"/>
+            <mbutton id="btnIcone4" text="Exemplo - Font Awesome" icon="fa fa-download" action="POST" />
+        </fields>
+    </mform>
+</view>

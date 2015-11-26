@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <fields>
+        <mhiddenfield id="campo0"/>
+
+        <mlabel text="Passo 1" />
+        <mtextfield id="campo1" label="Campo1" width="15em"/>
+    </fields>
+    <buttons>
+        <mbutton id="btnBack" text="Anterior" action="@flow/main" />
+        <mbutton id="btnNext" text="Próximo" action="@flow/passo2" />
+    </buttons>
+</view>

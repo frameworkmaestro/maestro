@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
+<view>
+    <mform id="formAjaxXML" title="Ajax via XML" >
+        <fields>
+            <mhcontainer>
+                <mselection id="letra" label="Letras" options="$this->data->letras">
+                    <ajax type="text" event="onChange" url="ajax/ajaxPessoa" load="pessoas" />
+                </mselection>
+                <mcontentpane id="pessoas"/>
+            </mhcontainer>
+            <mhcontainer>
+                <mselection id="letraJson" label="Letras JSON" options="$this->data->letras" >
+                    <ajax type="json" event="onSelectionChange" url="ajax/ajaxPessoaJSON" />
+                </mselection>
+                <mselection id="pessoasJson" label="Pessoas JSON" />
+            </mhcontainer>
+            <mcontentpane id="implicitAjax" href="ajax/ajaxImplicit"/>
+            <mbutton id="btnAjaxMultiplo" text="Ajax Múltiplo" action=":ajax/ajaxMultiplo" />
+            <mcontentpane id="ajaxMultiplo1"/>
+            <mcontentpane id="ajaxMultiplo2"/>
+            <mcontentpane id="ajaxMultiplo3"/>
+            <mcontentpane id="ajaxMultiplo4"/>
+        </fields>
+        <buttons>
+            <mbutton id="btnSubmit" text="Submit" />
+        </buttons>
+    </mform>
+</view>
