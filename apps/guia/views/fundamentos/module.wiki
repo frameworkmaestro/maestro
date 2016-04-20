@@ -5,4 +5,7 @@ Sob muitos aspectos, um módulo é semelhante a uma aplicação. A diferença é
 As ações no módulo podem ser acessadas da mesma forma que as ações de uma aplicação.
 Os módulos são úteis em aplicações de larga escala, cuja funcionalidade pode ser subdividida. Isto facilita o desenvolvimento e a manutenção. Funcionalidades comuns à diversos módulos podem ser agrupadas em um único módulo. 
 Módulos também podem ser reutilizados em aplicações diferentes. Como exemplo, o Módulo AUTH, distribuído com o Maestro, pode ser reutilizado em aplicações para prover mecanismos de segurança.
+
+
+[[>guia/fundamentos/imvc|MVC]]
 </text>

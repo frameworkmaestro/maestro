@@ -7,6 +7,13 @@ return array(
     'import' => array(
         'models.*'
     ),
+    'options' => array(
+        'fetchStyle' => \FETCH_ASSOC,
+        'language' => 'en',
+        'defaultPassword' => 'default',
+        'pageTitle' => 'Maestro 2.0 - Guia do Usuário',
+        'mainTitle' => 'Maestro 2.0 - Guia do Usuário'
+    ),
     'theme' => array(
         'name' => 'guia',
         'template' => 'index'

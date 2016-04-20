@@ -250,17 +250,19 @@ class MWizardScript {
 
             // Create Model & Map
 
+            $classNameC = ucfirst($className);
+
             $template = new MWizardTemplate();
             $template->setVar($var);
             $template->setTemplate('/public/files/templates/map.php');
             $template->applyClass();
-            $template->saveResult("{$moduleName}/models/map/{$className}Map.php", $this->baseDir);
+            $template->saveResult("{$moduleName}/models/map/{$classNameC}Map.php", $this->baseDir);
 
             $template = new MWizardTemplate();
             $template->setVar($var);
             $template->setTemplate('/public/files/templates/model.php');
             $template->applyClass();
-            $template->saveResult("{$moduleName}/models/{$className}.php", $this->baseDir);
+            $template->saveResult("{$moduleName}/models/{$classNameC}.php", $this->baseDir);
 
             // Create CRUD
             $fileName = array();
@@ -271,10 +273,10 @@ class MWizardScript {
             $fileName[] = array('public/files/templates/formUpdate.xml', "{$moduleName}/views/{$lowerClassName}/formUpdate.xml");
             $fileName[] = array('public/files/templates/lookup.xml', "{$moduleName}/views/{$lowerClassName}/lookup.xml");
             $fileName[] = array('public/files/templates/fields.xml', "{$moduleName}/views/{$lowerClassName}/fields.xml");
-            $fileName[] = array('public/files/templates/controller.php', "{$moduleName}/controllers/{$className}Controller.php");
+            $fileName[] = array('public/files/templates/controller.php', "{$moduleName}/controllers/{$classNameC}Controller.php");
             $template = new MWizardTemplate();
             $var = array();
-            $var['model'] = $className;
+            $var['model'] = $classNameC;
             $var['lookup'] = $description;
             $var['module'] = $moduleName ? : $appName;
             $template->setVar($var);
@@ -326,6 +328,7 @@ class MWizardScript {
     public function generateEnumeration($className, $var) {
 
         // Create Model & Map
+        $className = ucfirst($className);
 
         $template = new MWizardTemplate();
         $template->setVar($var);

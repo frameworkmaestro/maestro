@@ -1,12 +1,17 @@
 /**
  * theme.js
  * 
- * Cada tema deve ter um script theme.js, que faz as inicializações 
- * e carrega os estilos e scripts específicos do tema
+ * Script para inicializações 
  */
 
 // Obtem a URL base do tema
 var baseURL = manager.loader.getBase('theme.js');
+console.log(manager.version + ' - Theme in: ' + baseURL);
+
+// Define o elemento default para o conteudo obtido via Ajax-GET 
 manager.contentElement = 'centerPane';
-manager.externalParse = function (id, onComplete) {
-}
+
+jQuery(function ($) {
+    // Remove a mensagem de loading
+    $("#loader").hide();
+});

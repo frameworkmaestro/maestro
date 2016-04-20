@@ -1,11 +1,12 @@
 <text xml:space="preserve">
 = O arquivo actions.php =
 A maioria dos frameworks MVC possui o conceito de ''roteamento'' ou ''rotas''. As rotas são usadas para associar uma URL com uma ação específica.
-O Maestro, na sua versão atual, não utiliza um arquivo de "rotas" como os outros frameworks. No caso Maestro, a [[>controller/urlformat|URL]] já indica diretamente qual o Controller/Action deve ser executado.
+O Maestro, na sua versão atual, não utiliza um arquivo de "rotas" como os outros frameworks. No caso Maestro, a [[>guia/controller/urlformat|URL]] já indica diretamente qual o Controller/Action deve ser executado.
 No entanto, pode ser útil representar as ações em um nível mais alto, associando um nome amigável para elas e indicando as permissões necessárias para serem executadas. Concentrar estas informações em um só lugar facilita a manutenção e permite que tais configurações sejam compartilhadas por vários controles. Para isso é usado o arquivo '''actions.php'''.
 
 O arquivo '''conf/actions.php''' é geralmente usado no nível da aplicação, indicando todas as ações possíveis em uma aplicação. 
 As configurações são feitas através de um array associativo, com o seguinte formato:
+
 
 <pre lang="php">
 <?php
@@ -28,12 +29,13 @@ return array(
 </pre>
 As ações são organizadas em uma estrutura hieráquica: uma ação pode conter outras ações. A aplicação, como um todo, é representada pela <code>acaoRaiz</code>. Uma ação pode ser referenciada indicando o caminho a partir da raiz: <code>acaoRaiz.acao1.acao12</code>
 Para cada ação, são definidos os seguintes parâmetros:
+
 {|
 !Elemento!!Descrição
 |-
 |label||Nome amigável para a ação, a ser usado como label em menus, painéis, etc
 |-
-|actionURL||A [[>controller/actionsurl|Action URL]] relativa à ação
+|actionURL||A [[>guia/controller/actionsurl|Action URL]] relativa à ação
 |-
 |imagem||A classe CSS do icone usado para representar a ação em painéis
 |-
@@ -42,7 +44,7 @@ Para cada ação, são definidos os seguintes parâmetros:
 |array()|| Array com as ações subordinadas
 |}
 
-A classe [[>servicos/manager|Manager]] possui dois métodos para trabalhar com o array de ações:
+A classe [[>guia/servicos/manager|Manager]] possui dois métodos para trabalhar com o array de ações:
 <br/>
 <code>public static function getActions($action = '')</code>
 - Retorna o array de ações subordinadas a <code>$action</code>
@@ -55,6 +57,7 @@ A classe [[>servicos/manager|Manager]] possui dois métodos para trabalhar com o
 <br/>
 
 Exemplo de trecho do arquivo '''actions.php''':
+
 <pre lang="php">
 <?php
 return array(

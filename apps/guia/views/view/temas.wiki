@@ -1,3 +1,20 @@
 <text xml:space="preserve">
 = Temas =
+
+No Maestro, os ''Temas'' são um conjunto de arquivos, usados para a renderização da interface com o usuário. No caso da interface Web, estes arquivos incluem os templates HTML, bibliotecas Javascript, arquivos CSS, imagens, fontes, etc. Os temas ficam localizados na pasta
+<code>maestro/apps/aplicação/public/themes</code>
+
+O tema a ser usado e o template default são indicados no arquivo de configuração da aplicação (conf.php):
+
+<pre  lang="php">
+    'theme' => array(
+        // O tema utilizado na aplicação
+        'name' => 'guia',
+        // O template default a ser usado
+        'template' => 'index'
+    ),
+</pre>
+
+A infraestrutura do Maestro fornece uma classe base para criação de [[>guia/view/controles|controles visuais]], chamada <code>Maestro\UI\MBaseControl</code>. Esta classe possibilita atribuir estilos e classes CSS aos controles, bem como associar eventos e mesmo aninhar outros controles. No entanto, a renderização do controle (a geração do código HTML/Javscript) é responsabilidade do ''Tema''. Para isso o tema deve definir uma classe <code>Painter</code> que estenda de <code>Maestro\UI\MBasePainter</code>. Cada controle deve possuir um método correspondente (com o mesmo nome) na classe <code>Painter</code>.
+
 </text>

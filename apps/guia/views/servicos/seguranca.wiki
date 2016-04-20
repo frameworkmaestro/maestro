@@ -3,6 +3,7 @@
 
 O framework maestro possui uma camada de segurança destinada a restringir usuários de acordo com o seu respectivo grupo e transação. 
 
+
 == Como restringir o acesso no menu actions.php ==
 
 O menu actions.php define o menu superior que irá aparecer para o usuário, no qual pode-se adicionar a transação que o usuário deverá pertencer para que aquele item de menu seja visível
@@ -10,6 +11,7 @@ O menu actions.php define o menu superior que irá aparecer para o usuário, no 
 <code lang="php">
 'patrimonio' => array('LABEL', 'aaction', 'icone', 'NOME_TRANCACAO', A_ACCESS)
 </code>
+
 
 == Como restringir o acesso em um controller ==
 

@@ -2,23 +2,23 @@
 = Ciclo de Execução =
 A execução da aplicação segue o seguinte ciclo:
 
-* Uma requisição HTTP é feita pelo usuário e o servidor Web trata esta requisição executando o [[>fundamentos/index|script index.php]].
-* Um objeto [[>servicos/manager|Manager]] é instanciado e a aplicação é executada.
-* Os dados enviados pelo usuário são armazenados no [[>fundamentos/dto|Objeto $data]].
-* O framework analisa a [[>controller/url|URL]] e define qual o ''Controller''/''Action'' será executado.
+* Uma requisição HTTP é feita pelo usuário e o servidor Web trata esta requisição executando o [[>guia/fundamentos/index|script index.php]].
+* Um objeto [[>guia/servicos/manager|Manager]] é instanciado e a aplicação é executada.
+* Os dados enviados pelo usuário são armazenados no [[>guia/fundamentos/dto|Objeto $data]].
+* O framework analisa a [[>guia/controller/url|URL]] e define qual o ''Controller''/''Action'' será executado.
 * A ''Action'' executa os comandos (acessando os modelos, se necessário).
 * A ''Action'' renderiza a ''View''.
-* A ''View'' é construída com base em arquivos de template (que definem o layout, scripts e CSS, quando necessário), definindo alguns [[>view/controles|controles]].
+* A ''View'' é construída com base em arquivos de template (que definem o layout, scripts e CSS, quando necessário), definindo alguns [[>guia/view/controles|controles]].
 * O resultado construído pela ''View'' é escrito como uma resposta HTTP, enviada para o browser.
 
 A figura a seguir ilustra este procedimento:
 
-[[Image:diagrams_path.png"]]
+[[Image:diagrams_path.png]]
 
 O exemplo a seguir detalha o ciclo de execução:
 
 Dada a URL
-<blockquote>http://&lt;servidor:porta&gt;/index.php/exemplos/main/formMain</blockquote>
+<pre>http://servidor:porta/index.php/exemplos/main/formMain</pre>
 
 será executada a ação '''formMain''' da classe '''mainController''' (da aplicação '''exemplos'''):
 

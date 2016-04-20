@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
-<view>
-    <mplain color="{{$this->data->color}}" text="{{$this->data->feedback}}"/>
-</view>

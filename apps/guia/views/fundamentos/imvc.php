@@ -8,5 +8,3 @@ class IMVC extends GuiaIndice {
     }
     
 }
-
-?>

@@ -130,7 +130,7 @@ class MainController extends MController {
     }
 
     public function formReverseMySQL() {
-        $this->render();
+        $this->render('formReverseMySQL.old');
     }
 
     public function reverseMySQL() {

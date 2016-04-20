@@ -1,5 +1,10 @@
 <text xml:space="preserve">
 = Controller =
-O Controller é a camada intermediária entre o ''Model'' e a ''View''. Ela é usada principalmente para obter/processar informações utilizando o ''Model'' e repassar informações para a ''View''. 
-Para mais informações, veja [[>controller/controller|Camada Controller]]
+O Controller é a camada intermediária entre o ''Model'' e a ''View''. Ela é usada principalmente para obter/processar informações
+utilizando o ''Model'' e repassar informações para a ''View''.
+Quando a camada de Serviço está sendo usada, o Controller faz requisições a um ''Service'' e este acessa o ''Model'' necessário.
+Para mais informações, veja [[>guia/controller/controller|Camada Controller]].
+
+
+[[>guia/fundamentos/imvc|MVC]]
 </text>

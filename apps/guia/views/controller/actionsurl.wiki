@@ -30,11 +30,13 @@ Os modificadores são apresentados na tabela a seguir:
 |-
 |:action|element|update||AJAX (ação|elemento_base|elemento a ser atualizado)
 |-
+|*action|element|callback||AJAX_JSON (ação|elemento_base|função callback)
+|-
 |@action||Post action via ajax
 |-
 |>action|target||Get action via ajax (com target opcional)
 |-
-|!action||Javascript:action
+|!code||Javascript:code
 |-
 |+action||Get action em nova janela do browser
 |-
@@ -42,15 +44,19 @@ Os modificadores são apresentados na tabela a seguir:
 |-
 |=action||Redirect para action
 |-
+|dialog:id||Exibe o dialog indicado por "id"
+|-
 |prompt:id||Exibe o prompt indicado por "id"
+|-
+|help:id||Abre o dialogo de help indicado por div#id
+|-
+|file:url||Download de arquivo via AJAX usando plugin
 |-
 |post||Post do formulário atual
 |-
 |open:id||Abre o dialogo indicado por "id"
 |-
 |close||Fecha o dialogo corrente
-|-
-|help:id||Abre o dialogo de help indicado por "id"
 |-
 |SUBMIT||Post na URL corrente
 |-
@@ -63,6 +69,6 @@ $url = New MLink('formNew','Novo','>siga/banco/formNew');
 </pre>
 
 <h2>Links via GET</h2>
-Para se gerar links que serão executados pelo browser com o [[>controller/getpost|método GET]] (por exemplo, em controles MLink), basta que não sejam usados os modificadores. Ex:
+Para se gerar links que serão executados pelo browser com o [[>guia/controller/getpost|método GET]] (por exemplo, em controles MLink), basta que não sejam usados os modificadores. Ex:
 <pre lang="php">$link = new MLink('formNew','Novo','siga/banco/formNew');</pre>
 </text>

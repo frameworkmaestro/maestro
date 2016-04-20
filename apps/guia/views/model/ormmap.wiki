@@ -4,8 +4,8 @@ O diagrama abaixo mostra a organizaçao das classes envolvidas na persistência 
 
 [[Image:persistencia_model.jpg]]
 
-* '''Model''': Classe que representa um objeto do domínio da aplicação e que encapsula as regras de negócio, através de métodos criados pelo desenvolvedor. É configurada através do método "config". Ex: [[>model/exmodel|Model Pessoa]]
-* '''ModelMap''': Classe que implementa os métodos getters/setters relativos às propriedades da classe Model e o método <code>ORMMap()</code>, que faz o mapeamento da classe/associações para a tabela/relacionamentos.Ex: [[>model/exmodelmap|ModelMap Pessoa]]
+* '''Model''': Classe que representa um objeto do domínio da aplicação e que encapsula as regras de negócio, através de métodos criados pelo desenvolvedor. É configurada através do método "config". Ex: [[>guia/model/exmodel|Model Pessoa]]
+* '''ModelMap''': Classe que implementa os métodos getters/setters relativos às propriedades da classe Model e o método <code>ORMMap()</code>, que faz o mapeamento da classe/associações para a tabela/relacionamentos.Ex: [[>guia/model/exmodelmap|ModelMap Pessoa]]
 * '''MBusinessModel''': Classe interna ao framework, que implementa os métodos compartilhados por todos os modelos.
 * '''PersistentObject''': Classe interna ao framework, que implementa os métodos específicos da camada de persistência, disponíveis para todos os modelos.
 
@@ -43,7 +43,7 @@ O mapeamento consiste de um array associativo. No primeiro nível deste array s�
 |-
 |class||Nome da classe Modelo (<code>get_called_class()</code> obtém o nome automaticamente)
 |-
-|database||Datasource (nome do banco de dados) definido no [[>fundamentos/configuracao|Arquivo de configuração]]
+|database||Datasource (nome do banco de dados) definido no [[>guia/fundamentos/configuracao|Arquivo de configuração]]
 |-
 |table||Nome da tablea associada à classe
 |-

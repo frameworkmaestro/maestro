@@ -1,12 +1,11 @@
 <text xml:space="preserve">
 = Forms =
-'''Formulários''' (''forms'') são a interface com o usuário mais comum em aplicações Web. No Maestro, os formulários são [[>view/controles|Controles]], que podem ser usados em ''Views''. Como regra geral, são usadas ''views'' XML. Esta seção apresenta as principais opções em formulários definidos via XML (''XML Forms'').
+'''Formulários''' (''forms'') são a interface com o usuário mais comum em aplicações Web. No Maestro, os formulários são [[>guia/view/controles|Controles]], que podem ser usados em ''Views''. Como regra geral, são usadas ''views'' XML. Esta seção apresenta as principais opções em formulários definidos via XML (''XML Forms'').
 
 O código a seguir mostra a estrutura básica de um XML Form:
 
 <pre lang="xml">
 <?xml version="1.0"?>
-<!DOCTYPE view SYSTEM "../layouts/view.dtd">
 <view>
     <mform>
         <property title="Form XML" close=">controls/form"/>
@@ -77,5 +76,22 @@ Define quais são os textos de ajuda (help) disponíveis neste formulário. Para
 <include component="containerPessoa.php" message="Mensagem como parâmetro"/>
 <include component="gridTable.xml"/>
 </pre>Inclui no formulário atual as definições feitas em um [[>view/componentes|Componente]] PHP ou XML.
+
+
+A partir do Maestro 2.0 é possível incluir diretamento código HTML ou Javascript no formulário XML:
+
+<pre lang="xml">
+<?xml version="1.0"?>
+<view>
+    <mform>
+        ...
+        <div>Div HTML</div>
+    </mform>
+    <script>
+        ... código javascript ...
+    </script>
+</view>
+</pre>
+
 
 </text>

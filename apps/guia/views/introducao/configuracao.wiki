@@ -1,8 +1,8 @@
 <text xml:space="preserve">
 = Configuração =
-O arquivo de configuração do Maestro está localizado no diretório '''maestro/core/conf''' e é responsável por diversas configurações do framework. 
+O arquivo de configuração do Maestro está localizado no diretório '''maestro/conf''' e é responsável por diversas configurações do framework.
 
-As configurações são feitas através de um array associativo (exemplo [conf-php conf.php]), com o seguinte formato:
+As configurações são feitas através de um array associativo, com o seguinte formato:
 
 <pre lang="php">
 <?php
@@ -18,7 +18,7 @@ return array(
     //O diretório base, onde o framework está instalado
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     // Nome default da aplicação; sobrepor na configuração de cada aplicação
-    'name' => 'Framework Maestro',
+    'name' => 'Framework Maestro 2.0',
     // Classes que devem ser carregadas automaticamente na execução de qualquer requisição
     'preload' => array('log'),
     'theme' => array(
@@ -37,8 +37,6 @@ return array(
         'startup' => 'guia',
         // Indica se os dados da sessão do usuário serão armazenados no banco de dados
         'dbsession' => false,
-        // Habilita modo debug
-        'debug' => true,
         // Codificação dos caracteres (UTF-8 ou ISO-8859-1)
         'charset' => 'UTF-8',
         // Fuso horário (obs 2)
@@ -53,10 +51,8 @@ return array(
         'csv' => ';',
         // Mode de execução (DEV ou PROD)
         'mode' => 'DEV',
-        // Formato de renderização dos controles
-        'painter' => 'html',
         // Nome do script de entrada (obs 3)
-        'dispatch' => 'index.php',
+        'dispatcher' => 'index.php',
         // Diretório para os arquivos temporários gerados pelo Framework
         'varPath' => Manager::getHome() . '/core/var/tmp',
         // Path da instalação do Java
@@ -84,6 +80,13 @@ return array(
         'transaction' => "transacao",
         / Classe dos usuários
         'user' => "usuario"
+    ),
+    'debug' => array(
+        'enabled' => true,
+        'severity' => E_ALL & ~E_WARNING & ~E_NOTICE & ~E_STRICT,
+        'maxLen' => 500,
+        'maxDepth' => 5,
+        'strictMode' => FALSE
     ),
     // Configurações para autenticação de usuários
     'login' => array(
@@ -120,7 +123,7 @@ return array(
         //    db: mensagens armazenadas no banco de dados
         'handler' => "socket",
         // Indica a pasta dos arquivos de log
-        'path' => Manager::getHome() . '/core/var/log',
+        'path' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..'. DIRECTORY_SEPARATOR . 'var' . DIRECTORY_SEPARATOR . 'log',
         // Indica o nivel de mensagens de log: 0 (Desligado), 1 (somente erros) ou 2 (erros e comandos SQL)
         'level' => 2,
         // para handler=socket, indica o ip da máquina para onde são enviadas as mensagens
@@ -139,18 +142,6 @@ return array(
             E_USER_ERROR,
             E_COMPILE_ERROR,
             E_CORE_ERROR
-        )
-    ),
-    // Parametros para servidor de Cache (não implementado)
-    'cache' => array(
-        'type' => "php", // php, java, apc, memcache
-        'memcache' => array(
-            'host' => "200.131.19.161",
-            'port' => "11211",
-            'default.ttl' => 0
-        ),
-        'apc' => array(
-            'default.ttl' => 0
         )
     ),
     // Parâmetros default para o envio de email
@@ -183,11 +174,11 @@ return array(
 );
 </pre>
 Observações:
-   1. ver [[>view/temas|Temas]]
+   1. ver [[>guia/view/temas|Temas]]
    2. ver [http://php.net/manual/en/timezones.php|TimeZone|_blank]
-   3. Ver [[>fundamentos/index|script de entrada]]
+   3. Ver [[>guia/fundamentos/index|script de entrada]]
    4. Ver [http://php.net/manual/en/function.setlocale.php|setlocale()|_blank]
-   5. Ver [[>model/ormmap|ORMMAP]]
+   5. Ver [[>guia/model/ormmap|ORMMAP]]
 
 ==Arquivo de configuração das aplicações e módulos==
 

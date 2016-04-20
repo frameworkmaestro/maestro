@@ -2,7 +2,7 @@
 = Filtros =
 '''Filtros''' são uma implementação simplificada do padrão [http://www.corej2eepatterns.com/Patterns2ndEd/InterceptingFilter.htm|Intercepting Filter|_blank].
 Os filtros permitem interceptar e tratar uma solicitação e uma resposta antes e depois de a solicitação ser processada (ou seja, antes e depois de a ''action'' solicitada ser executada).
-A lista de filtros que devem ser executados é informada no arquivo [[>introducao/configuracao|conf.php]] da aplicação:
+A lista de filtros que devem ser executados é informada no arquivo [[>guia/introducao/configuracao|conf.php]] da aplicação:
 <pre lang="php">
 <?php
 return array(

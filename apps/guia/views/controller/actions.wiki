@@ -1,16 +1,18 @@
 <text xml:space="preserve">
 = Actions =
 '''Actions''' indicam o código que será efetivamente executado em uma requisição feita via browser.
-A ação é indicada na [[>controller/urlformat|URL]]. O código referente à ação é encapsulado dentro de uma classe [[>controller/controller|Controller]].
-Geralmente as ações trabalham sobre o [[>fundamentos/dto|objeto data]] e terminam através da chamada a um método da camada ''View''. Os principais métodos usados para passar o controle para a camada ''View'' são:
+A ação é indicada na [[>guia/controller/urlformat|URL]]. O código referente à ação é encapsulado dentro de uma classe [[>guia/controller/controller|Controller]].
+Geralmente as ações trabalham sobre o [[>guia/fundamentos/dto|objeto data]] e terminam através da chamada a um método da camada ''View''. Os principais métodos usados para passar o controle para a camada ''View'' são:
+
+
 {|
 !Método!!Descrição
 |-
-|render($viewName = '', $parameters = array())||Renderiza a [[>view/view|View]] indicada. Caso o nome da ''view'' não seja informado, procura uma ''view'' com o mesmo nome da ''action''
+|render($viewName = '', $parameters = array())||Renderiza a [[>guia/view/view|View]] indicada. Caso o nome da ''view'' não seja informado, procura uma ''view'' com o mesmo nome da ''action''
 |-
 |renderPrompt($prompt)||Renderiza um prompt com uma mensagem para o usuário
 |-
-|renderJSON()|| Retorna o [[>fundamentos/dto|objeto data]] em formato JSON para o cliente
+|renderJSON()|| Retorna o [[>guia/fundamentos/dto|objeto data]] em formato JSON para o cliente
 |-
 |redirect($url)|| Redireciona para outra URL
 |- 

@@ -1,0 +1,9 @@
+{
+  "name": "Guia Maestro 2.0",
+  "description": "Maestro 2.0 - Guia do usuário",
+  "autoload": {
+    "psr-4": {
+      "guia\\": ""
+    }
+  }
+}

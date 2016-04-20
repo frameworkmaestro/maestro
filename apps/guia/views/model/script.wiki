@@ -3,6 +3,7 @@
 Através do Wizard é possível utilizar um script para a criação da estrutura básica de uma aplicação CRUD.
 O script é um arquivo em texto plano, com as definições necessárias relativas ao Modelo da aplicação. Para construção do script, é importante conhecer o Diagrama de Classes e o Diagrama de Tabelas, uma vez que a Camada de Persistência utiliza estes dois elementos.
 
+
 == Entradas ==
 A figura abaixo mostra a sintaxe básica do arquivo de script.
 <pre lang="txt">

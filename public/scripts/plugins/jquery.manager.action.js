@@ -106,6 +106,11 @@
             if (modifier === 'h') {
                 return "manager.showDialog('" + action.substr(2) + "');";
             }
+            if (modifier === 'f') {
+                var url = window.location.href.replace(/\/index\.php\/(.*)/, "/index.php/" +action.substr(2));
+                console.log('****' +  url);
+                return "manager.doGetFile('" + url + "');";
+            }
             return action;
         },
         exec: function (action, id) {

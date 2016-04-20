@@ -15,41 +15,35 @@ A estrutura de diretórios do framework pode ser vista em três níveis:
 |   + apps 
 |Aplicações instaladas
 |-
-|   + core 
+|   + Maestro
 |Framework propriamente dito
 |-
-|      + apps 
-|Aplicações internas ao Framework
-|-
-|      + classes 
-|Classes internas do framework
-|-
-|      + conf 
+|   + conf
 |Arquivos de configuração - globais
 |-
-|         + conf.php 
-|[[introducao/configuracao|Arquivo de configuração]]
+|      + conf.php
+|[[>guia/introducao/configuracao|Arquivo de configuração]]
 |-
-|      + support 
+|   + support
 |Programas auxiliares
 |-
-|      + var 
+|   + var
 |Dados variáveis
 |-
-|         + db 
+|      + db
 |Bancos de dados temporários
 |-
-|         + files 
-|Arquivos PDF e CSV gerados pela execuçao de [[reports_introducao|relatórios]]
+|      + files
+|Arquivos PDF e CSV gerados pela execuçao de [[>guia/reports/introducao|relatórios]]
 |-
-|         + log 
+|      + log
 |Arquivos de log gerados pelas aplicações
 |-
-|         + templates
+|      + templates
 |Arquivos gerados pelo sistema de templates e mantidos em cache
 |-
 |   + public 
-|Diretório visível na web, que contém informaçao pública, como páginas html, javascript, css, etc
+|Diretório visível na web, que contém informaçao pública
 |-
 |     + docs 
 |Documentos relativos ao framework
@@ -57,23 +51,17 @@ A estrutura de diretórios do framework pode ser vista em três níveis:
 |     + fonts 
 |Fontes disponíveis para todas as aplicações
 |-
-|     + images 
-|Imagens disponíveis para todas as aplicações
-|-
-|     + scripts 
+|     + scripts
 |Código Javascript usado pelo framework
 |-
-|     + templates 
-|Templates HTML e textos usados pelo framework
+|   + vendor
+|Diretório mantido pelo Composer
 |-
-|     + themes 
-|[[ui_tema|Temas]] para construção da interface com o usuário
+|  composer.json
+|Arquivo de configuração do Composer
 |-
-|          +default 
-|Tema básico, distribuído junto com o framework
-|-
-|  index.php 
-|[[fundamentos_script|Script]] de entrada das aplicações
+|  index.php
+|[[>guia/fundamentos/script|Script]] de entrada das aplicações
 |}
 </pre>
 
@@ -89,16 +77,22 @@ O diretório '''apps''' contém as aplicações executadas sob o framework. As a
 |
 |-
 |   + components
-| Contém [[componentes_introducao|componentes]] personalizados, usados na aplicação (por exemplo, controles de lookups e selections)
+| Contém [[>guia/componentes/introducao|componentes]] personalizados, usados na aplicação (por exemplo, controles de lookups e selections)
 |-
 |   + conf
 |Arquivos de configuração da aplicação
 |-
 |   + controllers
-|Contém os controllers da aplicação (ver [[controller/main|Controller]])
+|Contém os controllers da aplicação (ver [[>guia/controller/main|Controller]])
+|-
+|   + filters
+|Contém os filtros da aplicação (ver [[>guia/filter/main|Filters]])
 |-
 |   + models
-|Contém os models da aplicação (ver [[model/main|Model]])
+|Contém os models da aplicação (ver [[>guia/model/main|Model]])
+|-
+|   + services
+|Contém os serviços da aplicação (ver [[>guia/service/main|Service]])
 |-
 |   + public
 |que contém informaçao pública, como páginas html, javascript, css, etc
@@ -116,13 +110,19 @@ O diretório '''apps''' contém as aplicações executadas sob o framework. As a
 |Temas específicos da aplicação
 |-
 |   + views
-|Contém as views da aplicação (ver [[mvc_view|View]])
+|Contém as views da aplicação (ver [[>guia/mvc/view|View]])
+|-
+|   + vendor
+|Diretório mantido pelo Composer
+|-
+|  composer.json
+|Arquivo de configuração do Composer
 |}
 </pre>
 
 == Estrutura de um módulo ==
 
-Um aplicação complexa pode ser subdividida em [[fundamentos_modulos|módulos]], que tratem de aspectos específicos da aplicação. Os módulos são armazenados dentro do diretório '''modules'''. Suponha a aplicação "exemplos", subdividida nos módulos "administracao" e "publico"; a estrutura de diretórios da aplicação é a seguinte: 
+Um aplicação complexa pode ser subdividida em [[>guia/fundamentos/modulos|módulos]], que tratem de aspectos específicos da aplicação. Os módulos são armazenados dentro do diretório '''modules'''. Suponha a aplicação "exemplos", subdividida nos módulos "administracao" e "publico"; a estrutura de diretórios da aplicação é a seguinte:
 
 <pre>
 {| cellspacing=5
@@ -140,13 +140,13 @@ Um aplicação complexa pode ser subdividida em [[fundamentos_modulos|módulos]]
 |Arquivos de configuração do módulo
 |-
 |           + controllers
-|Contém os controllers do módulo (ver [[mvc_controller|Controller]])
+|Contém os controllers do módulo (ver [[>guia/mvc/controller|Controller]])
 |-
 |           + models
-|Contém os models do módulo (ver [[mvc_model|Model]])
+|Contém os models do módulo (ver [[>guia/mvc/model|Model]])
 |-
 |           + views
-|Contém as views do módulo (ver [[mvc_view|View]])
+|Contém as views do módulo (ver [[>guia/mvc/view|View]])
 |-
 |       + publico
 |
@@ -164,5 +164,4 @@ Um aplicação complexa pode ser subdividida em [[fundamentos_modulos|módulos]]
 |
 |}
 </pre>
-[[maestro|Home]]
 </text>

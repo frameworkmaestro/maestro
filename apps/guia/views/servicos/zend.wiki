@@ -6,6 +6,7 @@ possa ser utilizado quando necessário. Pode-se instanciar o framework Zend na c
 
 [http://framework.zend.com/manual/2.2/en/index.html Documentação do Zend Framwork]
 
+
 == Exemplo: Como ver a versão do Zend Framework que está instalada no Maestro ==
 O framework Maestro está preparado para que o Zend Framework seja utilizado de forma independente, bastando apenas que seja instanciada a classe referente do Zend Framework.
 

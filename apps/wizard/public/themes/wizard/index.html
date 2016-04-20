@@ -1,15 +1,14 @@
 {{$page->fetch('header')|noescape}}
-<div class="easyui-panel" title="{{$manager->getConf('name')}}">
-    <div class="easyui-layout" style="width:100%;height:300px">
-        <div data-options="region:'west',title:'Menu',split:true" style="width:100px;height: 100px">
-            <a href="#" class="easyui-linkbutton" data-options="plain:'true'"
-               onclick="manager.doAction('>wizard/main/formReverseMySQL','centerPane')">Reverse MySQL</a>
+<!-- basic preloader: -->
+<div id="loader"><div id="loaderInner" style="direction:ltr;">Carregando.... </div></div>
+
+<div id="appContainer" > 
+    <div id="mainPane" class="easyui-panel" title="{{$manager->getOptions('mainTitle')}}" style="height: 100%">
+        <div id="topPane">
+            <div id="menuPane" class="melement" data-manager="href:'{{$manager->getURL('main/menu')}}'"></div>    
         </div>
-        <div data-options="region:'center',title:'center title'" style="padding:5px;background:#eee;">
-            <div id="centerPane" style="height: 96%">
-                {{$page->generate('content')|noescape}}
-            </div>
-        </div>
+        <div id="centerPane" class="easyui-panel"  style="height: 96%">{{$page->generate('content')|noescape}}</div>
     </div>
 </div>
+
 {{$page->fetch('footer')|noescape}}

@@ -64,12 +64,12 @@ class MReverseMySQL {
                 $associationName = str_ireplace(array('1', '2', '3'), '', $associationName);
                 $associationName = strtolower($associationName);
                 if (!$binding) {
-                    $assoc = "association['" . $associationName . "'] = " . '"\\' . $this->appName . "\\models\\" . $fk[2] . ',';
+                    $assoc = "associations['" . $associationName . "'] = " . '"\\' . $this->appName . "\\models\\" . $fk[2] . ',';
                     $assoc .= "oneToOne," . $fk[1] . ':' . $fk[3] . '"';
                     $classes[$table]['associations'][$associationName] = $assoc;
                     // cria a inversa oneToMany
                     $associationName2 = (($fk[2] != $associationName) ? $table . $associationName : $table) . 's';
-                    $assoc2 = "association['" . $associationName2 . "'] = " . '"\\' . $this->appName . "\\models\\" . $table . ',oneToMany,' . $fk[3] . ':' . $fk[1] . '"';
+                    $assoc2 = "associations['" . $associationName2 . "'] = " . '"\\' . $this->appName . "\\models\\" . $table . ',oneToMany,' . $fk[3] . ':' . $fk[1] . '"';
                     $classes[$fk[2]]['associations'][$associationName2] = $assoc2;
                 } else {
                     $classes[$table]['associations'][$associationName] = $fk[2];
@@ -79,7 +79,7 @@ class MReverseMySQL {
                 foreach ($classes[$table]['associations'] as $associationName => $tableRef) {
                     foreach ($classes[$table]['associations'] as $associationName2 => $tableRef2) {
                         if ($associationName != $associationName2) {
-                            $assoc2 = "association['" . $associationName2 . 's' . "'] = " . '"\\' . $this->appName . "\\models\\" . $tableRef2 . ',manyToMany,' . $table  . '"';
+                            $assoc2 = "associations['" . $associationName2 . 's' . "'] = " . '"\\' . $this->appName . "\\models\\" . $tableRef2 . ',manyToMany,' . $table  . '"';
                             $classes[$tableRef]['associations'][$associationName . 's'] = $assoc2;
                         }
                     }

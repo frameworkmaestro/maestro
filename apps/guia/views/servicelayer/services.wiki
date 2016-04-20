@@ -1,6 +1,6 @@
 <text xml:space="preserve">
 = O que é um Service? =
-Uma ''Camada de Serviços'' define a fronteira de uma aplicação. AEla apresenta o conjunto de operações disponíveis a partir da perspectiva dos clientes da aplicação.
+Uma ''Camada de Serviços'' define a fronteira de uma aplicação. Ela apresenta o conjunto de operações disponíveis a partir da perspectiva dos clientes da aplicação.
 Esta camada encapsula a lógica de negócio da aplicação, controlando as transações e coordenando as respostas a serem enviadas aos clientes.
 Desta forma, um '''Service''' (ou Serviço) é uma operação única (do ponto de vista do cliente) mas que pode envolver um conjunto de operações (do ponto de vista da aplicação).
 No Maestro os serviços podem ser agrupados em classes. As classes de serviço são localizadas na pasta '''apps/aplicação/services'''.

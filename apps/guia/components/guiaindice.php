@@ -1,15 +1,17 @@
 <?php
 
-class GuiaIndice extends MVContainer {
+class GuiaIndice extends MControl{
     
     public function setItem($item) {
         $action = Manager::getAction($item);
-        $this->addControl(new MTextHeader('','1',$action[0]));
+        //$this->addControl(new MText(['text' => $action[0]]));
         foreach($action[ACTION_ACTIONS] as $a) {
-            $this->addControl(new MLink('',$a[0],'>'.$a[1]));
+            $this->addControl(new MLink(['text' => $a[0],'action' => '>'.$a[1]]));
         }
+    }
+
+    public function generate() {
+        return $this->getPainter()->mvcontainer($this);
     }
     
 }
-
-?>

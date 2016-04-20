@@ -14,7 +14,7 @@ class ETimeOutException ($msg = null, $code = 0)
 class ELoginException ($msg = null, $code = 0) 
 class ESecurityException ($msg = null, $code = 0) 
 </pre>
-Além disso o [[>controller/frontcontroller|FrontController]] captura todas as exceções que não tenham sido tratadas pelo desenvolvedor na definição de uma dada ''action''.
+Além disso o [[>guia/controller/frontcontroller|FrontController]] captura todas as exceções que não tenham sido tratadas pelo desenvolvedor na definição de uma dada ''action''.
 
 Exemplo:
 

@@ -1,7 +1,7 @@
 <text xml:space="preserve">
 = Javascript =
 Na construção de aplicações Web o uso de '''Javascript''' como forma de tornar a interface com o usuário mais responsiva e acessível tornou-se quase universal. 
-As ''Views'' construídas pelo Maestro estão fortemente baseadas em Javascript, usando a estrutura fornecida pelo [[>frameworks/dojo|framework DOJO]]. Por exemplo, são definidos automaticamente métodos a serem executados quando a página é carregada (''onLoad''), quando um formulário é submetido (''onSubmit''), validações de campos do formulário, etc.
+As ''Views'' construídas pelo Maestro estão fortemente baseadas em Javascript. Por exemplo, são definidos automaticamente métodos a serem executados quando a página é carregada (''onLoad''), quando um formulário é submetido (''onSubmit''), validações de campos do formulário, etc.
 Em Views XML o código Javascript pode ser definido da seguinte forma:
 
 <pre lang="xml">

@@ -1,5 +1,8 @@
 <text xml:space="preserve">
 = Model =
 O ''Model'' é a camada que representa os objetos de modelo, geralmente ligados a uma tabela do banco de dados.
-Para mais informações, veja [[>model/model|Camada Model]]
+Para mais informações, veja [[>guia/model/model|Camada Model]].
+
+
+[[>guia/fundamentos/imvc|MVC]]
 </text>

@@ -1,6 +1,6 @@
 <text xml:space="preserve">
 = Eventos =
-Os [[>view/controles|Controles]] no Maestro podem ser configurados para responder a '''eventos''' Javascript. Os eventos são disparados pelo browser e podem executar um código Javascript previamente definido.
+Os [[>guia/view/controles|Controles]] no Maestro podem ser configurados para responder a '''eventos''' Javascript. Os eventos são disparados pelo browser e podem executar um código Javascript previamente definido.
 
 No exemplo abaixo, é definido o tratamento para o evento <code>onChange</code> do controle <code>MSelection</code>, através da tag <code>event</code>:
 

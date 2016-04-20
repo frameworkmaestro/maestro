@@ -144,13 +144,13 @@ var manager = {
                 manager.doWindow(response.data);
             }
             if (response.type == 'file') {
-                manager.doFile(response.data, id);
+                manager.doGetFile(response.data);
             }
         }
     },
     doPostBack: function (idForm) {
         //Callback handler for form submit event
-        console.log(idForm);
+        //console.log(idForm);
         var $form = $('#' + idForm);
         $form.submit(function (e) {
             //console.log(e);
@@ -238,6 +238,7 @@ var manager = {
         maction.exec(action, id);
     },
     doAjaxText: function (url, element, idBase) {
+		//console.log(url + ' ' + element + ' ' + idBase);
         var idForm = manager.getParentForm(idBase);
         var form = '#' + idForm;
         manager.doRequest({
@@ -316,6 +317,13 @@ var manager = {
             'toolbar=no,width=' + w + ',height=' + h + ',scrollbars=yes,' +
             'top=0,left=0,statusbar=yes,resizeable=yes');
     },
+    doGetFile: function (url) {
+        //console.log('===' + url);
+        $.fileDownload(url), {
+            preparingMessageHtml: "We are preparing your report, please wait...",
+            failMessageHtml: "There was a problem generating your report, please try again."
+        };
+    }
 };
 /**
  * Maestro 2.0 - Manager Loader
@@ -573,6 +581,7 @@ var manager = {
             manager.loader.load('jQuery.addObject.js', function () {
                 manager.loader.load('jquery.manager.extensions.js');
                 manager.loader.load('jquery.manager.utils.js');
+				manager.loader.load('jquery.fileDownload.js');
                 manager.loader.load('maction');
                 manager.loader.load('jquery.manager.parser.js', function () {
                     manager.parser.parse();

@@ -4,7 +4,7 @@ return array(
     'guia' => array('mainPanel', 'guia/main/main', 'guiaIconForm', '', A_ACCESS, array(
             'introducao' => array('Introdução', 'guia/main/introducao', 'guiaIconForm', '', A_ACCESS, array(
                     'apresentacao' => array('Apresentação', 'guia/introducao/apresentacao', 'guiaIconForm', '', A_ACCESS, array()),
-                    'instalacao' => array('Instalação', 'guia/introducao/instalacao', 'guiaIconForm', '', A_ACCESS, array()),
+                    //'instalacao' => array('Instalação', 'guia/introducao/instalacao', 'guiaIconForm', '', A_ACCESS, array()),
                     'diretorios' => array('Diretórios', 'guia/introducao/diretorios', 'guiaIconForm', '', A_ACCESS, array()),
                     'configuracao' => array('Configuração', 'guia/introducao/configuracao', 'guiaIconForm', '', A_ACCESS, array()),
             )),
@@ -40,14 +40,12 @@ return array(
             )),
             'view' => array('Camada View', 'guia/main/view', 'guiaIconForm', '', A_ACCESS, array(
                 'view' => array('O que é uma View?', 'guia/view/view', 'guiaIconForm', '', A_ACCESS, array()),
+                'temas' => array('Temas', 'guia/view/temas', 'guiaIconForm', '', A_ACCESS, array()),
                 'controles' => array('Controles', 'guia/view/controles', 'guiaIconForm', '', A_ACCESS, array()),
                 'ajax' => array('AJAX', 'guia/view/ajax', 'guiaIconForm', '', A_ACCESS, array()),
                 'events' => array('Eventos', 'guia/view/events', 'guiaIconForm', '', A_ACCESS, array()),
-                'iform' => array('Formulários', 'guia/view/iform', 'guiaIconForm', '', A_ACCESS, array(
-                    'forms' => array('Forms', 'guia/view/forms', 'guiaIconForm', '', A_ACCESS, array()),
-                    'validator' => array('Validator', 'guia/view/validator', 'guiaIconForm', '', A_ACCESS, array()),
-                    'help' => array('Help', 'guia/view/help', 'guiaIconForm', '', A_ACCESS, array()),
-                )),
+                'forms' => array('Forms', 'guia/view/forms', 'guiaIconForm', '', A_ACCESS, array()),
+                'help' => array('Help', 'guia/view/help', 'guiaIconForm', '', A_ACCESS, array()),
                 'javacript' => array('Javascript', 'guia/view/javascript', 'guiaIconForm', '', A_ACCESS, array()),
                 'css' => array('CSS', 'guia/view/css', 'guiaIconForm', '', A_ACCESS, array()),
                 'grids' => array('Grids', 'guia/view/grids', 'guiaIconForm', '', A_ACCESS, array()),
@@ -56,7 +54,6 @@ return array(
                 'componentes' => array('Componentes', 'guia/view/componentes', 'guiaIconForm', '', A_ACCESS, array()),
                 //'relatorios' => array('Relatórios', 'guia/view/relatorios', 'guiaIconForm', '', A_ACCESS, array()),
                 'imagens' => array('Imagens', 'guia/view/imagens', 'guiaIconForm', '', A_ACCESS, array()),
-                //'temas' => array('Temas', 'guia/view/temas', 'guiaIconForm', '', A_ACCESS, array()),
             )),
             'model' => array('Camada Model', 'guia/main/model', 'guiaIconForm', '', A_ACCESS, array(
                 'model' => array('O que é um Model?', 'guia/model/model', 'guiaIconForm', '', A_ACCESS, array()),
@@ -86,18 +83,9 @@ return array(
                 'csv' => array('Arquivos CSV', 'guia/servicos/csv', 'guiaIconForm', '', A_ACCESS, array()),
                 'mail' => array('Serviços de Mail', 'guia/servicos/mail', 'guiaIconForm', '', A_ACCESS, array()),
                 'seguranca' => array('Segurança', 'guia/servicos/seguranca', 'guiaIconForm', '', A_ACCESS, array()),
-               // 'iwizard' => array('Wizard', 'guia/servicos/iwizard', 'guiaIconForm', '', A_ACCESS, array(
-               //     'wizard' => array('Aplicação Wizard', 'guia/servicos/wizard', 'guiaIconForm', '', A_ACCESS, array()),
-                // )),   
-            'wizard' => array('Aplicação Wizard', 'guia/servicos/wizard', 'guiaIconForm', '', A_ACCESS, array()),                
+            'wizard' => array('Aplicação Wizard', 'guia/servicos/wizard', 'guiaIconForm', '', A_ACCESS, array()),
                 'zend' => array('Integração com Zend', 'guia/servicos/zend', 'guiaIconForm', '', A_ACCESS, array()),
-            )),
-            'frameworks' => array('Frameworks usados', 'guia/main/frameworks', 'guiaIconForm', '', A_ACCESS, array(
-                'dojo' => array('DOJO', 'guia/frameworks/dojo', 'guiaIconForm', '', A_ACCESS, array()),
-                'doctrine' => array('Doctrine', 'guia/frameworks/doctrine', 'guiaIconForm', '', A_ACCESS, array()),
-                'smarty' => array('Smarty', 'guia/frameworks/smarty', 'guiaIconForm', '', A_ACCESS, array()),
             )),
     ))
 );
 
-?>

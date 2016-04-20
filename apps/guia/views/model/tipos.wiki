@@ -12,12 +12,12 @@ O Maestro suporta os mesmos '''Tipos Primitivos''' do PHP:
 </code>
 Além destes, são usados os seguintes '''Tipos Complexos''' (no sentido de estarem representados por classes do Framework):
 <code>
-* [[>model/date|MDate]]
-* [[>model/date|MTimestamp]]
-* [[>model/data|MCurrency]]
-* [[>model/file|MFile]]
+* [[>guia/model/date|MDate]]
+* [[>guia/model/date|MTimestamp]]
+* [[>guia/model/data|MCurrency]]
+* [[>guia/model/file|MFile]]
 </code>
-Os tipos '''text''' e '''blob''', usados como tipos de atributos nos mapeamentos [[>model/ormmap|ORMMap]], são tratados internamente como strings.
+Os tipos '''text''' e '''blob''', usados como tipos de atributos nos mapeamentos [[>guia/model/ormmap|ORMMap]], são tratados internamente como strings.
 
 As conversões de tipos complexos para tipos primitivos (em especial para string) são tratadas por uma classe auxiliar interna ao Framework (<code>MTypes</code>).
 
