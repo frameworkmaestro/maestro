@@ -60,6 +60,10 @@
             });
         },
         getAction: function (id, action) {
+            var urlBase = window.location.href.replace(/\/index\.php\/(.*)/, "");
+			if (urlBase.endsWith('/')) {
+				urlBase = urlBase.substr(0, urlBase.length - 1);
+			}
             if (action === 'POST') {
                 return "manager.doPost('" + id + "');";
             }
@@ -69,16 +73,16 @@
             }
             if (modifier === ':') {
                 var parts = action.substr(1).split('|');
-                var url = window.location.href.replace(/\/index\.php\/(.*)/, "/index.php/" + parts[0]);
+                var url = urlBase + "/index.php/" + parts[0];
                 return "manager.doAjaxText('" + url + "','" + parts[2] + "','" + parts[1] + "');";
             }
             if (modifier === '*') {
                 var parts = action.substr(1).split('|');
-                var url = window.location.href.replace(/\/index\.php\/(.*)/, "/index.php/" + parts[0]);
+                var url = urlBase + "/index.php/" + parts[0];
                 return "manager.doAjax('" + url + "'," + parts[2] + ",'" + parts[1] + "');";
             }
             var parts = action.substr(1).split('|');
-            var url = window.location.href.replace(/\/index\.php\/(.*)/, "/index.php/" + parts[0]);
+            var url = urlBase + "/index.php/" + parts[0];
             if (modifier === '@') {
                 return parts[1] ? "manager.doPost('" + id + "','" + url + "','" + parts[1] + "');" : "manager.doPost('" + id + "','" + url + "');";
             }
@@ -107,7 +111,7 @@
                 return "manager.showDialog('" + action.substr(2) + "');";
             }
             if (modifier === 'f') {
-                var url = window.location.href.replace(/\/index\.php\/(.*)/, "/index.php/" +action.substr(2));
+                var url = urlBase + "/index.php/" + action.substr(2);
                 console.log('****' +  url);
                 return "manager.doGetFile('" + url + "');";
             }

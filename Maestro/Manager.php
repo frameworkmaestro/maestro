@@ -1133,7 +1133,12 @@ class Manager extends Nette\Object
 
     public static function getBaseURL($absolute = false, $dispatcher = false)
     {
-        return ($absolute ? self::$request->getBaseURL(true) : self::$baseURL) . ($dispatcher ? '/' . self::getOptions('dispatcher') : '');
+		$url = ($absolute ? self::$request->getBaseURL(true) : self::$baseURL);
+		if (substr($url, -1) == '/') {
+            $url = substr($url,0, -1);
+        }
+		mdump('xxxx'.$url);
+        return  $url . ($dispatcher ? '/' . self::getOptions('dispatcher') : '');
     }
 
     public static function getDispatchURL($absolute = false)

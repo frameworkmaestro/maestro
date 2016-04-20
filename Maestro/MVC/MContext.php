@@ -141,6 +141,9 @@ class MContext
             $path = $this->request->getPathInfo();
             $this->url = $this->request->path;
         }
+		if ($path == '') {
+			$path = Manager::getOptions('startup') . '/main';
+		}
         mtrace('Context path: ' . $path);
         $this->pathParts = explode('/', $path);
         $app = array_shift($this->pathParts);
@@ -332,6 +335,7 @@ class MContext
         }
         $path = '';
         $parts = explode('/', $action);
+		mdump($parts);
         $i = 0;
         $n = count($parts);
         if ($parts[$i] == $app) {
@@ -352,6 +356,7 @@ class MContext
             $path .= ((strpos($path, '?') === false) ? '?' : '') . $query;
         }
         $url .= $path;
+		mdump('=================='.$url);
         return $url;
     }
 
