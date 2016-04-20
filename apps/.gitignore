@@ -1,0 +1,10 @@
+# Ignore everything in this directory
+*
+# Except Maestro apps
+!.gitignore
+!auth
+!download
+!exemplos
+!guia
+!template
+!wizard
