@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<view>
+    <mdialog id="formUpdateDialog" state="open" onClose="structure.reload();">
+        <property title="$this->data->title"/>
+        <tools>
+            <mlinkbutton id="lbSave" iconCls="icon-save" text="{{_M('Save')}}" plain="true" action="@ddd/user/actionUpdate|formUpdate"/>
+        </tools>
+        <mform id="formUpdate">
+            <fields>
+                <mhiddenfield id="user_idUser" />
+                <mtextfield id="user_login" width="250px" label="Login" />
+                <include component="MLookupPerson.php" id="user_idPerson" label="Person"/>
+            </fields>
+            <data load="$this->data->object"/>
+        </mform>
+    </mdialog>
+</view>

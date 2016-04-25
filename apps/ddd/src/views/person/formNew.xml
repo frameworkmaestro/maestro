@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<view>
+    <mdialog id="formNewDialog" state="open" onClose="structure.reload();">
+        <property title="$this->data->title"/>
+        <tools>
+            <mlinkbutton id="lbSave" iconCls="icon-save" text="{{_M('Save')}}" plain="true" action="@ddd/person/actionNew|formNew"/>
+        </tools>
+        <mform id="formNew">
+            <fields>
+                <mtextfield id="person_name" width="250px" label="Name" />
+                <mtextfield id="person_cpf" width="250px" label="CPF" />
+            </fields>
+        </mform>
+    </mdialog>
+</view>
