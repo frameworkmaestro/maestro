@@ -1137,7 +1137,6 @@ class Manager extends Nette\Object
 		if (substr($url, -1) == '/') {
             $url = substr($url,0, -1);
         }
-		mdump('xxxx'.$url);
         return  $url . ($dispatcher ? '/' . self::getOptions('dispatcher') : '');
     }
 

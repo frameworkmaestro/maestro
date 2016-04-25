@@ -256,15 +256,15 @@ class MDate extends MType
         // TODO: Implement getSQLDeclaration() method.
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform = NULL)
     {
         return new MDate($value);
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform = NULL)
     {
         return $value->format('Y-m-d');
     }
 }
 
-?>
+

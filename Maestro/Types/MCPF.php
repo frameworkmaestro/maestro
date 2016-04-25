@@ -31,22 +31,6 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 class MCPF extends MType
 {
 
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
-    {
-        //Same as regular string
-        return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
-    }
-
-    public function convertToPHPValue($value, AbstractPlatform $platform)
-    {
-        return new MCPF($value);
-    }
-
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
-    {
-        return MCPF::getPlainValue($value);
-    }
-
     /**
      * Valor plano (sem pontuação) do CPF
      * @var string
@@ -88,9 +72,9 @@ class MCPF extends MType
         return sprintf('%s.%s.%s-%s', substr($this->value, 0, 3), substr($this->value, 3, 3), substr($this->value, 6, 3), substr($this->value, 9, 2));
     }
 
-    public static function getPlainValue($value)
+    public function getPlainValue()
     {
-        return MCPF::cleanValue($value);
+        return $this->cleanValue($this->value);
     }
 
     public function __toString()
@@ -128,6 +112,21 @@ class MCPF extends MType
         }
     }
 
-}
+    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    {
+        //Same as regular string
+        return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
+    }
 
-?>
+    public function convertToPHPValue($value, AbstractPlatform $platform = NULL)
+    {
+        return new MCPF($value);
+    }
+
+    public function convertToDatabaseValue($value, AbstractPlatform $platform = NULL)
+    {
+        return $value;
+    }
+
+
+}

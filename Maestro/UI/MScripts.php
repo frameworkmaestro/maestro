@@ -203,11 +203,18 @@ class MScripts extends MBase
 <script type="text/javascript">
 $scripts->scripts
 $scripts->code
+
+HERE;
+                if ($scripts->onload != '') {
+                    $code .= <<< HERE
 manager.onLoad["{$idPage}"] = function() {
     console.log("inside onload {$idPage}");
     $scripts->onload;
 };
-$scripts->onsubmit                
+HERE;
+                }
+                $code .= <<< HERE
+$scripts->onsubmit
 //-->
 </script>
                 
@@ -217,13 +224,21 @@ HERE;
 <script type="text/javascript">
 $scripts->scripts
 $scripts->code
+
+HERE;
+           if ($scripts->onload != '') {
+               $code = <<< HERE
     manager.ready = function() {
         jQuery(function($) {
             console.log("inside onload {$idPage}");
             $scripts->onload;
         });
     };
-$scripts->onsubmit               
+
+HERE;
+           }
+           $code .= <<< HERE
+$scripts->onsubmit
 //-->
 </script>
                 

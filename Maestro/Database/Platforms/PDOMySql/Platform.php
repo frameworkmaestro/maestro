@@ -193,4 +193,3 @@ class Platform extends \Doctrine\DBAL\Platforms\MySqlPlatform
 
 }
 
-?>

@@ -42,6 +42,10 @@ class MAppStructure
     public function __construct($id, $basePath)
     {
         $this->id = $id;
+        $src = $basePath . DIRECTORY_SEPARATOR . 'src';
+        if (file_exists($src)) {
+            $basePath = $src;
+        }
         $this->basePath = $basePath;
         $this->loadModules();
         $this->loadControllers();

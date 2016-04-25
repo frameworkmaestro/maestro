@@ -28,6 +28,9 @@ class MFile extends MType {
     private $size;
     private $value;
     private $path;
+    /*
+     * var @string
+     */
     private $url;
 
     /**
@@ -65,25 +68,6 @@ class MFile extends MType {
         return new MFile($file);
     }
 
-    /*
-     * Convert methods to database (blob ?) 
-     */
-    
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
-    {
-        return null;
-    }
-
-    public function convertToPHPValue($value, AbstractPlatform $platform)
-    {
-        return null;
-    }
-
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
-    {
-        return null;
-    }    
-    
     /*
      * 
      */
@@ -156,9 +140,29 @@ class MFile extends MType {
     }
     
     public function __toString() {
-        return $this->url;
+        return (string) $this->url;
     }
+
+    /*
+     * Convert methods to database (blob ?)
+     */
+
+    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    {
+        return null;
+    }
+
+    public function convertToPHPValue($value, AbstractPlatform $platform = NULL)
+    {
+        return null;
+    }
+
+    public function convertToDatabaseValue($value, AbstractPlatform $platform = NULL)
+    {
+        return null;
+    }
+
 
 }
 
-?>
+

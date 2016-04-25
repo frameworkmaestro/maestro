@@ -335,7 +335,6 @@ class MContext
         }
         $path = '';
         $parts = explode('/', $action);
-		mdump($parts);
         $i = 0;
         $n = count($parts);
         if ($parts[$i] == $app) {
@@ -356,7 +355,6 @@ class MContext
             $path .= ((strpos($path, '?') === false) ? '?' : '') . $query;
         }
         $url .= $path;
-		mdump('=================='.$url);
         return $url;
     }
 

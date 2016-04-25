@@ -33,25 +33,35 @@ class MApp
     protected static $app = '';
     protected static $module;
     protected static $path;
+    protected static $pathSrc;
     protected static $pathModules;
     protected static $controllerAction;
     protected static $autoload;
+    protected static $container;
 
     public static function contextualize()
     {
         $context = self::$context = new MContext(Manager::$request);
         $app = self::$app = Manager::$app = $context->getApp();
+        $appStructure = new \stdClass();
         //$appStructure = Manager::getSession()->container('appStructure');
         //if ($appStructure->$app == null) {
-            $appStructure->$app = new MAppStructure($app, $context->getAppPath());
+        $appStructure->$app = new MAppStructure($app, $context->getAppPath());
         //}
         $context->defineContext($appStructure->$app);
         self::$structure = $appStructure;
         self::$module = $context->getModule();
-        self::$path = Manager::$appPath = $context->getAppPath();
-        self::$pathModules = self::$path . '/modules';
+        self::$path = self::$pathSrc = Manager::$appPath = $context->getAppPath();
+        if (file_exists(self::$path . DIRECTORY_SEPARATOR . 'src')) {
+            self::$pathSrc = self::$path . DIRECTORY_SEPARATOR . 'src';
+        }
+        self::$pathModules = self::$pathSrc . '/modules';
         $autoload = self::$path . '/vendor/autoload.php';
         self::$loader = require $autoload;
+        $container = self::$path . DIRECTORY_SEPARATOR . 'conf/container.php';
+        if (file_exists($container)) {
+            self::$container = require $container;
+        }
     }
 
     public static function getAutoload()
@@ -62,6 +72,11 @@ class MApp
     public static function getPath()
     {
         return self::$path;
+    }
+
+    public static function getPathSrc()
+    {
+        return self::$pathSrc;
     }
 
     public static function getPathModules()
@@ -77,6 +92,11 @@ class MApp
     public static function getLoader()
     {
         return self::$loader;
+    }
+
+    public static function getContainer()
+    {
+        return self::$container;
     }
 
     public static function getStructure($app)
@@ -109,7 +129,7 @@ class MApp
     public static function prepare()
     {
         //Manager::addAutoloadPath(Manager::getThemePath() . '/classes');
-        Manager::addAutoloadPath(self::$path . '/components');
+        Manager::addAutoloadPath(self::$pathSrc . '/components');
         //Manager::addNamespacePath(self::$app, self::$path);
         // registra o modulo MAD, se ele existir
         $mad = Manager::getMAD();
@@ -154,6 +174,18 @@ class MApp
         return $basePath . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR .$array[$handler];
     }
 
+    public static function getNamespace($app, $module = '', $type = '', $handler = '')
+    {
+        if ($module != '') {
+            $array = self::$structure->$app->modules[$module]->$type;
+            $basePath = self::$structure->$app->modules[$module]->basePath;
+        } else {
+            $array = self::$structure->$app->$type;
+            return $app . "\\" . $type . "\\" . basename($array[$handler], ".php");
+        }
+        return '';
+    }
+
     public static function getController($app, $module, $controller)
     {
         $className = "{$controller}Controller";
@@ -162,10 +194,15 @@ class MApp
             Manager::logMessage("[getController  from cache]");
             return Manager::$controllers[$className];
         }
-        $fileName = self::getHandlerFile($app, $module, 'controllers', $controller);
-        mdump($fileName);
-        include_once $fileName;
-        $handler = new $className(self::$context);
+        if (self::$container) {
+            $namespace = self::getNamespace($app, $module, 'controllers', $controller);
+            $handler = self::$container->get($namespace);
+        } else {
+            $fileName = self::getHandlerFile($app, $module, 'controllers', $controller);
+            mdump($fileName);
+            include_once $fileName;
+            $handler = new $className(self::$context);
+        }
         mdump(get_class($handler));
         Manager::$controllers[$className] = $handler;
         return $handler;
@@ -246,13 +283,13 @@ class MApp
 
     public static function addModuleConf($module)
     {
-        $configFile = self::$path . '/modules/' . $module . '/conf/conf.php';
+        $configFile = self::$pathSrc . '/modules/' . $module . '/conf/conf.php';
         Manager::loadConf($configFile);
     }
 
     public static function addModuleMessages($module)
     {
-        $msgDir = self::$path . '/modules/' . $module . '/conf/';
+        $msgDir = self::$pathSrc . '/modules/' . $module . '/conf/';
         Manager::$msg->addMessages($msgDir);
     }
 

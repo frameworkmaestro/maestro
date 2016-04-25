@@ -157,8 +157,16 @@ class MHandler
         return Manager::getService($this->getApplication(), ($module == '' ? $this->getModule() : $module), $service);
     }
 
+    /**
+     * All render* methods must call initRender before render processing
+     */
+    public function initRender() {
+        Manager::addAutoloadPath(Manager::getThemePath() . '/classes');
+    }
+
     public function renderPrompt($prompt)
     {
+        $this->initRender();
         if (is_string($prompt)) {
             $args = func_get_args();
             $oPrompt = new \MPrompt(["type" => $prompt, "msg" => $args[1], "action1" => $args[2], "action2" => $args[3], "event1" => $args[4], "event2" => $args[5]]);
@@ -180,6 +188,7 @@ class MHandler
 
     public function renderDialog($viewName = '', $parameters = array())
     {
+        $this->initRender();
         $this->renderContent($viewName, $parameters);
         Manager::getPage()->renderType = 'dialog';
         $this->setResult(new Results\MRenderJSON());
@@ -187,6 +196,7 @@ class MHandler
 
     public function renderJSON($json = '')
     {
+        $this->initRender();
         if (!Manager::isAjaxCall()) {
             Manager::$ajax = new \Maestro\UI\MAjax(Manager::getOptions('charset'));
         }
@@ -235,6 +245,7 @@ class MHandler
 
     public function notfound($msg)
     {
+        $this->initRender();
         $this->setResult(new Results\MNotFound($msg));
     }
 
@@ -247,6 +258,7 @@ class MHandler
 
     public function renderPage()
     {
+        $this->initRender();
         $this->setResult(new Results\MRenderPage());
     }
 

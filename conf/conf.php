@@ -39,6 +39,9 @@ return array(
         'language' => 'en',
         'locale' => array("pt_BR.utf8", "ptb") // no linux verificar os locales instalados com "locale -a"
     ),
+    'autoload' => array(
+      'ignore' => array('ProxyManager')
+    ),
     'mad' => array(
         'module' => "auth",
         'access' => "acesso",
@@ -100,9 +103,14 @@ return array(
         ),
    ),
     'types' => array(
+        'blob' => 'Maestro\Types\MBlob',
         'cpf' => 'Maestro\Types\MCPF',
-        'password' => 'Maestro\Types\MPassword',
+        'cnpj' => 'Maestro\Types\MCNPJ',
+        'currency' => 'Maestro\Types\MCurrency',
         'date' => 'Maestro\Types\MDate',
+        'file' => 'Maestro\Types\MFile',
+        'nit' => 'Maestro\Types\MNIT',
+        'password' => 'Maestro\Types\MPassword',
         'timestamp' => 'Maestro\Types\MTimestamp'
     )
 );

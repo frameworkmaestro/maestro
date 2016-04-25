@@ -17,6 +17,7 @@
 namespace Maestro\Types;
 
 use Maestro\Manager;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 /**
  * Classe utilitária para trabalhar com valores monetários.
@@ -135,6 +136,21 @@ class MCurrency extends MType {
         return $this->format();
     }
 
+    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    {
+        //Same as regular string
+        return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
+    }
+
+    public function convertToPHPValue($value, AbstractPlatform $platform = NULL)
+    {
+        return new MCurrency($value);
+    }
+
+    public function convertToDatabaseValue($value, AbstractPlatform $platform = NULL)
+    {
+        return $this->getValue();
+    }
+
 }
 
-?>

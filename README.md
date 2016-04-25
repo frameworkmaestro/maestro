@@ -8,7 +8,9 @@
 
 3 - Dar direito de escrita para o servidor em ```core/var```
 
-4 - Acessar app, por exemplo ```http://localhost/maestro2/index.php/exemplos/main```
+4 - Rodar composer install na aplicação desejada (ex: guia)
+
+5 - Acessar app, por exemplo ```http://localhost/maestro2/index.php/guia/main```
 
 
 ###Para usar JTrace:

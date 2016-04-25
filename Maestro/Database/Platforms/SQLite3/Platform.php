@@ -18,6 +18,8 @@
 
 namespace Maestro\Database\Platforms\SQLite3;
 
+use Maestro\Types\MType;
+
 class Platform extends \Doctrine\DBAL\Platforms\SqlitePlatform {
 
     public $db;
@@ -47,7 +49,7 @@ class Platform extends \Doctrine\DBAL\Platforms\SqlitePlatform {
     public function getNextValue($sequence = '', $tableGenerator = 'manager_sequence') {
         $sql = new \Maestro\Database\MSQL("value",$tableGenerator,"(sequence='" . $sequence . "')");
         $sql->setDb($this->db);
-        $result = $this->db->query($sql->select());
+        $result = $this->db->query($sql->select(), \FETCH_NUM);
         $value = $result[0][0];
         $sql = new \Maestro\Database\MSQL("value",$tableGenerator,"(sequence='" . $sequence . "')");
         $sql->setDb($this->db);
@@ -68,7 +70,7 @@ class Platform extends \Doctrine\DBAL\Platforms\SqlitePlatform {
         return $metadata;
     }
 
-    private function _getMetaType($sqlite3_type) {
+    private function _getMetaType($pdo_type) {
         if ($pdo_type == \SQLITE3_NULL) {
             $type = ' ';
         } else if ($pdo_type == \SQLITE3_INTEGER) {
@@ -98,57 +100,22 @@ class Platform extends \Doctrine\DBAL\Platforms\SqlitePlatform {
         return $stmt->fetchObject();
     }
 
-    public function convertToDatabaseValue($value, $type, &$bindingType) {
-        if ($value === NULL) {
-            return $value;
+    public function convertToDatabaseValue($value, $type)
+    {
+        if(MType::hasType($type)){
+            $obj = MType::getType($type);
+            $value = $obj->convertToDatabaseValue($value, $this);
         }
-        if ($type == '') {
-            if (is_object($value)) {
-                $type = substr(strtolower(get_class($value)), 1);
-            }
-        }
-        if ($type == 'date') {
-            return $value->format('Y-m-d');
-        } elseif ($type == 'timestamp') {
-            return $value->format('Y-m-d H:i:s');
-        } elseif (($type == 'decimal') || ($type == 'float')) {
-            return (float) str_replace(',', '.', $value);
-        } elseif ($type == 'currency') {
-            return $value->getValue();
-        } elseif ($type == 'cpf') {
-            return $value->getPlainValue();
-        } elseif ($type == 'cnpj') {
-            return $value->getPlainValue();
-        } elseif ($type == 'boolean') {
-            return (empty($value) ? '0' : '1');
-        } elseif ($type == 'blob') {
-            return base64_encode($value->getValue());
-        } else {
-            return $value;
-        }
+        return $value;
     }
 
-    public function convertToPHPValue($value, $type) {
-        if ($type == 'date') {
-            return \Maestro\Manager::Date($value);
-        } elseif ($type == 'timestamp') {
-            return \Maestro\Manager::Timestamp($value);
-        } elseif ($type == 'currency') {
-            return \Maestro\Manager::currency($value);
-        } elseif ($type == 'cnpj') {
-            return \Maestro\Types\MCNPJ::create($value);
-        } elseif ($type == 'cpf') {
-            return \Maestro\Types\MCPF::create($value);
-        } elseif ($type == 'currency') {
-            return \Maestro\Manager::currency($value);
-        } elseif ($type == 'boolean') {
-            return (!empty($value));
-        } elseif ($type == 'blob') {
-            $value = \Maestro\Types\MFile::file(base64_decode($value));
-            return $value;
-        } else {
-            return $value;
+    public function convertToPHPValue($value, $type)
+    {
+        if(MType::hasType($type)){
+            $obj = MType::getType($type);
+            $value = $obj->convertToPHPValue($value, $this);
         }
+        return $value;
     }
 
     public function convertColumn($value, $type) {

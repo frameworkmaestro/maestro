@@ -208,9 +208,15 @@ class AttributeMap {
     public function getColumnNameToDb($criteriaAlias = '', $as = TRUE) {
         $fullyName = $this->getFullyQualifiedName($criteriaAlias);
         $name = $this->platform->convertColumn($fullyName, $this->type);
+        /*
         if ($as && ($name != $fullyName)) { // need a "as" clause
-            $name .= ' AS ' . $this->name;
+            // $name .= ' AS ' . $this->name;
+            $parts = explode(' as ', $name);
+            if (trim($parts[1]) == '') {
+                $name .= ' as ' . $this->columnName;
+            }
         }
+        */
         return $name;
     }
 
@@ -221,4 +227,3 @@ class AttributeMap {
     }
 }
 
-?>

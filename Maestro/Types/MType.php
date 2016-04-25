@@ -25,26 +25,56 @@ use Nette\NotImplementedException;
 abstract class MType
 {
     /**
+     * The map of supported Maestro mapping types.
+     *
+     * @var array
+     */
+    private static $_typesMap = array(
+    );
+    /**
+     * The map of origin for mapping types: doctrine or maestro
+     *
+     * @var array
+     */
+    private static $_typesOrigin = array(
+    );
+    /**
      * {@inheritdoc}
      */
     public static function getType($type)
     {
+        /*
         if(Type::hasType($type)) {
             return Type::getType($type);
         }else if(MType::hasType($type)){
             $class = Manager::getConf('types')[$type];
             return new $class();
         }
+        */
+        if (MType::hasType($type)) {
+            if (self::$_typesOrigin[$type] == 'doctrine') {
+                return Type::getType($type);
+            } else {
+                $class = self::$_typesMap[$type];
+                return new $class();
+            }
+        }
         return false;
     }
 
-    public static function hasType($type){
-        if(Type::hasType($type)) {
+    public static function hasType($type)
+    {
+        if (isset(self::$_typesMap[$type])) {
             return true;
-        }else{
+        } else {
             $className = Manager::getConf('types')[$type];
-            if(isset($type)) {
-                Type::addType($type, $className);
+            if (isset($className)) {
+                self::$_typesMap[$type] = $className;
+                self::$_typesOrigin[$type] = 'maestro';
+                return true;
+            } elseif (Type::hasType($type)) {
+                self::$_typesMap[$type] = Type::getTypesMap()[$type];
+                self::$_typesOrigin[$type] = 'doctrine';
                 return true;
             }
         }
@@ -57,7 +87,8 @@ abstract class MType
 
     public abstract function convertToDatabaseValue($value, AbstractPlatform $platform);
 
-    public function getName(){
+    public function getName()
+    {
         return get_class($this);
     }
 }

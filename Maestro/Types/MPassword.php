@@ -8,7 +8,6 @@
 
 namespace Maestro\Types;
 
-
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Maestro\Manager;
 
@@ -21,12 +20,12 @@ class MPassword extends MType
         return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform = NULL)
     {
         return $value;
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform = NULL)
     {
         return md5($value);
     }

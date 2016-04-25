@@ -18,6 +18,7 @@
 namespace Maestro\MVC;
 
 use Maestro\Manager;
+use ProxyManager\Factory\AccessInterceptorValueHolderFactory as Factory;
 
 
 /**
@@ -43,19 +44,53 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject {
      */
     private $_map;
 
+    protected $_proxyModel;
     /**
      * Instancia Model e opcionalmente inicializa atributos com $data.
      * @param mixed $data
      */
-    public function __construct($data = NULL) {
+    public function __construct($data = NULL, $model = NULL) {
         parent::__construct();
         $this->_className = get_class($this);
         $p = strrpos($this->_className, '\\');
         $this->_namespace = substr($this->_className, 0, $p);
         $this->_map = $this->ORMMap();
+        $this->_proxyModel = $this->createProxyModel($model);
         $this->onCreate($data);
     }
-    
+
+    public function __call($name, $arguments)
+    {
+        mdump('calling ' . $name);
+        if (substr($name,0,3) == 'set') {
+            $this->_proxyModel->$name($arguments[0],$arguments[1],$arguments[2],$arguments[3]);
+        } elseif (substr($name,0,3) == 'get') {
+            return $this->_proxyModel->$name();
+        }
+
+    }
+
+    public function createProxyModel($model) {
+        if ($model == null) {
+            return;
+        }
+        $factory = new Factory();
+        $that = $this;
+        $prefixInterceptors = [];
+        foreach($this->_map['associations'] as $property => $association) {
+            $method = 'get' . ucfirst($property);
+            $prefixInterceptors[$method] = function () use ($that, $method) {
+                $that->$method();
+            };
+        }
+        $proxy = $factory->createProxy($model, $prefixInterceptors, []);
+        return $proxy;
+    }
+
+    public function getModel() {
+        return $this->_proxyModel;
+    }
+
     public static function ORMMap() {
         return [];
     }
@@ -326,18 +361,25 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject {
         $attributes = $this->getAttributesMap();
         foreach ($attributes as $attribute => $definition) {
             $method = 'get' . $attribute;
-            if (method_exists($this, $method)) {
+            $methodExists = (method_exists($this, $method) || ($this->_proxyModel ? method_exists($this->_proxyModel, $method) : false));
+            if ($methodExists) {
                 $type = $definition['type'];
                 $rawValue = $this->$method();
                 if (isset($rawValue)) {
                     if ($definition['key'] == 'primary') {
                         $data->id = $rawValue;
-                        $data->idName = $attr;
+                        $data->idName = $attribute;
                     }
+                    mdump($attribute);
+                    mdump($rawValue);
                     //$obj = \Maestro\Types\MType::getType($type);
-                    $conversion = 'getPlain' . $type;
-                    $value = \Maestro\Types\MTypes::$conversion($rawValue);
-                    //$value = $obj::getPlainValue($rawValue);
+                    //$conversion = 'getPlain' . $type;
+                    if (is_object($rawValue)) {
+                        $value = $rawValue->getPlainValue();
+                    } else {
+                        $value = $rawValue;
+                    }
+                    //$value = \Maestro\Types\MTypes::$conversion($rawValue);
                     $data->$attribute = $value;
                 }
             }
@@ -366,8 +408,10 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject {
             }
             if ($valid) {
                 $type = $definition['type'];
-                $conversion = 'get' . $type;
-                $typedValue = \Maestro\Types\MTypes::$conversion($value);
+                //$conversion = 'get' . $type;
+                //$typedValue = \Maestro\Types\MTypes::$conversion($value);
+                $obj = \Maestro\Types\MType::getType($type);
+                $typedValue = $obj->convertToPHPValue($value, $this->getClassMap()->getPlatform());
                 $this->set($attribute, $typedValue);
             }
         }
@@ -384,5 +428,3 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject {
     }
 
 }
-
-?>

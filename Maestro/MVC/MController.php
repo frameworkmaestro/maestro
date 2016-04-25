@@ -48,6 +48,10 @@ class MController extends MHandler
         Manager::checkLogin();
     }
 
+    public function services() {
+
+    }
+
     public function dispatch($action)
     {
         mtrace('mcontroller::dispatch = ' . $action);
@@ -85,19 +89,7 @@ class MController extends MHandler
                         Manager::$ajax = new \Maestro\UI\MAjax(Manager::getOptions('charset'));
                     }
                     $this->setResult(new Results\MRenderJSON(json_encode($result)));
-                    /*
-                    $this->renderJSON(json_encode($result));
-                    $this->render($result);
-
-                    if (!Manager::isAjaxCall()) {
-//                        Manager::$ajax = new \Maestro\UI\MAjax(Manager::getOptions('charset'));
-                    }
-                    $ajax = Manager::getAjax();
-                    $ajax->setData(json_encode($result));
-                    */
-
                 }
-                //$this->$action();
             } catch (\Exception $e) {
                 mdump($e->getMessage());
                 if (Manager::PROD()) {
@@ -122,12 +114,20 @@ class MController extends MHandler
                 mtrace('MController::getContent ' . $fileName);
                 $this->renderView($controller, $fileName, $parameters);
                 break;
+            } else {
+                $fileName = $base . '/src' . $path . $extension;
+                if (file_exists($fileName)) {
+                    mtrace('MController::getContent ' . $fileName);
+                    $this->renderView($controller, $fileName, $parameters);
+                    break;
+                }
             }
         }
     }
     
     public function renderAppView($app, $module, $controller, $viewFile, $parameters)
     {
+        $this->initRender();
         $view = Manager::getView($app, $module, $controller, $viewFile);
         $view->setArgs($parameters);
         $view->process($this, $parameters);
@@ -135,11 +135,13 @@ class MController extends MHandler
 
     public function renderView($controller, $viewFile, $parameters = array())
     {
+        $this->initRender();
         $this->renderAppView($this->application, $this->module, $controller, $viewFile, $parameters);
     }
 
     public function renderTemplate($templateName, $parameters = array())
     {
+        $this->initRender();
         $controller = strtolower($this->name);
         $path = Manager::getBasePath('/views/' . $controller . '/', $this->module);
         $file = $templateName . '.html';
@@ -159,6 +161,7 @@ class MController extends MHandler
 
     public function renderPartial($viewName = '', $parameters = array())
     {
+        $this->initRender();
         if (($view = $viewName) == '') {
             $view = $this->action;
         }
@@ -169,6 +172,7 @@ class MController extends MHandler
 
     public function renderContent($viewName = '', $parameters = array())
     {
+        $this->initRender();
         $controller = strtolower($this->name);
         $view = $viewName;
         if ($view == '') {
@@ -192,7 +196,6 @@ class MController extends MHandler
 
     public function render($viewName = '', $parameters = array())
     {
-        Manager::addAutoloadPath(Manager::getThemePath() . '/classes');
         $this->renderContent($viewName, $parameters);
         $this->renderPage();
     }

@@ -20,13 +20,10 @@ use Maestro\Manager;
 
 /**
  * Classe utilitária para conversão de tipos.
- * Esta classe contém métodos estáticos para conversão de tipos simples (planos)
- * em tipos complexos e vice-versa.
+ * Esta classe contém métodos estáticos para conversão de tipos simples (planos) em tipos complexos e vice-versa.
  * Tipos simples: integer, boolean, string, character, float
- * Tipos complexos: date (MDate), timestamp (MTimeStamp), currency (MCurrency),
- * blob (MFile), text, cpf (MCPF) e cnpj (MCNPJ).
- * A conversão do tipo complexo em plano é feita através da chamada padrão
- * complexo::getPlainValue().
+ * Tipos complexos: date (MDate), timestamp (MTimeStamp), currency (MCurrency), blob (MFile), text, cpf (MCPF) e cnpj (MCNPJ).
+ * A conversão do tipo complexo em plano é feita através da chamada padrão complexo::getPlainValue().
  * 
  * @see MBusinessModel::setData
  * 
@@ -53,6 +50,7 @@ class MTypes {
      * Métodos para conversão de valores: plain -> tipo
      */
 
+    /*
     public static function getInteger($plainValue){
         return $plainValue == '' ? NULL : (integer) $plainValue;
     }
@@ -104,11 +102,13 @@ class MTypes {
     public static function getFloat($plainValue){
         return $plainValue === '' ? NULL : (float) $plainValue;
     }
+    */
 
     /*
      * Métodos para conversão de valores: tipo -> plain
      */
 
+    /*
     public static function getPlainInteger($value){
         return (integer) $value;
     }
@@ -145,15 +145,16 @@ class MTypes {
     }
 
     public static function getPlainCPF($value){
-        return $value->getPlainValue();
+        return $value->getPlainValue($value->getValue());
     }
 
     public static function getPlainCNPJ($value){
-        return $value->getPlainValue();
+        return $value->getPlainValue($value->getValue());
     }
 
     public static function getPlainBLOB($value){
-        return $value->getPlainValue();
+        return (stream_get_contents($value));
+
     }
 
     public static function getPlainText($value){
@@ -167,7 +168,7 @@ class MTypes {
     public static function getPlainClob($value){
         return is_a($value, '\OCI-Lob') ? $value->load() : $value;
     }
+    */
 
 }
 
-?>

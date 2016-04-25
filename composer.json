@@ -1,26 +1,33 @@
 {
-    "name": "Maestro",
-    "description": "Framework Maestro 2.0",
-    "require": {
-        "nette/http": "2.2.4",
-        "nette/reflection": "2.2.1",
-        "nette/safe-stream": "2.2.0",
-        "nette/utils": "2.2.3",
-        "nette/finder": "2.2.0",
-        "doctrine/common": "2.4.2",
-        "doctrine/dbal": "2.4.2",
-        "apigen/apigen": "4.0.0.*@dev",
-        "tracy/tracy": "2.3.*",
-        "psr/log": "1.0.0",
-        "phpmailer/phpmailer": "~5.2",
-        "zendframework/zend-session": "2.2.*",
-        "easybook/geshi":"1.0.*"
+  "name": "Maestro",
+  "description": "Framework Maestro 2.0",
+  "require": {
+    "nette/http": "2.2.4",
+    "nette/reflection": "2.2.1",
+    "nette/safe-stream": "2.2.0",
+    "nette/utils": "2.2.3",
+    "nette/finder": "2.2.0",
+    "doctrine/common": "2.4.2",
+    "doctrine/dbal": "2.4.2",
+    "apigen/apigen": "4.0.0.*@dev",
+    "tracy/tracy": "2.3.*",
+    "psr/log": "1.0.0",
+    "phpmailer/phpmailer": "~5.2",
+    "zendframework/zend-session": "2.2.*",
+    "easybook/geshi": "1.0.*",
+    "ocramius/proxy-manager": "1.0.*",
+    "beberlei/assert": "dev-master",
+    "php-di/php-di": "5.2.*"
+  },
+  "require-dev": {
+    "apigen/apigen": "4.0.0.*@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "Maestro\\": "Maestro/"
     },
-    "require-dev": {
-        "apigen/apigen": "4.0.0.*@dev"
-     },
-    "autoload": {
-        "psr-4": {"Maestro\\": "Maestro/"},
-        "files": ["Maestro/functions.php"]
-    }
+    "files": [
+      "Maestro/functions.php"
+    ]
+  }
 }

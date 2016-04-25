@@ -131,7 +131,15 @@ class RetrieveCriteria extends PersistentCriteria {
         }
         $sqlColumns = array();
         foreach ($this->columns as $column) {
-            $sqlColumns[] = $this->getOperand($column)->getSql();
+            $parts = explode(' as ', $column);
+            $label = trim($parts[1]);
+            $field = $this->getOperand(trim($parts[0]))->getSql();
+            $parts = explode('.', $field);
+            if (array_pop($parts) != $label) {
+                $sqlColumns[] = $field . ' as ' . $label;
+            } else {
+                $sqlColumns[] = $field;
+            }
         }
         $columns = implode(',', $sqlColumns);
         $statement->setColumns($columns, $this->distinct);
@@ -249,14 +257,20 @@ class RetrieveCriteria extends PersistentCriteria {
                             $classMap = $this->classMap;
                             do {
                                 for ($i = 0; $i < $classMap->getSize(); $i++) {
-                                    $am = $classMap->getAttributeMap($i);
-                                    $this->columns[] = $am->getName();
+                                    $name = $classMap->getAttributeMap($i)->getName();
+                                    $this->columns[] = $name . ' as ' . $name;
                                 }
                                 $classMap = $classMap->getSuperClassMap();
                             } while ($classMap != NULL);
                         } else {
                             $parts = explode(' as ', $attribute);
-                            $this->columns[] = trim($parts[0]) . (($label = trim($parts[1])) ? ' as ' . $label : '');
+                            $field = trim($parts[0]);
+                            $label = trim($parts[1]);
+                            if ($label != '') {
+                                $this->columns[] = $attribute;
+                            } else {
+                                $this->columns[] = $field . ' as ' . array_pop(explode('.', $field));
+                            }
                         }
                     }
                 } else {

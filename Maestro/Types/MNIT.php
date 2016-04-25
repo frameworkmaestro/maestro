@@ -17,6 +17,7 @@
 namespace Maestro\Types;
 
 use Maestro\Manager;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 /**
  * Classe utilitária para trabalhar com NIT (PIS).
@@ -64,6 +65,11 @@ class MNIT extends MType {
     public function format() {
         return sprintf('%s.%s.%s-%s', substr($this->value, 0, 3), substr($this->value, 3, 5), substr($this->value, 8, 2), substr($this->value, 10, 2));
     }
+
+    public function getPlainValue()
+    {
+        return $this->getValue();
+    }
     
     public static function validatePISPASEP($pis)
     {
@@ -89,6 +95,22 @@ class MNIT extends MType {
 
         return ($pis[10] == (((10 * $d) % 11) % 10));
     }
+
+
+    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
+    {
+        //Same as regular string
+        return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
+    }
+
+    public function convertToPHPValue($value, AbstractPlatform $platform = NULL)
+    {
+        return new MNIT($value);
+    }
+
+    public function convertToDatabaseValue($value, AbstractPlatform $platform = NULL)
+    {
+        return $value;
+    }
 }
 
-?>

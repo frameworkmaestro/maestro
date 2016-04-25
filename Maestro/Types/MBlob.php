@@ -1,5 +1,4 @@
 <?php
-
 /* Copyright [2011, 2012, 2013] da Universidade Federal de Juiz de Fora
  * Este arquivo é parte do programa Framework Maestro.
  * O Framework Maestro é um software livre; você pode redistribuí-lo e/ou 
@@ -15,47 +14,63 @@
  * Fundação do Software Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301, USA.
  */
-
 namespace Maestro\Types;
 
-use Doctrine\DBAL\Platforms\AbstractPlatform,
-    Maestro\Manager,
-    Maestro\Utils\MKrono;
+use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\Type;
 
-class MTimestamp extends MDate
+/**
+ * Classe utilitária para trabalhar com Blob.
+ *
+ * @category    Maestro
+ * @package     Core
+ * @subpackage  Types
+ * @version     1.0
+ * @since       1.0
+ */
+class MBlob extends Mtype
 {
+    private $value;
 
-    public function __construct($datetime = NULL, $format = '')
+    public function __construct($value)
     {
-        parent::__construct($datetime, ($format ? : Manager::getOptions('formatTimestamp')));
+        $this->setValue($value);
     }
 
-    public static function getSysTime($format = 'd/m/Y H:i:s')
+    public static function create($value)
     {
-        return new MTimestamp(date($format));
+        return new MCPF($value);
     }
 
-    public function invert()
+    public function getValue()
     {
-        $dateTime = explode(" ", $this->format());
-        return MKrono::invertDate($dateTime[0]) . ' ' . $dateTime[1];
+        return $this->value ?: '';
+    }
+
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
+
+    public function getPlainValue()
+    {
+        return $this->value;
     }
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
-        // TODO: Implement getSQLDeclaration() method.
+        //Same as regular string
+        return $platform->getVarcharTypeDeclarationSQL($fieldDeclaration);
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform = NULL)
     {
-        return new MTimestamp($value);
+        return MFile::file($value);
     }
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform = NULL)
     {
-        return $value->format('Y-m-d H:i:s');
+        return $value;
     }
 
 }
-
-?>

@@ -197,10 +197,10 @@ class MDatabase {
         $sql->prepare();
     }
 
-    public function query(MSQL $sql) {
+    public function query(MSQL $sql, $fetchStyle = 0) {
         try {
             $query = $this->getQuery($sql);
-            return $query->fetchAll();
+            return $query->fetchAll($fetchStyle);
         } catch (\Exception $e) {
             throw EDBException::query($e->getMessage());
         }

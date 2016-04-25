@@ -249,5 +249,3 @@ class Platform extends \Doctrine\DBAL\Platforms\OraclePlatform {
 function handleText($attributeMap, $operation) {
     //mdump('platform::handleText');
 }
-
-?>

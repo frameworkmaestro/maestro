@@ -3,6 +3,7 @@
 # Except Maestro apps
 !.gitignore
 !auth
+!ddd
 !download
 !exemplos
 !guia

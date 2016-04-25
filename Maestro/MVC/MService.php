@@ -48,10 +48,12 @@ class MService extends MController {
     }
 
     public function render($result) {
+        $this->initRender();
         $this->renderJSON(json_encode($result));
     }
 
     public function renderPrompt($type, $message) {
+        $this->initRender();
         $result = new \stdClass();
         $result->code = 1;
         $result->type = $type;
