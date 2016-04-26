@@ -25,7 +25,9 @@ class UserService extends BaseService
     public function listUsers($data)
     {
         /** @var User $user */
-        $user = $this->modelFactory->build(User::class);
+        $user = $this->modelFactory->build(User::class, 1);
+        //mdump($user->getPerson());
+        $user->getPerson();
         $filter = (object)['name' => $data->name];
         $users = $this->readRepository->listByFilter($user, $filter)->asQuery()->getResult();
         $result = array();
@@ -42,7 +44,8 @@ class UserService extends BaseService
     public function retrieve($idUser)
     {
         /** @var User $user */
-        $user = $this->modelFactory->build(User::class, $idUser);
+        //$user = $this->modelFactory->build(User::class);
+        $this->readRepository->retrieve($idUser);
         return $user->getData();
     }
 

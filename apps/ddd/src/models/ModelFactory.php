@@ -2,6 +2,8 @@
 
 namespace ddd\models;
 
+use ProxyManager\Factory\AccessInterceptorScopeLocalizerFactory as Factory;
+
 class ModelFactory{
 
     private $persistence;
@@ -12,8 +14,8 @@ class ModelFactory{
 
     public function build($modelClass, $data = NULL){
         if($this->persistence == 'maestro'){
-            $modelClass = str_replace('models', 'models\\map', $modelClass) . 'Map';
-            return new $modelClass($data);
+            $proxyClass = str_replace('models', 'persistence\\maestro\\proxy', $modelClass) . 'Proxy';
+            return new $proxyClass($data);
         }
     }
 }

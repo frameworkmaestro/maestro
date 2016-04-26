@@ -2,12 +2,14 @@
 
 namespace ddd\models\map;
 
+use ddd\persistence\maestro\proxy\PersonProxy as PersonProxy;
+
 class PersonMap extends \Maestro\MVC\MBusinessModel
 {
 
-    public function __construct($data = '')
+    public function __construct($data = '', PersonProxy $proxy = null)
     {
-        parent::__construct($data, new \ddd\models\Person());
+        parent::__construct($data, $proxy ?: new PersonProxy($data, $this));
     }
 
     public static function ORMMap()
@@ -27,25 +29,6 @@ class PersonMap extends \Maestro\MVC\MBusinessModel
             ),
             'associations' => array()
         );
-    }
-
-    /**
-     *
-     * @var integer
-     */
-    protected $idPerson;
-
-    /**
-     * Getters/Setters
-     */
-    public function getIdPerson()
-    {
-        return $this->idPerson;
-    }
-
-    public function setIdPerson($value)
-    {
-        $this->idPerson = $value;
     }
 
 }

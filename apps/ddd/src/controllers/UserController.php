@@ -40,9 +40,9 @@ class UserController extends \MController
 
     public function formUpdate()
     {
-        $this->data->object = $this->userService->retrieve($this->data->id);
+        $user = $this->userService->retrieve($this->data->id);
+        $this->data->object = $user->getData();
         $this->data->title = 'User: ' . $this->data->object->login;
-        mdump($this->data);
         $this->render();
     }
 

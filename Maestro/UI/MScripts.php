@@ -227,7 +227,7 @@ $scripts->code
 
 HERE;
            if ($scripts->onload != '') {
-               $code = <<< HERE
+               $code .= <<< HERE
     manager.ready = function() {
         jQuery(function($) {
             console.log("inside onload {$idPage}");

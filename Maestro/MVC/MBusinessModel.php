@@ -55,7 +55,8 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject {
         $p = strrpos($this->_className, '\\');
         $this->_namespace = substr($this->_className, 0, $p);
         $this->_map = $this->ORMMap();
-        $this->_proxyModel = $this->createProxyModel($model);
+        //$this->_proxyModel = $this->createProxyModel($model);
+        $this->_proxyModel = $model;
         $this->onCreate($data);
     }
 
