@@ -51,12 +51,12 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject {
      */
     public function __construct($data = NULL, $model = NULL) {
         parent::__construct();
+        $this->_proxyModel = $model;
         $this->_className = get_class($this);
+        //$this->_mapClassName = ($this->_proxyModel != null) ? $this->_className : get_parent_class($this);
         $p = strrpos($this->_className, '\\');
         $this->_namespace = substr($this->_className, 0, $p);
         $this->_map = $this->ORMMap();
-        //$this->_proxyModel = $this->createProxyModel($model);
-        $this->_proxyModel = $model;
         $this->onCreate($data);
     }
 

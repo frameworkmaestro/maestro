@@ -9,7 +9,7 @@
 namespace ddd\models;
 
 
-class User
+class User extends \Maestro\MVC\MModel
 {
     /**
      *

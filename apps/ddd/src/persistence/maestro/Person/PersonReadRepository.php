@@ -11,15 +11,17 @@
  * @since      
  */
 
-namespace ddd\persistence\maestro\repository;
+namespace ddd\persistence\maestro\Person;
+
 
 use \ddd\models\repository\PersonReadRepositoryInterface;
+use ddd\persistence\maestro\BaseRepository;
 
-class PersonReadRepository extends BaseReadRepository implements PersonReadRepositoryInterface
+class PersonReadRepository extends BaseRepository implements PersonReadRepositoryInterface
 {
 
     public function listByFilter($person, $filter) {
-        $criteria = $this->pm->getRetrieveCriteria($person)
+        $criteria = $person->getMap()->getCriteria()
             ->select('*')
             ->orderBy('name');
         if ($filter->name) {

@@ -11,4 +11,12 @@ class BaseService extends \MService
         $this->modelFactory = $modelFactory;
     }
 
+    public function getModel($className, $data = null) {
+        return $this->modelFactory->build($className, $data);
+    }
+
+    public function getMap($className) {
+        return $this->modelFactory->build($className)->getMap();
+    }
+
 }

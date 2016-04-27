@@ -280,9 +280,7 @@ class ClassMap {
             $classMap = $this;
         }
         foreach ($data as $field => $value) {
-            mdump($field . ' --- ' . $value);
             if ($attributeMap = $classMap->fieldMaps[strtoupper($field)]) {
-                mdump('xxxx');
                 $object->setAttributeValue($attributeMap, $attributeMap->getValueFromDb($value));
             }
         }

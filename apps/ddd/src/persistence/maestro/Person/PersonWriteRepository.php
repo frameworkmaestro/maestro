@@ -11,16 +11,17 @@
  * @since      
  */
 
-namespace ddd\persistence\maestro\repository;
+namespace ddd\persistence\maestro\Person;
 
 use ddd\models\repository\PersonWriteRepositoryInterface;
+use ddd\persistence\maestro\BaseRepository;
 
-class PersonWriteRepository extends BaseWriteRepository implements PersonWriteRepositoryInterface
+class PersonWriteRepository extends BaseRepository implements PersonWriteRepositoryInterface
 {
 
     public function save($person) {
         try {
-            $this->pm->saveObject($person);
+            $person->getMap()->save();
         } catch (\Exception $e) {
             throw new \Exception('Error saving Person.');
         }

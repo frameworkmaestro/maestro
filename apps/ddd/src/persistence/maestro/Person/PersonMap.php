@@ -1,8 +1,8 @@
 <?php
 
-namespace ddd\models\map;
+namespace ddd\persistence\maestro\Person;
 
-use ddd\persistence\maestro\proxy\PersonProxy as PersonProxy;
+use ddd\persistence\maestro\Person\PersonProxy as PersonProxy;
 
 class PersonMap extends \Maestro\MVC\MBusinessModel
 {

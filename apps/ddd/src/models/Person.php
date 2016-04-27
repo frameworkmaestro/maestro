@@ -9,7 +9,7 @@
 namespace ddd\models;
 
 
-class Person
+class Person extends \Maestro\MVC\MModel
 {
     private $name;
     private $cpf;

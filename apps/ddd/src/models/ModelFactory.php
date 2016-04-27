@@ -14,7 +14,10 @@ class ModelFactory{
 
     public function build($modelClass, $data = NULL){
         if($this->persistence == 'maestro'){
-            $proxyClass = str_replace('models', 'persistence\\maestro\\proxy', $modelClass) . 'Proxy';
+            $function = new \ReflectionClass($modelClass);
+            $model = $function->getShortName();
+            $proxyClass = str_replace('models', "persistence\\maestro\\{$model}", $modelClass) . 'Proxy';
+            mdump('proxyClass = ' . $proxyClass);
             return new $proxyClass($data);
         }
     }

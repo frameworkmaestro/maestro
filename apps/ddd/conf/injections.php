@@ -20,8 +20,11 @@ return [
     'ddd\models\repository\\*RepositoryInterface' => function (\DI\Container $c, \DI\Factory\RequestedEntry $entry) {
         $persistence = Manager::getOptions('persistence');
         if ($persistence == 'maestro') {
-            $class = str_replace('Interface', '', str_replace("models","persistence\\{$persistence}",$entry->getName()));
-            mdump('*'.$class);
+            $name = $entry->getName();
+            $reflection = new ReflectionClass($name);
+            $shortName = $reflection->getShortName();
+            $model = str_replace("ReadRepositoryInterface", '', str_replace("WriteRepositoryInterface", '', $shortName));
+            $class = "ddd\\persistence\\maestro\\" . $model . "\\" . str_replace("Interface", '', $shortName);
             $reflection = new ReflectionClass($class);
             $params = $reflection->getConstructor()->getParameters();
             $constructor = array();

@@ -121,13 +121,13 @@ class MUtil
     public static function getFloatValue($value)
     {
         $l = localeConv();
-        $sign = (strpos($value, $l['negative_sign']? : '-') !== false) ? -1 : 1;
+        $sign = (strpos($value, $l['negative_sign'] ?: '-') !== false) ? -1 : 1;
         $value = strtr($value, $l['positive_sign'] . $l['negative_sign'] . '()', '    ');
         $value = str_replace(' ', '', $value);
-        $value = str_replace($l['currency_symbol']? : '$', '', $value);
-        $value = str_replace($l['mon_thousands_sep']? : ',', '', $value);
-        $value = str_replace($l['mon_decimal_point']? : '.', '.', $value);
-        return (float) ($value * $sign);
+        $value = str_replace($l['currency_symbol'] ?: '$', '', $value);
+        $value = str_replace($l['mon_thousands_sep'] ?: ',', '', $value);
+        $value = str_replace($l['mon_decimal_point'] ?: '.', '.', $value);
+        return (float)($value * $sign);
     }
 
     /**
@@ -153,11 +153,11 @@ class MUtil
      */
     public static function RemoveSpecialChars($string)
     {
-        $specialCharacters = ['#','$','%','&','@','.','?','+','=','§','-','\\','/','!','"',"'"];
+        $specialCharacters = ['#', '$', '%', '&', '@', '.', '?', '+', '=', '§', '-', '\\', '/', '!', '"', "'"];
         $string = str_replace($specialCharacters, '', $string);
 
         $arrayStringsSpecialChars = array("À", "Á", "Â", "Ã", "Ä", "Å", "?", "á", "â", "ã", "ä", "å", "Ò", "Ó", "Ô", "Õ", "Ö", "Ø", "ò", "ó", "ô", "õ", "ö", "ø", "È", "É", "Ê", "Ë", "è", "é", "ê", "ë", "Ç", "ç", "Ì", "Í", "Î", "Ï", "ì", "í", "î", "ï", "Ù", "Ú", "Û", "Ü", "ù", "ú", "û", "ü", "ÿ", "Ñ", "ñ");
-        $arrayStringsNormalChars =  array("A", "A", "A", "A", "A", "A", "a", "a", "a", "a", "a", "a", "O", "O", "O", "O", "O", "O", "o", "o", "o", "o", "o", "o", "E", "E", "E", "E", "e", "e", "e", "e", "C", "c", "I", "I", "I", "I", "i", "i", "i", "i", "U", "U", "U", "U", "u", "u", "u", "u", "y", "N", "n");
+        $arrayStringsNormalChars = array("A", "A", "A", "A", "A", "A", "a", "a", "a", "a", "a", "a", "O", "O", "O", "O", "O", "O", "o", "o", "o", "o", "o", "o", "E", "E", "E", "E", "e", "e", "e", "e", "C", "c", "I", "I", "I", "I", "i", "i", "i", "i", "U", "U", "U", "U", "u", "u", "u", "u", "y", "N", "n");
         $string = str_replace($arrayStringsSpecialChars, $arrayStringsNormalChars, $string);
 
         return $string;
@@ -230,13 +230,14 @@ class MUtil
         if (file_exists($sourceDir) && file_exists($destinDir)) {
             $open_dir = opendir($sourceDir);
 
-            while (false !== ( $file = readdir($open_dir) )) {
+            while (false !== ($file = readdir($open_dir))) {
                 if ($file != "." && $file != "..") {
                     $aux = explode('.', $file);
 
                     if ($aux[0] != "") {
                         if (file_exists($destinDir . "/" . $file) &&
-                                filetype($destinDir . "/" . $file) != "dir") {
+                            filetype($destinDir . "/" . $file) != "dir"
+                        ) {
                             unlink($destinDir . "/" . $file);
                         }
                         if (filetype($sourceDir . "/" . $file) == "dir") {
@@ -274,7 +275,7 @@ class MUtil
         } elseif (is_readable($directory)) {
             $handle = opendir($directory);
 
-            while (FALSE !== ( $item = readdir($handle) )) {
+            while (FALSE !== ($item = readdir($handle))) {
                 if ($item != '.' && $item != '..') {
                     $path = $directory . '/' . $item;
 
@@ -338,7 +339,7 @@ class MUtil
     {
         $file = file("$arquivo");
         foreach ($file as $texto) {
-            $conteudo.= substr($texto, 0, -1) . "\r\n";
+            $conteudo .= substr($texto, 0, -1) . "\r\n";
         }
         if (is_writable($arquivo)) {
             $manipular = fopen("$arquivo", "w");
@@ -397,15 +398,15 @@ class MUtil
 
     /**
      * Função para ordenar um array de array por ordem das colunas passadas em um array
-     * @param array $vetor: array de array que desejo ordernar
+     * @param array $vetor : array de array que desejo ordernar
      *                 exemplo: $vetor = array(array('a', 'b', 'c'), array('d', 'e', 'f'),...)
-     * @param array $order: array com ordem das colunas de ordenação
+     * @param array $order : array com ordem das colunas de ordenação
      *                 exemplo: $vetor = array(1,5,17,2,65,0)
      * * @return array
      */
     public static function orderArrayByArray(array $vetor, array $order)
     {
-        usort($vetor, function($a, $b) use($order) {
+        usort($vetor, function ($a, $b) use ($order) {
             for ($i = 0; $i < count($order); $i++) {
                 $comp = strcasecmp($a[$order[$i]], $b[$order[$i]]);
                 if ($comp != 0) {
@@ -467,7 +468,7 @@ class MUtil
         } else {
             $return = array();
             foreach ($array as $i => $row) {
-                $return[$i] = $row ? : array();
+                $return[$i] = $row ?: array();
                 $return[$i][$key] = $insert[$i];
             }
             return $return;
@@ -589,16 +590,44 @@ class MUtil
         return $isNull;
     }
 
+    /**
+     * Recursive function to get an associative array of class properties by property name => ReflectionProperty() object
+     * including inherited ones from extended classes
+     * @param string $className Class name
+     * @param string $types Any combination of <b>public, private, protected, static</b>
+     * @return array
+     */
+    public static function getClassProperties($className, $types = 'public')
+    {
+        $ref = new \ReflectionClass($className);
+        $props = $ref->getProperties();
+        $props_arr = array();
+        foreach ($props as $prop) {
+            $f = $prop->getName();
+            if ($prop->isPublic() and (stripos($types, 'public') === FALSE)) continue;
+            if ($prop->isPrivate() and (stripos($types, 'private') === FALSE)) continue;
+            if ($prop->isProtected() and (stripos($types, 'protected') === FALSE)) continue;
+            if ($prop->isStatic() and (stripos($types, 'static') === FALSE)) continue;
+            $props_arr[$f] = $prop;
+        }
+        if ($parentClass = $ref->getParentClass()) {
+            $parent_props_arr = MUtil::getClassProperties($parentClass->getName());//RECURSION
+            if (count($parent_props_arr) > 0)
+                $props_arr = array_merge($parent_props_arr, $props_arr);
+        }
+        return $props_arr;
+    }
+
 }
 
 class MDummy
 {
-    
+
 }
 
 class MDataObject
 {
-    
+
 }
 
 ?>

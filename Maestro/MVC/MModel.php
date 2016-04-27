@@ -20,12 +20,73 @@ namespace Maestro\MVC;
 use Maestro\Manager;
 
 
-class MModel {
+class MModel
+{
 
-    public function __construct($data = NULL) {
+    public function __construct($data = NULL)
+    {
     }
-    
+
+    /**
+     * Retorna um ValueObject com atributos com valores planos (tipo simples).
+     * @return \stdClass
+     */
+    public function getData()
+    {
+        $data = new \stdClass();
+        $a = \Maestro\Utils\MUtil::getClassProperties(get_class($this),'public, private, protected');
+        mdump($a);
+        $attributes = get_object_vars($this);
+        mdump('-=-=-=');
+        mdump($attributes);
+        foreach ($attributes as $attribute) {
+            $method = 'get' . $attribute;
+            mdump('method = ' . $method);
+            $methodExists = method_exists($this, $method);
+            if ($methodExists) {
+                $rawValue = $this->$method();
+                if (isset($rawValue)) {
+                    mdump($attribute);
+                    mdump($rawValue);
+                    if (is_object($rawValue)) {
+                        $value = $rawValue->getPlainValue();
+                    } else {
+                        $value = $rawValue;
+                    }
+                    $data->$attribute = $value;
+                }
+            }
+        }
+        return $data;
+    }
+
+    /**
+     * Recebe um ValueObject com valores planos e inicializa os atributos do Model.
+     * @param object $data
+     */
+    public function setData($data)
+    {
+        if (is_null($data)) {
+            return;
+        }
+        $attributes = get_class_vars(__CLASS__);
+        foreach ($attributes as $attribute) {
+            $method = 'set' . $attribute;
+            if (method_exists($this, $method)) {
+                $valid = false;
+                if (isset($data->$attribute)) {
+                    $value = $data->$attribute;
+                    $valid = true;
+                } elseif (is_array($data) && isset($data[$attribute])) {
+                    $value = $data[$attribute];
+                    $valid = true;
+                }
+                if ($valid) {
+                    $this->$method($value);
+                }
+            }
+        }
+    }
+
 }
 
-
-?>

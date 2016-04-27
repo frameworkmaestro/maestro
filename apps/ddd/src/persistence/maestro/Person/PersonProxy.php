@@ -1,8 +1,9 @@
 <?php
 
-namespace ddd\persistence\maestro\proxy;
+namespace ddd\persistence\maestro\Person;
 
-use ddd\models\map\PersonMap as PersonMap;
+
+use ddd\persistence\maestro\Person\PersonMap as PersonMap;
 
 class PersonProxy extends \ddd\models\Person {
 
@@ -11,6 +12,11 @@ class PersonProxy extends \ddd\models\Person {
     public function __construct($data, PersonMap $map = null)
     {
         $this->map = $map ?: new PersonMap($data, $this);
+    }
+
+    public function getMap()
+    {
+        return $this->map;
     }
 
     /**
