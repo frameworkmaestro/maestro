@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="Sentence::idSentence" />        
+<mtextfield id="Sentence::text" label="Text" />        
+<mnumberfield id="Sentence::paragraphOrder" label="ParagraphOrder" />        
+<mtextfield id="Sentence::timeline" label="Timeline" />        
+<mnumberfield id="Sentence::idParagraph" label="IdParagraph" />        
+<mnumberfield id="Sentence::idLanguage" label="IdLanguage" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

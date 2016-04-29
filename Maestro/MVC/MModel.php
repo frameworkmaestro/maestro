@@ -34,20 +34,13 @@ class MModel
     public function getData()
     {
         $data = new \stdClass();
-        $a = \Maestro\Utils\MUtil::getClassProperties(get_class($this),'public, private, protected');
-        mdump($a);
-        $attributes = get_object_vars($this);
-        mdump('-=-=-=');
-        mdump($attributes);
-        foreach ($attributes as $attribute) {
+        $attributes = \Maestro\Utils\MUtil::getClassProperties(get_class($this),'public, protected');
+        foreach ($attributes as $attribute => $definition) {
             $method = 'get' . $attribute;
-            mdump('method = ' . $method);
             $methodExists = method_exists($this, $method);
             if ($methodExists) {
                 $rawValue = $this->$method();
                 if (isset($rawValue)) {
-                    mdump($attribute);
-                    mdump($rawValue);
                     if (is_object($rawValue)) {
                         $value = $rawValue->getPlainValue();
                     } else {
@@ -69,8 +62,8 @@ class MModel
         if (is_null($data)) {
             return;
         }
-        $attributes = get_class_vars(__CLASS__);
-        foreach ($attributes as $attribute) {
+        $attributes = \Maestro\Utils\MUtil::getClassProperties(get_class($this),'public, protected');
+        foreach ($attributes as $attribute => $definition) {
             $method = 'set' . $attribute;
             if (method_exists($this, $method)) {
                 $valid = false;

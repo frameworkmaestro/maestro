@@ -1,0 +1,342 @@
+// 
+// Content words - PtBr
+// Wordform POS Lexeme 
+// MWE são carregadas no arquivo de lemas content_words_mwe.txt
+//
+
+//
+// Advérbios
+//
+//a distância
+//a pé
+//a qualquer momento
+abaixo ADV abaixo
+acaso ADV acaso
+acima ADV acima
+acinte ADV acinte
+acolá ADV acolá
+adentro ADV adentro
+adiante ADV adiante
+adrede ADV adrede
+afinal ADV afinal
+afora ADV afora
+agora ADV agora
+ainda ADV ainda
+algo ADV algo
+algures ADV algures
+alhures ADV alhures
+ali ADV ali
+aliás ADV aliás
+além ADV além
+amanhã ADV amanhã
+amiúde ADV amiúde
+amorosamente ADV amorosamente
+anteontem ADV anteontem
+antes ADV antes
+antigamente ADV antigamente
+//ao lado
+aonde ADV aonde
+//aos poucos 
+apenas ADV apenas
+apesar ADV apesar
+aqui ADV aqui 
+aquém ADV aquém
+assaz ADV assaz
+assim ADV assim
+através ADV através
+atrás ADV atrás
+até ADV até
+avante ADV avante
+aí ADV aí
+bastante ADV bastante
+bem ADV bem
+bondosamente ADV bondosamente
+breve ADV breve
+brevemente ADV brevemente
+calmamente ADV calmamente
+casualmente ADV casualmente
+cedo ADV cedo
+certamente ADV certamente
+certo ADV certo
+cima ADV cima
+//com certeza
+como ADV como
+completamente ADV completamente
+comumente ADV comumente
+concomitantemente ADV concomitantemente
+conseguintemente ADV conseguintemente
+consequentemente ADV consequentemente
+constantemente ADV constantemente
+contanto ADV contanto
+corajosamente ADV corajosamente
+cuidadosamente ADV cuidadosamente
+cá ADV cá
+dantes ADV dantes
+//de certeza
+//de cor
+//de forma nenhuma
+//de jeito nenhum
+//de longe
+//de manhã
+//de modo algum
+//de muito
+//de perto
+//de propósito
+//de quando em quando
+//de repente
+//de tempos em tempos
+//de todo
+//de vez em quando
+debaixo ADV debaixo
+debalde ADV debalde
+decerto ADV decerto
+decididamente ADV decididamente
+defronte ADV defronte
+deliberadamente ADV deliberadamente
+demais ADV demais
+demasiadamente ADV demasiadamente
+demasiado ADV demasiado
+dentro ADV dentro
+depois ADV depois
+depressa ADV depressa
+//dessa maneira
+//desse jeito
+//desse modo
+detrás ADV detrás
+devagar ADV devagar
+deveras ADV deveras
+diante ADV diante
+diariamente ADV diariamente
+dificilmente ADV dificilmente
+docemente ADV docemente
+donde ADV donde
+doravante ADV doravante
+efetivamente ADV efetivamente
+eis ADV eis
+//em breve
+//em breve
+//em cima
+//em excesso
+//em geral
+//em volta
+//em vão
+emcima ADV emcima
+embaixo ADV embaixo
+enfim ADV enfim
+entrementes ADV entrementes
+//enquanto isso
+então ADV então
+escandalosamente ADV escandalosamente
+excessivamente ADV excessivamente
+exclusivamente ADV exclusivamente
+externamente ADV externamente
+extremamente ADV extremamente
+felizmente ADV felizmente
+finalmente ADV finalmente
+fora ADV fora
+//frente a frente
+frente ADV frente
+frequentemente ADV frequentemente
+generosamente ADV generosamente
+grandemente ADV grandemente
+hoje ADV hoje
+//hoje em dia
+imediatamente ADV imediatamente
+inclusivamente ADV inclusivamente
+incontestavelmente ADV incontestavelmente
+indubitavelmente ADV indubitavelmente
+intensamente ADV intensamente
+jamais ADV jamais
+já ADV já
+//lado a lado
+levemente ADV levemente
+ligeiramente ADV ligeiramente
+livremente ADV livremente
+logo ADV logo
+longe ADV longe
+lá ADV lá
+lado ADV lado
+mais ADV mais
+maior ADV maior
+menor ADV menor
+mal ADV mal
+meio ADV meio
+melhor ADV melhor
+menos ADV menos
+mesmo ADV mesmo
+mui ADV mui
+muito ADV muito
+muitos ADV muito
+nada ADV nada
+negativamente ADV negativamente
+nem ADV nem
+nenhures ADV nenhures
+nomeadamente ADV nomeadamente
+nunca ADV nunca
+não ADV não
+onde ADV onde
+ontem ADV ontem
+ora ADV ora
+outrora ADV outrora
+pacientemente ADV pacientemente
+//para esse fim
+perto ADV perto
+pior ADV pior
+//por aqui
+//por certo
+//por completo
+//por demais
+porque ADV porque
+porquê ADV porquê
+porventura ADV porventura
+possivelmente ADV possivelmente
+pouco ADV pouco
+poucos ADV pouco
+presentemente ADV presentemente
+primeiramente ADV primeiramente
+primeiro ADV primeiro
+principalmente ADV principalmente
+profundamente ADV profundamente
+propositadamente ADV propositadamente
+provavelmente ADV provavelmente
+provisoriamente ADV provisoriamente
+quando ADV quando
+quanto ADV quanto
+quase ADV quase
+que ADV que
+//quem sabe
+quiçá ADV quiçá
+quão ADV quão
+raramente ADV raramente
+realmente ADV realmente
+salvo ADV salvo
+seguramente ADV seguramente
+sempre ADV sempre
+senão ADV senão
+sim ADV sim
+simplesmente ADV simplesmente
+simultaneamente ADV simultaneamente
+sobremaneira ADV sobremaneira
+sobremodo ADV sobremodo
+somente ADV somente
+sucessivamente ADV sucessivamente
+suficientemente ADV suficientemente
+só ADV só
+talvez ADV talvez
+também ADV também
+tampouco ADV tampouco
+também não ADV também não
+tanto ADV tanto
+tarde ADV tarde
+todo ADV todo
+tristemente ADV tristemente
+tudo ADV tudo
+tão ADV tão
+ultimamente ADV ultimamente
+unicamente ADV unicamente
+//à direita
+//à distância de
+//à esquerda
+//à noite
+//à tarde
+//à toa
+//à vontade
+//às cegas
+//às claras
+//às escondidas
+//às pressas
+//às vezes
+
+//
+// Nomes
+//
+fim N fim
+fins N fim
+forma N forma
+formas N forma
+maneira N maneira
+maneiras N maneira
+modo N modo
+modos N modo
+sorte N sorte
+medida N medida
+medidas N medida
+proporção N proporção
+proporções N proporção
+passo N passo
+passos N passo
+distância N distância
+distâncias N distância
+pé N pé
+pés N pé
+momento N momento
+momentos N momento
+certeza N certeza
+certezas N certeza
+cor N cor
+jeito N jeito
+jeitos N jeito
+propósito N propósito
+propósitos N propósito
+tempo N tempo
+tempos N tempo
+vez N vez
+vezes N vez
+excesso N excesso
+excessos N excesso
+volta N volta
+voltas N volta
+todo N todo
+pressa N pressa
+pressas N pressa
+noite N noite
+noites N noite
+manhã N manhã
+manhãs N manhã
+tarde N tarde
+tardes N tarde
+tempo N tempo
+tempos N tempos
+
+
+//
+// Adjetivo
+//
+dado A dado
+dados A dado
+dada A dado
+dadas A dado
+posto A posto
+salvo A salvo
+visto A visto
+obstante A obstante
+conseguinte A conseguinte
+repente A repente
+geral A geral
+gerais A geral
+vão A vão
+vã A vão
+vãos A vão
+vãs A vão
+certo A certo
+certa A certo
+certos A certo
+certas A certo
+completo A completo
+completa A completo
+completos A completo
+completas A completo
+direita A direita
+esquerda A esquerda
+cego A cego
+cega A cego
+cegos A cego
+cegas A cego
+clarp A claro
+claros A claro
+clara A claro
+claras A claro
+escondido A escondido
+escondidos A escondido
+escondida A escondido
+escondidas A escondido

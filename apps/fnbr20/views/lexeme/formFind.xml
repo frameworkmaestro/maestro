@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mform id="formFind" title="Pesquisar" close=">fnbr20/main" base="formBase">
+        <fields>
+            <mhcontainer>
+                <mtextfield id="idLexeme" label="IdLexeme" value="$this->data->idLexeme" size="15" />
+                <mbuttonfind/>
+            </mhcontainer>
+            <mdatagrid id="gridFind" query="$this->data->query" pageLength="15">
+                <mdatagridcolumn field="idLexeme" visible="false"/>
+                <mdatagridhyperlink field="idLexeme" action=">fnbr20/Lexeme/formObject/#0#" title="IdLexeme" width="100%"/>
+            </mdatagrid>
+        </fields>
+    </mform>
+</view>

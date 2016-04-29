@@ -1,14 +1,13 @@
 <?php
 
-namespace ddd\models\map;
+namespace ddd\persistence\maestro\User;
 
-use ddd\persistence\maestro\proxy\UserProxy as UserProxy;
+class UserMap extends \Maestro\MVC\MBusinessModel
+{
 
-class UserMap extends \MBusinessModel {
-
-    public function __construct($data = '', UserProxy $proxy = null)
+    public function __construct(User $proxy = null)
     {
-        parent::__construct($data, $proxy ?: new UserProxy($data, $this));
+        parent::__construct(null, $proxy ?: new User());
     }
 
     public static function ORMMap() {

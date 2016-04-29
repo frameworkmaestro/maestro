@@ -174,8 +174,6 @@ class PersistentManager {
     }
 
     public function retrieveAssociation(PersistentObject $object, $associationName) {
-        mdump(get_class($object));
-
         $classMap = $object->getClassMap();
         $this->_retrieveAssociation($object, $associationName, $classMap, $id);
     }

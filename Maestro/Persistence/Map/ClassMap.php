@@ -318,7 +318,7 @@ class ClassMap {
         $classMap = $this;
         do {
             foreach ($classMap->attributeMaps as $attributeMap) {
-                $columns[] = $attributeMap->getColumnNameToDb($alias, TRUE) . ' as ' . $attributeMap->getColumnName();
+                $columns[] = $attributeMap->getColumnNameToDb($alias, TRUE);
             }
             $classMap = $classMap->superClassMap;
         } while ($classMap != NULL);

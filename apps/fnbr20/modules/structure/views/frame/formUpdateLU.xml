@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<view>
+    <mformdialog id="formUpdateLU">
+        <property title="$this->data->title"  onClose="structure.reloadFrame();"/>
+        <fields>
+            <mhiddenfield id="lu_idLU" value="$this->data->id"/>
+            <mhiddenfield id="lu_idFrame"/>
+            <mmultilinefield id="lu_senseDescription" label="Sense Description" width="350px" height="50px"/> 
+            <include component="MLookupFE.php" id="lu_incorporatedFE" label="Incorporated FE"/>
+        </fields>
+        <tools>
+            <mlinkbutton id="lbCloseFrame" iconCls="icon-cancel" text="{{_M('Close')}}" plain="true" action="$this->data->close"/>
+            <mlinkbutton id="lbSaveFrame" iconCls="icon-save" text="{{_M('Save')}}" plain="true" action="$this->data->save"/>
+        </tools>
+        <data load="$this->data->object"/>
+    </mformdialog>
+</view>

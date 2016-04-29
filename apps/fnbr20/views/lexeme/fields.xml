@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="Lexeme::idLexeme" />        
+<mtextfield id="Lexeme::name" label="Name" />        
+<mtextfield id="Lexeme::timeline" label="Timeline" />        
+<mnumberfield id="Lexeme::idPOS" label="IdPOS" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="LayerType::idLayerType" />        
+<mtextfield id="LayerType::entry" label="Entry" />        
+<mnumberfield id="LayerType::allowsApositional" label="AllowsApositional" />        
+<mnumberfield id="LayerType::isAnnotation" label="IsAnnotation" />        
+<mnumberfield id="LayerType::idLayerGroup" label="IdLayerGroup" />        
+<mnumberfield id="LayerType::idEntity" label="IdEntity" />        
+<mnumberfield id="LayerType::idLanguage" label="IdLanguage" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="Corpus::idCorpus" />        
+<mtextfield id="Corpus::entry" label="Entry" />        
+<mtextfield id="Corpus::timeline" label="Timeline" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

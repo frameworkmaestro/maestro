@@ -1,0 +1,145 @@
+{
+  "nodes": {
+    "Adjuntiva_final_infinitiva": {
+      "label": "Adjuntiva_final_infinitiva",
+      "id": "5000",
+      "type": "C",
+      "visited": false
+    },
+    "Aspectual_temporal_infinitiva": {
+      "label": "Aspectual_temporal_infinitiva",
+      "id": "5001",
+      "type": "C",
+      "visited": false
+    },
+    "Dativo_com_infinitivo": {
+      "label": "Dativo_com_infinitivo",
+      "id": "5002",
+      "type": "C",
+      "visited": false
+    },
+    "Modal_infinitiva": {
+      "label": "Modal_infinitiva",
+      "id": "5003",
+      "type": "C",
+      "visited": false
+    },
+    "Propósito_qualificado": {
+      "label": "Propósito_qualificado",
+      "id": "5004",
+      "type": "C",
+      "visited": false
+    },
+    "Aspectual_iterativa_dar": {
+      "label": "Aspectual_iterativa_dar",
+      "id": "5005",
+      "type": "C",
+      "visited": false
+    },
+    "Tempo_iminente_estar": {
+      "label": "Tempo_iminente_estar",
+      "id": "5006",
+      "type": "C",
+      "visited": false
+    },
+    "Modal_deôntica_ser": {
+      "label": "Modal_deôntica_ser",
+      "id": "5007",
+      "type": "C",
+      "visited": false
+    },
+    "Modal_epistêmica_dar": {
+      "label": "Modal_epistêmica_dar",
+      "id": "5008",
+      "type": "C",
+      "visited": false
+    },
+    "Gap_de_adjunto": {
+      "label": "Gap_de_adjunto",
+      "id": "5009",
+      "type": "C",
+      "visited": false
+    },
+    "Gap_de_objeto": {
+      "label": "Gap_de_objeto",
+      "id": "5010",
+      "type": "C",
+      "visited": false
+    },
+    "Gap_de_sujeito": {
+      "label": "Gap_de_sujeito",
+      "id": "5011",
+      "type": "C",
+      "visited": false
+    },
+    "Volitiva": {
+      "label": "Volitiva",
+      "id": "5012",
+      "type": "C",
+      "visited": false
+    }
+  },
+  "edges": {
+    "Adjuntiva_final_infinitiva": {
+      "Aspectual_temporal_infinitiva": {
+        "type": "1"
+      },
+      "Dativo_com_infinitivo": {
+        "type": "1"
+      },
+      "Modal_infinitiva": {
+        "type": "1"
+      },
+      "Propósito_qualificado": {
+        "type": "1"
+      },
+      "Cxns": {
+        "type": "1"
+      }
+    },
+    "Aspectual_temporal_infinitiva": {
+      "Aspectual_iterativa_dar": {
+        "type": "1"
+      },
+      "Tempo_iminente_estar": {
+        "type": "1"
+      },
+      "Cxns": {
+        "type": "1"
+      }
+    },
+    "Modal_infinitiva": {
+      "Modal_deôntica_ser": {
+        "type": "1"
+      },
+      "Modal_epistêmica_dar": {
+        "type": "1"
+      },
+      "Cxns": {
+        "type": "1"
+      }
+    },
+    "Propósito_qualificado": {
+      "Gap_de_adjunto": {
+        "type": "1"
+      },
+      "Gap_de_objeto": {
+        "type": "1"
+      },
+      "Gap_de_sujeito": {
+        "type": "1"
+      },
+      "Cxns": {
+        "type": "1"
+      }
+    },
+    "Gap_de_sujeito": {
+      "Volitiva": {
+        "type": "1"
+      },
+      "Cxns": {
+        "type": "1"
+      }
+    }
+  }
+}

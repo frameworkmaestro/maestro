@@ -1,0 +1,68 @@
+// 
+// Content words - PtBr
+// MWE POS
+//
+// MEW: <wordform>.<POS>.<headWord>.<breakBefore>
+//
+// POS: N, A, NUM, V, ART, PRON, ADV, PREP, SCON, CCON
+// headWord: 0 | 1
+// breakBefore: 0 | 1
+
+//
+// Advérbios
+//
+a.PREP.0.0 distância.N.0.0 ADV
+a.PREP.0.0 pé.N.0.0 ADV
+a.PREP.0.0 qualquer.PRON.0.0 momento.N.0.0 ADV
+ao.PREP.0.0 lado.ADV.0.0 ADV
+aos.PREP.0.0 poucos.ADV.0.0 ADV
+com.PREP.0.0 certeza.N.0.0 ADV
+de.PREP.0.0 certeza.N.0.0 ADV
+de.PREP.0.0 cor.N.0.0 ADV
+de.PREP.0.0 forma.N.0.0 nenhuma.PRON.0.0 ADV
+de.PREP.0.0 jeito.N.0.0 nenhum.PRON.0.0 ADV
+de.PREP.0.0 longe.ADV.0.0 ADV
+de.PREP.0.0 manhã.N.0.0 ADV
+de.PREP.0.0 modo.N.0.0 algum.PRON.0.0 ADV
+de.PREP.0.0 muito.ADV.0.0 ADV
+de.PREP.0.0 noite.N.0.0 ADV
+de.PREP.0.0 perto.ADV.0.0 ADV
+de.PREP.0.0 propósito.N.0.0 ADV
+de.PREP.0.0 quando.ADV.0.0 em.PREP.0.0 quando.ADV.0.0 ADV
+de.PREP.0.0 repente.A.0.0 ADV
+de.PREP.0.0 tempos.N.0.0 em.PREP.0.0 tempos.N.0.0 ADV
+de.PREP.0.0 todo.N.0.0 ADV
+de.PREP.0.0 vez.N.0.0 em.PREP.0.0 quando.ADV.0.0 ADV
+dessa.PREP.0.0 maneira.N.0.0 ADV
+desse.PREP.0.0 jeito.N.0.0 ADV
+desse.PREP.0.0 modo.N.0.0 ADV
+em.PREP.0.0 breve.ADV.0.0 ADV
+em.PREP.0.0 cima.ADV.0.0 ADV
+em.PREP.0.0 excesso.N.0.0 ADV
+em.PREP.0.0 geral.A.0.0 ADV
+em.PREP.0.0 volta.N.0.0 ADV
+em.PREP.0.0 vão.A.0.0 ADV
+enquanto.SCON.0.0 isso.PRON.0.0 ADV
+frente.ADV.0.0 a.PREP.0.0 frente.ADV.0.0 ADV
+hoje.ADV.0.0 em.PREP.0.0 dia.N.0.0 ADV
+lado.ADV.0.0 a.PREP.0.0 lado.ADV.0.0 ADV
+para.PREP.0.0 esse.PRON.0.0 fim.N.0.0 ADV
+por.PREP.0.0 aqui.ADV.0.0 ADV
+por.PREP.0.0 certo.A.0.0 ADV
+por.PREP.0.0 completo.A.0.0 ADV
+por.PREP.0.0 demais.ADV.0.0 ADV
+quem.PRON.0.0 sabe.V.0.0 ADV
+à.PREP.0.0 direita.A.0.0 ADV
+à.PREP.0.0 distância.N.0.0 de.PREP.0.0 ADV
+à.PREP.0.0 esquerda.A.0.0 ADV
+à.PREP.0.0 frente.ADV.0.0 ADV
+à.PREP.0.0 noite.N.0.0 ADV
+à.PREP.0.0 tarde.N.0.0 ADV
+à.PREP.0.0 toa.N.0.0 ADV
+à.PREP.0.0 vontade.N.0.0 ADV
+às.PREP.0.0 cegas.A.0.0 ADV
+às.PREP.0.0 claras.A.0.0 ADV
+às.PREP.0.0 escondidas.A.0.0 ADV
+às.PREP.0.0 pressas.N.0.0 ADV
+às.PREP.0.0 vezes.N.0.0 ADV
+

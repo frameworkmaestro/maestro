@@ -11,11 +11,12 @@
  * @since      
  */
 
-namespace ddd\persistence\maestro\repository;
+namespace ddd\persistence\maestro\User;
 
 use ddd\models\repository\UserWriteRepositoryInterface;
+use Maestro\MVC\MBaseRepository;
 
-class UserWriteRepository extends BaseWriteRepository implements UserWriteRepositoryInterface
+class UserWriteRepository extends MBaseRepository implements UserWriteRepositoryInterface
 {
 
     public function save($user) {

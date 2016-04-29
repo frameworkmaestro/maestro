@@ -101,7 +101,7 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject {
      * @param mixed $data
      * @return void
      */
-    private function onCreate($data = NULL) {
+    public function onCreate($data = NULL) {
         if (is_null($data)) {
             return;
         } elseif (is_object($data)) {

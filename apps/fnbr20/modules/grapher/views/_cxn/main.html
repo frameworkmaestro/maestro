@@ -1,0 +1,216 @@
+<div id="grapherLayout" style="width:100%;height:100%;">
+    <div id="grapherNorthPane" data-options="region:'north', title:'{{_'Constructions'}}'" style="height:60px">
+        <div style="float:left;padding:5px">
+            <input id="cxn" name="cxn" type="text" style="width:200px; padding:5px" placeholder="{{_'Search Cxn'}}">
+        </div>
+    </div>
+    <div id="grapherLeftPane" region="west" split="true" style="height: 100%">
+        <ul id="cxnTree"></ul>
+    </div>
+    <div id="grapherCenterPane" region="center" style="height: 100%">
+        <div id="grapherPanel" style="height: 100%">
+             <div id="grapherToolbar">
+                <div id="grToolBar" class="datagrid-toolbar">
+                    <form id="formGrapher" name="formGrapher">
+                        <input type="hidden" id="rt" name="rt"/>
+                        <span>Relation Type:  </span>
+                        <input id="relationEntry" style="width:150px"/>  
+                        <input id="level" style="width:80px"/>  
+                        <a id="btnReload" href="#">Reload</a>
+                    </form>
+                </div>
+            </div>
+            <div id="grapherArea" style="width:100%; height:95%;"></div>
+        </div>
+    </div>
+</div>
+<style>
+
+    .link {
+        fill: none;
+        /*stroke: #666;*/
+        stroke-width: 1.5px;
+    }
+
+    #licensing {
+        fill: green;
+    }
+
+    .link.licensing {
+        stroke: green;
+    }
+
+    .link.resolved {
+        stroke-dasharray: 0,2 1;
+    }
+
+    text {
+        font: 10px sans-serif;
+        font-weight: bold;
+        pointer-events: none;
+        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+        color: black;
+    }
+    
+.nodeSelected {
+    fill: #ccc;
+    stroke-width: 1.5px;
+}
+
+.entity_cxn {
+    fill: #008000;
+    stroke: #008000;
+    stroke-width: 1px;
+}
+
+.entity_frame {
+    fill: red;
+    stroke: red;
+    stroke-width: 1px;
+}
+
+.entity_ont {
+    fill: black;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.datagrid-row-selected {
+        background: white;
+        color: #000000;
+    }    
+            {{foreach $data->relationData as $relation}}
+            .{{$relation['id']}} {
+                stroke: {{$relation['color']|noescape}};
+            }
+            marker path.{{$relation['id']}} {
+                fill: {{$relation['color']|noescape}};
+            }
+            {{/foreach}}
+    
+    
+</style>
+<script type="text/javascript">
+    var grapher = {
+        isMaster: {{$data->isMaster | noescape}},
+        node: null
+    };
+    
+    grapher.relationEntry = JSON.parse({{$data->relationEntry}});
+    grapher.relationData = [];
+    grapher.relations = [];
+    var i = 0;
+    for (relation in grapher.relationEntry) {
+        grapher.relationData[i] = grapher.relationEntry[relation];
+        grapher.relations[i] = grapher.relationEntry[relation]['id'];
+        i++;
+    }
+
+    {{include grapher.js}}
+
+    grapher.currentCxn = null;
+    
+    grapher.onDblClick = function(node) {
+        console.log(node);
+        grapher.showCxn(node.idCxn, true);
+    }
+
+    $(function () {
+
+        $('#grapherLayout').layout();
+        grapher.instance = new grapher.graph("grapherArea", grapher.relations);
+
+        grapher.reloadCxn = function () {
+            $('#grapherCenterPane').html('');
+            $('#cxnTree').tree('reload');
+        }
+
+        grapher.showCxn = function (idCxn, update) {
+            var isUpdate = (typeof update !== undefined) ? update : false;
+            grapher.currentCxn = idCxn;
+            var chosen = {};
+            var rt = $('#relationEntry').combogrid('getValues');    
+            $.each(rt, function(index, r) {
+                chosen[r] = r; 
+            });
+            var level = $('#level').combogrid('getValue');    
+            manager.doAjax({{$manager->getURL('fnbr20/service/grapher/getCxnRelations')}}, function(data) {
+                var links = JSON.parse(data);
+                if (!isUpdate) {
+                    grapher.instance.clearLink();
+                    grapher.instance.clearNode();
+                }
+                $.each(links, function(index, link) {
+                    if (chosen[link.type]) {
+                        grapher.instance.addLink(link);
+                    }
+                });
+            }, {id: idCxn, chosen: chosen, level: level});
+        }
+
+        $('#cxn').textbox({
+            buttonIcon: 'icon-search',
+            iconAlign:'right',
+            prompt: {{_'Search Cxn'}},
+            onClickButton: function() {
+                $('#cxnTree').tree({queryParams: {frame: $('#cxn').textbox('getValue')}});
+            }
+        });
+        
+        $('#grapherPanel').panel({
+            height:'100%',
+            title: 'Grapher: Constructions',
+            width:'100%',
+        });
+
+        $('#level').combobox({
+            data: [
+                {id:'1', text:'One level'},
+                {id:'2', text:'Two levels'}
+            ],
+            valueField:'id',
+            textField:'text'
+        });
+        $('#level').combobox('setValue',1);
+        
+        $('#relationEntry').combogrid({
+            data: grapher.relationData,
+            border:false,
+            idField:'id',
+            panelHeight: 'auto',
+            showHeader:false,
+            textField: 'label',
+            multiple:true,
+            columns:[[
+                {field:'idRt', checkbox:true},
+                {field:'id', hidden:true},
+                {field:'label', width:170,formatter: function(value,row){ 
+                    var s = '<span style="font-weight:bold;color:'+row.color+';">' + row.label + '</span><br/>';
+                    return s;
+                }}
+            ]]
+        });
+        var g = $('#relationEntry').combogrid('grid');	// get datagrid object
+        var r = g.datagrid('checkAll');	
+        
+        $('#btnReload').linkbutton({
+            iconCls: 'icon-reload',
+            plain: true,
+            onClick: function() {
+                if (grapher.currentCxn) {
+                    grapher.showCxn(grapher.currentCxn);
+                }
+            }
+        });
+    
+        $('#cxnTree').tree({
+            url: {{$manager->getURL('fnbr20/grapher/cxn/cxnTree')}},
+            onSelect: function (node) {
+                console.log(node);
+                if (node.id.charAt(0) == 'c') {
+                    grapher.showCxn(node.id.substr(1));
+                }
+            }
+        });
+    });
+</script>

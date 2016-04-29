@@ -2,14 +2,12 @@
 
 namespace ddd\persistence\maestro\Person;
 
-use ddd\persistence\maestro\Person\PersonProxy as PersonProxy;
-
 class PersonMap extends \Maestro\MVC\MBusinessModel
 {
 
-    public function __construct($data = '', PersonProxy $proxy = null)
+    public function __construct(Person $proxy = null)
     {
-        parent::__construct($data, $proxy ?: new PersonProxy($data, $this));
+        parent::__construct(null, $proxy ?: new Person());
     }
 
     public static function ORMMap()

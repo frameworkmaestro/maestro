@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<view>
+        <mformdialog id="formLogin" title="Login" onsubmit="doChallengeResponse()">
+            <property labelClass="col-md-6" />
+            <fields>
+                <javascript>
+                    function doChallengeResponse() {
+                        var str = $("#user").val() + ':' + $.md5($("#password").val()) + ':' + $("#challenge").val();
+                        $("#password").textbox('setValue','-');
+                        $("#response").attr('value', $.md5(str));
+                        return true;
+                    }
+                </javascript>
+                <mhiddenfield id="tries"/>
+                <mhiddenfield id="url"/>
+                <mhiddenfield id="challenge" value ="{{ uniqid(rand()); }}"/>
+                <mhiddenfield id="response"/>
+                <mhiddenfield id="return_to_url"/>
+                <mtextfield id="user" label="Login" size="15" />
+                <mtextfield type="password" id="password" label="Password"  size="15"/>
+                <mselection id="datasource" label="Banco de Dados" options="$this->data->datasources"/>
+            </fields>
+            <buttons>
+                <mbutton id="btnLogin" text="Login" action="@fnbr20/auth/login/authenticate|formLogin"/>
+            </buttons>    
+        </mformdialog>
+</view>

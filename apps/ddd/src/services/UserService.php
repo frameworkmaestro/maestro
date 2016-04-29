@@ -2,9 +2,10 @@
 
 namespace ddd\services;
 
+use Maestro\MVC\MBaseService;
 use \ddd\models\User;
 
-class UserService extends BaseService
+class UserService extends MBaseService
 {
     /*
      * @var \ddd\models\repository\UserReadRepositoryInterface
@@ -15,9 +16,9 @@ class UserService extends BaseService
      */
     protected $writeRepository;
 
-    public function __construct(\ddd\models\ModelFactory $modelFactory, \ddd\models\repository\UserReadRepositoryInterface $readRepository, \ddd\models\repository\UserWriteRepositoryInterface $writeRepository)
+    public function __construct(\ddd\models\repository\UserReadRepositoryInterface $readRepository, \ddd\models\repository\UserWriteRepositoryInterface $writeRepository)
     {
-        parent::__construct($modelFactory);
+        parent::__construct();
         $this->readRepository = $readRepository;
         $this->writeRepository = $writeRepository;
     }

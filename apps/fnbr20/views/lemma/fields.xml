@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="Lemma::idLemma" />        
+<mtextfield id="Lemma::name" label="Name" />        
+<mtextfield id="Lemma::timeline" label="Timeline" />        
+<mnumberfield id="Lemma::idPOS" label="IdPOS" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

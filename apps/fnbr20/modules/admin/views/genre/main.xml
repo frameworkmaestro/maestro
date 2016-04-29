@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<view>
+    <mformdialog id="main" title="{{_M('Genre')}}" close=">fnbr20/main" >
+        <fields>
+            <mdatagrid id="gridFind" query="$this->data->query" pageLength="15" width="350px">
+                <options singleSelect="true"/>
+                <mtoolbar>
+                    <mtextfield id="filter_entry" label="{{_M('Entry')}}" size="15" value="$this->data->entry" placeholder="{{_M('Entry')}}" />
+                    <mlinkbutton id="lbSearch" action="!$('#gridFind').datagrid('filter',event)" iconCls="icon-search" title="{{_M('Search')}}" plain="true"/>
+                    <mlinkbutton id="lbAdd" action="^fnbr20/admin/genre/formObject|dlgFormObject" iconCls="icon-add" text="{{_M('New')}}" plain="true"/>
+                </mtoolbar>
+                <mdatagridcolumn field="idType" visible="false"/>
+                <mdatagridcolumn type="link" field="entry" action="^fnbr20/entry/formUpdate/#entry#|dlgFormObject" title="{{_M('Entry')}}"/>
+            </mdatagrid>
+        </fields>
+    </mformdialog>
+    <javascript>
+<![CDATA[
+    var editEntry = function (entry) {
+        manager.doAction('^fnbr20/entry/formUpdate/' + entry);
+    }
+]]>
+    </javascript>
+</view>

@@ -77,7 +77,7 @@ return array(
         'handler' => "socket",
 		'peer' => '127.0.0.1',
         'strict' => '',
-        'port' => 0 //Default 9999
+        'port' => 9998 //Default 9999
     ),
     'mailer' => array(
         'smtpServer' => 'smtp.x.com',

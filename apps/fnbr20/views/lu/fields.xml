@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="LU::idLU" />        
+<mtextfield id="LU::name" label="Name" />        
+<mtextfield id="LU::senseDescription" label="SenseDescription" />        
+<mnumberfield id="LU::active" label="Active" />        
+<mnumberfield id="LU::importNum" label="ImportNum" />        
+<mnumberfield id="LU::incorporatedFE" label="IncorporatedFE" />        
+<mnumberfield id="LU::idEntity" label="IdEntity" />        
+<mnumberfield id="LU::idLemma" label="IdLemma" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

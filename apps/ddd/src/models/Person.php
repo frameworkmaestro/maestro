@@ -11,11 +11,11 @@ namespace ddd\models;
 
 class Person extends \Maestro\MVC\MModel
 {
-    private $name;
-    private $cpf;
-    private $birthDate;
-    private $photo;
-    private $email;
+    protected $name;
+    protected $cpf;
+    protected $birthDate;
+    protected $photo;
+    protected $email;
 
     /**
      * @return mixed

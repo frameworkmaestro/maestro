@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="FrameElement::idFrameElement" />        
+<mtextfield id="FrameElement::entry" label="Entry" />        
+<mnumberfield id="FrameElement::active" label="Active" />        
+<mnumberfield id="FrameElement::idEntity" label="IdEntity" />        
+<mnumberfield id="FrameElement::idColor" label="IdColor" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

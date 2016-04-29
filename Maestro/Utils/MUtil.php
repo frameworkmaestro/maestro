@@ -611,7 +611,7 @@ class MUtil
             $props_arr[$f] = $prop;
         }
         if ($parentClass = $ref->getParentClass()) {
-            $parent_props_arr = MUtil::getClassProperties($parentClass->getName());//RECURSION
+            $parent_props_arr = MUtil::getClassProperties($parentClass->getName(), $types);//RECURSION
             if (count($parent_props_arr) > 0)
                 $props_arr = array_merge($parent_props_arr, $props_arr);
         }

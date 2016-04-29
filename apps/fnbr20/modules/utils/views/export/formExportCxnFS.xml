@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<view>
+    <mformdialog id="formExportCxnFS" title="Export Cxn to FS"  close=">fnbr20/main" >
+        <fields>
+            <mhcontainer>
+                <mspan>Exporta as construções como Feature Structures, em formato texto.</mspan>
+            </mhcontainer>
+            <mhcontainer>
+                <mtextfield id="fileName" label="File name" size="20" sufix=".txt"/>
+            </mhcontainer>
+        </fields>
+        <buttons>
+            <mbutton id="btnPost" text="{{_M('Get File')}}" action="$this->data->action"/>
+        </buttons>
+    </mformdialog>
+</view>

@@ -15,9 +15,9 @@ namespace ddd\persistence\maestro\Person;
 
 
 use \ddd\models\repository\PersonReadRepositoryInterface;
-use ddd\persistence\maestro\BaseRepository;
+use Maestro\MVC\MBaseRepository;
 
-class PersonReadRepository extends BaseRepository implements PersonReadRepositoryInterface
+class PersonReadRepository extends MBaseRepository implements PersonReadRepositoryInterface
 {
 
     public function listByFilter($person, $filter) {

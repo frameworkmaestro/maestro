@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="AnnotationSet::idAnnotationSet" />        
+<mtextfield id="AnnotationSet::timeline" label="Timeline" />        
+<mnumberfield id="AnnotationSet::idSubCorpus" label="IdSubCorpus" />        
+<mnumberfield id="AnnotationSet::idSentence" label="IdSentence" />        
+<mnumberfield id="AnnotationSet::idAnnotationStatus" label="IdAnnotationStatus" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

@@ -2,9 +2,10 @@
 
 namespace ddd\services;
 
+use Maestro\MVC\MBaseService;
 use \ddd\models\Person;
 
-class PersonService extends BaseService
+class PersonService extends MBaseService
 {
     /*
      * @var \ddd\models\repository\UserReadRepositoryInterface
@@ -15,9 +16,9 @@ class PersonService extends BaseService
      */
     protected $writeRepository;
 
-    public function __construct(\ddd\models\ModelFactory $modelFactory, \ddd\models\repository\PersonReadRepositoryInterface $readRepository, \ddd\models\repository\PersonWriteRepositoryInterface $writeRepository)
+    public function __construct(\ddd\models\repository\PersonReadRepositoryInterface $readRepository, \ddd\models\repository\PersonWriteRepositoryInterface $writeRepository)
     {
-        parent::__construct($modelFactory);
+        parent::__construct();
         $this->readRepository = $readRepository;
         $this->writeRepository = $writeRepository;
     }
@@ -43,10 +44,7 @@ class PersonService extends BaseService
     {
         /** @var Person $person */
         $person = $this->getModel(Person::class, $idPerson);
-        mdump($person);
         $data = $person->getData();
-        mdump($data);
-        //return $person->getData();
         return $data;
     }
 

@@ -1,0 +1,50 @@
+{
+  "nodes": {
+  },
+  "edges": {
+    "Adjuntiva_final_infinitiva": {
+      "Finalidade": {
+        "type": "15"
+      }
+    },
+    "Dativo_com_infinitivo": {
+      "Habilitação": {
+        "type": "15"
+      },
+      "Ser_obrigado": {
+        "type": "15"
+      }
+    },
+    "Aspectual_iterativa_dar": {
+      "Atividade_iniciar": {
+        "type": "15"
+      },
+      "Processo_iniciar": {
+        "type": "15"
+      }
+    },
+    "Tempo_iminente_estar": {
+      "Atividade_preparada": {
+        "type": "15"
+      }
+    },
+    "Modal_deôntica_ser": {
+      "Ser_obrigado": {
+        "type": "15"
+      },
+      "Ser_obrigatório": {
+        "type": "15"
+      }
+    },
+    "Modal_epistêmica_dar": {
+      "Possibilidade": {
+        "type": "15"
+      }
+    },
+    "Volitiva": {
+      "Desejar": {
+        "type": "15"
+      }
+    }
+  }
+}

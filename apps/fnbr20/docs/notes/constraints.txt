@@ -1,0 +1,18 @@
+Idéia geral: após o usuário salvar um novo FE ou CE, o sistema pergunta se quer se criar algum constraint. Será necessário, por óbvio, gerar um acesso aos constraints "por fora", caso se queira edita-los ou adiciona-los a posteriori, ou mesmo apagá-los. 
+
+1. Constraints para FEs:
+	Definir restrições? | Define constraints?
+		o Não -> fim do processo
+		o Sim -> Tipo de restrição | Constraint type
+			- FE -> Frame (mapeia um FE a um frame que o representa)
+			- FE -> Ontology (mapeia um FE a uma ou mais classes ontológicas que o representam)
+
+2. Constraints para CEs:
+	Definir restrições? | Define constraints?
+		o Não -> fim do processo
+		o Sim -> Tipo de restrição | Constraint type
+			- CE -> Construction (mapeia um signo filho de uma construção a outra construção na rede que o licencia)
+			- CE -> Frame (mostra que um CE, ou algum elemento de sua estrutura interna, caso a restrição acima já tenha se aplicado, precisa evocar um determinado frame)
+			- CE -> Frame Type (mostra que um CE, ou algum elemento de sua estrutura interna, caso a primeira restrição acima já tenha se aplicado, precisa evocar um determinado frame ou algum frame herdeiro deste)
+			- CE -> CE_before (estabelece uma ordem entre CEs)
+

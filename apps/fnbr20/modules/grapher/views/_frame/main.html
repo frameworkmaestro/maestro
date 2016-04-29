@@ -1,0 +1,205 @@
+<div id="grapherLayout" style="width:100%;height:100%;">
+    <div id="grapherNorthPane" data-options="region:'north', title:'{{_'Frames'}}'" style="height:60px">
+        <div style="float:left;padding:5px">
+            <input id="frame" name="frame" type="text" style="width:200px; padding:5px" placeholder="{{_'Search Frame'}}">
+        </div>
+    </div>
+    <div id="grapherLeftPane" region="west" split="true" style="height: 100%">
+        <ul id="framesTree"></ul>
+    </div>
+    <div id="grapherCenterPane" region="center" style="height: 100%">
+        <div id="grapherPanel" style="height: 100%">
+             <div id="grapherToolbar">
+                <div id="grToolBar" class="datagrid-toolbar">
+                    <form id="formGrapher" name="formGrapher">
+                        <input type="hidden" id="rt" name="rt"/>
+                        <span>Relation Type:  </span>
+                        <input id="relationEntry" style="width:150px"/>  
+                        <input id="level" style="width:80px"/>  
+                        <a id="btnReload" href="#">Reload</a>
+                    </form>
+                </div>
+            </div>
+            <div id="grapherArea" style="width:100%; height:95%;"></div>
+        </div>
+    </div>
+</div>
+<style>
+
+    .link {
+        fill: none;
+        /*stroke: #666;*/
+        stroke-width: 1.5px;
+    }
+
+    #licensing {
+        fill: green;
+    }
+
+    .link.licensing {
+        stroke: green;
+    }
+
+    .link.resolved {
+        stroke-dasharray: 0,2 1;
+    }
+
+    circle {
+        fill: #ccc;
+        stroke: #333;
+        stroke-width: 1.5px;
+    }
+
+    circle.nodeSelected {
+        stroke: red;
+        stroke-width: 1.5px;
+    }
+
+    text {
+        font: 10px sans-serif;
+        font-weight: bold;
+        pointer-events: none;
+        text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+        color: black;
+    }
+    
+    .datagrid-row-selected {
+        background: white;
+        color: #000000;
+    }    
+            {{foreach $data->relationData as $relation}}
+            .{{$relation['id']}} {
+                stroke: {{$relation['color']|noescape}};
+            }
+            marker path.{{$relation['id']}} {
+                fill: {{$relation['color']|noescape}};
+            }
+            {{/foreach}}
+    
+    
+</style>
+<script type="text/javascript">
+    var grapher = {
+        isMaster: {{$data->isMaster | noescape}},
+        node: null
+    };
+    
+    grapher.relationEntry = JSON.parse({{$data->relationEntry}});
+    grapher.relationData = [];
+    grapher.relations = [];
+    var i = 0;
+    for (relation in grapher.relationEntry) {
+        grapher.relationData[i] = grapher.relationEntry[relation];
+        grapher.relations[i] = grapher.relationEntry[relation]['id'];
+        i++;
+    }
+
+    {{include grapher.js}}
+
+    grapher.currentFrame = null;
+    
+    grapher.onDblClick = function(node) {
+        console.log(node);
+        grapher.showFrame(node.idFrame, true);
+    }
+
+    $(function () {
+
+        $('#grapherLayout').layout();
+        grapher.instance = new grapher.graph("grapherArea", grapher.relations);
+
+        grapher.reloadFrame = function () {
+            $('#grapherCenterPane').html('');
+            $('#framesTree').tree('reload');
+        }
+
+        grapher.showFrame = function (idFrame, update) {
+            var isUpdate = (typeof update !== undefined) ? update : false;
+            grapher.currentFrame = idFrame;
+            var chosen = {};
+            var rt = $('#relationEntry').combogrid('getValues');    
+            $.each(rt, function(index, r) {
+                chosen[r] = r; 
+            });
+            var level = $('#level').combogrid('getValue');    
+            manager.doAjax({{$manager->getURL('fnbr20/service/grapher/getFrameRelations')}}, function(data) {
+                var links = JSON.parse(data);
+                if (!isUpdate) {
+                    grapher.instance.clearLink();
+                    grapher.instance.clearNode();
+                }
+                $.each(links, function(index, link) {
+                    if (chosen[link.type]) {
+                        grapher.instance.addLink(link);
+                    }
+                });
+            }, {id: idFrame, chosen: chosen, level: level});
+        }
+
+        $('#frame').textbox({
+            buttonIcon: 'icon-search',
+            iconAlign:'right',
+            prompt: {{_'Search Frame'}},
+            onClickButton: function() {
+                $('#framesTree').tree({queryParams: {frame: $('#frame').textbox('getValue')}});
+            }
+        });
+        
+        $('#grapherPanel').panel({
+            height:'100%',
+            title: 'Grapher: Frames',
+            width:'100%',
+        });
+
+        $('#level').combobox({
+            data: [
+                {id:'1', text:'One level'},
+                {id:'2', text:'Two levels'},
+                {id:'3', text:'Three levels'}
+            ],
+            valueField:'id',
+            textField:'text'
+        });
+        $('#level').combobox('setValue',1);
+        
+        $('#relationEntry').combogrid({
+            data: grapher.relationData,
+            border:false,
+            idField:'id',
+            panelHeight: 'auto',
+            showHeader:false,
+            textField: 'label',
+            multiple:true,
+            columns:[[
+                {field:'idRt', checkbox:true},
+                {field:'id', hidden:true},
+                {field:'label', width:170,formatter: function(value,row){ 
+                    var s = '<span style="font-weight:bold;color:'+row.color+';">' + row.label + '</span><br/>';
+                    return s;
+                }}
+            ]]
+        });
+        var g = $('#relationEntry').combogrid('grid');	// get datagrid object
+        var r = g.datagrid('checkAll');	
+        
+        $('#btnReload').linkbutton({
+            iconCls: 'icon-reload',
+            plain: true,
+            onClick: function() {
+                if (grapher.currentFrame) {
+                    grapher.showFrame(grapher.currentFrame);
+                }
+            }
+        });
+    
+        $('#framesTree').tree({
+            url: {{$manager->getURL('fnbr20/grapher/frame/frameTree')}},
+            onSelect: function (node) {
+                console.log(node);
+                if (node.id.charAt(0) == 'f') {
+                    grapher.showFrame(node.id.substr(1));
+                }
+            }
+        });
+    });
+</script>

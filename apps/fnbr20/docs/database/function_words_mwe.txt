@@ -1,0 +1,79 @@
+// 
+// Function words - PtBr
+// MWE POS
+//
+// MEW: <wordform>.<POS>.<headWord>.<breakBefore>
+//
+// POS: N, A, NUM, V, ART, PRON, ADV, PREP, SCON, CCON
+// headWord: 0 | 1
+// breakBefore: 0 | 1
+
+//
+// Conjunção Subordinativa 
+//
+
+a.PREP.0.0 fim.N.0.0 de.PREP.0.0 que.SCON.1.0 SCON
+ainda.ADV.0.0 que.SCON.1.0 SCON 
+antes.ADV.0.0 que.SCON.1.0 SCON
+ao.PREP.0.0 passo.N.0.0 que.SCON.1.0 SCON
+apesar.ADV.1.0 de.PREP.0.0 SCON
+assim.ADV.0.0 como.SCON.1.0 SCON
+assim.ADV.0.0 que.SCON.1.0 SCON
+até.ADV.0.0 que.SCON.1.0 SCON
+bem.ADV.0.0 como.SCON.1.0 SCON
+como.SCON.1.0 se.SCON.0.0 SCON
+contanto.ADV.0.0 que.SCON.1.0 SCON
+dado.A.0.0 que.SCON.0.0 SCON
+de.PREP.0.0 forma.N.0.0 que.SCON.1.0 SCON
+de.PREP.0.0 maneira.N.0.0 que.SCON.1.0 SCON
+de.PREP.0.0 modo.N.0.0 que.SCON.1.0 SCON
+de.PREP.0.0 sorte.N.0.0 que.SCON.1.0 SCON
+depois.ADV.0.0 que.SCON.1.0 SCON
+desde.PREP.0.0 que.SCON.1.0 SCON
+do.PREP.0.0 que.SCON.1.0 SCON
+já.ADV.0.0 que.SCON.1.0 SCON
+logo.ADV.0.0 que.SCON.1.0 SCON
+maior.ADV.0.0 que.SCON.1.0 SCON
+mais.ADV.0.0 que.SCON.1.0 SCON
+melhor.ADV.0.0 que.SCON.1.0 SCON
+menor.ADV.0.0 que.SCON.1.0 SCON
+menos.ADV.0.0 que.SCON.1.0 SCON
+mesmo.ADV.0.0 quando.SCON.1.0 SCON 
+mesmo.ADV.0.0 que.SCON.1.0 SCON
+para.PREP.0.0 que.SCON.1.0 SCON
+pior.ADV.0.0 que.SCON.1.0 SCON
+pois.CCON.0.0 que.SCON.1.0 SCON
+posto.A.0.0 que.SCON.1.0 SCON
+salvo.A.0.0 se.SCON.1.0 SCON
+se.SCON.1.0 bem.ADV.0.0 que.SCON.1.0 SCON
+sem.PREP.0.0 que.SCON.1.0 SCON
+tal.PRON.0.0 como.SCON.1.0 SCON
+tal.PRON.0.0 qual.SCON.1.0 SCON
+tal.PRON.0.0 que.SCON.1.0 SCON
+tanto.ADV.0.0 como.SCON.1.0 SCON
+tanto.ADV.0.0 que.SCON.1.0 SCON
+tanto.ADV.0.0 que.SCON.1.0 SCON
+tão.ADV.0.0 como.SCON.1.0 SCON
+tão.ADV.0.0 que.SCON.1.0 SCON
+uma.ART.0.0 vez.N.0.0 que.SCON.1.0 SCON
+visto.A.0.0 como.SCON.1.0 SCON
+visto.A.0.0 que.SCON.1.0 SCON
+à.PREP.0.0 medida.N.0.0 que.SCON.1.0 SCON
+à.PREP.0.0 proporção.N.0.0 que.SCON.1.0 SCON
+
+//
+// Conjunção Coordenativa 
+//
+
+bem.ADV.0.0 como.CCON.1.0 CCON
+e.CCON.1.0 nem.ADV.0.0 CCON
+no.PREP.0.0 entanto.CCON.1.0 CCON
+não.ADV.0.0 obstante.A.1.0 CCON
+//não só... como também
+//não só... mas ainda
+//não só... mas também
+//ora… ora
+//ou… ou
+por.PREP.0.0 conseguinte.A.0.0 CCON
+por.PREP.0.0 isso.PRON.0.0 CCON
+//quer… quer

@@ -81,6 +81,7 @@ class PHPConfigLoader
         }
 
         $config = $className::config();
+
         $attributes = $map['attributes'];
         foreach ($attributes as $attributeName => $attr) {
             $attributeMap = new \Maestro\Persistence\Map\AttributeMap($attributeName, $classMap);
@@ -156,7 +157,7 @@ class PHPConfigLoader
                         $associationMap->addKeys($key[0], $key[1]);
                     }
                 }
-                
+
                 if (isset($association['order'])) {
                     $order = array();
                     $orderAttributes = explode(',', $association['order']);

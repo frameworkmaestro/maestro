@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="GenericLabel::idGenericLabel" />        
+<mtextfield id="GenericLabel::entry" label="Entry" />        
+<mnumberfield id="GenericLabel::idEntity" label="IdEntity" />        
+<mnumberfield id="GenericLabel::idColor" label="IdColor" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

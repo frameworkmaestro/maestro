@@ -11,12 +11,12 @@
  * @since      
  */
 
-namespace ddd\persistence\maestro\repository;
+namespace ddd\persistence\maestro\User;
 
-//class UserReadRepository extends \carteirinha\models\map\CarteirinhaMap implements ReadRepository
 use \ddd\models\repository\UserReadRepositoryInterface;
+use Maestro\MVC\MBaseRepository;
 
-class UserReadRepository extends BaseReadRepository implements UserReadRepositoryInterface
+class UserReadRepository extends MBaseRepository implements UserReadRepositoryInterface
 {
 
     public function listByFilter($user, $filter) {

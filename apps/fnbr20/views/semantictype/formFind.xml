@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <mform id="formFind" title="Pesquisar" close=">fnbr20/main" base="formBase">
+        <fields>
+            <mhcontainer>
+                <mtextfield id="idSemanticType" label="IdSemanticType" value="$this->data->idSemanticType" size="15" />
+                <mbuttonfind/>
+            </mhcontainer>
+            <mdatagrid id="gridFind" query="$this->data->query" pageLength="15">
+                <mdatagridcolumn field="idSemanticType" visible="false"/>
+                <mdatagridhyperlink field="idSemanticType" action=">fnbr20/SemanticType/formObject/#0#" title="IdSemanticType" width="100%"/>
+            </mdatagrid>
+        </fields>
+    </mform>
+</view>

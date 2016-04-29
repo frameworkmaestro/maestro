@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="SubCorpus::idSubCorpus" />        
+<mtextfield id="SubCorpus::entry" label="Entry" />        
+<mnumberfield id="SubCorpus::rank" label="Rank" />        
+<mnumberfield id="SubCorpus::idEntity" label="IdEntity" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

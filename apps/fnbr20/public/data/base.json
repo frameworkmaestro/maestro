@@ -1,0 +1,18 @@
+{
+  "nodes": {
+    "Frame": {
+      "label": "Frame",
+      "id": "7000",
+      "type": "B",
+      "subtype": "F",
+      "visited": false
+    },
+    "Cxns": {
+      "label": "Cxns",
+      "id": "7001",
+      "type": "B",
+      "subtype": "C",
+      "visited": false
+    }
+  }
+}

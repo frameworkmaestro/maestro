@@ -14,9 +14,9 @@
 namespace ddd\persistence\maestro\Person;
 
 use ddd\models\repository\PersonWriteRepositoryInterface;
-use ddd\persistence\maestro\BaseRepository;
+use Maestro\MVC\MBaseRepository;
 
-class PersonWriteRepository extends BaseRepository implements PersonWriteRepositoryInterface
+class PersonWriteRepository extends MBaseRepository implements PersonWriteRepositoryInterface
 {
 
     public function save($person) {

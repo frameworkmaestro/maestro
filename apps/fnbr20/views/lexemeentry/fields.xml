@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="LexemeEntry::idLexemeEntry" />        
+<mnumberfield id="LexemeEntry::lexemeOrder" label="LexemeOrder" />        
+<mnumberfield id="LexemeEntry::breakBefore" label="BreakBefore" />        
+<mnumberfield id="LexemeEntry::headWord" label="HeadWord" />        
+<mnumberfield id="LexemeEntry::idLexeme" label="IdLexeme" />        
+<mnumberfield id="LexemeEntry::idLemma" label="IdLemma" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

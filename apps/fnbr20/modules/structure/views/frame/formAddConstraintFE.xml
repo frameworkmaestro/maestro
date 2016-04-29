@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<view>
+    <mformdialog id="formAddConstraintFE">
+        <property title="$this->data->title" onClose="structure.reloadFrame();"/>
+        <fields>
+            <div>
+                <mhiddenfield id="idFrameElement" value="$this->data->idFrameElement"/>
+                <mlabel text="$this->data->fe"/>
+            </div>
+            <maccordion id="aa" style="width:400px;height:150px;">
+                <div title="FE > Frame" style="overflow:auto;padding:10px;">
+                    <include component="MLookupFrame.php" id="idFrame"/>
+                </div>
+                <div title="FE > Semantic Type" style="overflow:auto;padding:10px;">
+                    <include component="MLookupSemanticType.php" id="idSemanticType"/>
+                </div>
+            </maccordion>
+        </fields>
+        <tools>
+            <mlinkbutton id="lbCloseCxn" iconCls="icon-cancel" text="{{_M('Close')}}" plain="true"
+                         action="$this->data->close"/>
+            <mlinkbutton id="lbSaveCxn" iconCls="icon-save" text="{{_M('Save')}}" plain="true"
+                         action="$this->data->save"/>
+        </tools>
+    </mformdialog>
+</view>

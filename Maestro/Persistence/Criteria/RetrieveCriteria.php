@@ -131,15 +131,7 @@ class RetrieveCriteria extends PersistentCriteria {
         }
         $sqlColumns = array();
         foreach ($this->columns as $column) {
-            $parts = explode(' as ', $column);
-            $label = trim($parts[1]);
-            $field = $this->getOperand(trim($parts[0]))->getSql();
-            $parts = explode('.', $field);
-            if (array_pop($parts) != $label) {
-                $sqlColumns[] = $field . ' as ' . $label;
-            } else {
-                $sqlColumns[] = $field;
-            }
+            $sqlColumns[] = $this->getOperand($column)->getSql();
         }
         $columns = implode(',', $sqlColumns);
         $statement->setColumns($columns, $this->distinct);
@@ -257,20 +249,14 @@ class RetrieveCriteria extends PersistentCriteria {
                             $classMap = $this->classMap;
                             do {
                                 for ($i = 0; $i < $classMap->getSize(); $i++) {
-                                    $name = $classMap->getAttributeMap($i)->getName();
-                                    $this->columns[] = $name . ' as ' . $name;
+                                    $am = $classMap->getAttributeMap($i);
+                                    $this->columns[] = $am->getName();
                                 }
                                 $classMap = $classMap->getSuperClassMap();
                             } while ($classMap != NULL);
                         } else {
                             $parts = explode(' as ', $attribute);
-                            $field = trim($parts[0]);
-                            $label = trim($parts[1]);
-                            if ($label != '') {
-                                $this->columns[] = $attribute;
-                            } else {
-                                $this->columns[] = $field . ' as ' . array_pop(explode('.', $field));
-                            }
+                            $this->columns[] = trim($parts[0]) . (($label = trim($parts[1])) ? ' as ' . $label : '');
                         }
                     }
                 } else {

@@ -1,0 +1,33 @@
+<div id="grapherLayout" style="width:100%;height:100%;">
+    <div id="grapherCenterPane" data-options="region:'center'" style="width: 100%; height:100%">
+        <div id="grapherPanel" style="height: 95%">
+            <div id="grapherArea" style="width:100%; height:95%;"></div>
+        </div>
+    </div>
+</div>
+<style>
+    {{include grapher.css}}
+</style>
+<script type="text/javascript">
+    $(function () {
+        $('#grapherPanel').panel({
+            height:'100%',
+            title: {{$data->cxnName}} + ' Graph',
+                width:'100%'
+        });
+
+        grapher = new D3Graph({
+            element: "grapherArea"
+        });
+
+        grapher.reload = function () {
+            $('#grapherCenterPane').html('');
+        }
+
+
+        manager.doAjax({{$manager->getURL('fnbr20/service/grapher/getCxnStructure')}}, function(data) {
+            var struct = JSON.parse(data);
+            grapher.loadNodes(struct);
+        }, {idCxn: {{$data->id}} });
+    });
+</script>

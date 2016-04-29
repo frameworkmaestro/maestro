@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<view>
+    <mdialog id="formUpdateCxnDialog" state="open">
+        <property title="$this->data->title"/>
+        <tools>
+            <mlinkbutton id="lbSaveCxn" iconCls="icon-save" text="{{_M('Save')}}" plain="true" action="!formUpdateCxnSave()"/>
+        </tools>
+        <mform id="formUpdateCxn">
+            <fields>
+                <mhiddenfield id="cxn_idConstruction"/>
+                <mhiddenfield id="cxn_idEntity"/>
+                <mtextfield id="cxn_entry" label="Entry" width="250px"/> 
+            </fields>
+            <data load="$this->data->object"/>
+        </mform>
+    </mdialog>
+    <script>
+        function formUpdateCxnSave(){
+            manager.doAjax('structure/cxn/updateCxn', function(response){
+                if (response.status == 'error') {
+                    theme.message('error','Error',response.message);
+                } else {
+                    theme.dialog.refresh('formUpdateCxnDialog', {
+                        toolbar: null,
+                        width: 510,
+                        url: 'fnbr20/entry/gridUpdate/' + $('#cxn_entry').textbox('getValue')   
+                    });
+                }
+            }, 'formUpdateCxn');
+        }
+    </script>
+</view>

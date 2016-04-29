@@ -1,0 +1,105 @@
+{
+  "nodes": {
+    "Finalidade": {
+      "label": "Finalidade",
+      "id": "6000",
+      "type": "F",
+      "visited": false
+    },
+    "Habilitação": {
+      "label": "Habilitação",
+      "id": "6001",
+      "type": "F",
+      "visited": false
+    },
+    "Atividade_iniciar": {
+      "label": "Atividade_iniciar",
+      "id": "6002",
+      "type": "F",
+      "visited": false
+    },
+    "Processo_iniciar": {
+      "label": "Processo_iniciar",
+      "id": "6003",
+      "type": "F",
+      "visited": false
+    },
+    "Atividade_preparada": {
+      "label": "Atividade_preparada",
+      "id": "6004",
+      "type": "F",
+      "visited": false
+    },
+    "Possibilidade": {
+      "label": "Possibilidade",
+      "id": "6005",
+      "type": "F",
+      "visited": false
+    },
+    "Desejar": {
+      "label": "Desejar",
+      "id": "6006",
+      "type": "F",
+      "visited": false
+    }
+  },
+  "edges": {
+    "Habilitação": {
+      "Finalidade": {
+        "type": "3"
+      },
+      "Frame": {
+        "type": "1"
+      }
+    },
+    "Atividade_iniciar": {
+      "Processo_iniciar": {
+        "type": "1"
+      },
+      "Frame": {
+        "type": "1"
+      }
+    },
+    "Atividade_preparada": {
+      "Atividade_iniciar": {
+        "type": "11"
+      },
+      "Frame": {
+        "type": "1"
+      }
+    },
+    "Finalidade": {
+      "Desejar": {
+        "type": "3"
+      },
+      "Frame": {
+        "type": "1"
+      }
+    },
+    "Processo_iniciar": {
+      "Frame": {
+        "type": "1"
+      }
+    },
+    "Possibilidade": {
+      "Frame": {
+        "type": "1"
+      }
+    },
+    "Ser_obrigatório": {
+      "Frame": {
+        "type": "1"
+      }
+    },
+    "Ser_obrigado": {
+      "Frame": {
+        "type": "1"
+      }
+    },
+    "Desejar": {
+      "Frame": {
+        "type": "1"
+      }
+    }
+  }
+}

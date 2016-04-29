@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<view>
+    <mdialog id="formNewCxnDialog" state="open" onClose="structure.reloadCxn();">
+        <property title="$this->data->title"/>
+        <tools>
+            <mlinkbutton id="lbSaveCxn" iconCls="icon-save" text="{{_M('Save')}}" plain="true" action="!formNewCxnSave()"/>
+        </tools>
+        <mform id="formNewCxn">
+            <fields>
+                <mtextfield id="cxn_entry" width="250px" label="Entry" prefix="cxn_"/> 
+            </fields>
+            <data load="$this->data->object"/>
+        </mform>
+    </mdialog>
+    <script>
+        function formNewCxnSave(){
+            manager.doAjax('structure/cxn/newCxn', function(response){
+                if (response.status == 'error') {
+                    theme.message('error','Error',response.message);
+                } else {
+                    theme.dialog.refresh('formNewCxnDialog', {
+                        toolbar: null,
+                        width: 510,
+                        url: 'fnbr20/entry/gridUpdate/cxn_' + $('#cxn_entry').textbox('getValue')   
+                    });
+                }
+            }, 'formNewCxn');
+        }
+    </script>
+</view>

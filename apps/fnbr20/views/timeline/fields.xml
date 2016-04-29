@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
+<view>
+    <fields>
+         <mhiddenfield id="Timeline::idTimeline" />        
+<mtextfield id="Timeline::timeline" label="Timeline" />        
+<mnumberfield id="Timeline::order" label="Order" />        
+<mcalendarfield id="Timeline::dateTime" label="DateTime" />        
+<mtextfield id="Timeline::author" label="Author" />
+    </fields>
+    <buttons>
+        <mbutton id="btnPost" text="Enviar" action="$this->data->action"/>
+    </buttons>
+    <validators>
+    </validators>
+</view>

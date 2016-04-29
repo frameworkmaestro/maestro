@@ -3,20 +3,6 @@
 use \Maestro\Manager;
 
 return [
-    /*
-    Doctrine\ORM\EntityManager::class => function (DI\Container $c) {
-        $activeConf = $c->get('config.database.active');
-        $conf = $c->get("config.database.{$activeConf}");
-        $modelsNS = $c->get("static.namespace.models");
-        $factory = new Kancolle\Infrastructure\Persistence\Doctrine\EntityManagerFactory();
-        return $factory->build($conf, $modelsNS);
-    },
-    SpecificationFactory::class => DI\object(SpecificationFactory::class)->constructor(\DI\get('config.persistence')),
-    */
-    \ddd\models\ModelFactory::class => function () {
-        $persistence = Manager::getOptions('persistence');
-        return new \ddd\models\ModelFactory($persistence);
-    },
     'ddd\models\repository\\*RepositoryInterface' => function (\DI\Container $c, \DI\Factory\RequestedEntry $entry) {
         $persistence = Manager::getOptions('persistence');
         if ($persistence == 'maestro') {
@@ -25,13 +11,7 @@ return [
             $shortName = $reflection->getShortName();
             $model = str_replace("ReadRepositoryInterface", '', str_replace("WriteRepositoryInterface", '', $shortName));
             $class = "ddd\\persistence\\maestro\\" . $model . "\\" . str_replace("Interface", '', $shortName);
-            $reflection = new ReflectionClass($class);
-            $params = $reflection->getConstructor()->getParameters();
-            $constructor = array();
-            foreach ($params as $param) {
-                $constructor[] = $c->get($param->getClass()->getName());
-            }
-            return new $class(...$constructor);
+            return new $class();
         } else {
             //return new $class;
         }
