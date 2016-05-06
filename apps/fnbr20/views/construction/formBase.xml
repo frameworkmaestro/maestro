@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
-<view>
-    <mform id="formBase" title="Construction" close=">fnbr20/main">
-        <action action="formFind" label="Pesquisar" />
-        <action action="formNew" label="Inserir Novo" />
-    </mform>
-</view>

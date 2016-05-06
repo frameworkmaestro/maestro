@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
-<view>
-    <mform id="formObject" close=">fnbr20/Template/formFind" base="formBase">
-        <property title="$this->data->Template->description" />
-        <action action="{{ 'formUpdate/' . $this->data->id }}" label="Editar" />
-        <action action="{{ 'formDelete/' . $this->data->id }}" label="Excluir" />
-    </mform>
-</view>

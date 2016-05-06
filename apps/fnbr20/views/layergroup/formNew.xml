@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
-<view>
-    <mform id="formNew" title="Novo" close=">fnbr20/LayerGroup/formFind" base="formBase">
-        <include file="fields.xml" />
-    </mform>
-</view>

@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<view>
-    <fields>
-        <mhiddenfield id="idLanguage" />
-        <mtextfield id="language" label="{{_M('Language')}}" />
-        <mtextfield id="description" label="{{_M('Description')}}" />
-    </fields>
-</view>
