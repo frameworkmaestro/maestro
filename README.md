@@ -15,7 +15,7 @@
 
 ###Para usar JTrace:
 
-1 - Alterar ```core/conf/conf.php```:
+1 - Alterar ```conf/conf.php```:
 
 ```
 'log',
@@ -28,8 +28,8 @@
 ```
 
 2 - Na pasta root do maestro, executar
-```git update-index --assume-unchanged core/conf/conf.php ```
+```git update-index --assume-unchanged conf/conf.php ```
 Para evitar commits acidentais do conf.
 
-3 - Executar JTrace em ```core/support/jtrace/JTrace.jar```
+3 - Executar JTrace em ```support/jtrace/JTrace.jar```
 
