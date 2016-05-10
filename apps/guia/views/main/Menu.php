@@ -8,7 +8,6 @@ class Menu extends MMenuBar
         parent::__construct('mmenu');
         $this->setId('guiaMainMenu');
         $actions = Manager::getActions('guia');
-        mdump($actions);
         foreach ($actions as $i => $group) {
             $menuBarItem[$i] = new MMenuBarItem(array("id" => "menu{$i}", "label" => _M($group[ACTION_CAPTION]), "iconCls" => $group[ACTION_ICON]));
             $groupActions = $group[ACTION_ACTIONS];
