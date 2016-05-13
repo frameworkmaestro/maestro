@@ -17,6 +17,8 @@ class MMailer {
         $mailer->IsSMTP(); // telling the class to use SMTP
         $mailer->Host = \Manager::getConf('mailer.smtpServer'); // SMTP server
         $mailer->From = $params->from ? : \Manager::getConf('mailer.smtpFrom');
+        $mailer->Sender = $mailer->From;
+        $mailer->addReplyTo($mailer->From);
         $mailer->FromName = $params->fromName ?: \Manager::getConf('mailer.smtpFromName');
         $mailer->Subject = $params->subject;
         $mailer->Body = $params->body;
