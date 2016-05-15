@@ -57,7 +57,9 @@ class MApp
         }
         self::$pathModules = self::$pathSrc . '/modules';
         $autoload = self::$path . '/vendor/autoload.php';
-        self::$loader = require $autoload;
+        if (file_exists($autoload)) {
+            self::$loader = require $autoload;
+        }
         $container = self::$path . DIRECTORY_SEPARATOR . 'conf/container.php';
         if (file_exists($container)) {
             self::$container = require $container;
