@@ -406,11 +406,12 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject {
             } elseif (is_array($data) && isset($data[$attribute])) {
                 $value = $data[$attribute];
                 $valid = true;
+            } elseif ($definition['type'] == 'boolean') {
+                $value = 0;
+                $valid = true;
             }
             if ($valid) {
                 $type = $definition['type'];
-                //$conversion = 'get' . $type;
-                //$typedValue = \Maestro\Types\MTypes::$conversion($value);
                 $obj = \Maestro\Types\MType::getType($type);
                 $typedValue = $obj->convertToPHPValue($value, $this->getClassMap()->getPlatform());
                 $this->set($attribute, $typedValue);
