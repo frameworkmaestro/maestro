@@ -138,6 +138,7 @@ class MDatabase {
             try {
                 $sql->setParameters($parameters);
                 $this->affectedRows = $sql->execute();
+				$this->lastInsertId = $this->connection->lastInsertId();
             } catch (\Exception $e) {
                 $code = $sql->stmt->errorCode();
                 $info = $sql->stmt->errorInfo();
