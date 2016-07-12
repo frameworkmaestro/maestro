@@ -32,6 +32,8 @@ class MRequest
     public $request;
     public $url;
     public $path;
+    public $format;
+    public $contentType;
 
     public function __construct()
     {
@@ -41,6 +43,7 @@ class MRequest
         $this->url = $this->request->getUrl();
         $this->resolveFormat();
         $this->path = $this->url->getPathInfo();
+        $this->contentType = $this->getContentType();
         //mtrace('MRequest path = ' . $this->path);
         //mtrace('BaseURL = '.$this->url->getBaseURL());
         //mtrace('BasePath = '. $this->url->getBasePath());
@@ -154,6 +157,17 @@ class MRequest
 
     public function getURL() {
         return $this->url->getAbsoluteURL();
+    }
+
+    public function getContentType() {
+        $this->contentType = $this->request->getHeader("Content-Type");
+        if (strpos($this->contentType, "application/json") !== false) {
+            if ($this->request->getMethod() == 'POST')
+            {
+                $data = json_decode(file_get_contents("php://input"));
+                $_REQUEST = (array)$data;
+            }
+        }
     }
 
 }
