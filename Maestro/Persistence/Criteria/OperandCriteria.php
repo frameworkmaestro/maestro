@@ -35,6 +35,7 @@ class OperandCriteria extends PersistentOperand {
          */
         $this->operand->mergeAliases($this->criteria);
         $alias = $this->operand->getAlias();
+        $this->operand->setAlias('');
         return "(" . $this->operand->getSql() . ") " . ($alias ?: '');
     }
 
