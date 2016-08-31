@@ -573,10 +573,11 @@ class Manager extends Nette\Object
                     return;
                 }
             }
-            mdump('autoload creating control : ' . $className);
-            mtracestack();
-            $controlClass = create_function('', 'class ' . $className . ' extends \MControl {}');
-            $controlClass();
+            mdump('autoload not found : ' . $className);
+            //mdump('autoload creating control : ' . $className);
+            //mtracestack();
+            //$controlClass = create_function('', 'class ' . $className . ' extends \MControl {}');
+            //$controlClass();
         }
     }
 
@@ -1364,10 +1365,12 @@ class Manager extends Nette\Object
         return self::$conf['options']['locale'][0];
     }
 
+    /*
     public static function getPainter()
     {
         if (is_null(self::$painter)) {
-            self::$painter = new \Painter;
+            $painter = self::getConf('ui.painter');
+            self::$painter = new $painter;
         }
         return self::$painter;
     }
@@ -1376,6 +1379,7 @@ class Manager extends Nette\Object
     {
         self::$painter = $value;
     }
+    */
 
     public static function getControllers()
     {

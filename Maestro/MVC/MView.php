@@ -27,12 +27,15 @@ class MView {
     public $controller;
     public $viewFile;
     public $data;
+    public $view;
 
     public function __construct($application, $module, $controller, $viewFile) {
         $this->application = $application;
         $this->module = $module;
         $this->controller = $controller;
         $this->viewFile = $viewFile;
+        $view = Manager::getConf('ui.view');
+        $this->view = new $view;
     }
 
     public function init() {
@@ -69,18 +72,19 @@ class MView {
      * @param type $parameters
      * @return type 
      */
-    public function process($controller, $parameters) {
-        mtrace('view file = ' . $this->viewFile);
-        $path = $this->getPath();
-        Manager::addAutoloadPath($path);
-        $extension = pathinfo($this->viewFile, PATHINFO_EXTENSION);
-        $this->controller = $controller;
-        $this->data = $parameters;
-        $process = 'process' . $extension;
-        $content = $this->$process();
+    public function process($controller, $parameters = null) {
+        //mtrace('view file = ' . $this->viewFile);
+        //$path = $this->getPath();
+        //Manager::addAutoloadPath($path);
+        //$extension = pathinfo($this->viewFile, PATHINFO_EXTENSION);
+        //$this->controller = $controller;
+        //$this->data = $parameters;
+        //$process = 'process' . $extension;
+        $content = $this->view->process($controller, $this->viewFile, $parameters);
         Manager::getPage()->setContent($content);
     }
 
+    /*
     private function processPHP() {
         $viewName = basename($this->viewFile, '.php');
         include_once $this->viewFile;
@@ -122,5 +126,6 @@ class MView {
         $wiki = new \Maestro\Utils\MWiki();
         return $wiki->parse('', $wikiPage);
     }
+    */
 
 }

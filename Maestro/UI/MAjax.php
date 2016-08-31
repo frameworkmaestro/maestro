@@ -27,7 +27,7 @@ namespace Maestro\UI;
 
 use Maestro\Manager;
 
-class MAjax extends MBase
+class MAjax //extends MBase
 {
 
     /**
@@ -56,12 +56,22 @@ class MAjax extends MBase
 
     public function __construct($inputEncoding = 'UTF-8')
     {
-        parent::__construct();
-        $this->setName('ajaxResponse');
+        //parent::__construct();
+        //$this->setName('ajaxResponse');
         $this->setId('');
         $this->setEncoding($inputEncoding);
         // por default, o tipo de resposta é aquele solicitado na requisição HTTP
         $this->setResponseType(Manager::getRequest()->getFormat());
+    }
+
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    public function setData($data)
+    {
+        $this->data = $data;
     }
 
     /**

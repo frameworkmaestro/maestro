@@ -161,21 +161,9 @@ class MHandler
      * All render* methods must call initRender before render processing
      */
     public function initRender() {
-        Manager::addAutoloadPath(Manager::getThemePath() . '/classes');
+        Manager::addAutoloadPath(Manager::getAppPath() . '/ui');
     }
 
-    public function renderPrompt($prompt)
-    {
-        $this->initRender();
-        if (is_string($prompt)) {
-            $args = func_get_args();
-            $oPrompt = new \MPrompt(["type" => $prompt, "msg" => $args[1], "action1" => $args[2], "action2" => $args[3], "event1" => $args[4], "event2" => $args[5]]);
-        } else {
-            $oPrompt = $prompt;
-        }
-        $this->setResult(new Results\MRenderPage($oPrompt));
-    }
-    
     public function renderResponse($status, $message, $code = '000')
     {
         $response = (object) [

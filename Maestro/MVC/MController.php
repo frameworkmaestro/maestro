@@ -194,6 +194,22 @@ class MController extends MHandler
         $this->setResult(new Results\MBrowserWindow());
     }
 
+    public function renderPrompt($prompt)
+    {
+        $this->initRender();
+        if (is_string($prompt)) {
+            $args = func_get_args();
+            $oPrompt = (object)["class" => "prompt", "type" => $prompt, "msg" => $args[1], "action1" => $args[2], "action2" => $args[3], "event1" => $args[4], "event2" => $args[5]];
+        } else {
+            $oPrompt = $prompt;
+        }
+        $app = $this->getApplication();
+        $module = $this->getModule();
+        $controller = strtolower($this->name);
+        $view = Manager::getView($app, $module, $controller, 'object');
+        $view->process($this, $oPrompt);
+    }
+
     public function render($viewName = '', $parameters = array())
     {
         $this->renderContent($viewName, $parameters);
