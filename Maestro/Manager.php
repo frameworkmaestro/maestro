@@ -574,7 +574,7 @@ class Manager extends Nette\Object
                 }
             }
             mdump('autoload creating control : ' . $className);
-            //mtracestack();
+            mtracestack();
             $controlClass = create_function('', 'class ' . $className . ' extends \MControl {}');
             $controlClass();
         }

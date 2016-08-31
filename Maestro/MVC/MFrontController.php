@@ -165,8 +165,8 @@ class MFrontController
         class_alias('Maestro\MVC\MFilter','MFilter');
         //class_alias('Maestro\Services\Exception\EControlException','EControlException');
         //Manager::import('Maestro\MVC\Results\*');
-        class_alias('Maestro\UI\MBaseControl', 'MBaseControl');
-        class_alias('Maestro\UI\MUI', 'MUI');
+        //class_alias('Maestro\UI\MBaseControl', 'MBaseControl');
+        //class_alias('Maestro\UI\MUI', 'MUI');
     }
 
     public static function terminate()
