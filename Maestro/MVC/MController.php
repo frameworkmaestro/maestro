@@ -30,6 +30,7 @@ class MController extends MHandler
     protected $controllerAction;
     protected $controller;
     protected $action;
+    protected $view;
     
     public function invoke()
     {
@@ -65,12 +66,14 @@ class MController extends MHandler
         } else {
             try {
                 $this->action = $action;
+                /*
                 if (Manager::getPage()->isPostBack()) {
                     $actionPost = $action . 'Post';
                     if (method_exists($this, $actionPost)) {
                         $action = $actionPost;
                     }
                 }
+                */
                 mtrace('executing = ' . $action);
                 $method = new \ReflectionMethod(get_class($this), $action);
                 $params = $method->getParameters();
@@ -128,9 +131,9 @@ class MController extends MHandler
     public function renderAppView($app, $module, $controller, $viewFile, $parameters)
     {
         $this->initRender();
-        $view = Manager::getView($app, $module, $controller, $viewFile);
-        $view->setArgs($parameters);
-        $view->process($this, $parameters);
+        $this->view = Manager::getView($app, $module, $controller, $viewFile);
+        $this->view->setArgs($parameters);
+        $this->view->process($this, $parameters);
     }
 
     public function renderView($controller, $viewFile, $parameters = array())
@@ -209,6 +212,13 @@ class MController extends MHandler
         $view = Manager::getView($app, $module, $controller, 'object');
         $view->process($this, $oPrompt);
     }
+
+    public function renderPage()
+    {
+        $this->initRender();
+        $this->setResult(new Results\MRenderPage($this->view));
+    }
+
 
     public function render($viewName = '', $parameters = array())
     {

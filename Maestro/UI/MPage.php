@@ -200,6 +200,10 @@ class MPage //extends MBase
       Scripts - Métodos de fachada para MScripts.
      */
 
+    public function getScripts() {
+        return $this->scripts;
+    }
+
     public function addScript($url, $module = null)
     {
         $this->scripts->addScript($url, $module);
@@ -210,9 +214,9 @@ class MPage //extends MBase
         $this->scripts->addScriptURL($url);
     }
 
-    public function getScripts()
+    public function getScriptsURL()
     {
-        return $this->scripts->scripts;
+        return $this->scripts->scriptsURL;
     }
 
     public function getOnLoad()

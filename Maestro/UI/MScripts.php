@@ -38,7 +38,7 @@ class MScripts //extends MBase
      * URL dos scripts que devem ser carregados na página.
      * @var Nette\Utils\ArrayList
      */
-    public $scripts;
+    public $scriptsURL;
 
     /**
      * Código a ser inserido no evento onLoad da página.
@@ -98,19 +98,19 @@ class MScripts //extends MBase
         $this->onunload = [];
         $this->onfocus = [];
         $this->jsCode = [];
-        $this->scripts = [];
+        $this->scriptsURL = [];
         $this->events = [];
     }
 
     public function addScript($url, $module = null)
     {
         $url = Manager::getAbsoluteURL("public/scripts/{$url}", $module);
-        $this->scripts[] = $url;
+        $this->scriptsURL[] = $url;
     }
 
     public function addScriptURL($url)
     {
-        $this->scripts[] = $url;
+        $this->scriptsURL[] = $url;
     }
 
     public function addSubmit($jsCode, $idForm)
@@ -149,105 +149,6 @@ class MScripts //extends MBase
         $this->jsCode[] = $jsCode;
     }
 
-    private function getScripts()
-    {
-        if (count($this->events) > 0) {
-            $events = MJSON::encode($this->events);
-            $this->addOnload("manager.registerEvents(" . $events . ");");
-        }
-
-        $scripts = new \StdClass;
-
-        foreach ($this->scripts as $key => $url) {
-            $scripts->scripts .= "\n manager.loader.load('{$url}');";
-        }
-
-        foreach ($this->jsCode as $key => $code) {
-            $scripts->code .= "\n {$code}";
-        }
-
-        foreach ($this->onload as $key => $code) {
-            $scripts->onload .= "\n {$code}";
-        }
-
-        $onsubmit = '';
-        foreach ($this->onsubmit as $idForm => $list) {
-            $onsubmit .= "manager.onSubmit[\"{$idForm}\"] = function() { \n";
-            $onsubmit .= "    var result = ";
-            $onsubmit .= implode(" && ", $list) . ";\n";
-            $onsubmit .= "    return result;\n};\n";
-        }
-        $scripts->onsubmit = $onsubmit;
-/*
-        $submit = '';
-        foreach ($this->submit as $idForm => $list) {
-            $submit .= "manager.submit[\"{$idForm}\"] = function(element, url, idForm) { \n";
-            $submit .= implode(" && ", $list) . ";\n";
-            $submit .= "\n};\n";
-        }
-        $scripts->submit = $submit;
-*/
-        return $scripts;
-    }
-    
-    public function generate()
-    {
-        $idPage = $this->idPage;
-        $isAjax = Manager::isAjaxCall();
-        $scripts = $this->getScripts();
-        $hasCode = $scripts->scripts . $scripts->code . $scripts->onload . $scripts->onsubmit;
-        if ($hasCode != '') {
-            if ($isAjax) {
-                $code = <<< HERE
-<script type="text/javascript">
-$scripts->scripts
-$scripts->code
-
-HERE;
-                if ($scripts->onload != '') {
-                    $code .= <<< HERE
-manager.onLoad["{$idPage}"] = function() {
-    console.log("inside onload {$idPage}");
-    $scripts->onload;
-};
-HERE;
-                }
-                $code .= <<< HERE
-$scripts->onsubmit
-//-->
-</script>
-                
-HERE;
-            } else {
-                $code = <<< HERE
-<script type="text/javascript">
-$scripts->scripts
-$scripts->code
-
-HERE;
-           if ($scripts->onload != '') {
-               $code .= <<< HERE
-    manager.ready = function() {
-        jQuery(function($) {
-            console.log("inside onload {$idPage}");
-            $scripts->onload;
-        });
-    };
-
-HERE;
-           }
-           $code .= <<< HERE
-$scripts->onsubmit
-//-->
-</script>
-                
-HERE;
-            }
-            return "<div id=\"{$idPage}\" class=\"mScripts\">{$code}</div>";
-        } else {
-            return '';
-        }
-    }
 
 }
 

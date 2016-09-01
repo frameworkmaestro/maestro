@@ -244,10 +244,5 @@ class MHandler
         $this->setResult(new Results\MBrowserFile($file));
     }
 
-    public function renderPage()
-    {
-        $this->initRender();
-        $this->setResult(new Results\MRenderPage());
-    }
 
 }

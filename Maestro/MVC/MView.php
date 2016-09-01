@@ -80,8 +80,15 @@ class MView {
         //$this->controller = $controller;
         //$this->data = $parameters;
         //$process = 'process' . $extension;
-        $content = $this->view->process($controller, $this->viewFile, $parameters);
-        Manager::getPage()->setContent($content);
+        $this->view->process($controller, $this->viewFile, $parameters);
+    }
+
+    public function generate() {
+        return $this->view->generate();
+    }
+
+    public function render() {
+        return $this->view->render();
     }
 
     /*

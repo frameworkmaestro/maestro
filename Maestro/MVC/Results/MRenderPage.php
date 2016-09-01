@@ -23,16 +23,24 @@ use Maestro\Manager;
 class MRenderPage extends MResultObject
 {
 
+    protected $view;
+
+    public function __construct($view)
+    {
+        $this->view = $view;
+        parent::__construct();
+    }
+
     public function setContent()
     {
         mtrace('Executing MRenderPage');
         if ($this->object) {
-            $this->page->setContent($this->object);
+            $this->view->setContent($this->object);
         }
         if (Manager::isAjaxCall()) {
-            $this->content = $this->page->generate();
+            $this->content = $this->view->generate();
         } else  {
-            $this->content = $this->page->render();
+            $this->content = $this->view->render();
         }
     }
     
