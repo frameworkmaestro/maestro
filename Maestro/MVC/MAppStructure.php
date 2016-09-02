@@ -29,7 +29,8 @@ use Maestro\Manager;
 class MAppStructure
 {
 
-    public $id;
+    public $app;
+    public $folders;
     public $modules;
     public $controllers;
     public $services;
@@ -39,14 +40,15 @@ class MAppStructure
     public $maps;
     public $basePath;
 
-    public function __construct($id, $basePath)
+    public function __construct($app, $basePath)
     {
-        $this->id = $id;
+        $this->app = $app;
         $src = $basePath . DIRECTORY_SEPARATOR . 'src';
         if (file_exists($src)) {
             $basePath = $src;
         }
         $this->basePath = $basePath;
+        $this->loadFolders();
         $this->loadModules();
         $this->loadControllers();
         $this->loadServices();
@@ -58,6 +60,22 @@ class MAppStructure
     
     private function getPaths($type, $exclude = []) {
         
+    }
+
+    public function loadFolders()
+    {
+        $base = $this->basePath;
+        if (!file_exists($base)) {
+            return;
+        }
+        $scandir = scandir($base) ? : [];
+        $scandir = array_diff($scandir, ['..', '.']);
+        foreach ($scandir as $path) {
+            if (is_dir($path)) {
+                $folder = strtolower($path);
+                $this->folders[$folder] = $base . DIRECTORY_SEPARATOR . $path;
+            }
+        }
     }
 
     public function loadModules()

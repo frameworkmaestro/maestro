@@ -43,11 +43,14 @@ class MApp
     {
         $context = self::$context = new MContext(Manager::$request);
         $app = self::$app = Manager::$app = $context->getApp();
+        $appStructureFile = realpath(Manager::$basePath . DIRECTORY_SEPARATOR . 'var/files/' . DIRECTORY_SEPARATOR . $app . 'Structure.ser');
         $appStructure = new \stdClass();
-        //$appStructure = Manager::getSession()->container('appStructure');
-        //if ($appStructure->$app == null) {
-        $appStructure->$app = new MAppStructure($app, $context->getAppPath());
-        //}
+        if (file_exists($appStructureFile)) {
+            $appStructure->$app = unserialize(file_get_contents($appStructureFile));
+        } else {
+            $appStructure->$app = new MAppStructure($app, $context->getAppPath());
+            file_put_contents($appStructureFile, serialize($appStructure->$app));
+        }
         $context->defineContext($appStructure->$app);
         self::$structure = $appStructure;
         self::$module = $context->getModule();
@@ -201,7 +204,7 @@ class MApp
             $handler = self::$container->get($namespace);
         } else {
             $fileName = self::getHandlerFile($app, $module, 'controllers', $controller);
-            mdump($fileName);
+            mdump('fileName = ' . $fileName);
             include_once $fileName;
             $handler = new $className(self::$context);
         }

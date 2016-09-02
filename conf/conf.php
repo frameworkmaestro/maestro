@@ -37,6 +37,7 @@ return array(
         'javaPath' => '/opt/java',
         'javaBridge' => 'http://localhost:8080/JavaBridge/java/Java.inc',
         'language' => 'en',
+        'tempDir' => sys_get_temp_dir(),
         'locale' => array("pt_BR.utf8", "ptb") // no linux verificar os locales instalados com "locale -a"
     ),
     'autoload' => array(

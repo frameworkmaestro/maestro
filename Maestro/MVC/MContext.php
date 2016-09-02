@@ -86,6 +86,18 @@ class MContext
     public $service;
 
     /**
+     * Serviço em execução.
+     * @var string
+     */
+    public $api;
+
+    /**
+     * Serviço em execução.
+     * @var string
+     */
+    public $system;
+
+    /**
      * Ação em execução.
      * @var string
      */
@@ -205,7 +217,24 @@ class MContext
                             $handler = $part;
                             $part = array_shift($this->pathParts);
                         } else {
-                            $part = array_shift($this->pathParts);
+                            $nextPart = array_shift($pathParts);
+                            $folder = $appStructure->folders[$part];
+                            if ($folder) {
+                                $this->type = 'service';
+                                $this->api = $part;
+                                $handler = $nextPart;
+                                $dir = DIRECTORY_SEPARATOR . $service;
+                                //mdump('>>>>'.$dir);
+                                $nextPart = array_shift($pathParts);
+                                if (is_dir($dir)) {
+                                    $this->system = $service;
+                                    $handler = $nextPart;
+                                } else {
+                                    array_unshift($pathParts, $nextPart);
+                                }
+                            } else {
+                                $part = $nextPart;//array_shift($pathParts);
+                            }
                         }
                     }
                 }
@@ -231,6 +260,8 @@ class MContext
             mtrace('Context app: ' . $this->app);
             mtrace('Context module: ' . $this->module);
             mtrace('Context type: ' . $this->type);
+            mtrace('Context api: ' . $this->api);
+            mtrace('Context system: ' . $this->system);
             mtrace('Context handler: ' . $this->handler);
             mtrace('Context action: ' . $this->action);
             mtrace('Context id: ' . $this->id);
@@ -282,6 +313,14 @@ class MContext
         return $this->component;
     }
     */
+    public function getSystem() {
+        return $this->system;
+    }
+
+    public function getAPI() {
+        return $this->api;
+    }
+
     public function getAction()
     {
         return $this->action;
