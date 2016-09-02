@@ -131,7 +131,7 @@ class MController extends MHandler
     public function renderAppView($app, $module, $controller, $viewFile, $parameters)
     {
         $this->initRender();
-        $this->view = Manager::getView($app, $module, $controller, $viewFile);
+        $this->view = MApp::getView($app, $module, $controller, $viewFile);
         $this->view->setArgs($parameters);
         $this->view->process($this, $parameters);
     }

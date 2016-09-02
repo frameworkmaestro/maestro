@@ -31,13 +31,16 @@ class MComponent extends MHandler
 
     public function invoke()
     {
+        $view = Manager::getConf('ui.view');
+        $this->component->setView($view);
         $action = $this->context->getAction();
         if ($action != '') {
             $content = $this->component->$action();
         } else {
             $content = $this->component->generate();
         }
-        Manager::getPage()->setContent($content);
+        $view->page->setContent($content);
+        //Manager::getPage()->setContent($content);
         $this->renderPage();
     }
 

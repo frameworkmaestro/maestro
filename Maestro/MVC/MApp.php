@@ -63,6 +63,10 @@ class MApp
         if (file_exists($autoload)) {
             self::$loader = require $autoload;
         }
+        $autoloadUI = self::$path . '/ui/autoload.php';
+        if (file_exists($autoloadUI)) {
+            Manager::loadAutoload($autoloadUI);
+        }
         $container = self::$path . DIRECTORY_SEPARATOR . 'conf/container.php';
         if (file_exists($container)) {
             self::$container = require $container;
@@ -135,6 +139,7 @@ class MApp
     {
         //Manager::addAutoloadPath(Manager::getThemePath() . '/classes');
         Manager::addAutoloadPath(self::$pathSrc . '/components');
+        Manager::addAutoloadPath(self::$pathSrc . '/ui');
         //Manager::addNamespacePath(self::$app, self::$path);
         // registra o modulo MAD, se ele existir
         $mad = Manager::getMAD();
@@ -246,6 +251,13 @@ class MApp
         include_once $fileName;
         Manager::import("{$module}\\models\\*");
         return new $model($data);
+    }
+
+    public static function getView($app, $module, $controller, $view)
+    {
+        $view = new \Maestro\MVC\MView($app, $module, $controller, $view);
+        $view->init();
+        return $view;
     }
 
     public static function getFiles($app, $module = '', $type = '')

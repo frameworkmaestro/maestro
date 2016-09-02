@@ -161,7 +161,6 @@ class MHandler
      * All render* methods must call initRender before render processing
      */
     public function initRender() {
-        Manager::addAutoloadPath(Manager::getAppPath() . '/ui');
     }
 
     public function renderResponse($status, $message, $code = '000')

@@ -163,6 +163,9 @@ class MFrontController
         class_alias('Maestro\MVC\MApp','MApp');
         class_alias('Maestro\MVC\MService','MService');
         class_alias('Maestro\MVC\MFilter','MFilter');
+        class_alias('Maestro\Types\MEnumBase','MEnumBase');
+        class_alias('Maestro\Types\MEnumDatabase','MEnumDatabase');
+        class_alias('maestro\utils\mutil','mutil');
         //class_alias('Maestro\Services\Exception\EControlException','EControlException');
         //Manager::import('Maestro\MVC\Results\*');
         //class_alias('Maestro\UI\MBaseControl', 'MBaseControl');

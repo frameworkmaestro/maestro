@@ -1098,7 +1098,7 @@ class Manager extends Nette\Object
     public static function getPage()
     {
         if (is_null(self::$page)) {
-            self::$page = new MPage;
+            self::$page = new \MPage;
         }
         return self::$page;
     }
@@ -1380,18 +1380,21 @@ class Manager extends Nette\Object
         self::$painter = $value;
     }
     */
+    public static function getView()
+    {
+        return self::$view;
+    }
+
+    public static function setView($value)
+    {
+        self::$view = $value;
+    }
 
     public static function getControllers()
     {
         return self::$controllers;
     }
 
-    public static function getView($app, $module, $controller, $view)
-    {
-        self::$view = new MView($app, $module, $controller, $view);
-        self::$view->init();
-        return self::$view;
-    }
 
 //
 // Log, Trace
