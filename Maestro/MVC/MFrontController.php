@@ -101,7 +101,9 @@ class MFrontController
                 }
                 if (strpos($name, '_') !== false) {
                     list($obj, $name) = explode('_', $name);
-                    $data->{$obj}->{$name} = $value;
+                    if ($obj) {
+                        $data->{$obj}->{$name} = $value;
+                    }
                 } else if (strpos($name, '::') !== false) {
                     list($obj, $name) = explode('::', $name);
                     $data->{$obj}->{$name} = $value;

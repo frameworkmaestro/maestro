@@ -35,10 +35,10 @@ use Nette,
 /**
  * Classe principal do framework.
  * Manager implementa o padrão facade para várias classes utilitárias e serviços do framework.
- * 
+ *
  * @category    Maestro
  * @package     Core
- * @version     2.0 
+ * @version     2.0
  * @since       1.0
  * @copyright  Copyright (c) 2003-2015 UFJF (http://www.ufjf.br)
  * @license    http://maestro.org.br
@@ -279,7 +279,7 @@ class Manager extends Nette\Object
      */
     public function __construct()
     {
-        
+
     }
 
     /**
@@ -352,12 +352,12 @@ class Manager extends Nette\Object
 
         Manager::logMessage('[RESET_LOG_MESSAGES]');
         if (self::$java = ($_SERVER["SERVER_SOFTWARE"] == "JavaBridge")) {
-            require_once (self::$home . "/java/Java.inc");
+            require_once(self::$home . "/java/Java.inc");
             self::$javaContext = java_context();
             self::$javaServletContext = java_context()->getServletContext();
         }
         self::getLogin();
-        self::$msg = new MMessages(self::getSession()->lang ? : self::getOptions('language'));
+        self::$msg = new MMessages(self::getSession()->lang ?: self::getOptions('language'));
         self::$msg->loadMessages();
         self::$mode = self::getOptions("mode");
         date_default_timezone_set(self::getOptions("timezone"));
@@ -398,8 +398,8 @@ class Manager extends Nette\Object
 
     /**
      * Retorna o path absoluto para $relative.
-     * 
-     * @param string $relative 
+     *
+     * @param string $relative
      * @return string
      */
     public static function getAbsolutePath($relative = NULL)
@@ -409,8 +409,8 @@ class Manager extends Nette\Object
 
     /**
      * Retorna o path da classe Core $className.
-     * 
-     * @param string $className 
+     *
+     * @param string $className
      * @return string
      */
     public static function getClassPath($className = '')
@@ -420,7 +420,7 @@ class Manager extends Nette\Object
 
     /**
      * Retorna o path do arquivo de configuração $confFile.
-     * 
+     *
      * @param string $confFile
      * @return string
      */
@@ -462,12 +462,12 @@ class Manager extends Nette\Object
     }
 
     /**
-     * Retorna o path do módulo/arquivo ($module/$file) na aplicação em execução. 
+     * Retorna o path do módulo/arquivo ($module/$file) na aplicação em execução.
      * @return string
      */
     public static function getAppPath($file = '', $module = '', $app = '')
     {
-        $path = self::getPath(self::$appsPath, $app ? : self::getApp() );
+        $path = self::getPath(self::$appsPath, $app ?: self::getApp());
         if ($module) {
             $path .= '/modules/' . $module;
         }
@@ -475,7 +475,7 @@ class Manager extends Nette\Object
     }
 
     /**
-     * Retorna o path do módulo/arquivo ($module/$file) na aplicação em execução. 
+     * Retorna o path do módulo/arquivo ($module/$file) na aplicação em execução.
      * @return string
      */
     public static function getModulePath($module, $file)
@@ -493,7 +493,7 @@ class Manager extends Nette\Object
     }
 
     /**
-     * Retorna o path do arquivo $fileName na área var/files. $session indica se arquivo 
+     * Retorna o path do arquivo $fileName na área var/files. $session indica se arquivo
      * será acessível apenas durante a sessão em que foi criado.
      * @param string $fileName
      * @param boolean $session
@@ -589,7 +589,7 @@ class Manager extends Nette\Object
      */
     public static function pathExists($base, $relative)
     {
-        $scandir = scandir($base) ? : [];
+        $scandir = scandir($base) ?: [];
         $found = false;
         foreach ($scandir as $path) {
             $found = (strcasecmp($relative, $path) == 0);
@@ -646,12 +646,12 @@ class Manager extends Nette\Object
             foreach ($files as $file) {
                 $fileName = basename($file, '.php');
                 //$classPath = $wildcard ? $file : $fullPath;
-                $className = strtolower($classOriginal ? : $fileName);
+                $className = strtolower($classOriginal ?: $fileName);
                 //self::$autoload[$className] = $classPath;
                 $fileName = str_replace([$fullPath . DIRECTORY_SEPARATOR, '.php'], '', $file);
                 $fileName = str_replace(DIRECTORY_SEPARATOR, '\\', $fileName);
                 $nsClass = $wildcard ? str_replace('*', $fileName, $namespace) : $namespace;
-				//mdump($nsClass . ' - ' . $className);
+                //mdump($nsClass . ' - ' . $className);
                 class_alias($nsClass, $className);
                 //mdump('*************'.$className . ' - ' . $classPath . ' - ' . $nsClass);
                 //mdump('*************'.$className . ' - ' . $nsClass);
@@ -1134,11 +1134,11 @@ class Manager extends Nette\Object
 
     public static function getBaseURL($absolute = false, $dispatcher = false)
     {
-		$url = ($absolute ? self::$request->getBaseURL(true) : self::$baseURL);
-		if (substr($url, -1) == '/') {
-            $url = substr($url,0, -1);
+        $url = ($absolute ? self::$request->getBaseURL(true) : self::$baseURL);
+        if (substr($url, -1) == '/') {
+            $url = substr($url, 0, -1);
         }
-        return  $url . ($dispatcher ? '/' . self::getOptions('dispatcher') : '');
+        return $url . ($dispatcher ? '/' . self::getOptions('dispatcher') : '');
     }
 
     public static function getDispatchURL($absolute = false)
@@ -1148,19 +1148,19 @@ class Manager extends Nette\Object
 
     public static function getAppURL($app = '', $file = '', $absolute = false)
     {
-        $app = ($app ? : self::getApp());
+        $app = ($app ?: self::getApp());
         $file = str_replace($app . '/', '', $file);
         return $appURL = self::getBaseURL($absolute) . '/' . self::getOptions('dispatcher') . '/' . $app . ($file ? '/' . $file : '');
     }
 
     public static function getStaticURL($app = '', $file = '', $absolute = false, $module = '')
     {
-        $app = ($app ? : self::getApp());
+        $app = ($app ?: self::getApp());
         if ($module != '') {
             return self::getBaseURL($absolute) . '/apps' . '/' . $app . '/modules/' . $module . '/public' . ($file ? '/' . $file : '');
         } else {
             return self::getBaseURL($absolute) . '/apps' . '/' . $app . '/public' . ($file ? '/' . $file : '');
-        }    
+        }
     }
 
     public static function getDownloadURL($controller = '', $file = '', $inline = false, $absolute = true)
@@ -1263,7 +1263,7 @@ class Manager extends Nette\Object
                 }
 // If we still didn't have the value
 // let's try in the global scope
-                if ((!isset($value) ) && ( ( strpos($vars, '[') ) === false)) {
+                if ((!isset($value)) && ((strpos($vars, '[')) === false)) {
                     $value = $_GLOBALS["$vars"];
                 }
 // If we still didn't has the value
@@ -1328,7 +1328,7 @@ class Manager extends Nette\Object
 //
     public static function getDatabase($conf = NULL, $user = NULL, $pass = NULL)
     {
-        $conf = $conf ? : 'maestro';
+        $conf = $conf ?: 'maestro';
         if (isset(self::$db[$conf])) {
             $db = self::$db[$conf];
         } else {
@@ -1434,7 +1434,7 @@ class Manager extends Nette\Object
      *
      * @param $sql (tipo) desc
      * @param $force (tipo) desc
-     * @param $conf= (tipo) desc
+     * @param $conf = (tipo) desc
      *
      * @returns (tipo) desc
      *
@@ -1506,7 +1506,7 @@ class Manager extends Nette\Object
      *
      * @param $msg (tipo) desc
      * @param $file (tipo) desc
-     * @param $line=0 (tipo) desc
+     * @param $line =0 (tipo) desc
      *
      * @returns (tipo) desc
      *
@@ -1549,6 +1549,22 @@ class Manager extends Nette\Object
     public static function author()
     {
         return MAESTRO_AUTHOR;
+    }
+
+    public static function getTracerStatus()
+    {
+        $tracerStatus = self::getConf('logs.level');
+        switch ($tracerStatus) {
+            case '0': {
+                return 'Inativo';
+            }
+            case '1': {
+                return 'Status 1';
+            }
+            case '2': {
+                return 'Ativo em ' . self::getConf('logs.peer') . ":" . self::getConf('logs.port');
+            }
+        }
     }
 
     /**

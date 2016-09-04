@@ -209,7 +209,7 @@ class MController extends MHandler
         $app = $this->getApplication();
         $module = $this->getModule();
         $controller = strtolower($this->name);
-        $view = Manager::getView($app, $module, $controller, 'object');
+        $view = MApp::getView($app, $module, $controller, 'object');
         $view->process($this, $oPrompt);
     }
 
