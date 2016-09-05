@@ -1,6 +1,5 @@
 <?php
 namespace Maestro\MVC;
-use Maestro\Manager;
 
 class MBaseService extends MService
 {
@@ -13,14 +12,24 @@ class MBaseService extends MService
 
     }
 
+    public function __invoke($parameters) {
+        $this->execute($parameters);
+    }
+
     public function getModel($className, $data = null) {
-        mdump('getmodel = '.$className);
-        mdump($data);
         return $this->modelFactory->build($className, $data);
     }
 
-    public function getMap($className, $data = null) {
-        return $this->modelFactory->build($className, $data)->getMap();
+    //public function getMap($className, $data = null) {
+    //    return $this->modelFactory->build($className, $data)->getMap();
+    //}
+
+    public function run($parameters) {
+
+    }
+
+    public function execute($parameters){
+        return $this->run($parameters);
     }
 
 }

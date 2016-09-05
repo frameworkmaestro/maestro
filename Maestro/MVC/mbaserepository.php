@@ -11,9 +11,8 @@
  * @since
  */
 namespace Maestro\MVC;
-use Maestro\Manager;
 
-abstract class MBaseRepository
+class MBaseRepository
 {
     protected $modelFactory;
 
@@ -27,8 +26,16 @@ abstract class MBaseRepository
         return $this->modelFactory->build($className, $data);
     }
 
-    public function getMap($className, $data = null) {
-        return $this->modelFactory->build($className, $data)->getMap();
+    //public function getMap($className, $data = null) {
+    //    return $this->modelFactory->build($className, $data);
+    //}
+
+    public function getById($className, $id) {
+        $model = $this->modelFactory->build($className);
+        mdump('getbyid = ' . $id);
+        $model->getMap()->getById($id);
+        mdump('ispersistent ? ' . ($model->getMap()->ispersistent() ? 'true' : 'false'));
+        return $model;
     }
 
 }
