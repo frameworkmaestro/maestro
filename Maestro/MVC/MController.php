@@ -110,7 +110,7 @@ class MController extends MHandler
         $module = $this->getModule();
         $base = Manager::getAppPath('', $module, $app);
         $path = '/views/' . $controller . '/' . $view;
-        $extensions = ['.xml','.php','.html','.js','.wiki'];
+        $extensions = ['.php','.xml','.html','.js','.wiki'];
         foreach($extensions as $extension) {
             $fileName = $base . $path . $extension;
             if (file_exists($fileName)) {

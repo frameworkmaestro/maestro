@@ -380,13 +380,16 @@ class MContext
             ++$i;
             --$n;
         }
-        if ($n == 3) { //module
+        if ($n == 4) { //module
+            $path = '/' . $parts[$i] . '/' . $parts[$i + 1] . '/' . $parts[$i + 2] . '/' . $parts[$i + 3];
+        } elseif ($n == 3) { //module
             $path = '/' . $parts[$i] . '/' . $parts[$i + 1] . '/' . $parts[$i + 2];
         } elseif ($n == 2) {
             $path = '/' . $parts[$i] . '/' . $parts[$i + 1];
         } elseif ($n == 1) {
             $path = '/' . $parts[$i];
         } else {
+            //mtracestack();
             throw new EMException(_M('Error building URL. Action = ' . $action));
         }
         if (count($parameters)) {

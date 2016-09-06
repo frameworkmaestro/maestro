@@ -36,10 +36,12 @@ class MAuth {
     }
 
     public function setLogin($login = false) {
-        Manager::getSession()->setValue('__sessionLogin', $login);
         $this->login = $login;
-        $this->idUser = ($this->isValidLogin() ? $this->login->getIdUser() : NULL);
-        $this->module = Manager::getConf('login.module');
+        if ($login) {
+            Manager::getSession()->setValue('__sessionLogin', $login->getData());
+            $this->idUser = ($this->isValidLogin() ? $this->login->getIdUser() : NULL);
+            $this->module = Manager::getConf('login.module');
+        }
     }
 
     public function setLoginLogUserId($userId) {
@@ -59,6 +61,13 @@ class MAuth {
     }
 
     public function getLogin() {
+        if (is_null($this->login)) {
+            $className = Manager::getConf('login.login');
+            if ($className == NULL) {
+                $className = "\\Maestro\\Security\\MLogin";
+            }
+            $this->login = new $className();
+        }
         return $this->login;
     }
 
@@ -76,20 +85,26 @@ class MAuth {
         }
 
 // we have a session login?
+        $this->getLogin();
         $session = Manager::getSession();
-        $login = $session->getValue('__sessionLogin');
-        if ($login) {
-            if ($login->getLogin()) {
-                Manager::logMessage('[LOGIN] Using session login: ' . $login->getLogin());
-                $this->setLogin($login);
+        $sessionLogin = $session->getValue('__sessionLogin');
+        if ($sessionLogin) {
+            //mdump($sessionLogin);
+            $this->login->setData($sessionLogin);
+            //mdump($this->login->getLogin());
+            if ($this->login->getLogin()) {
+                Manager::logMessage('[LOGIN] Using session login: ' . $this->login->getLogin());
+                $this->setLogin($this->login);
                 return true;
             }
         }
 
 // if we have already a login, assume it is valid and return
         if ($this->login instanceof MLogin) {
-            Manager::logMessage('[LOGIN] Using existing login:' . $this->login->getLogin());
-            return true;
+            if ($this->login->getLogin()) {
+                Manager::logMessage('[LOGIN] Using existing login:' . $this->login->getLogin());
+                return true;
+            }
         }
 
         Manager::logMessage('[LOGIN] No Login but Login required!');

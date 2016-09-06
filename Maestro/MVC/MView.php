@@ -35,6 +35,7 @@ class MView {
         $this->controller = $controller;
         $this->viewFile = $viewFile;
         $view = Manager::getConf('ui.view');
+        mdump('>>>'. $view);
         $this->view = new $view;
         Manager::setView($this->view);
     }

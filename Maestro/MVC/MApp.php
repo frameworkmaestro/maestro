@@ -129,6 +129,7 @@ class MApp
 
     public static function init()
     {
+        self::addAlias();
         self::addConf();
         self::addActions();
         self::addMessages();
@@ -140,6 +141,7 @@ class MApp
         //Manager::addAutoloadPath(Manager::getThemePath() . '/classes');
         Manager::addAutoloadPath(self::$pathSrc . '/components');
         Manager::addAutoloadPath(self::$pathSrc . '/ui');
+        //Manager::addAutoloadPath(self::$pathSrc . '/services');
         //Manager::addNamespacePath(self::$app, self::$path);
         // registra o modulo MAD, se ele existir
         $mad = Manager::getMAD();
@@ -174,6 +176,7 @@ class MApp
 
     public static function getHandlerFile($app, $module = '', $type = '', $handler = '')
     {
+        mdump($app . ' - ' . $module . ' - ' . $type . ' - ' . $handler);
         if ($module != '') {
             $array = self::$structure->$app->modules[$module]->$type;
             $basePath = self::$structure->$app->modules[$module]->basePath;
@@ -181,7 +184,8 @@ class MApp
             $array = self::$structure->$app->$type;
             $basePath = self::$structure->$app->basePath;
         }
-        return $basePath . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR .$array[$handler];
+        $handlerFile = $array[$handler] ?: $array[strtolower($handler)];
+        return $basePath . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $handlerFile;
     }
 
     public static function getNamespace($app, $module = '', $type = '', $handler = '')
@@ -278,6 +282,14 @@ class MApp
     public static function terminate()
     {
         
+    }
+
+    public static function addAlias()
+    {
+        $aliasFile = self::$path . '/conf/alias.php';
+        if (file_exists($aliasFile)) {
+            require($aliasFile);
+        }
     }
 
     public static function addConf()

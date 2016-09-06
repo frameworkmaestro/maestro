@@ -118,7 +118,7 @@ class MDataValidator {
         }
         if (!$result) {
             if ($exception) {
-                throw new Exception("Validação falhou: {$errors}.");
+                throw new \Exception("Validação falhou: {$errors}.");
             } else {
                 return false;
             }
@@ -238,7 +238,7 @@ class MDataValidator {
             case 'clob':
                 return is_string($var) || is_numeric($var);
             case 'blob':
-                return $var instanceof MFile;
+                return $var instanceof \Maestro\Types\MFile;
             case 'gzip':
                 return is_string($var);
             case 'array':
@@ -250,18 +250,19 @@ class MDataValidator {
             case 'timestamp':
                 //$validator = $this->getValidator('timestamp');
                 //return $validator->validate($var);
-                return $var instanceof MTimestamp;
+                return $var instanceof \Maestro\Types\MTimestamp;
             case 'time':
                 $validator = $this->getValidator('time');
                 return $validator->validate($var);
             case 'date':
                 //$validator = $this->getValidator('date');
                 //return $validator->validate($var);
-                return $var instanceof MDate;
+                mdump($var);
+                return $var instanceof \Maestro\Types\MDate;
             case 'currency':
                 //$validator = $this->getValidator('date');
                 //return $validator->validate($var);
-                return $var instanceof MCurrency;
+                return $var instanceof \Maestro\Types\MCurrency;
             case 'enum':
                 return is_string($var) || is_int($var);
             case 'set':

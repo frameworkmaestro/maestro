@@ -35,7 +35,8 @@ class MAuthDb extends MAuth
 
             if ($user->login)
             {
-                $login = new MLogin($user);
+                $login = $this->getLogin();
+                $login->setUser($user);
                 if ($this->manager->getConf("options.dbsession"))
                 {
                     $session = $this->manager->getBusinessMAD('session');

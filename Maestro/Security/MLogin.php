@@ -24,7 +24,7 @@ class MLogin {
     /**
      * Attribute Description.
      */
-    private $login; // login at common::user
+    protected $login; // login at common::user
 
     /**
      * Attribute Description.
@@ -33,44 +33,48 @@ class MLogin {
     /**
      * Attribute Description.
      */
-    private $name; // full user name
+    protected $data;
     /**
      * Attribute Description.
      */
-    private $userData; // an array of data chunks associated to module
+    //protected $name; // full user name
     /**
      * Attribute Description.
      */
-    private $idUser; // iduser at common::user
+    //protected $userData; // an array of data chunks associated to module
     /**
      * Attribute Description.
      */
-    private $profile; // profile at common::user
+    //protected $idUser; // iduser at common::user
     /**
      * Attribute Description.
      */
-    private $isAdmin;
+    //protected $profile; // profile at common::user
     /**
      * Attribute Description.
      */
-    private $idSession;
+    //protected $isAdmin;
     /**
      * Attribute Description.
      */
-    private $rights;
+    //protected $idSession;
     /**
      * Attribute Description.
      */
-    private $groups;
+    //protected $rights;
     /**
      * Attribute Description.
      */
-    private $idPerson;  // idPerson at common::user
+    //protected $groups;
     /**
      * Attribute Description.
      */
-    private $lastAccess;
-    private $weakPass;
+    //protected $idPerson;  // idPerson at common::user
+    /**
+     * Attribute Description.
+     */
+    //protected $lastAccess;
+    //protected $weakPass;
 
     /**
      * Brief Description.
@@ -86,32 +90,41 @@ class MLogin {
      *
      */
     public function __construct($user = '', $name = '', $idUser = '') {
+        $this->data = new \stdClass();
         if ($user instanceof \Maestro\Persistence\PersistentObject) { // it can be a User object
             $this->setUser($user);
         } else { // $user is the login string
-            $this->login = $user;
-            $this->name = $name;
-            $this->idUser = $idUser;
-            $this->isAdmin = false;
+            $this->login = $this->data->login = $user;
+            $this->data->name = $name;
+            $this->data->idUser = $idUser;
+            $this->data->isAdmin = false;
         }
-        $this->time = time();
+        $this->time = $this->data->time = time();
+    }
+
+    public function setData($data) {
+        $this->data = $data;
+        $this->login = $data->login;
+        $this->time = $data->time;
+    }
+
+    public function getData() {
+        return $this->data;
     }
 
     public function setUser(\Maestro\Persistence\PersistentObject $user) {
-        $user->getForRegisterLogin();
-        $this->login = $user->getLogin();
-        $this->name = $user->getName();
-        $this->idUser = $user->getId();
+        $this->login = $this->data->login = $user->getLogin();
+        $this->data->name = $user->getName();
+        $this->data->idUser = $user->getId();
         $this->setGroups($user->getArrayGroups());
         $this->setRights($user->getRights());
-        $this->weakPass = $user->weakPassword();
-        $this->weakPass = false;
+        $this->data->weakPass = $user->weakPassword();
     }
     
     public function getUser() {
-        if ($this->idUser) {
+        if ($this->data->idUser) {
             $user = Manager::getModelMAD('user');
-            $user->getById($this->idUser);
+            $user->getById($this->data->idUser);
             return $user;
         }
         return NULL;
@@ -122,11 +135,11 @@ class MLogin {
     }
 
     public function getIdUser(){
-        return $this->idUser;
+        return $this->data->idUser;
     }
 
     public function getName(){
-        return $this->name;
+        return $this->data->name;
     }
 
     public function getTime(){
@@ -134,38 +147,38 @@ class MLogin {
     }
 
     public function getUserData($module) {
-        return $this->userData[$module];
+        return $this->data->userData[$module];
     }
 
     public function setUserData($module, $data) {
-        $this->userData[$module] = $data;
+        $this->data->userData[$module] = $data;
     }
 
     public function setRights($rights) {
-        $this->rights = $rights;
+        $this->data->rights = $rights;
     }
 
     public function getRights($transaction = '') {
         if ($transaction){
-            return $this->rights[$transaction];
+            return $this->data->rights[$transaction];
         }
-        return $this->rights;
+        return $this->data->rights;
     }
 
     public function setGroups($groups) {
-        $this->groups = $groups;
+        $this->data->groups = $groups;
         $this->isAdmin(array_key_exists('ADMIN', $groups));
     }
 
     public function getGroups() {
-        return $this->groups;
+        return $this->data->groups;
     }
 
     public function isAdmin($isAdmin = NULL) {
         if ($isAdmin !== NULL) {
-            $this->isAdmin = $isAdmin;
+            $this->data->isAdmin = $isAdmin;
         }
-        return $this->isAdmin;
+        return $this->data->isAdmin;
     }
 
     public function isMemberOf($group){
@@ -173,17 +186,19 @@ class MLogin {
     }
 
     public function isWeakPassword(){
-        return $this->weakPass;
+        return $this->data->weakPass;
     }
 
     public function setIdPerson($idPerson) {
-        $this->idPerson = $idPerson;
+        $this->data->idPerson = $idPerson;
     }
 
     public function setLastAccess($data) {
-        $this->lastAccess->tsIn = $data->tsIn;
-        $this->lastAccess->tsOut = $data->tsOut;
-        $this->lastAccess->remoteAddr = $data->remoteAddr;
+        $this->data->lastAccess = (object) [
+            'tsIn' => $data->tsIn,
+            'tsOut' => $data->tsOut,
+            'remoteAddr' => $data->remoteAddr
+        ];
     }
 
     public function isModuleAdmin($module) {
@@ -192,5 +207,3 @@ class MLogin {
     }
 
 }
-
-?>

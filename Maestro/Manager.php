@@ -344,7 +344,7 @@ class Manager extends Nette\Object
         self::$request = new MRequest;
         self::$response = new MResponse;
         // Maestro 1.0 compatibility
-        self::addAutoloadClass('mlogin', self::$classPath . '/Security/MLoginMaestro1.php');
+        //self::addAutoloadClass('mlogin', self::$classPath . '/Security/MLoginMaestro1.php');
         // Session
         self::$session = new MSession(self::$request->request, self::$response);
         self::$session->init($_REQUEST['sid'] === '0' ? 0 : mrequest('sid'));
@@ -356,7 +356,7 @@ class Manager extends Nette\Object
             self::$javaContext = java_context();
             self::$javaServletContext = java_context()->getServletContext();
         }
-        self::getLogin();
+        //self::getLogin();
         self::$msg = new MMessages(self::getSession()->lang ?: self::getOptions('language'));
         self::$msg->loadMessages();
         self::$mode = self::getOptions("mode");
@@ -575,7 +575,7 @@ class Manager extends Nette\Object
             }
             mdump('autoload not found : ' . $className);
             //mdump('autoload creating control : ' . $className);
-            //mtracestack();
+            mtracestack();
             //$controlClass = create_function('', 'class ' . $className . ' extends \MControl {}');
             //$controlClass();
         }
@@ -1395,6 +1395,15 @@ class Manager extends Nette\Object
         return self::$controllers;
     }
 
+    /**
+     * Compatibility
+     * @param $app
+     * @param $module
+     * @param $service
+     */
+    public static function getService($app, $module, $service) {
+        return MApp::getService($app, $module, $service);
+    }
 
 //
 // Log, Trace
