@@ -166,6 +166,9 @@ class MApp
 
     public static function getHandlerFile($app, $module = '', $type = '', $handler = '')
     {
+        if ($app == '') {
+            $app = self::$app;
+        }
         if ($module != '') {
             $array = self::$structure->$app->modules[$module]->$type;
             $basePath = self::$structure->$app->modules[$module]->basePath;
