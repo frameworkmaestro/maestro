@@ -15,27 +15,27 @@ class MMailer {
         $mailer = new \PHPMailer();
 
         $mailer->IsSMTP(); // telling the class to use SMTP
-        $mailer->Host = \Manager::getConf('mailer.smtpServer'); // SMTP server
-        $mailer->From = $params->from ? : \Manager::getConf('mailer.smtpFrom');
+        $mailer->Host = \Maestro\Manager::getConf('mailer.smtpServer'); // SMTP server
+        $mailer->From = $params->from ? : \Maestro\Manager::getConf('mailer.smtpFrom');
         $mailer->Sender = $mailer->From;
         $mailer->addReplyTo($mailer->From);
-        $mailer->FromName = $params->fromName ?: \Manager::getConf('mailer.smtpFromName');
+        $mailer->FromName = $params->fromName ?: \Maestro\Manager::getConf('mailer.smtpFromName');
         $mailer->Subject = $params->subject;
         $mailer->Body = $params->body;
         $mailer->CharSet = 'utf-8';
         $mailer->WordWrap = $params->wordWrap ? : 100;
-        $auth = \Manager::getConf('mailer.smtpAuth');
+        $auth = \Maestro\Manager::getConf('mailer.smtpAuth');
         if ($auth) {
             $mailer->SMTPAuth = true;                     // Usa autenticação SMTP
-            $mailer->SMTP_PORT = \Manager::getConf('mailer.smtpPort');                    // Porta do servidor SMTP
-            $mailer->Username = \Manager::getConf('mailer.smtpFrom'); // Usuário do servidor SMTP
-            $mailer->Password = \Manager::getConf('mailer.smtpPass');                // Senha do servidor SMTP
+            $mailer->SMTP_PORT = \Maestro\Manager::getConf('mailer.smtpPort');                    // Porta do servidor SMTP
+            $mailer->Username = \Maestro\Manager::getConf('mailer.smtpFrom'); // Usuário do servidor SMTP
+            $mailer->Password = \Maestro\Manager::getConf('mailer.smtpPass');                // Senha do servidor SMTP
         }
 
         // Caso não exista destinatário, 
         // o destinatário passa a ser o email configurado no conf
         if (!self::hasReceivers($params)) {
-            $params->to = $params->cc = $params->bcc = \Manager::getConf('mailer.smtpTo');
+            $params->to = $params->cc = $params->bcc = \Maestro\Manager::getConf('mailer.smtpTo');
         }
 
         // Preenche os parametros do mailer. Ver atributos publicos da classe PHPMailer

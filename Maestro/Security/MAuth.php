@@ -61,13 +61,6 @@ class MAuth {
     }
 
     public function getLogin() {
-        if (is_null($this->login)) {
-            $className = Manager::getConf('login.login');
-            if ($className == NULL) {
-                $className = "\\Maestro\\Security\\MLogin";
-            }
-            $this->login = new $className();
-        }
         return $this->login;
     }
 

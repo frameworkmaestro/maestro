@@ -134,17 +134,17 @@ class Platform extends \Doctrine\DBAL\Platforms\SqlitePlatform {
 
     public function convertToPHPValue($value, $type) {
         if ($type == 'date') {
-            return \Manager::Date($value);
+            return \Maestro\Manager::Date($value);
         } elseif ($type == 'timestamp') {
-            return \Manager::Timestamp($value);
+            return \Maestro\Manager::Timestamp($value);
         } elseif ($type == 'currency') {
-            return \Manager::currency($value);
+            return \Maestro\Manager::currency($value);
         } elseif ($type == 'cnpj') {
             return \MCNPJ::create($value);
         } elseif ($type == 'cpf') {
             return \MCPF::create($value);
         } elseif ($type == 'currency') {
-            return \Manager::currency($value);
+            return \Maestro\Manager::currency($value);
         } elseif ($type == 'boolean') {
             return (!empty($value));
         } elseif ($type == 'blob') {

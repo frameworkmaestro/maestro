@@ -164,7 +164,7 @@ class AttributeMap {
     public function convertValue($value) {
         if (is_array($this->converter)) {
             foreach ($this->converter as $conv => $args) {
-                $charset = \Manager::getConf("options.charset");
+                $charset = \Maestro\Manager::getConf("options.charset");
                 if ($conv == 'case') {
                     if ($args == 'upper') {
                         $value = mb_strtoupper($value, $charset);

@@ -161,7 +161,7 @@ class Platform extends \Doctrine\DBAL\Platforms\OraclePlatform {
         } elseif ($type == 'timestamp') {
             return $value;
         } elseif ($type == 'currency') {
-            return \Manager::currency($value);
+            return \Maestro\Manager::currency($value);
         } elseif ($type == 'cnpj') {
             return MCNPJ::create($value);
         } elseif ($type == 'cpf') {

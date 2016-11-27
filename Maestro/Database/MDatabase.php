@@ -19,6 +19,7 @@
 namespace Maestro\Database;
 
 use Maestro,
+    Maestro\Manager,
     Doctrine\DBAL;
 
 class MDatabase {
@@ -55,7 +56,7 @@ class MDatabase {
     public function __construct($name = 'default') {
         try {
             $this->name = trim($name);
-            $this->config = \Manager::getConf("db.{$name}");
+            $this->config = Manager::getConf("db.{$name}");
             $platform = self::$_platformMap[$this->config['driver']];
             $this->platform = new $platform($this);
             $this->config['platform'] = $this->platform;

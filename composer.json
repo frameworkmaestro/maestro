@@ -1,6 +1,6 @@
 {
   "name": "Maestro",
-  "description": "Framework Maestro 2.0",
+  "description": "Framework Maestro 3.0",
   "require": {
     "nette/http": "2.2.4",
     "nette/reflection": "2.2.1",

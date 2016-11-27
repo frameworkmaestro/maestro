@@ -200,7 +200,7 @@ class MCertificate {
      * @return string
      */
     private static function createFilename() {
-        $fileDir = \Manager::getFilesPath();
+        $fileDir = \Maestro\Manager::getFilesPath();
         $filename = uniqid(rand(), true);
 
         return "$fileDir/$filename";

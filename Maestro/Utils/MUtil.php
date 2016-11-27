@@ -568,7 +568,7 @@ class MUtil
 
     public static function upper($value)
     {
-        $charset = \Manager::getConf("options.charset");
+        $charset = \Maestro\Manager::getConf("options.charset");
         return mb_strtoupper($value, $charset);
     }
 

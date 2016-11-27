@@ -84,7 +84,7 @@ class MFile extends MType {
 
     public function saveToCache($inline = true, $name = '', $overwrite = false) {
         $this->name = $name ?: md5($this->value);
-        $file = \Manager::getFilesPath($this->name);
+        $file = \Maestro\Manager::getFilesPath($this->name);
         if ((!file_exists($file) || $overwrite)) {
             $this->saveTo($file);
         }
@@ -97,7 +97,7 @@ class MFile extends MType {
 
     public function setPath($file, $inline = true) {
         $this->path = $file;
-        $this->url = \Manager::getDownloadURL('cache',basename($file), $inline);
+        $this->url = \Maestro\Manager::getDownloadURL('cache',basename($file), $inline);
     }
 
     public function getTmpName() {

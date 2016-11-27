@@ -69,11 +69,11 @@ class MLdap {
      * @return boolean
      */
     private function connect() {
-        $this->host = \Manager::getConf('login.ldap.host');
-        $this->port = \Manager::getConf('login.ldap.port');
-        $this->user = \Manager::getConf('login.ldap.user');
-        $this->pass = \Manager::getConf('login.ldap.password');
-        $this->base = \Manager::getConf('login.ldap.base');
+        $this->host = \Maestro\Manager::getConf('login.ldap.host');
+        $this->port = \Maestro\Manager::getConf('login.ldap.port');
+        $this->user = \Maestro\Manager::getConf('login.ldap.user');
+        $this->pass = \Maestro\Manager::getConf('login.ldap.password');
+        $this->base = \Maestro\Manager::getConf('login.ldap.base');
 
         $this->conn = ldap_connect($this->host, $this->port);
         ldap_set_option($this->conn, LDAP_OPT_PROTOCOL_VERSION, 3);

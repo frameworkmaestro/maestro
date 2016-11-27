@@ -68,7 +68,7 @@ class MQuery
         $this->result = array();
         $this->fetched = false;
         $this->row = -1;
-        $this->fetchStyle = \Manager::getOptions('fetchStyle') ? : \FETCH_NUM;
+        $this->fetchStyle = \Maestro\Manager::getOptions('fetchStyle') ? : \FETCH_NUM;
     }
 
     public function fetchAll($fetchStyle = 0)
@@ -484,7 +484,7 @@ class MQuery
             array_unshift($result, $columns);
         }
         $id = uniqid(md5(uniqid("")));  // generate a unique id to avoid name conflicts
-        $fileCSV = \Manager::getFilesPath($id . '.csv', true);
+        $fileCSV = \Maestro\Manager::getFilesPath($id . '.csv', true);
         $csvDump = new \MCSVDump(\Manager::getOptions('csv'));
         $csvDump->save($result, basename($fileCSV));
         return $fileCSV;

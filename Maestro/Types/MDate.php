@@ -227,7 +227,7 @@ class MDate extends MType
 
     public function getFullName($dayOfWeek = false)
     {
-        $locale = \Manager::getOptions('locale');
+        $locale = \Maestro\Manager::getOptions('locale');
         $prefix = ($dayOfWeek ? $this->getDayName() . ', ' : '');
         if ($locale[0] == 'pt_BR') {
             return $prefix . $this->getDay('j') . ' de ' . $this->getMonthName() . ' de ' . $this->getYear();
