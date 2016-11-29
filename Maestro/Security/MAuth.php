@@ -78,11 +78,13 @@ class MAuth {
         }
 
 // we have a session login?
-        $this->getLogin();
+        //$this->getLogin();
         $session = Manager::getSession();
         $sessionLogin = $session->getValue('__sessionLogin');
         if ($sessionLogin) {
-            //mdump($sessionLogin);
+            $classNameLogin = Manager::getConf('login.login') ?: "\\Maestro\\Security\\MLogin";
+            $this->login = new $classNameLogin();
+            mdump($sessionLogin);
             $this->login->setData($sessionLogin);
             //mdump($this->login->getLogin());
             if ($this->login->getLogin()) {
