@@ -84,9 +84,7 @@ class MAuth {
         if ($sessionLogin) {
             $classNameLogin = Manager::getConf('login.login') ?: "\\Maestro\\Security\\MLogin";
             $this->login = new $classNameLogin();
-            mdump($sessionLogin);
             $this->login->setData($sessionLogin);
-            //mdump($this->login->getLogin());
             if ($this->login->getLogin()) {
                 Manager::logMessage('[LOGIN] Using session login: ' . $this->login->getLogin());
                 $this->setLogin($this->login);

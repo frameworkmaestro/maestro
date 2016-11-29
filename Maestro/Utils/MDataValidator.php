@@ -44,7 +44,7 @@ class MDataValidator {
             } else if (class_exists($name)) {
                 $this->validators[$name] = new $name;
             } else {
-                throw new Exception("Validator named '$name' not available.");
+                throw new \Exception("Validator named '$name' not available.");
             }
         }
         return $this->validators[$name];
@@ -71,7 +71,7 @@ class MDataValidator {
         }
         if (!$result) {
             if ($exception) {
-                throw new Exception("Validation failed: {$errors}.");
+                throw new \Exception("Validation failed: {$errors}.");
             } else {
                 return false;
             }
