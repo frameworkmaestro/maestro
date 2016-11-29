@@ -11,7 +11,7 @@ function _M($msg, $params = NULL)
 
 function tdump($var)
 {
-    Maestro\Manager::getPage()->addDump(Tracy\Dumper::toHtml($var));
+    Maestro\Manager::getView()->addDump(Tracy\Dumper::toHtml($var));
 }
 
 function mdump($var, $tag = null)

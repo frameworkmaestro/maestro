@@ -40,7 +40,7 @@ class MComponent extends MHandler
             $content = $this->component->generate();
         }
         $view->page->setContent($content);
-        //Manager::getPage()->setContent($content);
+        //Manager::getView()->setContent($content);
         $this->renderPage();
     }
 

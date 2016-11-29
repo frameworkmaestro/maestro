@@ -68,20 +68,7 @@ class MView {
         return MControl::instance($className);
     }
 
-    /**
-     * Processa o arquivo da view e inclui o conteudo no objeto Page.
-     * @param type $controller
-     * @param type $parameters
-     * @return type 
-     */
     public function process($controller, $parameters = null) {
-        //mtrace('view file = ' . $this->viewFile);
-        //$path = $this->getPath();
-        //Manager::addAutoloadPath($path);
-        //$extension = pathinfo($this->viewFile, PATHINFO_EXTENSION);
-        //$this->controller = $controller;
-        //$this->data = $parameters;
-        //$process = 'process' . $extension;
         $this->view->process($controller, $this->viewFile, $parameters);
     }
 
@@ -92,49 +79,5 @@ class MView {
     public function render() {
         return $this->view->render();
     }
-
-    /*
-    private function processPHP() {
-        $viewName = basename($this->viewFile, '.php');
-        include_once $this->viewFile;
-        $control = new $viewName();
-        $control->setView($this);
-        //$control->load();
-        return $control;
-    }
-
-    private function processXML() {
-        $container = new \Maestro\UI\MBaseControl();
-        $container->setView($this);
-        $container->getControlsFromXML($this->viewFile);
-        return $container;
-    }
-
-    private function processTemplate() {
-        $baseName = basename($this->viewFile);
-        $template = new \Maestro\UI\MTemplate(dirname($this->viewFile));
-        $template->context('manager', Manager::getInstance());
-        $template->context('page', Manager::getPage());
-        $template->context('view', $this);
-        $template->context('data', $this->data);
-        $template->context('template', $template);
-        //$template->context('painter', Manager::getPainter());
-        return $template->fetch($baseName);
-    }
-
-    private function processHTML() {
-        return $this->processTemplate();
-    }
-
-    private function processJS() {
-        return $this->processTemplate();
-    }
-
-    private function processWiki() {
-        $wikiPage = file_get_contents($this->viewFile);
-        $wiki = new \Maestro\Utils\MWiki();
-        return $wiki->parse('', $wikiPage);
-    }
-    */
 
 }

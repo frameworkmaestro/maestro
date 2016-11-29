@@ -88,7 +88,7 @@ class MPerms {
                 $currentUrl = urlencode(\Manager::getCurrentURL());
                 $module = Manager::getConf('login.module');
                 $url = Manager::getURL("{$module}/main.login", array('return_to' => $currentUrl));
-                Manager::getPage()->redirect($url);
+                Manager::getView()->redirect($url);
             }
         }
         return $ok;

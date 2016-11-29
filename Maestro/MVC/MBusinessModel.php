@@ -19,6 +19,7 @@ namespace Maestro\MVC;
 
 use Maestro\Manager;
 use ProxyManager\Factory\AccessInterceptorValueHolderFactory as Factory;
+use Maestro\Types\MTypes;
 
 
 /**

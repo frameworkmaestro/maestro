@@ -34,7 +34,7 @@ abstract class MResult
     public function __construct()
     {
         $this->ajax = Manager::getAjax();
-      //  $this->page = Manager::getPage();
+      //  $this->page = Manager::getView();
         $this->setContent();
     }
 

@@ -67,7 +67,7 @@ class MController extends MHandler
             try {
                 $this->action = $action;
                 /*
-                if (Manager::getPage()->isPostBack()) {
+                if (Manager::getView()->isPostBack()) {
                     $actionPost = $action . 'Post';
                     if (method_exists($this, $actionPost)) {
                         $action = $actionPost;
@@ -211,6 +211,7 @@ class MController extends MHandler
         $controller = strtolower($this->name);
         $view = MApp::getView($app, $module, $controller, 'object');
         $view->process($this, $oPrompt);
+        $this->setResult(new Results\MRenderPage($view));
     }
 
     public function renderPage()
@@ -238,9 +239,9 @@ class MController extends MHandler
 
     public function renderFlush($viewName = '', $parameters = array())
     {
-        Manager::getPage()->clearContent();
+        Manager::getView()->clearContent();
         $this->renderContent($viewName, $parameters);
-        $output = Manager::getPage()->generate();
+        $output = Manager::getView()->generate();
         $this->flush($output);
     }
     

@@ -51,7 +51,7 @@ class MResultException extends MResult
             $path = Manager::getThemePath() . '/templates/errors' . ($language ? '/' . $language : '');
             $this->template = new \Maestro\UI\MTemplate($path);
             $this->template->context('manager', Manager::getInstance());
-            $this->template->context('page', Manager::getPage());
+            $this->template->context('page', Manager::getView());
             $this->template->context('charset', Manager::getOptions('charset'));
             $this->template->context('template', $this->template);
             $this->template->context('result', $this);

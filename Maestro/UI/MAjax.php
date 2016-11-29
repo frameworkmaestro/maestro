@@ -95,7 +95,7 @@ class MAjax //extends MBase
                 $data = MAjaxTransformer::toJSON($this);
                 //$header = 'Content-type: text/plain; ';
                 $header = 'Content-type: application/json; ';
-                if (Manager::getPage()->fileUpload) {
+                if (Manager::getView()->fileUpload) {
                     $newdata = "{\"base64\":\"" . base64_encode($data) . "\"}";
                     $data = "<html><body><textarea>$newdata</textarea></body></html>";
                     $header = 'Content-type: text/html; ';

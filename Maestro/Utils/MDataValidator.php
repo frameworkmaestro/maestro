@@ -16,7 +16,7 @@
  */
 namespace Maestro\Utils;
 
-use Maestro;
+use Maestro\Manager;
 
 class MDataValidator {
 
@@ -38,7 +38,8 @@ class MDataValidator {
      */
     public function getValidator($name) {
         if (!isset($this->validators[$name])) {
-            $class = 'Doctrine_Validator_' . ucwords(strtolower($name));
+            $class = "\\Maestro\\Utils\\DataValidator\\" . ucwords(strtolower($name)) . "Validator";
+            mdump($class);
             if (class_exists($class)) {
                 $this->validators[$name] = new $class;
             } else if (class_exists($name)) {
@@ -95,9 +96,13 @@ class MDataValidator {
             $result &= $ok;
             // now, validate constraints
             $config = $object->config();
+            mdump($config);
             $validators = $config['validators'][$name];
             if (count($validators)) {
                 foreach ($validators as $index => $args) {
+                    mdump($value);
+                    mdump($index);
+                    mdump($args);
                     if (is_numeric($index)) {
                         $validator = $args;
                         $args = true;
@@ -106,6 +111,7 @@ class MDataValidator {
                     }
                     $v = $this->getValidator($validator);
                     $v->args = $args;
+                    mdump($v->args);
                     $ok = $v->validate($value);
                     if (!$ok) {
                         $fieldDescription  =  $config['fieldDescription'][$name] ? : $name;

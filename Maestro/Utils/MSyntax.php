@@ -59,7 +59,7 @@ class MSyntax {
     public function generate() {
         $cssCustom = Manager::getAppPath('public/css/geshiCustom.css');
         if (file_exists($cssCustom)){
-            Manager::getPage()->addStyleSheet($cssCustom);
+            Manager::getView()->addStyleSheet($cssCustom);
         }
         $source = $this->getText();
         $language = $this->getLanguage();

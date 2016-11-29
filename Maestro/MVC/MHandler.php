@@ -177,7 +177,7 @@ class MHandler
     {
         $this->initRender();
         $this->renderContent($viewName, $parameters);
-        Manager::getPage()->renderType = 'dialog';
+        Manager::getView()->renderType = 'dialog';
         $this->setResult(new Results\MRenderJSON());
     }
 
@@ -239,7 +239,7 @@ class MHandler
 
     public function renderFile(\Maestro\Types\MFile $file)
     {
-        Manager::getPage()->window($file->getURL());
+        Manager::getView()->window($file->getURL());
         $this->setResult(new Results\MBrowserFile($file));
     }
 
