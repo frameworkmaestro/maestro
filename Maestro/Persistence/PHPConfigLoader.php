@@ -58,7 +58,6 @@ class PHPConfigLoader
     public function getClassMap($className)
     {
         if ($className == '') {mtracestack();}
-        //$className = strtolower(trim($className));
         $classIndex = strtolower(trim($className));
         if ($className{0} == '\\') {
             $className = substr($className, 1);
@@ -70,7 +69,6 @@ class PHPConfigLoader
             return $this->classMaps[$classIndex];
         }
         $map = $this->getMap($className);
-        //var_dump($map);
         $database = $map['database'];
         $classMap = new \Maestro\Persistence\Map\ClassMap($className, $database);
         $classMap->setDatabaseName($database);
@@ -83,6 +81,7 @@ class PHPConfigLoader
         $config = $className::config();
 
         $attributes = $map['attributes'];
+        $referenceAttribute = false;
         foreach ($attributes as $attributeName => $attr) {
             $attributeMap = new \Maestro\Persistence\Map\AttributeMap($attributeName, $classMap);
             if (isset($attr['index'])) {
@@ -93,16 +92,16 @@ class PHPConfigLoader
             $attributeMap->setType($type);
             $plataformTypedAttributes = $classMap->getDb()->getPlatform()->getTypedAttributes();
             $attributeMap->setHandled(strpos($plataformTypedAttributes, $type) !== false);
-            if ($config['converters'][$attributeName]) {
+            if (isset($config['converters'][$attributeName])) {
                 $attributeMap->setConverter($config['converters'][$attributeName]);
             }
 
-            $attributeMap->setColumnName($attr['column']? : $attributeName);
-            $attributeMap->setAlias($attr['alias']? : $attributeName);
-            $attributeMap->setKeyType($attr['key'] ? : 'none');
-            $attributeMap->setIdGenerator($attr['idgenerator']);
+            $attributeMap->setColumnName(isset($attr['column']) ? $attr['column'] : $attributeName);
+            $attributeMap->setAlias(isset($attr['alias']) ? $attr['alias'] : $attributeName);
+            $attributeMap->setKeyType(isset($attr['key']) ? $attr['key'] : 'none');
+            $attributeMap->setIdGenerator(isset($attr['idgenerator']) ? $attr['idgenerator'] : null);
 
-            if (($attr['key'] == 'reference') && ($classMap->getSuperClassMap() != NULL)) {
+            if (isset($attr['key']) && ($attr['key'] == 'reference') && ($classMap->getSuperClassMap() != null)) {
                 $referenceAttribute = $classMap->getSuperClassMap()->getAttributeMap($attributeName);
                 if ($referenceAttribute) {
                     $attributeMap->setReference($referenceAttribute);
@@ -134,11 +133,9 @@ class PHPConfigLoader
                 $toClass = $association['toClass'];
                 $associationMap = new \Maestro\Persistence\Map\AssociationMap($classMap, $associationName);
                 $associationMap->setToClassName($toClass);
-                //$associationMap->setTargetAttributeName($associationName);
                 $associationMap->setDeleteAutomatic($association['deleteAutomatic']);
                 $associationMap->setSaveAutomatic($association['saveAutomatic']);
                 $associationMap->setRetrieveAutomatic($association['retrieveAutomatic']);
-                //$associationMap->setJoinAutomatic($association['joinAutomatic']);
                 $autoAssociation = (strtolower($className) == strtolower($toClass));
                 if (!$autoAssociation) {
                     $autoAssociation = (strtolower($className) == strtolower(substr($toClass, 1)));

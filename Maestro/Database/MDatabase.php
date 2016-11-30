@@ -148,7 +148,6 @@ class MDatabase {
         } else {
             throw EDBException::transaction('Não é possível executar comandos fora de uma transação ativa.');
         }
-        return $ok;
     }
 
     public function executeBatch(/* array of MSQL */ $sqlArray) {
@@ -244,7 +243,6 @@ class MDatabase {
         try {
             $query = new MQuery();
             $query->setDb($this);
-            //$query->setConnection($this->getConnection());
             $query->setSQL($sql);
             return $query;
         } catch (\Exception $e) {
@@ -264,6 +262,10 @@ class MDatabase {
 
     public function executeProcedure($sql, $aParams = array(), $aResult = array()) {
         /* TODO */
+    }
+
+    public function ignoreAccentuation($ignore = true) {
+        $this->platform->ignoreAccentuation($ignore);
     }
 
 }

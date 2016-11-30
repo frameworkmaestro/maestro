@@ -14,31 +14,47 @@
  * Fundação do Software Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301, USA.
  */
-namespace Maestro\Persistence\Criteria;
 
-use Maestro;
+namespace Maestro\Services\Cache;
 
-class OperandArray extends PersistentOperand {
+use Maestro\Manager;
+use Maestro\MVC\MService;
 
-    public function __construct($operand) {
-        parent::__construct($operand);
-        $this->type = 'array';
+class MCache extends MService
+{
+    public $type;
+    public $cache;
+
+    public function __construct($type = 'php')
+    {
+        parent::__construct();
+        $this->type = $type;
+        $class = "MCache" . $type;
+        $this->cache = new $class();
     }
 
-    public function getSql() {
-        $sql = "(";
-        $i = 0;
-        if (is_array($this->operand)){
-            $list = '';
-            foreach ($this->operand as $o) {
-                $list .= ( $i++ > 0) ? ", " : "";
-                $list .= "'$o'";
-            }
-            $sql .= (($list == '') ? "''" : $list);
-        }else{
-            $sql .= "'$this->operand'";
-        }
-        $sql .= ")";
-        return $sql;
+    public function add($name, $value, $ttl = 0)
+    {
+        $this->cache->set($name, $value, $ttl);
+    }
+
+    public function set($name, $value, $ttl = 0)
+    {
+        $this->cache->set($name, $value, $ttl);
+    }
+
+    public function get($name)
+    {
+        return $this->cache->get($name);
+    }
+
+    public function delete($name)
+    {
+        $this->cache->delete($name);
+    }
+
+    public function clear()
+    {
+        $this->cache->clear();
     }
 }

@@ -14,31 +14,36 @@
  * Fundação do Software Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301, USA.
  */
-namespace Maestro\Persistence\Criteria;
 
-use Maestro;
+namespace Maestro\Services\Cache;
 
-class OperandArray extends PersistentOperand {
+use Maestro\Manager;
+use Maestro\MVC\MService;
 
-    public function __construct($operand) {
-        parent::__construct($operand);
-        $this->type = 'array';
+class MCacheJava extends MService
+{
+    public $store;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->store = $this->manager->javaServletContext;
     }
 
-    public function getSql() {
-        $sql = "(";
-        $i = 0;
-        if (is_array($this->operand)){
-            $list = '';
-            foreach ($this->operand as $o) {
-                $list .= ( $i++ > 0) ? ", " : "";
-                $list .= "'$o'";
-            }
-            $sql .= (($list == '') ? "''" : $list);
-        }else{
-            $sql .= "'$this->operand'";
-        }
-        $sql .= ")";
-        return $sql;
+    public function add($name, $value)
+    {
+        $this->store->setAttribute($name, $value);
     }
+
+    public function set($name, $value)
+    {
+        $this->store->setAttribute($name, $value);
+    }
+
+    public function get($name)
+    {
+        return java_values($this->store->getAttribute($name));
+    }
+
 }
+

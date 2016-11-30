@@ -67,6 +67,14 @@ return array(
         'shared' => true,
         'auto' => false
     ),
+    'cache' => array(
+        'type' => "Maestro\\Services\\Cache\\MRedis",
+        'Redis' => array(
+            'host' => 'localhost',
+            'port' => 6379,
+            'expirationDefault' => 5 * 60 //segundos
+        )
+    ),
     'session' => array(
         'handler' => "file",
         'timeout' => "30",

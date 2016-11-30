@@ -21,7 +21,7 @@ use Maestro;
 class BaseCriteria {
 
     public function getOperand($operand) {
-        if ($operand == NULL) {
+        if (is_null($operand)) {
             $o = new OperandNull($operand);
         } elseif (is_object($operand)) {
             if ($operand instanceof Maestro\Persistence\Map\AttributeMap) {

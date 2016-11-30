@@ -26,6 +26,7 @@ use Nette,
     Maestro\Services\MLogger,
     Maestro\Services\MTrace,
     Maestro\Services\MMessages,
+    Maestro\Security\MSSL,
     Maestro\Utils\MUtil,
     Maestro\UI\MPage,
     Maestro\MVC\MFrontController,
@@ -937,7 +938,7 @@ class Manager extends Nette\Object
      * Brief Description.
      * Complete Description.
      *
-     * @returns (tipo) desc
+     * @returns MSession desc
      *
      */
     public static function getSession()
@@ -1002,7 +1003,7 @@ class Manager extends Nette\Object
      * Brief Description.
      * Complete Description.
      *
-     * @returns (tipo) desc
+     * @returns MLogin desc
      *
      */
     public static function getLogin()
@@ -1026,9 +1027,22 @@ class Manager extends Nette\Object
     {
         $login = self::getAuth()->checkLogin();
         if (!$login && $deny) {
+            self::storeURI();
             throw new ELoginException(_M('Login required!'));
         }
         return $login;
+    }
+
+    /**
+     * Guarda a URI acessada na sessao.
+     */
+    private static function storeURI() {
+        $request = self::getRequest();
+        if ($request->getRequestType() == 'GET') {
+            $session = self::getSession()->container('maestro');
+            $session->setExpirationSeconds(3 * 60);
+            $session->originalURL = $request->getURI();
+        }
     }
 
     /**
@@ -1588,6 +1602,22 @@ class Manager extends Nette\Object
         }
         $path = self::getModulePath($module, $dir);
         self::$response->sendDownload($path . $filename);
+    }
+
+    /**
+     * Retorna uma string aleatória de 24 caracteres. Essa string será única
+     * durante toda a sessão.
+     *
+     * @param bool $create Se true cria uma chave nova se ela não existir.
+     * @return string
+     */
+    public static function getSessionToken($create = true) {
+        $container = self::getSession()->container('sessionKey');
+        if (!$container->key && $create) {
+            $container->key = MSSL::randomString(24);
+        }
+
+        return $container->key;
     }
 
 }

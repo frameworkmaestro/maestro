@@ -18,6 +18,8 @@
 
 namespace Maestro\Database;
 
+use Maestro\Manager;
+
 class MQuery
 {
 
@@ -61,6 +63,7 @@ class MQuery
     public $statement; // a parsed sql command - used by some drivers
     public $fetched; // true for a valid result
     public $fetchStyle; // 'assoc','num'
+    private $linguistic = false;
 
     public function __construct()
     {
@@ -68,7 +71,20 @@ class MQuery
         $this->result = array();
         $this->fetched = false;
         $this->row = -1;
-        $this->fetchStyle = \Maestro\Manager::getOptions('fetchStyle') ? : \FETCH_NUM;
+        $this->fetchStyle = Manager::getOptions('fetchStyle') ? : \FETCH_NUM;
+    }
+
+    public function ignoreAccentuation() {
+        $this->linguistic = true;
+    }
+
+    public function count() {
+        $this->enableLinguisticSearch(true);
+        $select = $this->msql->select()->getCommand();
+        $msql = new MSQL('count(*) as CNT', "({$select}) countQuery");
+        $msql->parameters = $this->msql->parameters;
+        $result = $this->db->query($msql);
+        return $result[0][0];
     }
 
     public function fetchAll($fetchStyle = 0)
@@ -77,8 +93,11 @@ class MQuery
         if (!$this->msql->stmt) {
             $this->msql->select();
         }
-        //\Manager::getLog()->logSQL($this->msql->command . $this->msql->logParams(), $this->db);
+
+        $this->enableLinguisticSearch(true);
         $this->statement = $this->msql->stmt->execute();
+        $this->enableLinguisticSearch(false);
+
         $this->result = $this->db->getPlatform()->fetchAll($this);
         $this->rowCount = count($this->result);
         $this->_setMetadata();
@@ -96,7 +115,27 @@ class MQuery
         if ($error && ($error != '00000')) {
             throw new \Exception($this->msql->stmt->errorInfo());
         }
+        $this->processErrors();
+
         return $this->result;
+    }
+
+
+    private function enableLinguisticSearch($value) {
+        /**
+         * Só posso desabilitar linguistic por alguém que o habilitou previamente. Isso evita que a chamada a "count"
+         * desabilite o recurso no banco.
+         */
+        if ($this->linguistic) {
+            $this->db->ignoreAccentuation($value);
+        }
+    }
+
+    private function processErrors() {
+        $error = $this->msql->stmt->errorCode();
+        if ($error && ($error != '00000')) {
+            throw new \Exception($this->msql->stmt->errorInfo());
+        }
     }
 
     public function fetchObject()
@@ -171,14 +210,6 @@ class MQuery
         $platform = $this->db->getPlatform();
         $this->metadata = $platform->getMetadata($this->msql->stmt);
         $this->columnCount = $this->metadata['columnCount'];
-    }
-
-    public function count()
-    {
-        $select = $this->msql->select()->getCommand();
-        $selectCount = preg_replace("/select (.*) from (.*)/i", "SELECT count(*) as total FROM $2", $select);
-        $result = $this->db->executeQuery($selectCount);
-        return ($this->fetchStyle == \FETCH_ASSOC) ? $result[0]['total'] : $result[0][0] ;
     }
 
     public function getCSV($fileName = '', $separator = ';')
@@ -484,8 +515,8 @@ class MQuery
             array_unshift($result, $columns);
         }
         $id = uniqid(md5(uniqid("")));  // generate a unique id to avoid name conflicts
-        $fileCSV = \Maestro\Manager::getFilesPath($id . '.csv', true);
-        $csvDump = new \MCSVDump(\Manager::getOptions('csv'));
+        $fileCSV = Manager::getFilesPath($id . '.csv', true);
+        $csvDump = new \MCSVDump(Manager::getOptions('csv'));
         $csvDump->save($result, basename($fileCSV));
         return $fileCSV;
     }
@@ -500,5 +531,3 @@ class MQuery
     }
     
 }
-
-?>

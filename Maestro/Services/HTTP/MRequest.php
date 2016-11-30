@@ -44,46 +44,14 @@ class MRequest
         $this->resolveFormat();
         $this->path = $this->url->getPathInfo();
         $this->contentType = $this->getContentType();
-        //mtrace('MRequest path = ' . $this->path);
-        //mtrace('BaseURL = '.$this->url->getBaseURL());
-        //mtrace('BasePath = '. $this->url->getBasePath());
-        //mtrace('relative url = '. $this->url->getRelativeURL());
-        
-        /*
-
-        $this->host = $_SERVER['SERVER_NAME'];
-        $this->path = $this->getPathInfo();
-        mtrace('MRequest path = ' . $this->path);
-        $this->querystring = $this->getQueryString();
-        $this->method = $this->getRequestType();
-        $this->domain = $this->getServerName();
-        $this->remoteAddress = $this->getUserHostAddress();
-        $this->contentType = isset($_SERVER['CONTENT_TYPE']) ? $_SERVER['CONTENT_TYPE'] : '';
-        $this->port = $this->getPort();
-        $this->secure = $this->getIsSecureConnection();
-        $this->headers = $_SERVER;
-        $this->cookies = isset($_COOKIES) ? $_COOKIES : '';
-        $dispatch = Manager::getOptions('dispatch');
-        $this->baseUrl = $this->getBaseUrl();
-        $this->date = Manager::getSysTime();
-        $this->isNew = true;
-        $this->user = '';
-        $this->password = '';
-        $this->isLoopback = ($this->remoteAddress == '127.0.0.1');
-        $this->params = $_REQUEST;
-        $this->url = $this->getUrl();
-        $this->dispatch = $this->getBase() . $dispatch;
-
-
-        $auth = isset($_SERVER['AUTH_TYPE']) ? $_SERVER['AUTH_TYPE'] : '';
-        if (($auth != '') && (substr($auth, 0, 6) == "Basic ")) {
-            $this->user = $_SERVER['PHP_AUTH_USER'];
-            $this->password = $_SERVER['PHP_AUTH_PW'];
-        }
-         * 
-         */
     }
 
+    public function __call($name, $args)
+    {
+        if (method_exists($this->request, $name)) {
+            return $this->request->$name($args[0], $args[1], $args[2]);
+        }
+    }
     /**
      * Resolve o formato da requisição no header Accept
      * (nesta ordem : html > xml > json > text)

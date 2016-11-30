@@ -81,11 +81,13 @@ class MDataValidator {
     }
 
     public function validateModel($object, $exception = true) {
+        mdump($object);
         $attributes = $object->getAttributesMap();
         $errors = '';
         $result = true;
         foreach ($attributes as $name => $definitions) {
             $method = 'get' . $name;
+            mdump('method - ' . $method);
             $value = $object->$method();
             // first, validate type
             $type = $definitions['type'];
@@ -96,7 +98,6 @@ class MDataValidator {
             $result &= $ok;
             // now, validate constraints
             $config = $object->config();
-            mdump($config);
             $validators = $config['validators'][$name];
             if (count($validators)) {
                 foreach ($validators as $index => $args) {

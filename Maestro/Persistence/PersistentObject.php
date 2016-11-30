@@ -195,12 +195,58 @@ class PersistentObject
         return $this->getClassMap()->getDb();
     }
 
+    /**
+     * @param $uid
+     * @return static
+     * @throws Exception Não existe campo uid definido nos maps
+     */
+    public static function getByUid($uid) {
+        $object = new static;
+        $uidField = self::getUidField($object);
+
+        if (!$uidField) {
+            throw new \Exception('No uid field defined for ' . get_class($object));
+        }
+
+        $criteria = $object->getCriteria('select *')->where("$uidField = :uuid")->addParameter('uuid', $uid);
+        $object->retrieveFromCriteria($criteria);
+
+        return $object;
+    }
+
+    private static function getUidField($object) {
+        $classMap = $object->getClassMap();
+        $uidField = $classMap->getUidField();
+
+        while ($uidField === null) {
+            $classMap = $classMap->getSuperClassMap();
+            if (!$classMap) {
+                break;
+            }
+
+            $uidField = $classMap->getUidField();
+        }
+
+        return $uidField;
+    }
+
     // compatibilidade
     public function getValue($attribute)
     {
         return $this->manager->getValue($this, $attribute);
     }
 
+    public function logIsEnabled() {
+        return false;
+    }
+
+    /**
+     * Essa função foi criada para se adequar ao código em PersistentManager::logger
+     * @return string
+     */
+    public function getLogDescription() {
+        return '';
+    }
+
 }
 
-?>

@@ -19,7 +19,9 @@
 namespace Maestro\MVC;
 
 use Maestro\Manager,
-    Maestro\Services\Exception\ENotFoundException;
+    Maestro\Security\MSSL,
+    Maestro\Services\Exception\ENotFoundException,
+    Maestro\Services\Exception\ESecurityException;
 
 /**
  * MController.
@@ -27,11 +29,19 @@ use Maestro\Manager,
  */
 class MController extends MHandler
 {
+    private $logger;
+    private $encryptedFields = array();
     protected $controllerAction;
     protected $controller;
     protected $action;
     protected $view;
-    
+
+    public function __call($name, $arguments) {
+        if (!is_callable($name)) {
+            throw new \BadMethodCallException("Method [{$name}] doesn't exists in " . get_class($this) . " Controller.");
+        }
+    }
+
     public function invoke()
     {
         $this->action = str_replace('-','_',$this->context->getAction());
@@ -42,6 +52,10 @@ class MController extends MHandler
     public function getAction()
     {
         return $this->action;
+    }
+
+    public function setEncryptedFields(array $fields) {
+        $this->encryptedFields = $fields;
     }
 
     public function init()
@@ -56,6 +70,8 @@ class MController extends MHandler
     public function dispatch($action)
     {
         mtrace('mcontroller::dispatch = ' . $action);
+        $this->decryptData();
+
         if (!method_exists($this, $action)) {
             mtrace('action does not exists = ' . $action);
             try {
@@ -223,6 +239,7 @@ class MController extends MHandler
 
     public function render($viewName = '', $parameters = array())
     {
+        $this->encryptData();
         $this->renderContent($viewName, $parameters);
         $this->renderPage();
     }
@@ -244,5 +261,58 @@ class MController extends MHandler
         $output = Manager::getView()->generate();
         $this->flush($output);
     }
-    
+
+    protected function log($message, $operation = 'default') {
+        if ($this->logger === null) {
+            $this->logger= Manager::getModelMAD('log');
+        }
+
+        $idUser = Manager::getLogin() ? \Manager::getLogin()->getIdUser() : 0;
+        $message .= ' - IP: ' . MUtil::getClientIP();
+        $this->logger->log($operation, get_class($this), 0, $message, $idUser);
+    }
+
+    /**
+     * Vasculha o $this->data para encontrar campos que precisam ser criptografados.
+     */
+    private function encryptData() {
+        $this->cryptIterator(function($plain, $token) {
+            return MSSL::simmetricEncrypt($plain, $token);
+        });
+    }
+
+    /**
+     * Vasculha o $this->data para encontrar campos que precisam ser descriptografados.
+     */
+    private function decryptData() {
+        if (!Manager::getRequest()->isPost()) {
+            return;
+        }
+
+        $this->cryptIterator(function($encrypted, $token) {
+            return MSSL::simmetricDecrypt($encrypted, $token);
+        });
+    }
+
+    /**
+     * Função que itera o $this->encryptedFields e encontra os campos que devem ser criptografados ou decriptografados.
+     * @param \Closure $function
+     * @throws \ESecurityException
+     */
+    private function cryptIterator(\Closure $function) {
+        $token = Manager::getSessionToken();
+
+        foreach ($this->encryptedFields as $field) {
+            if (isset($this->data->{$field})) {
+                $result = $function($this->data->{$field}, $token);
+
+                if ($result === false) {
+                    throw new ESecurityException("[cryptError]{$this->getName()}Controller::{$field}");
+                }
+
+                $this->data->{$field} = $result;
+            }
+        }
+    }
+
 }

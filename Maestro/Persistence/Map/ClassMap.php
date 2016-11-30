@@ -22,7 +22,6 @@ class ClassMap {
 
     private $namespace;
     private $name;
-    //private $className;
     private $databaseName;
     private $db;
     private $platform;
@@ -173,7 +172,7 @@ class ClassMap {
         $attributeMap = NULL;
         $classMap = $this;
 
-        if (gettype($name) == 'string') {
+        if (is_string($name)) {
             do {
                 $attributeMap = $classMap->hashedAttributeMaps[$name];
                 $classMap = $classMap->superClassMap;
@@ -337,9 +336,8 @@ class ClassMap {
     public function getWhereSql() {
         $inheritanceAssociations = $this->getInheritanceAssociations();
         if (($this->getKeySize() > 0) || ($inheritanceAssociations != '')) {
-            $classMap = $this;
             foreach ($this->keyAttributeMaps as $attributeMap) {
-                $column = $attributeMap->getFullyQualifiedName($alias);
+                $column = $attributeMap->getFullyQualifiedName(null);
                 $conditions[] = "(" . $column . " = ?)";
             }
             if ($inheritanceAssociations != '') {

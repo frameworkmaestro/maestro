@@ -20,7 +20,7 @@ namespace Maestro\MVC;
 use Maestro\Manager;
 use ProxyManager\Factory\AccessInterceptorValueHolderFactory as Factory;
 use Maestro\Types\MTypes;
-
+use Maestro\Services\Exception\ESecurityException;
 
 /**
  * Classe base de todos os Business Models.
@@ -116,7 +116,7 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject
     /**
      * Inicializa atributos com $data.
      * @param mixed $data
-     * @return void
+     * @return MModel
      */
     public function onCreate($data = NULL)
     {
@@ -153,7 +153,7 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject
         $map = $this->_map;
         do {
             $attributes = array_merge($attributes, $map['attributes']);
-            if ($map['extends']) {
+            if (!empty($map['extends'])) {
                 $class = $map['extends'];
                 $map = $class::ORMMap();
             } else {
@@ -186,23 +186,32 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject
         return $this->_className;
     }
 
+    public function logIsEnabled() {
+        $config = $this->config();
+        return  count($config['log']) > 0;
+    }
+
     /**
      * Descrição usada para Log.
      * @return string
      */
-    public function getLogDescription()
-    {
+    public function getLogDescription() {
+        if (!$this->logIsEnabled()) {
+            return '';
+        }
+
         $config = $this->config();
-        if (count($config['log'])) {
+
+        if ($config['log'][0] === true) {
+            $data = $this->getDiffData();
+        } else {
             $data = new stdClass();
             foreach ($config['log'] as $attr) {
                 $data->$attr = $this->get($attr);
             }
-            $description = serialize($data);
-        } else {
-            $description = '';
         }
-        return $description;
+
+        return serialize($data);
     }
 
     /**
@@ -210,13 +219,52 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject
      * @param type $id
      * @return \MBusinessModel
      */
-    public function getById($id)
-    {
-        if (($id !== '') && ($id !== NULL)) {
-            $this->set($this->getPKName(), $id);
-            $this->retrieve();
-            return $this;
+    public function getById($id) {
+        if (($id === '') || ($id === NULL)) {
+            return;
         }
+        $this->set($this->getPKName(), $id);
+        if($this->useCache()) {
+            $this->tryLoadFromcache();
+        } else {
+            $this->retrieve();
+        }
+        return $this;
+    }
+
+    private function tryLoadFromcache() {
+        $cacheManager = \CacheManager::getInstance();
+        if (!$cacheManager->loadFromCache($this)){
+            $this->retrieve();
+            $cacheManager->saveToCache($this);
+        }
+    }
+
+    public function save() {
+        $this->deleteFromCache();
+        if ($this->wasChanged()) {
+            parent::save();
+        }
+    }
+
+    public function delete() {
+        $this->deleteFromCache();
+        parent::delete();
+    }
+
+    private function deleteFromCache() {
+        if ($this->useCache()) {
+            \CacheManager::getInstance()->delete($this);
+        }
+    }
+
+    private function useCache() {
+        return $this->cacheIsConfigured() && \CacheManager::getInstance()->cacheIsEnabled();
+    }
+
+    private function cacheIsConfigured() {
+        $config = $this->config();
+        return isset($config['cache']) && ($config['cache'] === true || count($config['cache']) > 0);
     }
 
     public static function getByIds(array $ids)
@@ -417,13 +465,9 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject
         return $data;
     }
 
-    /**
-     * Retorna os dados originais do model, independente
-     * se como o setData influenciou esses campos.
-     */
-    public function getOriginalData()
+    public function wasChanged()
     {
-        return $this->_originalData;
+        return count($this->getDiffData()) > 0;
     }
 
     /**
@@ -431,21 +475,28 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject
      */
     public function getDiffData()
     {
+        $actual = $this->getData();
+        $original = $this->getOriginalData();
+        $diff = array();
 
-        $a = $this->getData();
-        $b = $this->getOriginalData();
-        $c = array();
-
-        foreach ($a as $key => $value) {
-            if ($value != $b->$key)
-                $c[] = array("key" => $key, "original" => $b->$key, "change" => $value);
+        foreach ($actual as $prop => $value) {
+            if ($value !== $original->$prop) {
+                $diff[] = array("key" => $prop, "original" => $original->$prop, "change" => $value);
+            }
         }
 
-        return $c;
+        return $diff;
     }
 
-    protected function getOriginalAttributeValue($attribute)
-    {
+    /**
+     * Retorna os dados originais do model, independente
+     * se como o setData influenciou esses campos.
+     */
+    public function getOriginalData() {
+        return $this->_originalData;
+    }
+
+    protected function getOriginalAttributeValue($attribute) {
         foreach ($this->getDiffData() as $attributeDiff) {
             if ($attributeDiff['key'] == $attribute) {
                 return $attributeDiff['original'];
@@ -454,13 +505,7 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject
         throw new EModelException("The attribute {$attribute} was not changed!");
     }
 
-    public function wasChanged()
-    {
-        return count($this->getDiffData()) > 0;
-    }
-
-    public function attributeWasChanged($attribute)
-    {
+    public function attributeWasChanged($attribute) {
         try {
             $originalAttributeValue = $this->getOriginalAttributeValue($attribute);
             return isset($originalAttributeValue);
@@ -468,6 +513,8 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject
             return false;
         }
     }
+
+
 
     /**
      * Recebe um ValueObject com valores planos e inicializa os atributos do Model.
@@ -494,9 +541,13 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject
                 $value = $data[$attribute];
                 $type = $definition['type'];
                 $conversion = 'get' . $type;
+                mdump('#'.$attribute);
                 $typedValue = MTypes::$conversion($value);
                 $method = 'set' . $attribute;
+                mdump('#'.$typedValue);
+                mdump('#'.$method);
                 if (method_exists($this, $method)) {
+                    mdump('call');
                     $this->set($attribute, $typedValue);
                 } else if (method_exists($this->_proxyModel, $method)) {
                     $this->_proxyModel->$method($typedValue);
@@ -510,7 +561,7 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject
         $this->validateRole($role);
         if ($this->isImmutable($attribute, $role)) {
             $message = "O atributo {$attribute} não pode ser alterado pelo role {$role}";
-            throw new \ESecurityException($message);
+            throw new ESecurityException($message);
         }
     }
 
@@ -537,7 +588,7 @@ class MBusinessModel extends \Maestro\Persistence\PersistentObject
         if (!array_key_exists($role, $blacklist) &&
             !array_key_exists($role, $whitelist)
         ) {
-            throw new \ESecurityException(
+            throw new ESecurityException(
                 "O role {$role} não foi definido nas configurações da classe " . get_class($this)
             );
         }

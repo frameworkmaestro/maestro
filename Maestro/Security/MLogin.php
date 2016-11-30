@@ -160,7 +160,7 @@ class MLogin {
 
     public function getRights($transaction = '') {
         if ($transaction){
-            return $this->data->rights[$transaction];
+            return array_key_exists($transaction, $this->rights) ? $this->rights[$transaction] : null;
         }
         return $this->data->rights;
     }

@@ -25,6 +25,7 @@ class RetrieveCriteria extends PersistentCriteria {
     private $forUpdate = FALSE;
     private $range = NULL;
     private $setOperation = array();
+    private $linguistic = false;
 
     public function __construct($classMap, $command = '') {
         parent::__construct($classMap);
@@ -414,13 +415,25 @@ class RetrieveCriteria extends PersistentCriteria {
         $this->setOperation('MINUS', $criteria);
     }
 
+    public function ignoreAccentuation() {
+        $this->linguistic = true;
+        return $this;
+    }
+
     public function asQuery($parameters = null) {
         if (func_num_args() == 0) {
             $parameters = $this->parameters;
         } elseif (func_num_args() > 1) {
             $parameters = func_get_args();
         }
-        return $this->manager->processCriteriaAsQuery($this, $parameters);
+
+        $query = $this->manager->processCriteriaAsQuery($this, $parameters);
+
+        if ($this->linguistic) {
+            $query->ignoreAccentuation();
+        }
+
+        return  $query;
     }
 
     public function asCursor($parameters = null) {

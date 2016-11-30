@@ -33,9 +33,7 @@ class Platform extends \Doctrine\DBAL\Platforms\OraclePlatform {
         $nlsLang = $this->db->getConfig('nls_lang');
         if ($nlsLang) {
             putenv("NLS_LANG=" . $nlsLang);
-            //mdump("NLS_LANG=" . $nlsLang);
         }
-//        $nlsDate = $this->db->getConfig('formatDate');
         $nlsDate = 'YYYY/MM/DD';
         $nlsTime = $this->db->getConfig('formatTime');
         putenv("NLS_DATE_FORMAT=" . $nlsDate . ' ' . $nlsTime);
@@ -103,20 +101,45 @@ class Platform extends \Doctrine\DBAL\Platforms\OraclePlatform {
         return $meta;
     }
 
-    public function getSQLRange(\Maestro\Types\MRange $range) {
+    public function getSQLRange(\MRange $range) {
         return "";
     }
 
     public function fetchAll($query) {
         $offset = $query->msql->range ? $query->msql->range->offset : 0;
         $maxrows = $query->msql->range ? $query->msql->range->rows : -1;
-        $fetchStyle = $query->fetchStyle + OCI_FETCHSTATEMENT_BY_ROW + OCI_RETURN_LOBS;
+
+        $fetchStyle = $this->convertPdoToOciFetchStyle($query->fetchStyle) +
+            OCI_FETCHSTATEMENT_BY_ROW + OCI_RETURN_LOBS;
+
         $stmt = $query->msql->stmt->getWrappedStatement()->getHandle();
+
+
         $rowCount = oci_fetch_all($stmt, $result, $offset, $maxrows, $fetchStyle);
+
+
         if ($rowCount === false) {
             throw new EDatabaseQueryException(oci_error($stmt));
         }
         return $result;
+    }
+
+    /**
+     * Converte as constantes usadas no tipo de fetch para as do OCI.
+     * @param $fetchStyle
+     * @return int
+     */
+    private function convertPdoToOciFetchStyle($fetchStyle) {
+        switch ($fetchStyle) {
+            case \PDO::FETCH_ASSOC:
+                return OCI_ASSOC;
+            case \PDO::FETCH_NUM:
+                return OCI_NUM;
+            case \PDO::FETCH_BOTH:
+                return OCI_BOTH;
+            default:
+                return $fetchStyle;
+        }
     }
 
     public function fetchObject($query) {
@@ -133,60 +156,76 @@ class Platform extends \Doctrine\DBAL\Platforms\OraclePlatform {
                 $type = substr(strtolower(get_class($value)), 1);
             }
         }
-        if ($type == 'blob') {
-            $bindingType = \PDO::PARAM_LOB;
-            return "EMPTY_BLOB()";
-        }  elseif ($type == 'date') {
-            return $value->format('Y/m/d');
-        } elseif ($type == 'timestamp') {
-            return $value->format('Y/m/d H:i:s');
-        } elseif ($type == 'currency') {
-            return $value->getValue();
-        } elseif (($type == 'decimal') || ($type == 'float')) {
-            return str_replace('.', ',', $value);
-        } elseif ($type == 'boolean') {
-            return (empty($value) ? '0' : '1');
-        } elseif ($type == 'cpf') {
-            return $value->getPlainValue();
-        } elseif ($type == 'cnpj') {
-            return $value->getPlainValue();
-        } else {
-            return $value;
+
+        switch($type) {
+            case 'blob':
+                $bindingType = \PDO::PARAM_LOB;
+                return "EMPTY_BLOB()";
+            case 'date':
+                return $value->format('Y/m/d');
+            case 'timestamp':
+                return $value->format('Y/m/d H:i:s');
+            case 'currency':
+                return $value->getValue();
+            case 'decimal':
+            case 'float':
+                return str_replace('.', ',', $value);
+            case 'boolean':
+                return (empty($value) ? '0' : '1');
+            case 'cpf':
+            case 'cnpj':
+                return $value->getPlainValue();
+            case 'collection':
+                $arr = $value->getValue();
+                return json_encode($arr);
+            default:
+                return $value;
         }
     }
 
     public function convertToPHPValue($value, $type) {
-        if ($type == 'date') {
-            return $value;
-        } elseif ($type == 'timestamp') {
-            return $value;
-        } elseif ($type == 'currency') {
-            return \Maestro\Manager::currency($value);
-        } elseif ($type == 'cnpj') {
-            return MCNPJ::create($value);
-        } elseif ($type == 'cpf') {
-            return MCPF::create($value);
-        } elseif ($type == 'boolean') {
-            return $value;
-        } elseif (($type == 'decimal') || ($type == 'float')) {
-            return str_replace(',', '.', $value);
-        } elseif ($type == 'blob') {
-            $parsedValue = '';
-            if (is_resource($value) or is_resource($value->descriptor)) {
-                while (!$value->eof()) {
-                    $parsedValue .= $value->read(2000);
-                }
-                $value = MFile::file($parsedValue);
-            } else {
-                $value = MFile::file($value);
-            }
-
-            return $value;
-        } elseif ($type == 'clob'){
-            return is_a($value, '\OCI-Lob') ? $value->load() : $value;
-        } else {
-            return $value;
+        switch($type) {
+            case 'currency':
+                return \Manager::currency($value);
+            case 'decimal':
+            case 'float':
+                return str_replace(',', '.', $value);
+            case 'cpf':
+                return \MCPF::create($value);
+            case 'cnpj':
+                return \MCNPJ::create($value);
+            case 'collection':
+                $arr = json_decode($value, true);
+                return new \MArray($arr);
+            case 'clob':
+                return $this->parseClob($value);
+            case 'blob':
+                return $this->parseBlob($value);
+            case 'boolean':
+            case 'date':
+            case 'timestamp':
+            default:
+                return $value;
         }
+    }
+
+    private function parseBlob($value) {
+        $parsedValue = '';
+        if (is_resource($value) or is_resource($value->descriptor)) {
+            $value->rewind();
+            while (!$value->eof()) {
+                $parsedValue .= $value->read(2000);
+            }
+            $value = \MFile::file($parsedValue);
+        } else {
+            $value = \MFile::file($value);
+        }
+
+        return $value;
+    }
+
+    private function parseClob($value) {
+        return is_a($value, '\OCI-Lob') ? $value->load() : $value;
     }
 
     public function convertColumn($value, $dbalType) {
@@ -199,7 +238,7 @@ class Platform extends \Doctrine\DBAL\Platforms\OraclePlatform {
         }
     }
 
-    public function convertWhere($value, $dbalType) {
+    public function convertWhere($value, $type) {
         if ($type == '') {
             if (is_object($value)) {
                 $type = substr(strtolower(get_class($value)), 1);
@@ -219,11 +258,25 @@ class Platform extends \Doctrine\DBAL\Platforms\OraclePlatform {
         $this->$method($attributeMap, $operation, $object);
     }
 
+    /**
+     * Permite que o Oracle mantenha informações sobre o usuário da aplicação e a vincule com a sessão específica.
+     * @param type $userId Identificador do usuário da aplicação
+     * @param type $userIp Ip da máquina do usuário
+     * @param type $module Classe, Script ou módulo de onde está partindo a execução.
+     * @param type $action Ação executada pelo usuário.
+     */
+    public function setUserInformation($userId, $userIP, $module, $action) {
+        $this->db->getConnection()
+            ->getWrappedConnection()
+            ->setUserInformation($userId, $userIP, $module, $action);
+    }
+
     private function handleBLOB($attributeMap, $operation, $object) {
         //mdump('platform::handleBLOB');
         $classMap = $attributeMap->getClassMap();
         $statement = $classMap->getSelectStatement();
-        $statement->addParameter($object->getId());
+        $pkName = $classMap->getKeyAttributeName();
+        $statement->addParameter($object->get($pkName));
         $statement->setForUpdate(true);
         $query = $this->db->getQuery($statement);
         $file = $attributeMap->getValue($object);
@@ -244,6 +297,33 @@ class Platform extends \Doctrine\DBAL\Platforms\OraclePlatform {
         }
     }
 
+    public function ignoreAccentuation($ignore = true) {
+        if ($ignore) {
+            $this->enableLinguisticSearchs();
+        } else {
+            $this->disableLinguisticSearchs();
+        }
+    }
+
+    private function enableLinguisticSearchs() {
+        if (!$this->linguistic) {
+            $trans = $this->db->beginTransaction();
+            $this->db->executeCommand('ALTER SESSION SET NLS_COMP=LINGUISTIC');
+            $this->db->executeCommand('ALTER SESSION SET NLS_SORT=BINARY_AI');
+            $trans->commit();
+            $this->linguistic = true;
+        }
+    }
+
+    private function disableLinguisticSearchs() {
+        if ($this->linguistic) {
+            $trans = $this->db->beginTransaction();
+            $this->db->executeCommand('ALTER SESSION SET NLS_COMP=BINARY');
+            $this->db->executeCommand('ALTER SESSION SET NLS_SORT=WEST_EUROPEAN');
+            $trans->commit();
+            $this->linguistic = false;
+        }
+    }
 }
 
 function handleText($attributeMap, $operation) {

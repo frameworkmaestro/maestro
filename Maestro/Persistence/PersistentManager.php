@@ -89,12 +89,11 @@ class PersistentManager {
 
     private function logger(&$commands, ClassMap $classMap, PersistentObject $object, $operation) {
         $logger = $classMap->getDb()->getORMLogger();
-        if ($logger) {
+        if ($object->logIsEnabled() && $logger) {
             $description = $object->getLogDescription();
             $idMethod = 'get' . $classMap->getKeyAttributeName();
             $commands[] = $logger->getCommand($operation, $classMap->getName(), $object->$idMethod(), $description);
         }
-        //return $command;
     }
 
     private function execute(MDatabase $db, $commands) {
@@ -102,26 +101,6 @@ class PersistentManager {
             $commands = array($commands);
         }
         $db->executeBatch($commands);
-        /*
-        $transaction = $db->getTransaction();
-        if ($newTransaction = (!$transaction->isActive())) {
-            $transaction->begin();
-        }
-        try {
-            foreach ($commands as $command) {
-                $db->execute($command);
-            }
-            if ($newTransaction) {
-                $transaction->commit();
-            }
-        } catch (Exception $e) {
-            if ($newTransaction) {
-                $transaction->rollback();
-            }
-            throw new \Exception($e->getMessage());
-        }
-         * 
-         */
     }
 
     /**
@@ -175,7 +154,7 @@ class PersistentManager {
 
     public function retrieveAssociation(PersistentObject $object, $associationName) {
         $classMap = $object->getClassMap();
-        $this->_retrieveAssociation($object, $associationName, $classMap, $id);
+        $this->_retrieveAssociation($object, $associationName, $classMap);
     }
 
     private function _retrieveAssociation(PersistentObject $object, $associationName, ClassMap $classMap) {
@@ -240,12 +219,9 @@ class PersistentManager {
 
     private function _saveObject(PersistentObject $object, ClassMap $classMap, &$commands) {
         if ($classMap->getSuperClassMap() != NULL) {
-           // if comentado pois não estava ocorrendo o update da classe Pai, só o insert.
-           // if (is_null($object->getAttributeValue($classMap->getReferenceAttributeMap()))) {
-                $isPersistent = $object->isPersistent();
-                $this->_saveObject($object, $classMap->getSuperClassMap(), $commands);
-                $object->setPersistent($isPersistent);
-           // }
+            $isPersistent = $object->isPersistent();
+            $this->_saveObject($object, $classMap->getSuperClassMap(), $commands);
+            $object->setPersistent($isPersistent);
         }
 
         $operation = $object->isPersistent() ? 'update' : 'insert';

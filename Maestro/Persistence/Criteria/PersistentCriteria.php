@@ -306,10 +306,10 @@ class PersistentCriteria extends BaseCriteria
 
     public function getAttributeMap(&$attribute)
     {
-        if ($attribute == '') {
+        if ($this->checkAttributesToSkip($attribute)) {
             return;
         }
-        $attributeMap = NULL;
+        $attributeMap = null;
         $classMap = $this->classMap;
         $tokens = preg_split('/[.]+/', $attribute);
         if (count($tokens) > 1) { // has associations
@@ -317,11 +317,10 @@ class PersistentCriteria extends BaseCriteria
                 $name = $tokens[$i];
                 if ($this->isAlias($name)) {
                     $classMap = $this->getMapFromAlias($name);
-                    //break;
                 } else {
                     $currentClassMap = $classMap;
                     $association = $this->getAssociation($name, $classMap)
-                            ? : $this->addAssociation($name, 'INNER', $classMap);
+                        ?: $this->addAssociation($name, 'INNER', $classMap);
                     if ($association == NULL) {
                         $classMap = $this->getMap($name);
                     } else {
@@ -332,8 +331,6 @@ class PersistentCriteria extends BaseCriteria
                         } else {
                             $classMap = $this->getMap($name);
                             if (!isset($classMap)) {
-                                //Manager::logError(($currentClassMap->getName() . ' Invalid association/alias name [' . $name . '] in attribute [' . $attribute . ']'));
-                                //break;
                                 throw new \Maestro\Persistence\EPersistenceException($currentClassMap->getName() . ' Invalid association/alias name [' . $name . '] in attribute [' . $attribute . ']');
                             }
                         }
@@ -355,6 +352,11 @@ class PersistentCriteria extends BaseCriteria
             }
         }
         return $attributeMap;
+    }
+
+    private function checkAttributesToSkip($attribute)
+    {
+        return in_array(trim($attribute), ['', '=', '?', '(', ')', 'and', 'or', 'not']);
     }
 
     /*

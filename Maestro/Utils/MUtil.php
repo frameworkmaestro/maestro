@@ -151,16 +151,52 @@ class MUtil
      * Retira os caracteres especiais.
      * @param <type> $string
      */
-    public static function RemoveSpecialChars($string)
+    public static function RemoveSpecialCharsAndNumbers($string, $whiteList = array())
     {
-        $specialCharacters = ['#', '$', '%', '&', '@', '.', '?', '+', '=', '§', '-', '\\', '/', '!', '"', "'"];
-        $string = str_replace($specialCharacters, '', $string);
+        $stringWithoutSpecialChars = static::RemoveSpecialChars($string, $whiteList);
+        return trim(preg_replace('/\d+/', '', $stringWithoutSpecialChars));
+    }
 
+    private static function getSpecialCharsExceptAccents()
+    {
+        return array(
+            '#' => '', '$' => '', '%' => '', '&' => '', '@' => '', '.' => '',
+            '?' => '', '+' => '', '=' => '', '§' => '', '-' => '', '\\' => '',
+            '/' => '', '!' => '', '"' => '', "'" => '', '´' => '', '¿' => ''
+        );
+    }
+
+    private static function getAccentedChars()
+    {
         $arrayStringsSpecialChars = array("À", "Á", "Â", "Ã", "Ä", "Å", "?", "á", "â", "ã", "ä", "å", "Ò", "Ó", "Ô", "Õ", "Ö", "Ø", "ò", "ó", "ô", "õ", "ö", "ø", "È", "É", "Ê", "Ë", "è", "é", "ê", "ë", "Ç", "ç", "Ì", "Í", "Î", "Ï", "ì", "í", "î", "ï", "Ù", "Ú", "Û", "Ü", "ù", "ú", "û", "ü", "ÿ", "Ñ", "ñ");
         $arrayStringsNormalChars = array("A", "A", "A", "A", "A", "A", "a", "a", "a", "a", "a", "a", "O", "O", "O", "O", "O", "O", "o", "o", "o", "o", "o", "o", "E", "E", "E", "E", "e", "e", "e", "e", "C", "c", "I", "I", "I", "I", "i", "i", "i", "i", "U", "U", "U", "U", "u", "u", "u", "u", "y", "N", "n");
-        $string = str_replace($arrayStringsSpecialChars, $arrayStringsNormalChars, $string);
+
+        return array_combine($arrayStringsSpecialChars, $arrayStringsNormalChars);
+    }
+
+    private static function replaceSpecialChars($string, $replacementCharMap, $whiteList = array())
+    {
+        while (list($character, $replacement) = each($replacementCharMap)) {
+            if (!in_array($character, $whiteList)) {
+                $string = str_replace($character, $replacement, $string);
+            }
+        }
 
         return $string;
+    }
+
+    public static function RemoveSpecialCharsExceptAccents($string, $whiteList = array())
+    {
+        return self::replaceSpecialChars($string, self::getSpecialCharsExceptAccents(), $whiteList);
+    }
+
+    /**
+     * Retira os caracteres especiais.
+     * @param <type> $string
+     */
+    public static function RemoveSpecialChars($string, $whiteList = array()) {
+        $specialCharacters = array_merge(self::getSpecialCharsExceptAccents(), self::getAccentedChars());
+        return self::replaceSpecialChars($string, $specialCharacters, $whiteList);
     }
 
     public static function listFiles($dir, $type = 'd', $extension = '')
@@ -616,6 +652,71 @@ class MUtil
                 $props_arr = array_merge($parent_props_arr, $props_arr);
         }
         return $props_arr;
+    }
+
+    public static function generateUID()
+    {
+        $s = uniqid('', true);
+        $hex = substr($s, 0, 13);
+        $dec = $s[13] . substr($s, 15); // skip the dot
+
+        $uid = base_convert($hex, 16, 36) . base_convert($dec, 10, 36);
+        return strtoupper($uid);
+    }
+
+    /**
+     * Gera uma cadeia de bytes de forma randômica e a converte para uma string em formato hexadecimal.
+     * @param Integer $length Tamanho em bytes da cadeia a ser gerada.
+     * @return String Cadeia de bytes convertida para string em formato hexadecimal.
+     * @link http://php.net/manual/en/function.openssl-random-pseudo-bytes.php
+     */
+    public static function generateRandomBytesAsString($length)
+    {
+        if ((!$length) || (!is_numeric($length)) || ($length <= 0)) {
+            throw new InvalidArgumentException("Invalid length. The length must be greather than 0.");
+        }
+        return bin2hex(openssl_random_pseudo_bytes($length));
+    }
+
+    public static function getClientIP()
+    {
+        if (getenv('HTTP_CLIENT_IP'))
+            $ip = getenv('HTTP_CLIENT_IP');
+        else if(getenv('HTTP_X_FORWARDED_FOR'))
+            $ip = getenv('HTTP_X_FORWARDED_FOR');
+        else if(getenv('HTTP_X_FORWARDED'))
+            $ip = getenv('HTTP_X_FORWARDED');
+        else if(getenv('HTTP_FORWARDED_FOR'))
+            $ip = getenv('HTTP_FORWARDED_FOR');
+        else if(getenv('HTTP_FORWARDED'))
+            $ip = getenv('HTTP_FORWARDED');
+        else if(getenv('REMOTE_ADDR'))
+            $ip = getenv('REMOTE_ADDR');
+        else
+            $ip = 'UNKNOWN';
+
+        return $ip;
+    }
+
+    /**
+     * Pega a hora corrente em milisegundos.
+     * @return float Hora corrente em milisegundos.
+     */
+    public static function getCurrentTimeInMilliseconds() {
+        return round(microtime(true) * 1000);
+    }
+
+    /**
+     * Gera valores booleanos de acordo com a probabilidade informada.
+     * @param float $trueChance Probabilidade de gerar um true;
+     */
+    public static function randomBoolean($trueChance = 0.5) {
+        if ($trueChance < 0.00001 || $trueChance > 1) {
+            throw new \Exception("Valor inválido");
+        }
+
+        $max = 100000;
+        return (mt_rand(0,$max) <= $trueChance * $max);
     }
 
 }
