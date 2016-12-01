@@ -213,6 +213,7 @@ class MApp
         }
         if (self::$container) {
             $namespace = self::getNamespace($app, $module, 'controllers', $controller);
+            mdump('namespace = ' . $namespace);
             $handler = self::$container->get($namespace);
         } else {
             $fileName = self::getHandlerFile($app, $module, 'controllers', $controller);

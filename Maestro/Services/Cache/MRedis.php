@@ -26,7 +26,7 @@ class MRedis extends MCacheService {
     protected function init() {
         $host = Manager::getConf('cache.Redis.host');
         $port = Manager::getConf('cache.Redis.port');
-        $this->redis = new Redis();
+        $this->redis = new \Redis();
         $this->isAvailable = $this->redis->connect($host, $port);
     }
 
