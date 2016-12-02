@@ -18,7 +18,9 @@
 
 namespace Maestro\Persistence;
 
-use Maestro;
+use Maestro\Persistence\Map\AssociationMap,
+    Maestro\Persistence\Map\ClassMap,
+    Maestro\Persistence\Map\AttributeMap;
 
 /**
  * Brief Class Description.
@@ -41,49 +43,65 @@ class PHPConfigLoader
         return array();
     }
 
-    public function getMap($className)
-    {
-        $p = strrpos($className, '\\');
-        if ($p === false) {
-            return;
-        }
+    public function getMap($className, $mapClassName = '') {
         if (!isset($this->phpMaps[$className])) {
-            //$classNameMap = substr($className, 0, $p) . "\\map" . substr($className, $p) . 'map';
-            //mdump('-----------------'.$classNameMap);
-            $this->phpMaps[$className] = $className::ORMMap();
+            if ($mapClassName == '') {
+                $p = strrpos($className, '\\');
+                if ($p === false) {
+                    return;
+                }
+                $q = strrpos($className, '\\persistence');
+                if ($q === false) {
+                    $mapClassName = substr($className, 0, $p) . "\\map" . substr($className, $p) . 'Map';
+                } else {
+                    $mapClassName = $className  . 'Map';
+                }
+            }
+            //mdump('after = ' . $className . ' - ' . $mapClassName);
+            //mtracestack();
+            $this->phpMaps[$className] = $mapClassName::ORMMap();
         }
         return $this->phpMaps[$className];
     }
 
-    public function getClassMap($className)
-    {
-        if ($className == '') {mtracestack();}
-        $classIndex = strtolower(trim($className));
+    public function getClassMap($className, $mapClassName = '') {
+        $p = strrpos($className, '\\persistence');
+        if ($p === false) {
+            $className = strtolower(trim($className));
+        } else {
+            $className = trim($className);
+        }
         if ($className{0} == '\\') {
             $className = substr($className, 1);
         }
         if ($className == '') {
             return;
         }
-        if (isset($this->classMaps[$classIndex])) {
-            return $this->classMaps[$classIndex];
+        if (isset($this->classMaps[$className])) {
+            return $this->classMaps[$className];
         }
-        $map = $this->getMap($className);
+        $map = $this->getMap($className, $mapClassName);
+        //mdump($map);
         $database = $map['database'];
-        $classMap = new \Maestro\Persistence\Map\ClassMap($className, $database);
+        $classMap = new ClassMap($className, $database, $this->manager);
         $classMap->setDatabaseName($database);
+        //var_dump($className . '-' . $map['table']);
         $classMap->setTableName($map['table']);
 
         if (isset($map['extends'])) {
             $classMap->setSuperClassName($map['extends']);
         }
 
-        $config = $className::config();
+        if (method_exists($className, 'config')) {
+            $config = $className::config();
+        } else {
+            $config = [];
+        }
 
         $attributes = $map['attributes'];
         $referenceAttribute = false;
         foreach ($attributes as $attributeName => $attr) {
-            $attributeMap = new \Maestro\Persistence\Map\AttributeMap($attributeName, $classMap);
+            $attributeMap = new AttributeMap($attributeName, $classMap);
             if (isset($attr['index'])) {
                 $attributeMap->setIndex($attr['index']);
             }
@@ -110,13 +128,13 @@ class PHPConfigLoader
             $classMap->addAttributeMap($attributeMap);
         }
 
-        $this->classMaps[$classIndex] = $classMap;
+        $this->classMaps[$className] = $classMap;
 
         if ($referenceAttribute) {
             // set superAssociationMap
             $attributeName = $referenceAttribute->getName();
             $superClassName = $classMap->getSuperClassMap()->getName();
-            $superAssociationMap = new \Maestro\Persistence\Map\AssociationMap($classMap, $superClassName);
+            $superAssociationMap = new AssociationMap($classMap, $superClassName);
             $superAssociationMap->setToClassName($superClassName);
             $superAssociationMap->setToClassMap($classMap->getSuperClassMap());
             $superAssociationMap->setCardinality('oneToOne');
@@ -131,11 +149,13 @@ class PHPConfigLoader
             $fromClassMap = $classMap;
             foreach ($associations as $associationName => $association) {
                 $toClass = $association['toClass'];
-                $associationMap = new \Maestro\Persistence\Map\AssociationMap($classMap, $associationName);
+                $associationMap = new AssociationMap($classMap, $associationName);
                 $associationMap->setToClassName($toClass);
-                $associationMap->setDeleteAutomatic($association['deleteAutomatic']);
-                $associationMap->setSaveAutomatic($association['saveAutomatic']);
-                $associationMap->setRetrieveAutomatic($association['retrieveAutomatic']);
+
+                $associationMap->setDeleteAutomatic(!empty($association['deleteAutomatic']));
+                $associationMap->setSaveAutomatic(!empty($association['saveAutomatic']));
+                $associationMap->setRetrieveAutomatic(!empty($association['retrieveAutomatic']));
+
                 $autoAssociation = (strtolower($className) == strtolower($toClass));
                 if (!$autoAssociation) {
                     $autoAssociation = (strtolower($className) == strtolower(substr($toClass, 1)));
@@ -173,7 +193,6 @@ class PHPConfigLoader
         }
         return $classMap;
     }
-
 }
 
 ?>

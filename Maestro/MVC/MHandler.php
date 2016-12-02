@@ -122,11 +122,9 @@ class MHandler
         $filters = Manager::getConf('filters');
         if (is_array($filters)) {
             $appFilters = MApp::getFiles($this->getApplication(),'','filters');
-            //Manager::addAutoloadPath(MApp::getPath() . '/filters');
             $this->filters = [];
-            foreach ($filters as $filter) {
+            foreach ($filters as $filter => $filterClass) {
                 include_once $appFilters[$filter];
-                $filterClass = $filter . 'Filter';
                 $this->filters[$filterClass] = new $filterClass($this);
                 $this->filters[$filterClass]->preProcess();
             }

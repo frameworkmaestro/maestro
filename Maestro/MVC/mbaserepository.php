@@ -11,6 +11,7 @@
  * @since
  */
 namespace Maestro\MVC;
+use Maestro\Manager;
 
 class MBaseRepository
 {

@@ -234,11 +234,16 @@ class MApp
             Manager::logMessage("[getService from cache]");
             return Manager::$controllers[$className];
         }
-        $fileName = self::getHandlerFile($app, $module, 'services', $service);
-        mdump($fileName);
-        include_once $fileName;
-        $handler = new $className(self::$context);
-        //Manager::$controllers[$className] = $handler;
+        if (self::$container) {
+            $namespace = self::getNamespace($app, $module, 'services', $service);
+            mdump('namespace = ' . $namespace);
+            $handler = self::$container->get($namespace);
+        } else {
+            $fileName = self::getHandlerFile($app, $module, 'services', $service);
+            mdump('fileName = ' . $fileName);
+            include_once $fileName;
+            $handler = new $className(self::$context);
+        }
         return $handler;
     }
 
