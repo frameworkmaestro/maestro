@@ -39,15 +39,14 @@ class MAppStructure
     public $models;
     public $maps;
     public $basePath;
+    public $basePathSrc;
 
     public function __construct($app, $basePath)
     {
         $this->app = $app;
-        $src = $basePath . DIRECTORY_SEPARATOR . 'src';
-        if (file_exists($src)) {
-            $basePath = $src;
-        }
         $this->basePath = $basePath;
+        $basePathSrc = $basePath . DIRECTORY_SEPARATOR . 'src';
+        $this->basePathSrc =  (file_exists($basePathSrc) ? $basePathSrc : $this->basePath) ;
         $this->loadFolders();
         $this->loadModules();
         $this->loadControllers();
@@ -64,7 +63,7 @@ class MAppStructure
 
     public function loadFolders()
     {
-        $base = $this->basePath;
+        $base = $this->basePathSrc;
         if (!file_exists($base)) {
             return;
         }
@@ -94,7 +93,7 @@ class MAppStructure
 
     public function loadControllers()
     {
-        $base = $this->basePath . DIRECTORY_SEPARATOR . 'controllers';
+        $base = $this->basePathSrc . DIRECTORY_SEPARATOR . 'controllers';
         if (!file_exists($base)) {
             return;
         }
@@ -109,7 +108,7 @@ class MAppStructure
 
     public function loadServices()
     {
-        $base = $this->basePath . DIRECTORY_SEPARATOR . 'services';
+        $base = $this->basePathSrc . DIRECTORY_SEPARATOR . 'services';
         if (!file_exists($base)) {
             return;
         }
@@ -124,7 +123,7 @@ class MAppStructure
 
     public function loadComponents()
     {
-        $base = $this->basePath . DIRECTORY_SEPARATOR . 'components';
+        $base = $this->basePathSrc . DIRECTORY_SEPARATOR . 'components';
         if (!file_exists($base)) {
             return;
         }
@@ -141,7 +140,7 @@ class MAppStructure
 
     public function loadFilters()
     {
-        $base = $this->basePath . DIRECTORY_SEPARATOR . 'filters';
+        $base = $this->basePathSrc . DIRECTORY_SEPARATOR . 'filters';
         if (!file_exists($base)) {
             return;
         }
@@ -156,7 +155,7 @@ class MAppStructure
 
     public function loadModels()
     {
-        $base = $this->basePath . DIRECTORY_SEPARATOR . 'models';
+        $base = $this->basePathSrc . DIRECTORY_SEPARATOR . 'models';
         if (!file_exists($base)) {
             return;
         }
@@ -171,7 +170,7 @@ class MAppStructure
 
     public function loadMaps()
     {
-        $base = $this->basePath . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'map';
+        $base = $this->basePathSrc . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'map';
         if (!file_exists($base)) {
             return;
         }

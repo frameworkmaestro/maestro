@@ -43,7 +43,8 @@ class MApp
     {
         $context = self::$context = new MContext(Manager::$request);
         $app = self::$app = Manager::$app = $context->getApp();
-        $appStructureFile = realpath(Manager::$basePath . DIRECTORY_SEPARATOR . 'var/files/' . DIRECTORY_SEPARATOR . $app . 'Structure.ser');
+        $appStructureFile = realpath(Manager::$basePath . DIRECTORY_SEPARATOR . 'var/files' . DIRECTORY_SEPARATOR . $app . 'Structure.ser');
+        mdump('struture file = ' . $appStructureFile);
         $appStructure = new \stdClass();
         if (file_exists($appStructureFile)) {
             $appStructure->$app = unserialize(file_get_contents($appStructureFile));
@@ -58,7 +59,7 @@ class MApp
         if (file_exists(self::$path . DIRECTORY_SEPARATOR . 'src')) {
             self::$pathSrc = self::$path . DIRECTORY_SEPARATOR . 'src';
         }
-        self::$pathModules = self::$pathSrc . '/modules';
+        self::$pathModules = self::$path . '/modules';
         $autoload = self::$path . '/vendor/autoload.php';
         if (file_exists($autoload)) {
             self::$loader = require $autoload;
@@ -196,6 +197,7 @@ class MApp
         if ($module != '') {
             $array = self::$structure->$app->modules[$module]->$type;
             $basePath = self::$structure->$app->modules[$module]->basePath;
+            return $module . "\\" . $type . "\\" . basename($array[$handler], ".php");
         } else {
             $array = self::$structure->$app->$type;
             return $app . "\\" . $type . "\\" . basename($array[$handler], ".php");
@@ -260,10 +262,16 @@ class MApp
     public static function getModel($app, $module, $model, $data = null)
     {
         Manager::logMessage("[MApp::getModel  {$model}]");
-        $fileName = self::getHandlerFile($app, $module, 'models', $model);
-        include_once $fileName;
-        Manager::import("{$module}\\models\\*");
-        return new $model($data);
+        //$fileName = self::getHandlerFile($app, $module, 'models', $model);
+        //include_once $fileName;
+        if (self::$container) {
+            $namespace = self::getNamespace($app, $module, 'services', $model);
+            mdump('namespace = ' . $namespace);
+            return new $namespace(self::$context);
+        } else {
+            Manager::import("{$module}\\models\\*");
+            return new $model($data);
+        }
     }
 
     public static function getView($app, $module, $controller, $view)
@@ -321,7 +329,7 @@ class MApp
 
     public static function addModuleConf($module)
     {
-        $configFile = self::$pathSrc . '/modules/' . $module . '/conf/conf.php';
+        $configFile = self::$path . '/modules/' . $module . '/conf/conf.php';
         Manager::loadConf($configFile);
     }
 

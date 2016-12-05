@@ -54,7 +54,7 @@ class PHPConfigLoader
                 if ($q === false) {
                     $mapClassName = substr($className, 0, $p) . "\\map" . substr($className, $p) . 'Map';
                 } else {
-                    $mapClassName = $className  . 'Map';
+                    $mapClassName = (substr($className, -3) != 'Map' ? $className  . 'Map' : $className);
                 }
             }
             //mdump('after = ' . $className . ' - ' . $mapClassName);
