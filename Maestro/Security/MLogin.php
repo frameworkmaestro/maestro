@@ -91,7 +91,7 @@ class MLogin {
      */
     public function __construct($user = '', $name = '', $idUser = '') {
         $this->data = new \stdClass();
-        if ($user instanceof \Maestro\Persistence\PersistentObject) { // it can be a User object
+        if (is_object($user)) { // it can be a User object
             $this->setUser($user);
         } else { // $user is the login string
             $this->login = $this->data->login = $user;
@@ -112,7 +112,7 @@ class MLogin {
         return $this->data;
     }
 
-    public function setUser(\Maestro\Persistence\PersistentObject $user) {
+    public function setUser($user) {
         $this->login = $this->data->login = $user->getLogin();
         $this->data->name = $user->getName();
         $this->data->idUser = $user->getId();
@@ -123,8 +123,8 @@ class MLogin {
     
     public function getUser() {
         if ($this->data->idUser) {
-            $user = Manager::getModelMAD('user');
-            $user->getById($this->data->idUser);
+            $userMAD = Manager::getModelMAD('user');
+            $user = $userMAD->getById($this->data->idUser);
             return $user;
         }
         return NULL;

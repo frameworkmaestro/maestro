@@ -19,6 +19,8 @@
 namespace Maestro\MVC;
 
 use Maestro\Manager,
+    Maestro\MVC\MApp,
+    Maestro\MVC\MContext,
     Maestro\Services\Exception\ENotFoundException;
 
 /**
@@ -41,10 +43,13 @@ class MHandler
     protected $filters = [];
     public $renderArgs = array();
 
-    public function __construct(\Maestro\MVC\MContext $context)
+    public function __construct($context = '')
     {
-        $this->context = $context;
-        $this->name = $context->getHandler(); //$context->getController() . $context->getComponent() . $context->getService();
+        $this->context = $context ? $context : MApp::getContext();
+        if (!($this->context instanceof MContext)) {
+            throw new \Exception('Error on MHandler::context.');
+        }
+        $this->name = $this->context->getHandler();
         $this->canCallHandler = true;
         $this->data = Manager::getData();
     }
