@@ -20,20 +20,26 @@ namespace Maestro\MVC\Results;
 
 use Maestro\Manager;
 
-class MRuntimeError extends MResult
+class MRuntimeError extends MResultException
 {
 
     public function setContent()
     {
         mdump('Executing MRuntimeError');
         try {
+            $method = Manager::getRequest()->request->getMethod();
             $errorHtml = $this->fetch("runtime");
-            if (Manager::isAjaxCall()) {
+            if (Manager::isAjaxCall() && ($method == 'POST')) {
+                $errorHtml = $this->fetch("runtime.post");
+                $this->content = $errorHtml;
+                /*
                 $this->ajax->setType('page');
                 $this->ajax->setData($errorHtml);
                 $this->ajax->setResponseType('JSON');
                 $this->content = $this->ajax->returnData();
+                */
             } else {
+                $errorHtml = $this->fetch("runtime");
                 $this->content = $errorHtml;
             }
         } catch (\Maestro\Services\Exception\EMException $e) {
@@ -44,7 +50,7 @@ class MRuntimeError extends MResult
     public function getOutput()
     {
         Manager::$response->status = \Maestro\Services\HTTP\MStatusCode::INTERNAL_ERROR;
-        return parent::getOuput();
+        return parent::getOutput();
     }
 
 }

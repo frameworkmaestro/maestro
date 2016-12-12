@@ -273,6 +273,7 @@ var manager = {
             data: data,
             contentType: contentType,
             async: async,
+			//encoding:"UTF-8",
             //cache: false,
             processData: processData,
             success: function (data, textStatus, jqXHR) {

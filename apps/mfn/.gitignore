@@ -1,0 +1,7 @@
+.idea
+.svn
+composer.phar
+composer.lock
+phpunit.xml
+vendor/
+conf/conf.php
