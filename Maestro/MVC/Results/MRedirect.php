@@ -37,6 +37,7 @@ class MRedirect extends MResultObject
             $this->ajax->setType('redirect');
             $data = new \StdClass();
             $data->url = $this->object->url;
+            mtrace('    to: ' . $data->url);
             $this->ajax->setData($data);
             $this->content = $this->ajax->returnData();
         }
