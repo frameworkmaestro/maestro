@@ -32,7 +32,6 @@ class MAuthDbMD5 extends MAuth {
             if ($user->validatePasswordMD5($challenge, $response)) {
                 $classNameLogin = Manager::getConf('login.login') ?: "\\Maestro\\Security\\MLogin";
                 $login = new $classNameLogin();
-                mdump($user);
                 $login->setUser($user);
                 $this->setLogin($login);
                 $this->setLoginLogUserId($user->getId());

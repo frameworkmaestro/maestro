@@ -38,9 +38,12 @@ class MApp
     protected static $controllerAction;
     protected static $autoload;
     protected static $container;
+    protected static $controllers;
+    protected static $services;
 
     public static function contextualize()
     {
+        self::$controllers = self::$services = [];
         $context = self::$context = new MContext(Manager::$request);
         $app = self::$app = Manager::$app = $context->getApp();
         $appStructureFile = realpath(Manager::$basePath . DIRECTORY_SEPARATOR . 'var/files' . DIRECTORY_SEPARATOR . $app . 'Structure.ser');
@@ -209,9 +212,9 @@ class MApp
     {
         $className = "{$controller}Controller";
         Manager::logMessage("[MApp::getController  {$className}]");
-        if (Manager::$controllers[$className]) {
+        if (self::$controllers[$className]) {
             Manager::logMessage("[getController  from cache]");
-            return Manager::$controllers[$className];
+            return self::$controllers[$className];
         }
         if (self::$container) {
             $namespace = self::getNamespace($app, $module, 'controllers', $controller);
@@ -224,7 +227,7 @@ class MApp
             $handler = new $className(self::$context);
         }
         mdump(get_class($handler));
-        Manager::$controllers[$className] = $handler;
+        self::$controllers[$className] = $handler;
         return $handler;
     }
 
@@ -232,9 +235,9 @@ class MApp
     {
         $className = "{$service}Service";
         Manager::logMessage("[MApp::getService  {$className}]");
-        if (Manager::$controllers[$className]) {
+        if (self::$services[$className]) {
             Manager::logMessage("[getService from cache]");
-            return Manager::$controllers[$className];
+            return self::$services[$className];
         }
         if (self::$container) {
             $namespace = self::getNamespace($app, $module, 'services', $service);
@@ -246,6 +249,7 @@ class MApp
             include_once $fileName;
             $handler = new $className(self::$context);
         }
+        self::$services[$className] = $handler;
         return $handler;
     }
 
@@ -262,12 +266,8 @@ class MApp
     public static function getModel($app, $module, $model, $data = null)
     {
         Manager::logMessage("[MApp::getModel  {$model}]");
-        //$fileName = self::getHandlerFile($app, $module, 'models', $model);
-        //include_once $fileName;
         if (self::$container) {
-            $namespace = self::getNamespace($app, $module, 'services', $model);
-            mdump('namespace = ' . $namespace);
-            return new $namespace(self::$context);
+            return self::getService($app, $module, $model);
         } else {
             Manager::import("{$module}\\models\\*");
             return new $model($data);
