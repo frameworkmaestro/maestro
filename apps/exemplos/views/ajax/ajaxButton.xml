@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
-<view>
-    <mhcontainer>
-        <mhiddenfield id="timesPressed" value="$this->data->timesPressed"/>
-        <mlabel id="labelButton" label="$this->data->timesPressed"/>
-    </mhcontainer>
-</view>

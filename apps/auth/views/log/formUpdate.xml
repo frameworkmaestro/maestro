@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
-<view>
-    <mformaction id="formUpdate" title="Editar" close=">auth/log/formFind" base="formObject">
-        <include file="fields.xml" />
-        <data load="$this->data->object" />
-    </mformaction>
-</view>

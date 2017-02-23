@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE view SYSTEM "../../../../public/layouts/view.dtd">
-<view>
-    <mformbase id="formBase" title="Usuario" close=">auth/main">
-        <action action="formFind" label="Pesquisar" />
-        <action action="formNew" label="Inserir Novo" />
-    </mformbase>
-</view>

@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE view SYSTEM "../../public/layouts/view.dtd">
-<view>
-    <mgrid id="gridGridGrupo" data="$this->data->array" pageLength="0" actionSelect="marca" hasForm="true" width="99%">        
-        <mgridcolumn index="1" title="Nome" width="100%"/>        
-    </mgrid>
-</view>

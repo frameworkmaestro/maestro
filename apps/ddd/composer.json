@@ -1,9 +1,0 @@
-{
-  "name": "Maestro 2.0 - DDD",
-  "description": "Maestro 2.0 - DDD",
-  "autoload": {
-    "psr-4": {
-      "ddd\\": "./src/"
-    }
-  }
-}
