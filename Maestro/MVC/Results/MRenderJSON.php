@@ -44,4 +44,9 @@ class MRenderJSON extends MResultObject
         }
     }
 
+    public function getOutput()
+    {
+        return $this->content;
+    }
+
 }
