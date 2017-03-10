@@ -121,16 +121,14 @@ class MSQL {
         if ($string == '') {
             return;
         }
-
+        $array = [];
         $source = $string . ',';
         $tok = '';
         $l = strlen($source);
         $can = 0;
-
         for ($i = 0; $i < $l; $i++) {
             $c = $source{$i};
-
-            if (!$can) {
+            if ($can > 0) {
                 if ($c == ',') {
                     $tok = trim($tok);
                     $array[$tok] = $tok;
@@ -141,12 +139,13 @@ class MSQL {
             } else {
                 $tok .= $c;
             }
-
-            if ($c == '(')
+            if ($c == '(') {
                 $can++;
-
-            if ($c == ')')
+            } elseif ($c == ')') {
                 $can--;
+            } else {
+                $can++;
+            }
         }
     }
 
