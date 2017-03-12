@@ -104,7 +104,8 @@ class PersistentCriteria extends BaseCriteria
 
     public function addClass($className, $alias = '', $classMap = NULL)
     {
-        $classIndex = trim(strtolower($className));
+        //$classIndex = trim(strtolower($className));
+        $classIndex = trim($className);
         $fullClassName = $className;
         $fullClassIndex = $classIndex;
         if (strrpos($className, '\\') === false) {
