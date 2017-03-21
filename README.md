@@ -1,6 +1,6 @@
-#Framework Maestro v2
+# Framework Maestro v2
 
-###Usando Maestro:
+### Usando Maestro:
 
 1 - Clonar repositório git
 
@@ -13,7 +13,7 @@
 5 - Acessar app, por exemplo ```http://localhost/maestro2/index.php/guia/main```
 
 
-###Para usar JTrace:
+### Para usar JTrace:
 
 1 - Alterar ```conf/conf.php```:
 
