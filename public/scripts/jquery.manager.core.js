@@ -118,7 +118,7 @@ var manager = {
             } else {
                 element = (manager.contentElement != '') ? '#' + manager.contentElement : 'body';
             }
-            //console.log(element);
+            //console.log('element = ' + element);
             $(element).html(html);
             manager._handleResponse.parse(element);
         },

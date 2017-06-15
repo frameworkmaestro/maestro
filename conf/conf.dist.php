@@ -73,7 +73,7 @@ return array(
     ),
     'logs' => array(
         'path' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..'. DIRECTORY_SEPARATOR . 'var' . DIRECTORY_SEPARATOR . 'log',
-        'level' => 2, // 0 (nenhum), 1 (apenas erros) ou 2 (erros e SQL)
+        'level' => 0, // 0 (nenhum), 1 (apenas erros) ou 2 (erros e SQL)
         'handler' => "socket",
 		'peer' => '127.0.0.1',
         'strict' => '',

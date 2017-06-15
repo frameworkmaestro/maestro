@@ -1,15 +1,3 @@
-# Ignore everything
-*
-
-# But not these files...
-!.gitignore
-!auth
-!ddd
-!download
-!exemplos
-!guia
-!template
-!wizard
-
-# ...even if they are in subdirectories
-!*/
+/*
+!/guia
+!/download
